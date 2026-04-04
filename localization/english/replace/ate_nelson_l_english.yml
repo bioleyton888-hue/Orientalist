@@ -3,11 +3,13 @@
  ate_nelson_soflo_neomoor:0 "Embrace the Neomoor Ways"
  ate_nelson_soflo_neomoor_desc:0 "With South Florida under my control, I feel the blend of Sunshiner and Motowner blood that runs through Tampa's veins has earned a new name — the Neomoors. Perhaps it is time for House Nelson to embrace this identity fully."
  ate_nelson_soflo_neomoor_tooltip:0 "Reflect on Tampa's new identity as ruler of SoFlo."
+ ate_nelson_soflo_neomoor_confirm:0 "We are Neomoor."
 
  # Decision Venus
  ate_venus_soflo_neomoor:0 "Embrace the Neomoor Ways"
  ate_venus_soflo_neomoor_desc:0 "South Florida is ours. The Venus name has always meant something in Miami — and now, with SoFlo under our banner, perhaps it is time to give that name a new cultural meaning. The Neomoors are rising, and we shall rise with them."
  ate_venus_soflo_neomoor_tooltip:0 "Reflect on Miami's new identity as rulers of SoFlo."
+ ate_venus_soflo_neomoor_confirm:0 "Miami rises as Neomoor."
 
  # Event ate_nelson.0001
  ate_nelson.0001.t:0 "A New Name for Tampa"

@@ -74,7 +74,10 @@ neomoor_gulf_rename_on_title_gain = {
 	effect = {
 		if = {
 			limit = {
-				culture = culture:neomoor
+				OR = {
+					culture = culture:neomoor
+					faith = faith:shriner
+				}
 			}
 			title:e_gulf_empire = { set_title_name = e_gulf_empire_neomoor }
 		}
@@ -86,7 +89,6 @@ neomoor_gulf_rename_on_title_gain = {
 
 neomoor_shriner_soflo_rename_on_title_gain = {
 	trigger = {
-		
 		scope:title = { this = title:k_soflo }
 	}
 	effect = {

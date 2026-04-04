@@ -18,6 +18,7 @@ ate_nelson.0001 = {
 		add_character_flag = nelson_neomoor_done
 		set_culture = culture:neomoor
 		every_child = {
+			limit = { NOT = { culture = culture:neomoor } }
 			set_culture = culture:neomoor
 		}
 		# Tampa Bay counties
@@ -49,6 +50,7 @@ ate_nelson.0002 = {
 		add_character_flag = venus_neomoor_done
 		set_culture = culture:neomoor
 		every_child = {
+			limit = { NOT = { culture = culture:neomoor } }
 			set_culture = culture:neomoor
 		}
 		# Miami counties
