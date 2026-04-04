@@ -1,0 +1,39 @@
+# Nelson Neomoor — Culture transformation upon controlling SoFlo
+ate_nelson_soflo_neomoor = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_dynasty_houses.dds"
+	}
+	decision_group_type = minor
+
+	ai_check_interval = 60
+
+	desc = ate_nelson_soflo_neomoor_desc
+	selection_tooltip = ate_nelson_soflo_neomoor_tooltip
+
+	is_shown = {
+		dynasty = dynasty:dynn_caribe_nelson
+		NOT = { culture = culture:neomoor }
+		NOT = { has_character_flag = nelson_neomoor_done }
+	}
+
+	is_valid = {
+		has_title = title:k_soflo
+		NOT = { culture = culture:neomoor }
+	}
+
+	is_valid_showing_failures_only = {
+		is_available_adult = yes
+	}
+
+	effect = {
+		trigger_event = { id = ate_nelson.0001 }
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 10
+	}
+}

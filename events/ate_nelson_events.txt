@@ -1,0 +1,33 @@
+namespace = ate_nelson
+
+# SoFlo Conquered — Neomoor Identity Awakening
+# Triggered by ate_nelson_soflo_neomoor decision
+ate_nelson.0001 = {
+	type = character_event
+	title = ate_nelson.0001.t
+	desc = ate_nelson.0001.desc
+	theme = stewardship
+	left_portrait = {
+		character = root
+		animation = personality_compassionate
+	}
+
+	# Accept — embrace the Neomoor identity
+	option = {
+		name = ate_nelson.0001.a
+		add_character_flag = nelson_neomoor_done
+		set_culture = culture:neomoor
+		every_child = {
+			set_culture = culture:neomoor
+		}
+		# Tampa Bay provinces: c_tampa (4816, 4815) and c_st_petersburg (4817)
+		province:4816 = { set_culture = culture:neomoor }
+		province:4815 = { set_culture = culture:neomoor }
+		province:4817 = { set_culture = culture:neomoor }
+	}
+
+	# Decline — not yet
+	option = {
+		name = ate_nelson.0001.b
+	}
+}

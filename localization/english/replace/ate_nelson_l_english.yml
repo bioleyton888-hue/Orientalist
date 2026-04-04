@@ -1,0 +1,11 @@
+﻿l_english:
+ # Decision
+ ate_nelson_soflo_neomoor:0 "Embrace the Neomoor Ways"
+ ate_nelson_soflo_neomoor_desc:0 "With South Florida under my control, I feel the blend of Sunshiner and Motowner blood that runs through Tampa's veins has earned a new name — the Neomoors. Perhaps it is time for House Nelson to embrace this identity fully."
+ ate_nelson_soflo_neomoor_tooltip:0 "Reflect on Tampa's new identity as ruler of SoFlo."
+
+ # Event ate_nelson.0001
+ ate_nelson.0001.t:0 "A New Name for Tampa"
+ ate_nelson.0001.desc:0 "South Florida is mine. From its Sofloano quarters to its Shriner fezzes, this land is a testament to what Tampa could become — not merely Sunshiner, but something richer: a people forged from the Gulf coast and the Motowner diaspora alike. My sons look to me. Tampa looks to me. Shall the Nelsons be the first of the Neomoors?"
+ ate_nelson.0001.a:0 "We are Neomoor. From this day forward."
+ ate_nelson.0001.b:0 "The time is not yet right."
