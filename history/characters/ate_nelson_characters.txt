@@ -1,0 +1,33 @@
+# Ammon-Jaffar Nelson — Father of Ali Nelson
+# Shriner warrior who carved out a domain in Suncoast and fought against Yakub.
+# Died shortly before game start, leaving Tampa to his son Ali.
+caribe_nelson_ammon_jaffar_1 = {
+	name = "Ammon-Jaffar"
+	dynasty = dynn_caribe_nelson
+	culture = sunshiner
+	religion = shriner
+	female = no
+	disallow_random_traits = no
+
+	trait = education_martial_3
+	trait = brave
+	trait = zealous
+	trait = ambitious
+	trait = wrathful
+	trait = shrewd
+
+	martial = 14
+	diplomacy = 8
+
+	2612.3.15 = {
+		birth = yes
+	}
+	2663.6.1 = {
+		death = { death_reason = death_battle }
+	}
+}
+
+# Set Ammon-Jaffar as Ali's father
+caribe_nelson_ali_1 = {
+	father = caribe_nelson_ammon_jaffar_1
+}
