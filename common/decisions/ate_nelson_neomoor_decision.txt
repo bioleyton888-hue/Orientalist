@@ -18,6 +18,7 @@ ate_nelson_soflo_neomoor = {
 
 	is_valid = {
 		has_title = title:k_soflo
+		years_as_ruler >= 5
 		# Totality of SoFlo — all de jure counties of k_soflo under root
 		NOT = {
 			title:k_soflo = {
@@ -66,6 +67,7 @@ ate_venus_soflo_neomoor = {
 
 	is_valid = {
 		has_title = title:k_soflo
+		years_as_ruler >= 5
 		# Totality of SoFlo — all de jure counties of k_soflo under root
 		NOT = {
 			title:k_soflo = {
