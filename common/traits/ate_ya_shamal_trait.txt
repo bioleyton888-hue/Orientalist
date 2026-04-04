@@ -1,6 +1,6 @@
 ya_shamal = {
 	index = 1011
-	icon = ya_shamal
+	icon = holy_place_custodian
 	category = fame
 
 	shown_in_ruler_designer = no
@@ -29,7 +29,7 @@ ya_shamal = {
 
 ya_shamal_descendant = {
 	index = 1012
-	icon = ya_shamal
+	icon = el_hijo_favorito_descendant
 	category = fame
 
 	shown_in_ruler_designer = no
