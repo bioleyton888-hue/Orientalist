@@ -51,6 +51,15 @@ ate_shriner.0001 = {
 	option = {
 		name = ate_shriner.0001.a
 		add_trait = ya_shamal
+		every_child = {
+			limit = {
+				NOR = {
+					has_trait = ya_shamal
+					has_trait = ya_shamal_descendant
+				}
+			}
+			add_trait = ya_shamal_descendant
+		}
 		stress_impact = {
 			zealous = miniscule_stress_impact_loss
 		}
