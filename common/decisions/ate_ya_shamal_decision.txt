@@ -14,21 +14,19 @@ ya_shamal_decision = {
 		is_landed = yes
 		faith = faith:shriner
 		NOT = { has_trait = ya_shamal }
+		NOT = { exists = global_var:ya_shamal_performed }
 	}
 
 	is_valid = {
 		faith = faith:shriner
-		has_title = title:c_tampa
-		gold >= 10
+		has_title = title:d_chicagoland
+		has_title = title:c_chicago
 		NOT = { has_trait = ya_shamal }
+		NOT = { exists = global_var:ya_shamal_performed }
 	}
 
 	is_valid_showing_failures_only = {
 		is_available_adult = yes
-	}
-
-	cost = {
-		gold = 10
 	}
 
 	effect = {

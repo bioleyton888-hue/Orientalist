@@ -50,6 +50,7 @@ ate_shriner.0001 = {
 
 	option = {
 		name = ate_shriner.0001.a
+		set_global_variable = { name = ya_shamal_performed value = yes }
 		add_trait = ya_shamal
 		every_child = {
 			limit = {
@@ -60,6 +61,7 @@ ate_shriner.0001 = {
 			}
 			add_trait = ya_shamal_descendant
 		}
+		title:c_chicago = { set_county_faith = faith:shriner }
 		stress_impact = {
 			zealous = miniscule_stress_impact_loss
 		}
