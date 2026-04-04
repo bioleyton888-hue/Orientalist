@@ -30,3 +30,34 @@ ate_nelson.0001 = {
 		name = ate_nelson.0001.b
 	}
 }
+
+# SoFlo Conquered — Venus Neomoor Identity Awakening
+# Triggered by ate_venus_soflo_neomoor decision
+ate_nelson.0002 = {
+	type = character_event
+	title = ate_nelson.0002.t
+	desc = ate_nelson.0002.desc
+	theme = stewardship
+	left_portrait = {
+		character = root
+		animation = personality_compassionate
+	}
+
+	# Accept — embrace the Neomoor identity
+	option = {
+		name = ate_nelson.0002.a
+		add_character_flag = venus_neomoor_done
+		set_culture = culture:neomoor
+		every_child = {
+			set_culture = culture:neomoor
+		}
+		# Miami counties
+		title:c_miami_dade = { set_county_culture = culture:neomoor }
+		title:c_broward = { set_county_culture = culture:neomoor }
+	}
+
+	# Decline — not yet
+	option = {
+		name = ate_nelson.0002.b
+	}
+}

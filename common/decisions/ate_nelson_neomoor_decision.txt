@@ -18,6 +18,14 @@ ate_nelson_soflo_neomoor = {
 
 	is_valid = {
 		has_title = title:k_soflo
+		# Totality of SoFlo — all de jure counties of k_soflo under root
+		NOT = {
+			title:k_soflo = {
+				any_de_jure_county = {
+					NOT = { holder.top_liege = root }
+				}
+			}
+		}
 		NOT = { culture = culture:neomoor }
 	}
 
@@ -27,6 +35,54 @@ ate_nelson_soflo_neomoor = {
 
 	effect = {
 		trigger_event = { id = ate_nelson.0001 }
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 10
+	}
+}
+
+# Venus Neomoor — Culture transformation upon controlling SoFlo
+ate_venus_soflo_neomoor = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_dynasty_houses.dds"
+	}
+	decision_group_type = minor
+
+	ai_check_interval = 60
+
+	desc = ate_venus_soflo_neomoor_desc
+	selection_tooltip = ate_venus_soflo_neomoor_tooltip
+
+	is_shown = {
+		dynasty = dynasty:dynn_caribe_venus
+		NOT = { culture = culture:neomoor }
+		NOT = { has_character_flag = venus_neomoor_done }
+	}
+
+	is_valid = {
+		has_title = title:k_soflo
+		# Totality of SoFlo — all de jure counties of k_soflo under root
+		NOT = {
+			title:k_soflo = {
+				any_de_jure_county = {
+					NOT = { holder.top_liege = root }
+				}
+			}
+		}
+		NOT = { culture = culture:neomoor }
+	}
+
+	is_valid_showing_failures_only = {
+		is_available_adult = yes
+	}
+
+	effect = {
+		trigger_event = { id = ate_nelson.0002 }
 	}
 
 	ai_potential = {
