@@ -1,0 +1,22 @@
+﻿l_english:
+
+ # Ya-Shamal Descendant trait
+ trait_ya_shamal_descendant:0 "Ya-Shamal Descendant"
+ trait_ya_shamal_descendant_desc:0 "This character is a descendant of Ya-Shamal, who fulfilled the prophesied reconquest of Tampa."
+ trait_ya_shamal_descendant_character_desc:0 "[ROOT.GetCharacter.GetTitledFirstNameNoTooltip] is descended from a ruler who performed the sacred Ya-Shamal ceremony at Tampa, and is regarded with esteem among the faithful of Islam."
+
+ # Ya-Shamal trait
+ trait_ya_shamal:0 "Ya-Shamal"
+ trait_ya_shamal_desc:0 "A ruler who has performed the Ya-Shamal ceremony in Tampa, earning the respect of Muslims across the land."
+ trait_ya_shamal_character_desc:0 "[ROOT.GetCharacter.GetTitledFirstNameNoTooltip] performed the sacred Ya-Shamal ceremony at Tampa, and is held in high regard among the faithful of Islam."
+
+ # Ya-Shamal decision
+ ya_shamal_decision:0 "Ya-Shamal Ceremony"
+ ya_shamal_decision_desc:0 "The ancient rites of the Ya-Shamal await in Tampa. By performing this sacred ceremony, I would earn the reverence of Muslims throughout the realm."
+ ya_shamal_decision_tooltip:0 "Perform the Ya-Shamal ceremony at Tampa"
+ ya_shamal_decision_confirm:0 "Begin the ceremony."
+
+ # ate_shriner.0001 — Ya-Shamal ceremony event
+ ate_shriner.0001.t:0 "The Ya-Shamal Ceremony"
+ ate_shriner.0001.desc:0 "The elders of Tampa have prepared the grounds for the sacred Ya-Shamal. The scent of incense drifts through the hall as the congregation gathers in silence. This ritual has not been performed in generations — but today, it falls to us to revive it."
+ ate_shriner.0001.a:0 "We begin the ceremony."

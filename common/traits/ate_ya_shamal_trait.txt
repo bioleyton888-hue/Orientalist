@@ -1,0 +1,57 @@
+ya_shamal = {
+	index = 1011
+	icon = ya_shamal
+	category = fame
+
+	shown_in_ruler_designer = no
+
+	inherit_chance = 0
+	birth = 0
+	random_creation = 0
+
+	opposites = { ya_shamal_descendant }
+
+	monthly_piety = 1
+	same_religion_opinion = 10
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_ya_shamal_desc
+			}
+			desc = trait_ya_shamal_character_desc
+		}
+	}
+}
+
+ya_shamal_descendant = {
+	index = 1012
+	icon = ya_shamal
+	category = fame
+
+	shown_in_ruler_designer = no
+
+	inherit_chance = 0
+	birth = 0
+	random_creation = 0
+
+	opposites = { ya_shamal }
+
+	learning = 1
+	same_religion_opinion = 5
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_ya_shamal_descendant_desc
+			}
+			desc = trait_ya_shamal_descendant_character_desc
+		}
+	}
+}

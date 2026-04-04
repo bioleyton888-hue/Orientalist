@@ -1,0 +1,58 @@
+namespace = ate_shriner
+
+# Ya-Shamal Descendant — hidden birth event
+ate_shriner.0002 = {
+	type = character_event
+	hidden = yes
+
+	trigger = {
+		OR = {
+			AND = {
+				exists = scope:mother
+				scope:mother = {
+					OR = {
+						has_trait = ya_shamal
+						has_trait = ya_shamal_descendant
+					}
+				}
+			}
+			AND = {
+				exists = scope:father
+				scope:father = {
+					OR = {
+						has_trait = ya_shamal
+						has_trait = ya_shamal_descendant
+					}
+				}
+			}
+		}
+		NOR = {
+			has_trait = ya_shamal
+			has_trait = ya_shamal_descendant
+		}
+	}
+
+	immediate = {
+		add_trait = ya_shamal_descendant
+	}
+}
+
+# Ya-Shamal ceremony — triggered by ya_shamal_decision
+ate_shriner.0001 = {
+	type = character_event
+	title = ate_shriner.0001.t
+	desc = ate_shriner.0001.desc
+	theme = faith
+	left_portrait = {
+		character = root
+		animation = personality_zealous
+	}
+
+	option = {
+		name = ate_shriner.0001.a
+		add_trait = ya_shamal
+		stress_impact = {
+			zealous = miniscule_stress_impact_loss
+		}
+	}
+}

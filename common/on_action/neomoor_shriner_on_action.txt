@@ -1,0 +1,125 @@
+# On birth: grant Ya-Shamal Descendant trait to children of Ya-Shamal holders
+on_birth_child = {
+	events = {
+		ate_shriner.0002
+	}
+}
+
+# On game start: set the initial Imperial Divan head to NeoMoor culture
+on_game_start = {
+	on_actions = {
+		neomoor_shriner_set_initial_culture
+	}
+}
+
+neomoor_shriner_set_initial_culture = {
+	effect = {
+		if = {
+			limit = {
+				exists = character:religious_shriner_hof_1
+			}
+			character:religious_shriner_hof_1 = {
+				set_culture = culture:neomoor
+			}
+		}
+	}
+}
+
+# On title gain: set NeoMoor culture on anyone who gains d_shriner
+# Also rename k_florida to Agrabah if holder is Shriner or NeoMoor
+on_title_gain = {
+	on_actions = {
+		neomoor_shriner_culture_on_title_gain
+		neomoor_shriner_florida_rename_on_title_gain
+		neomoor_louisiana_rename_on_title_gain
+		neomoor_shriner_soflo_rename_on_title_gain
+		neomoor_gulf_rename_on_title_gain
+	}
+}
+
+neomoor_shriner_culture_on_title_gain = {
+	trigger = {
+		scope:title = { this = title:d_shriner }
+	}
+	effect = {
+		set_culture = culture:neomoor
+	}
+}
+
+neomoor_louisiana_rename_on_title_gain = {
+	trigger = {
+		scope:title = { this = title:k_louisiana }
+	}
+	effect = {
+		if = {
+			limit = {
+				OR = {
+					culture = culture:neomoor
+					faith = faith:shriner
+				}
+			}
+			title:k_louisiana = { set_title_name = k_louisiana_neomoor }
+		}
+		else = {
+			title:k_louisiana = { set_title_name = k_louisiana }
+		}
+	}
+}
+
+neomoor_gulf_rename_on_title_gain = {
+	trigger = {
+		scope:title = { this = title:e_gulf_empire }
+	}
+	effect = {
+		if = {
+			limit = {
+				culture = culture:neomoor
+			}
+			title:e_gulf_empire = { set_title_name = e_gulf_empire_neomoor }
+		}
+		else = {
+			title:e_gulf_empire = { set_title_name = e_gulf_empire }
+		}
+	}
+}
+
+neomoor_shriner_soflo_rename_on_title_gain = {
+	trigger = {
+		
+		scope:title = { this = title:k_soflo }
+	}
+	effect = {
+		if = {
+			limit = {
+				OR = {
+					culture = culture:neomoor
+					faith = faith:shriner
+				}
+			}
+			title:k_soflo = { set_title_name = k_soflo_neomoor_shriner }
+		}
+		else = {
+			title:k_soflo = { set_title_name = k_soflo }
+		}
+	}
+}
+
+neomoor_shriner_florida_rename_on_title_gain = {
+	trigger = {
+		scope:title = { this = title:k_florida }
+	}
+	effect = {
+		if = {
+			limit = {
+				OR = {
+					culture = culture:neomoor
+					faith = faith:shriner
+				}
+			}
+			title:k_florida = { set_title_name = k_florida_agrabah }
+		}
+		else = {
+			title:k_florida = { set_title_name = k_florida }
+		}
+	}
+}

@@ -1,0 +1,45 @@
+# Ya-Shamal — Shriner ritual at Tampa
+ya_shamal_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	}
+	decision_group_type = minor
+
+	ai_check_interval = 60
+
+	desc = ya_shamal_decision_desc
+	selection_tooltip = ya_shamal_decision_tooltip
+
+	is_shown = {
+		is_landed = yes
+		faith = faith:shriner
+		NOT = { has_trait = ya_shamal }
+	}
+
+	is_valid = {
+		faith = faith:shriner
+		has_title = title:c_tampa
+		gold >= 10
+		NOT = { has_trait = ya_shamal }
+	}
+
+	is_valid_showing_failures_only = {
+		is_available_adult = yes
+	}
+
+	cost = {
+		gold = 10
+	}
+
+	effect = {
+		trigger_event = { id = ate_shriner.0001 }
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 5
+	}
+}
