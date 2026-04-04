@@ -64,6 +64,106 @@ ate_nelson.0002 = {
 	}
 }
 
+# ——— Prince Ali Parade Chain ———
+# Triggered by nelson_parade_check on_yearly_pulse
+
+# ate_nelson.0009 — A Treacherous Invitation
+ate_nelson.0009 = {
+	type = character_event
+	title = ate_nelson.0009.t
+	desc = ate_nelson.0009.desc
+	theme = intrigue
+
+	immediate = {
+		add_character_flag = nelson_parade_started
+	}
+
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+
+	option = {
+		name = ate_nelson.0009.a
+		trigger_event = { id = ate_nelson.0010 days = 3 }
+	}
+}
+
+# ate_nelson.0010 — Make Way for Prince Ali
+ate_nelson.0010 = {
+	type = character_event
+	title = ate_nelson.0010.t
+	desc = ate_nelson.0010.desc
+	theme = stewardship
+
+	left_portrait = {
+		character = root
+		animation = personality_content
+	}
+
+	option = {
+		name = ate_nelson.0010.a
+		trigger_event = { id = ate_nelson.0011 days = 1 }
+	}
+}
+
+# ate_nelson.0011 — Strong as Ten Regular Men
+ate_nelson.0011 = {
+	type = character_event
+	title = ate_nelson.0011.t
+	desc = ate_nelson.0011.desc
+	theme = martial
+
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+
+	option = {
+		name = ate_nelson.0011.a
+		add_prestige = 50
+\t\ttrigger_event = { id = ate_nelson.0012 days = 1 }
+	}
+}
+
+# ate_nelson.0012 — The Bazaar
+ate_nelson.0012 = {
+	type = character_event
+	title = ate_nelson.0012.t
+	desc = ate_nelson.0012.desc
+	theme = stewardship
+
+	left_portrait = {
+		character = root
+		animation = happiness
+	}
+
+	option = {
+		name = ate_nelson.0012.a
+		add_prestige = 100
+		trigger_event = { id = ate_nelson.0013 days = 1 }
+	}
+}
+
+# ate_nelson.0013 — Prince Ali Fabulous He
+ate_nelson.0013 = {
+	type = character_event
+	title = ate_nelson.0013.t
+	desc = ate_nelson.0013.desc
+	theme = stewardship
+
+	left_portrait = {
+		character = root
+		animation = personality_content
+	}
+
+	option = {
+		name = ate_nelson.0013.a
+		add_character_flag = nelson_parade_done
+		add_prestige = 150
+	}
+}
+
 # ——— Badroulbadour Chain ———
 # Triggered by nelson_badroulbadour_chain_check on_yearly_pulse
 
@@ -122,6 +222,11 @@ ate_nelson.0004 = {
 	desc = ate_nelson.0004.desc
 	theme = intrigue
 
+	trigger = {
+		exists = var:badroulbadour
+		var:badroulbadour = { is_alive = yes }
+	}
+
 	immediate = {
 		var:badroulbadour = { save_scope_as = badroulbadour_scope }
 	}
@@ -147,6 +252,11 @@ ate_nelson.0005 = {
 	title = ate_nelson.0005.t
 	desc = ate_nelson.0005.desc
 	theme = intrigue
+
+	trigger = {
+		exists = var:badroulbadour
+		var:badroulbadour = { is_alive = yes }
+	}
 
 	immediate = {
 		var:badroulbadour = { save_scope_as = badroulbadour_scope }
@@ -174,6 +284,11 @@ ate_nelson.0006 = {
 	desc = ate_nelson.0006.desc
 	theme = intrigue
 
+	trigger = {
+		exists = var:badroulbadour
+		var:badroulbadour = { is_alive = yes }
+	}
+
 	immediate = {
 		var:badroulbadour = { save_scope_as = badroulbadour_scope }
 	}
@@ -199,6 +314,11 @@ ate_nelson.0007 = {
 	title = ate_nelson.0007.t
 	desc = ate_nelson.0007.desc
 	theme = diplomacy
+
+	trigger = {
+		exists = var:badroulbadour
+		var:badroulbadour = { is_alive = yes }
+	}
 
 	immediate = {
 		var:badroulbadour = { save_scope_as = badroulbadour_scope }
@@ -227,6 +347,11 @@ ate_nelson.0008 = {
 	desc = ate_nelson.0008.desc
 	theme = diplomacy
 
+	trigger = {
+		exists = var:badroulbadour
+		var:badroulbadour = { is_alive = yes }
+	}
+
 	immediate = {
 		var:badroulbadour = { save_scope_as = badroulbadour_scope }
 	}
@@ -246,7 +371,6 @@ ate_nelson.0008 = {
 		set_relation_soulmate = scope:badroulbadour_scope
 		stress_impact = {
 			compassionate = miniscule_stress_impact_loss
-			romantic = miniscule_stress_impact_loss
 		}
 	}
 }

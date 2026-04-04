@@ -28,7 +28,25 @@ neomoor_shriner_set_initial_culture = {
 # Yearly pulse: trigger Badroulbadour chain for Nelson Shriners
 on_yearly_pulse = {
 	on_actions = {
+		nelson_parade_check
 		nelson_badroulbadour_chain_check
+	}
+}
+
+nelson_parade_check = {
+	trigger = {
+		dynasty = dynasty:dynn_caribe_nelson
+		faith = faith:shriner
+		is_adult = yes
+		is_landed = yes
+		is_male = yes
+		NOT = { has_character_flag = nelson_parade_started }
+	}
+	effect = {
+		random = {
+			chance = 20
+			trigger_event = { id = ate_nelson.0009 }
+		}
 	}
 }
 
@@ -39,6 +57,7 @@ nelson_badroulbadour_chain_check = {
 		is_adult = yes
 		is_landed = yes
 		is_male = yes
+		has_character_flag = nelson_parade_done
 		NOT = { has_character_flag = nelson_badroulbadour_started }
 	}
 	effect = {
