@@ -33,6 +33,7 @@ on_title_gain = {
 		neomoor_shriner_florida_rename_on_title_gain
 		neomoor_louisiana_rename_on_title_gain
 		neomoor_shriner_soflo_rename_on_title_gain
+		neomoor_shriner_norflo_rename_on_title_gain
 		neomoor_gulf_rename_on_title_gain
 	}
 }
@@ -100,6 +101,26 @@ neomoor_shriner_soflo_rename_on_title_gain = {
 		}
 		else = {
 			title:k_soflo = { set_title_name = k_soflo }
+		}
+	}
+}
+
+neomoor_shriner_norflo_rename_on_title_gain = {
+	trigger = {
+		scope:title = { this = title:k_norflo }
+	}
+	effect = {
+		if = {
+			limit = {
+				OR = {
+					culture = culture:neomoor
+					faith = faith:shriner
+				}
+			}
+			title:k_norflo = { set_title_name = k_norflo_neomoor_shriner }
+		}
+		else = {
+			title:k_norflo = { set_title_name = k_norflo }
 		}
 	}
 }
