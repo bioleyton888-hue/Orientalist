@@ -1,13 +1,13 @@
 ﻿l_english:
  # Decision
  ate_nelson_soflo_neomoor:0 "Embrace the Neomoor Ways"
- ate_nelson_soflo_neomoor_desc:0 "With South Florida under my control, I feel the blend of Sunshiner and Motowner blood that runs through Tampa's veins has earned a new name — the Neomoors. Perhaps it is time for House Nelson to embrace this identity fully."
+ ate_nelson_soflo_neomoor_desc:0 "For as long as the Nelsons have ruled Tampa, we have mingled with the native Sunshiners. The trade language gradually grew into everyday use. Today there is no distinction between us and them. We can no longer call ourselves by the old name — we are Neomoors, pure and simple."
  ate_nelson_soflo_neomoor_tooltip:0 "Reflect on Tampa's new identity as ruler of SoFlo."
  ate_nelson_soflo_neomoor_confirm:0 "We are Neomoor."
 
  # Decision Venus
  ate_venus_soflo_neomoor:0 "Embrace the Neomoor Ways"
- ate_venus_soflo_neomoor_desc:0 "South Florida is ours. The Venus name has always meant something in Miami — and now, with SoFlo under our banner, perhaps it is time to give that name a new cultural meaning. The Neomoors are rising, and we shall rise with them."
+ ate_venus_soflo_neomoor_desc:0 "After their embrace of Islam, the people of Miami began to incorporate more and more aspects of it into their culture, to a point where they may now be considered part of a distinct branch of South Anglo. They have begun to refer to themselves as Neomoors."
  ate_venus_soflo_neomoor_tooltip:0 "Reflect on Miami's new identity as rulers of SoFlo."
  ate_venus_soflo_neomoor_confirm:0 "Miami rises as Neomoor."
 
@@ -22,6 +22,27 @@
  ate_nelson.0002.desc:0 "South Florida is ours. From Archbold to the shores of Biscayne Bay, the Venus name carries weight — but culture is more than a name. The Neomoor spirit spreads from Tampa's shores, and Miami could be its second heartland. My children look to me. Shall the Venus family stand with the Nelsons as founders of this new people?"
  ate_nelson.0002.a:0 "Miami is Neomoor. The Venus family leads the way."
  ate_nelson.0002.b:0 "The time is not yet right."
+
+ # Prince Ali Parade Chain — ate_nelson.0009-0013
+ ate_nelson.0009.t:0 "A Treacherous Invitation"
+ ate_nelson.0009.desc:0 "A courtier approaches you with a gleam in his eye, speaking of a majestic cave outside Tampa — filled to the brim with treasure and wonder. Foolishly, you set out with him. Indeed, the cave is present, but as you step foot inside, he lets out a laugh and says, #italic "Let the darkness unfold or find fortunes untold, servant of the Crescent!"# With a rumbling, the mouth of the cave collapses shut, trapping you within. This must be the work of Yakub himself — but you will not die in darkness."
+ ate_nelson.0009.a:0 "I will find my way out. Yakub will not have me."
+
+ ate_nelson.0010.t:0 "Make Way for Prince Ali"
+ ate_nelson.0010.desc:0 "You are back in Tampa, free of the cave and the traitor who sealed it. There, along the sands by the water, a man introduces himself — Will Williams. He speaks with an energy that is hard to ignore, proposing a grand parade through Tampa to celebrate your rule and reinvigorate your people. With him stand a large assortment of your men, banners and drums at the ready. And is that... an elephant?"
+ ate_nelson.0010.a:0 "Let us through — for it's a bright new star!"
+
+ ate_nelson.0011.t:0 "Strong as Ten Regular Men"
+ ate_nelson.0011.desc:0 "As your procession rides toward Tampa, a hundred bandits appear on the road, drawn by the spectacle of coin and color. They charge with confidence — but you make quick work of them, your men fighting with a ferocity that surprises even you. As the last bandit flees, your escort erupts in cheers. #italic "Mighty is he! Mighty is he!"#"
+ ate_nelson.0011.a:0 "Strong as ten regular men? Definitely!"
+
+ ate_nelson.0012.t:0 "The Bazaar"
+ ate_nelson.0012.desc:0 "Your procession enters the great bazaar of Tampa. As you make your way through toward the palace, your men toss coins and goods into the air, and the crowd erupts in cheers. You catch the eye of a woman shopping at a stall — she turns to her companion and exclaims, #italic "That physique!"# Tampa has not seen a day like this in a long time."
+ ate_nelson.0012.a:0 "Prince Ali, handsome is he!"
+
+ ate_nelson.0013.t:0 "Prince Ali, Fabulous He"
+ ate_nelson.0013.desc:0 "You finally arrive at the palace gates, the entire city buzzing with energy behind you. Will Williams bows deeply, his job done. The people of Tampa have a name on their lips tonight — and it is yours. Certainly, you have made a great name for yourself, if not for your entire city. Now, you can truly rule unshackled."
+ ate_nelson.0013.a:0 "Make way for Prince Ali!"
 
  # Badroulbadour Chain — ate_nelson.0003-0008
  ate_nelson.0003.t:0 "A Captivating Dance"
