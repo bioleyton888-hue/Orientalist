@@ -1,0 +1,9 @@
+{
+  "name": "ate-mod",
+  "version": "1.0.0",
+  "description": "After the End CK3 mod — dev overrides",
+  "private": true,
+  "scripts": {
+    "version": "node scripts/sync-version.js && git add descriptor.mod"
+  }
+}
