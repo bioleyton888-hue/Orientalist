@@ -25,6 +25,30 @@ neomoor_shriner_set_initial_culture = {
 	}
 }
 
+# Yearly pulse: trigger Badroulbadour chain for Nelson Shriners
+on_yearly_pulse = {
+	on_actions = {
+		nelson_badroulbadour_chain_check
+	}
+}
+
+nelson_badroulbadour_chain_check = {
+	trigger = {
+		dynasty = dynasty:dynn_caribe_nelson
+		faith = faith:shriner
+		is_adult = yes
+		is_landed = yes
+		is_male = yes
+		NOT = { has_character_flag = nelson_badroulbadour_started }
+	}
+	effect = {
+		random = {
+			chance = 20
+			trigger_event = { id = ate_nelson.0003 }
+		}
+	}
+}
+
 # On title gain: set NeoMoor culture on anyone who gains d_shriner
 # Also rename k_florida to Agrabah if holder is Shriner or NeoMoor
 on_title_gain = {

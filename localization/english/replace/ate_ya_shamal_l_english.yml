@@ -1,14 +1,17 @@
 ﻿l_english:
 
+ # Ya-Shamal nickname
+ nick_ya_shamal:0 "Ya-Shamal"
+
  # Ya-Shamal Descendant trait
  trait_ya_shamal_descendant:0 "Ya-Shamal Descendant"
- trait_ya_shamal_descendant_desc:0 "This character is a descendant of Ya-Shamal, who fulfilled the prophesied reconquest of Chicago."
- trait_ya_shamal_descendant_character_desc:0 "[ROOT.GetCharacter.GetTitledFirstNameNoTooltip] is descended from a ruler who performed the sacred Ya-Shamal ceremony at Chicago, and is regarded with esteem among the faithful of Islam."
+ trait_ya_shamal_descendant_desc:0 "This character is a descendant of Ya-Shamal, who fulfilled the prophesized reconquest of Chicago."
+ trait_ya_shamal_descendant_character_desc:0 "[ROOT.GetCharacter.GetTitledFirstNameNoTooltip] is descended from Ya-Shamal, who fulfilled the prophesized reconquest of Chicago, and is regarded with esteem among the faithful of Islam."
 
  # Ya-Shamal trait
  trait_ya_shamal:0 "Ya-Shamal"
- trait_ya_shamal_desc:0 "A ruler who has performed the Ya-Shamal ceremony in Chicago, earning the respect of Muslims across the land."
- trait_ya_shamal_character_desc:0 "[ROOT.GetCharacter.GetTitledFirstNameNoTooltip] performed the sacred Ya-Shamal ceremony at Chicago, and is held in high regard among the faithful of Islam."
+ trait_ya_shamal_desc:0 "This character is revered as a champion of the Shriner faith and the greater Islamic world for fulfilling the prophesized reconquest of Chicago and ending the persecution of the Muslims therein."
+ trait_ya_shamal_character_desc:0 "[ROOT.GetCharacter.GetTitledFirstNameNoTooltip] is revered as a champion of the Shriner faith and the greater Islamic world for fulfilling the prophesized reconquest of Chicago and ending the persecution of the Muslims therein."
 
  # Ya-Shamal decision
  ya_shamal_decision:0 "Ya-Shamal Ceremony"
@@ -17,6 +20,6 @@
  ya_shamal_decision_confirm:0 "Begin the ceremony."
 
  # ate_shriner.0001 — Ya-Shamal ceremony event
- ate_shriner.0001.t:0 "The Ya-Shamal Ceremony"
- ate_shriner.0001.desc:0 "The elders of Chicagoland have prepared the grounds for the sacred Ya-Shamal. The scent of incense drifts through the hall as the congregation gathers in silence. This ritual has not been performed in generations — but today, it falls to us to revive it."
- ate_shriner.0001.a:0 "We begin the ceremony."
+ ate_shriner.0001.t:0 "Ya-Shamal"
+ ate_shriner.0001.desc:0 "All praise is due to the Greatest! Once more has Chicago been brought under the fold of the Islamic faithful, as [ROOT.GetTitledFirstNameNoTooltip] declares a month of celebration across the Shriner world in commemoration of the reconquest of the seat of House el-Shabazz. By virtue of this conquest, many have begun revering them as Ya-Shamal — also known as the Mahdi — the hero prophesied in the Alcoran and the Sunnah of the Prophet, who will honor them, their family, and their companions — the hero who will defeat Yakub and his works once and for all."
+ ate_shriner.0001.a:0 "Badroulbadour's struggle was not for naught!"

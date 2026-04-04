@@ -63,3 +63,190 @@ ate_nelson.0002 = {
 		name = ate_nelson.0002.b
 	}
 }
+
+# ——— Badroulbadour Chain ———
+# Triggered by nelson_badroulbadour_chain_check on_yearly_pulse
+
+# ate_nelson.0003 — A Captivating Dance (first encounter)
+ate_nelson.0003 = {
+	type = character_event
+	title = ate_nelson.0003.t
+	desc = ate_nelson.0003.desc
+	theme = intrigue
+
+	immediate = {
+		create_character = {
+			name = "Badroulbadour"
+			female = yes
+			faith = faith:shriner
+			culture = culture:neomoor
+			age = 22
+			trait = beauty_good_3
+			trait = intellect_good_2
+			trait = gregarious
+			employer = root
+			save_scope_as = badroulbadour_scope
+		}
+		set_variable = { name = badroulbadour value = scope:badroulbadour_scope }
+		add_character_flag = nelson_badroulbadour_started
+	}
+
+	left_portrait = {
+		character = root
+		animation = idle
+	}
+	right_portrait = {
+		character = scope:badroulbadour_scope
+		animation = personality_content
+	}
+
+	# Speak with her
+	option = {
+		name = ate_nelson.0003.a
+		trigger_event = { id = ate_nelson.0004 days = 1 }
+	}
+
+	# Walk away
+	option = {
+		name = ate_nelson.0003.b
+		scope:badroulbadour_scope = { move_to_pool = yes }
+		remove_variable = badroulbadour
+		remove_character_flag = nelson_badroulbadour_started
+	}
+}
+
+# ate_nelson.0004 — Wondrous Tales
+ate_nelson.0004 = {
+	type = character_event
+	title = ate_nelson.0004.t
+	desc = ate_nelson.0004.desc
+	theme = intrigue
+
+	immediate = {
+		var:badroulbadour = { save_scope_as = badroulbadour_scope }
+	}
+
+	left_portrait = {
+		character = root
+		animation = personality_content
+	}
+	right_portrait = {
+		character = scope:badroulbadour_scope
+		animation = personality_content
+	}
+
+	option = {
+		name = ate_nelson.0004.a
+		trigger_event = { id = ate_nelson.0005 days = 1 }
+	}
+}
+
+# ate_nelson.0005 — A Wish
+ate_nelson.0005 = {
+	type = character_event
+	title = ate_nelson.0005.t
+	desc = ate_nelson.0005.desc
+	theme = intrigue
+
+	immediate = {
+		var:badroulbadour = { save_scope_as = badroulbadour_scope }
+	}
+
+	left_portrait = {
+		character = root
+		animation = personality_compassionate
+	}
+	right_portrait = {
+		character = scope:badroulbadour_scope
+		animation = grief
+	}
+
+	option = {
+		name = ate_nelson.0005.a
+		trigger_event = { id = ate_nelson.0006 days = 1 }
+	}
+}
+
+# ate_nelson.0006 — A Curse
+ate_nelson.0006 = {
+	type = character_event
+	title = ate_nelson.0006.t
+	desc = ate_nelson.0006.desc
+	theme = intrigue
+
+	immediate = {
+		var:badroulbadour = { save_scope_as = badroulbadour_scope }
+	}
+
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+	right_portrait = {
+		character = scope:badroulbadour_scope
+		animation = personality_compassionate
+	}
+
+	option = {
+		name = ate_nelson.0006.a
+		trigger_event = { id = ate_nelson.0007 days = 3 }
+	}
+}
+
+# ate_nelson.0007 — To Break A Curse
+ate_nelson.0007 = {
+	type = character_event
+	title = ate_nelson.0007.t
+	desc = ate_nelson.0007.desc
+	theme = diplomacy
+
+	immediate = {
+		var:badroulbadour = { save_scope_as = badroulbadour_scope }
+	}
+
+	left_portrait = {
+		character = root
+		animation = personality_content
+	}
+	right_portrait = {
+		character = scope:badroulbadour_scope
+		animation = happiness
+	}
+
+	option = {
+		name = ate_nelson.0007.a
+		scope:badroulbadour_scope = { marry = root }
+		trigger_event = { id = ate_nelson.0008 days = 30 }
+	}
+}
+
+# ate_nelson.0008 — The Light of the Moon
+ate_nelson.0008 = {
+	type = character_event
+	title = ate_nelson.0008.t
+	desc = ate_nelson.0008.desc
+	theme = diplomacy
+
+	immediate = {
+		var:badroulbadour = { save_scope_as = badroulbadour_scope }
+	}
+
+	left_portrait = {
+		character = root
+		animation = personality_compassionate
+	}
+	right_portrait = {
+		character = scope:badroulbadour_scope
+		animation = flirtatious
+	}
+
+	option = {
+		name = ate_nelson.0008.a
+		add_character_flag = nelson_badroulbadour_done
+		set_relation_soulmate = scope:badroulbadour_scope
+		stress_impact = {
+			compassionate = miniscule_stress_impact_loss
+			romantic = miniscule_stress_impact_loss
+		}
+	}
+}

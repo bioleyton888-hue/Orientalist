@@ -23,3 +23,29 @@
  ate_nelson.0002.a:0 "Miami is Neomoor. The Venus family leads the way."
  ate_nelson.0002.b:0 "The time is not yet right."
 
+ # Badroulbadour Chain — ate_nelson.0003-0008
+ ate_nelson.0003.t:0 "A Captivating Dance"
+ ate_nelson.0003.desc:0 "Word reaches you of a dancer performing in the market — a woman whose grace and artistry have drawn crowds from across the city. Curiosity gets the better of you, and you go to see for yourself. You find her mid-performance, moving with a beauty that seems to belong to another world entirely. When the music stops, she turns — and for a moment, her eyes meet yours."
+ ate_nelson.0003.a:0 "I would love to speak with her further..."
+ ate_nelson.0003.b:0 "I will not speak with this sinful dancer."
+
+ ate_nelson.0004.t:0 "Wondrous Tales"
+ ate_nelson.0004.desc:0 "Outside of the caravanserai, you meet with the dancer. She bows before you as she did in the market. You respond, #italic "Inform me of your name, oh Jasmine flower."# She smiles and then says, #italic "My father named me Badroulbadour — the fullest moon of full moons."# For hours, she regales you with fantastical tales of her journeys through courts all across the world. One of them is about a city named Chicago. It was once home to people of your faith — that of the true Islamic creed — but also home to apostates whose name belied their lack of respect for true Islamic tradition. Before she can continue, you both realize the sun is about to rise. You bid her farewell, but she grasps your arm. Her eyes dart to yours, and she asks #italic "My lord, will you meet me tomorrow? I have a matter which only you can save me from."#"
+ ate_nelson.0004.a:0 "Meet me at my palace."
+
+ ate_nelson.0005.t:0 "A Wish"
+ ate_nelson.0005.desc:0 "You meet Badroulbadour on a terrace, overlooking the great port of the city. She looks back to you, smiles, then breaks down in tears. Composing herself, she apologizes before speaking. #italic "I did not finish the tale of Chicago..."# She begins telling you of the city's fall — the Great Infidel Invasion, the apostate uprising that came after, and the exodus of the faithful as the heart of Islam was made into a temple to their false god. Then, she pauses and takes a deep breath. #italic "Chicago was brought down by a wish, spurred on by Yakub and a misguided heart. A princess of the city wished to live as a normal girl. Her wish was granted, but Yakub works in devilish ways. The city her family had wisely governed for generations fell, her family sent into exile. She was a princess no more."#"
+ ate_nelson.0005.a:0 "What a horrible story..."
+
+ ate_nelson.0006.t:0 "A Curse"
+ ate_nelson.0006.desc:0 "Badroulbadour takes a shuddering breath before continuing. #italic "That princess was my aunt Zumurrud, and the curse was passed down to me. I am doomed to die should I once more be called Princess. But for some reason, when I look upon you, I see the same wisdom and strength that once guided the rulers of Chicago. Perhaps you in your grace can help me break this curse..."# You look into her eyes. There are tears welling up as she speaks, but you see hope in them. You console her, remembering how your father had himself survived a sack led by the armies of Yakub. You rise, her hand in yours, and boldly proclaim your wish to vanquish Yakub and lift her curse. She smiles at this and wraps you in a warm embrace. You invite her back to your palace while you begin to think of ways to free her from the binding curse upon her family."
+ ate_nelson.0006.a:0 "May Aladdin guide me!"
+
+ ate_nelson.0007.t:0 "To Break A Curse"
+ ate_nelson.0007.desc:0 "You sit in your study, giving the curse on your friend Badroulbadour much thought. You think back to the stories in the Alcoran, remembering how dark djinns could be bested by even those of low rank with the use of wit and cleverness. Suddenly, you have an epiphany. You excitedly rush to Badroulbadour's quarters. She is surprised by your haste, but greets you warmly. You explain your theory. #italic "What if, instead of being a princess, you held an even higher rank? What if you were... a Queen? My queen? Would that not break the curse?"# To your surprise, she embraces you, thanking you for finding such a brilliant solution. #italic "And we needn't stay married long — we just have to break the curse, and then I will burden you no longer."# Your heart sinks at this, but you smile and play along, hoping for the best."
+ ate_nelson.0007.a:0 "The marriage shall be swift to lift this curse!"
+
+ ate_nelson.0008.t:0 "The Light of the Moon"
+ ate_nelson.0008.desc:0 "Though she married you to lift the curse, Badroulbadour has been growing increasingly close to you. It is clear that the curse has been lifted, for she thrives more than ever. Every night, you intend to part from her, but every night she regales you with another story from her travels until you fall asleep without doing so. Tonight, she says she has a surprise for you. She guides you by hand to her terrace and has you sit and watch as she begins dancing for you in the style of the princesses of old. Then she gently kisses you. She tells you a final story — that of the King Shahryar and his wife, the fair Scheherezade — who narrated stories to survive until the object of her affection, the King, fell in love with her. She finishes by saying that just as Shahryar had fallen for Scheherezade, so too has she fallen for you."
+ ate_nelson.0008.a:0 "Another Arabian Night..."
+
