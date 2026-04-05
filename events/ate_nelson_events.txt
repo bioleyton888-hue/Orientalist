@@ -122,7 +122,7 @@ ate_nelson.0011 = {
 	option = {
 		name = ate_nelson.0011.a
 		add_prestige = 50
-\t\ttrigger_event = { id = ate_nelson.0012 days = 1 }
+		trigger_event = { id = ate_nelson.0012 days = 1 }
 	}
 }
 
@@ -177,7 +177,7 @@ ate_nelson.0003 = {
 	immediate = {
 		create_character = {
 			name = "Badroulbadour"
-			female = yes
+			gender = female
 			faith = faith:shriner
 			culture = culture:neomoor
 			age = 22

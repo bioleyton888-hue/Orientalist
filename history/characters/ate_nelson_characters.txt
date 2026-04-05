@@ -28,6 +28,8 @@ caribe_nelson_ammon_jaffar_1 = {
 }
 
 # Set Ammon-Jaffar as Ali's father
+# birth date required by CK3 to accept a partial character override entry
 caribe_nelson_ali_1 = {
+	birth = 2640.1.23
 	father = caribe_nelson_ammon_jaffar_1
 }
