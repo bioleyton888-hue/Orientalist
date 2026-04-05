@@ -64,10 +64,10 @@
 
  ate_nelson.0007b.t:0 "A Difficult Choice"
  ate_nelson.0007b.desc:0 "Your heart burns for Badroulbadour, but your household is full. Islamic law grants you four wives, and all four seats are taken. If you are to marry Badroulbadour and lift her curse, one of your wives must be set free. This is not a choice you make lightly — but the heart wants what it wants."
- ate_nelson.0007b.a:0 "Part ways with [scope:wife_1.GetName]"
- ate_nelson.0007b.b:0 "Part ways with [scope:wife_2.GetName]"
- ate_nelson.0007b.c:0 "Part ways with [scope:wife_3.GetName]"
- ate_nelson.0007b.d:0 "Part ways with [scope:wife_4.GetName]"
+ ate_nelson.0007b.a:0 "Part ways with [wife_1.GetFirstNameNoTooltip]"
+ ate_nelson.0007b.b:0 "Part ways with [wife_2.GetFirstNameNoTooltip]"
+ ate_nelson.0007b.c:0 "Part ways with [wife_3.GetFirstNameNoTooltip]"
+ ate_nelson.0007b.d:0 "Part ways with [wife_4.GetFirstNameNoTooltip]"
 
  ate_nelson.0007.t:0 "To Break A Curse"
  ate_nelson.0007.desc:0 "You sit in your study, giving the curse on your friend Badroulbadour much thought. You think back to the stories in the Alcoran, remembering how dark djinns could be bested by even those of low rank with the use of wit and cleverness. Suddenly, you have an epiphany. You excitedly rush to Badroulbadour's quarters. She is surprised by your haste, but greets you warmly. You explain your theory. #italic "What if, instead of being a princess, you held an even higher rank? What if you were... a Queen? My queen? Would that not break the curse?"# To your surprise, she embraces you, thanking you for finding such a brilliant solution. #italic "And we needn't stay married long — we just have to break the curse, and then I will burden you no longer."# Your heart sinks at this, but you smile and play along, hoping for the best."

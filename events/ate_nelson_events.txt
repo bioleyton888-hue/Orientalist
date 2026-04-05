@@ -453,13 +453,7 @@ ate_nelson.0006 = {
 
 	option = {
 		name = ate_nelson.0006.a
-		if = {
-			limit = { any_spouse = { count >= 4 } }
-			trigger_event = { id = ate_nelson.0007b days = 3 }
-		}
-		else = {
-			trigger_event = { id = ate_nelson.0007 days = 3 }
-		}
+		trigger_event = { id = ate_nelson.0007 days = 3 }
 	}
 }
 
@@ -477,10 +471,28 @@ ate_nelson.0007b = {
 
 	immediate = {
 		var:badroulbadour = { save_scope_as = badroulbadour_scope }
-		ordered_spouse = { order_by = date_of_birth position = 0 save_scope_as = wife_1 }
-		ordered_spouse = { order_by = date_of_birth position = 1 save_scope_as = wife_2 }
-		ordered_spouse = { order_by = date_of_birth position = 2 save_scope_as = wife_3 }
-		ordered_spouse = { order_by = date_of_birth position = 3 save_scope_as = wife_4 }
+		random_spouse = {
+			save_scope_as = wife_1
+		}
+		random_spouse = {
+			limit = { NOT = { this = scope:wife_1 } }
+			save_scope_as = wife_2
+		}
+		random_spouse = {
+			limit = {
+				NOT = { this = scope:wife_1 }
+				NOT = { this = scope:wife_2 }
+			}
+			save_scope_as = wife_3
+		}
+		random_spouse = {
+			limit = {
+				NOT = { this = scope:wife_1 }
+				NOT = { this = scope:wife_2 }
+				NOT = { this = scope:wife_3 }
+			}
+			save_scope_as = wife_4
+		}
 	}
 
 	left_portrait = {
@@ -496,25 +508,29 @@ ate_nelson.0007b = {
 		name = ate_nelson.0007b.a
 		trigger = { exists = scope:wife_1 }
 		scope:wife_1 = { divorce = root }
-		trigger_event = { id = ate_nelson.0007 days = 1 }
+		scope:badroulbadour_scope = { marry = root }
+		trigger_event = { id = ate_nelson.0008 days = 30 }
 	}
 	option = {
 		name = ate_nelson.0007b.b
 		trigger = { exists = scope:wife_2 }
 		scope:wife_2 = { divorce = root }
-		trigger_event = { id = ate_nelson.0007 days = 1 }
+		scope:badroulbadour_scope = { marry = root }
+		trigger_event = { id = ate_nelson.0008 days = 30 }
 	}
 	option = {
 		name = ate_nelson.0007b.c
 		trigger = { exists = scope:wife_3 }
 		scope:wife_3 = { divorce = root }
-		trigger_event = { id = ate_nelson.0007 days = 1 }
+		scope:badroulbadour_scope = { marry = root }
+		trigger_event = { id = ate_nelson.0008 days = 30 }
 	}
 	option = {
 		name = ate_nelson.0007b.d
 		trigger = { exists = scope:wife_4 }
 		scope:wife_4 = { divorce = root }
-		trigger_event = { id = ate_nelson.0007 days = 1 }
+		scope:badroulbadour_scope = { marry = root }
+		trigger_event = { id = ate_nelson.0008 days = 30 }
 	}
 }
 
@@ -545,14 +561,20 @@ ate_nelson.0007 = {
 
 	option = {
 		name = ate_nelson.0007.a
-		scope:badroulbadour_scope = { marry = root }
-		trigger_event = { id = ate_nelson.0008 days = 30 }
+		if = {
+			limit = { any_spouse = { count >= 4 } }
+			trigger_event = { id = ate_nelson.0007b days = 3 }
+		}
+		else = {
+			scope:badroulbadour_scope = { marry = root }
+			trigger_event = { id = ate_nelson.0008 days = 30 }
+		}
 	}
 
 	# Gay Ali — cannot bring himself to marry her
 	option = {
 		name = ate_nelson.0007.b
-		trigger = { has_trait = homosexual }
+		trigger = { has_sexuality = homosexual }
 		add_prestige = -20
 		add_piety = -20
 		scope:badroulbadour_scope = { move_to_pool = yes }
@@ -568,7 +590,7 @@ ate_nelson.0008 = {
 	desc = {
 		first_valid = {
 			triggered_desc = {
-				trigger = { has_trait = homosexual }
+				trigger = { has_sexuality = homosexual }
 				desc = ate_nelson.0008.desc.gay
 			}
 			desc = ate_nelson.0008.desc
@@ -593,7 +615,7 @@ ate_nelson.0008 = {
 		character = scope:badroulbadour_scope
 		animation = flirtatious
 		triggered_animation = {
-			trigger = { has_trait = homosexual }
+			trigger = { has_sexuality = homosexual }
 			animation = personality_content
 		}
 	}
@@ -605,13 +627,13 @@ ate_nelson.0008 = {
 		dynasty = { add_prestige = 100 }
 		if = {
 			limit = {
-				has_trait = homosexual
+				has_sexuality = homosexual
 				any_relation = { type = best_friend }
 			}
 			set_relation_friend = scope:badroulbadour_scope
 		}
 		else_if = {
-			limit = { has_trait = homosexual }
+			limit = { has_sexuality = homosexual }
 			set_relation_best_friend = scope:badroulbadour_scope
 		}
 		else_if = {
