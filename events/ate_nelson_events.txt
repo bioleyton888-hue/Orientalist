@@ -119,9 +119,15 @@ ate_nelson.0010 = {
 		}
 		set_variable = { name = will_williams value = scope:will_williams_scope }
 		scope:will_williams_scope = { give_nickname = nick_the_genius }
-		random_courtier = { save_scope_as = crowd_1 }
 		random_courtier = {
-			limit = { NOT = { is_same_character = scope:crowd_1 } }
+			limit = { NOT = { is_same_character = scope:will_williams_scope } }
+			save_scope_as = crowd_1
+		}
+		random_courtier = {
+			limit = {
+				NOT = { is_same_character = scope:crowd_1 }
+				NOT = { is_same_character = scope:will_williams_scope }
+			}
 			save_scope_as = crowd_2
 		}
 	}
@@ -204,9 +210,15 @@ ate_nelson.0012 = {
 
 	immediate = {
 		var:will_williams = { save_scope_as = will_williams_scope }
-		random_courtier = { save_scope_as = crowd_1 }
 		random_courtier = {
-			limit = { NOT = { is_same_character = scope:crowd_1 } }
+			limit = { NOT = { is_same_character = scope:will_williams_scope } }
+			save_scope_as = crowd_1
+		}
+		random_courtier = {
+			limit = {
+				NOT = { is_same_character = scope:crowd_1 }
+				NOT = { is_same_character = scope:will_williams_scope }
+			}
 			save_scope_as = crowd_2
 		}
 	}
@@ -249,9 +261,15 @@ ate_nelson.0013 = {
 
 	immediate = {
 		var:will_williams = { save_scope_as = will_williams_scope }
-		random_courtier = { save_scope_as = crowd_1 }
 		random_courtier = {
-			limit = { NOT = { is_same_character = scope:crowd_1 } }
+			limit = { NOT = { is_same_character = scope:will_williams_scope } }
+			save_scope_as = crowd_1
+		}
+		random_courtier = {
+			limit = {
+				NOT = { is_same_character = scope:crowd_1 }
+				NOT = { is_same_character = scope:will_williams_scope }
+			}
 			save_scope_as = crowd_2
 		}
 	}
