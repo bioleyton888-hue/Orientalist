@@ -1,4 +1,4 @@
-neomoor = {
+﻿neomoor = {
 	color = { 178 176 92 }
 	created = 2400.1.1
 	parents = { sunshiner motowner }
@@ -25,8 +25,8 @@ neomoor = {
 
 	coa_gfx = {
 		gulfard_coa_gfx
-		motowner_coa_gfx
 		south_anglo_group_gfx
+		motowner_coa_gfx
 	}
 	building_gfx = {
 		sunshiner_building_gfx
@@ -38,9 +38,10 @@ neomoor = {
 	}
 	clothing_gfx = {
 		floridian_clothing_gfx
-		bomber_jacket_clothing_gfx
+		floral_clothing_gfx
 		baseball_helmet_gfx
 		western_clothing_gfx
+		bomber_jacket_clothing_gfx
 	}
 	unit_gfx = {
 		western_unit_gfx
