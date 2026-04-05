@@ -1,0 +1,4 @@
+ate_nelson_parade_elephant = {
+	icon = prowess_positive
+	prowess = 10
+}
