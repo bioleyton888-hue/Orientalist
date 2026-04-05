@@ -65,7 +65,7 @@ ate_nelson.0002 = {
 }
 
 # ——— Prince Ali Parade Chain ———
-# Triggered by nelson_parade_check on_yearly_pulse
+# Triggered by nelson_parade_check yearly_playable_pulse
 
 # ate_nelson.0009 — A Treacherous Invitation
 ate_nelson.0009 = {

@@ -1,1 +1,2 @@
-nick_ya_shamal = {}
+﻿nick_ya_shamal = {}
+nick_the_genius = {}

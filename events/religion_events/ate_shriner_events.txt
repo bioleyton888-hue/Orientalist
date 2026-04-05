@@ -1,4 +1,4 @@
-namespace = ate_shriner
+﻿namespace = ate_shriner
 
 # Ya-Shamal Descendant — hidden birth event
 ate_shriner.0002 = {
@@ -52,7 +52,7 @@ ate_shriner.0001 = {
 		name = ate_shriner.0001.a
 		set_global_variable = { name = ya_shamal_performed value = yes }
 		give_nickname = nick_ya_shamal
-		add_dynasty_prestige = 750
+		dynasty = { add_prestige = 750 }
 		add_prestige = 1000
 		add_piety = 1000
 		add_trait = ya_shamal

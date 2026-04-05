@@ -1,9 +1,9 @@
-# Ya-Shamal — Shriner ritual at Chicago
+﻿# Ya-Shamal — Shriner ritual at Chicago
 ya_shamal_decision = {
 	picture = {
 		reference = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
 	}
-	decision_group_type = minor
+	decision_group_type = major
 
 	ai_check_interval = 60
 

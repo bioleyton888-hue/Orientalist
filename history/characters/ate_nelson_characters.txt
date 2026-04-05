@@ -1,4 +1,4 @@
-# Ammon-Jaffar Nelson — Father of Ali Nelson
+﻿# Ammon-Jaffar Nelson — Father of Ali Nelson
 # Shriner warrior who carved out a domain in Suncoast and fought against Yakub.
 # Died shortly before game start, leaving Tampa to his son Ali.
 caribe_nelson_ammon_jaffar_1 = {
@@ -27,9 +27,6 @@ caribe_nelson_ammon_jaffar_1 = {
 	}
 }
 
-# Set Ammon-Jaffar as Ali's father
-# birth date required by CK3 to accept a partial character override entry
-caribe_nelson_ali_1 = {
-	birth = 2640.1.23
-	father = caribe_nelson_ammon_jaffar_1
-}
+# Ali Nelson's father (Ammon-Jaffar) cannot be set via partial override —
+# CK3 does not merge character history entries across files.
+# The father link exists in lore only.
