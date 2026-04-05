@@ -1,4 +1,4 @@
-namespace = ate_nelson
+﻿namespace = ate_nelson
 
 # SoFlo Conquered — Neomoor Identity Awakening
 # Triggered by ate_nelson_soflo_neomoor decision
@@ -82,6 +82,10 @@ ate_nelson.0009 = {
 		character = root
 		animation = worry
 	}
+	right_portrait = {
+		character = character:caribe_gaspar_jose_1
+		animation = scheme
+	}
 
 	option = {
 		name = ate_nelson.0009.a
@@ -96,9 +100,47 @@ ate_nelson.0010 = {
 	desc = ate_nelson.0010.desc
 	theme = stewardship
 
+	immediate = {
+		create_character = {
+			name = "Will"
+			gender = male
+			faith = faith:shriner
+			culture = culture:sunshiner
+			age = 42
+			employer = root
+			trait = education_stewardship_2
+			trait = gregarious
+			trait = zealous
+			trait = eccentric
+			trait = shrewd
+			trait = poet
+			trait = lifestyle_mystic
+			save_scope_as = will_williams_scope
+		}
+		set_variable = { name = will_williams value = scope:will_williams_scope }
+		scope:will_williams_scope = { give_nickname = nick_the_genius }
+		random_courtier = { save_scope_as = crowd_1 }
+		random_courtier = {
+			limit = { NOT = { is_same_character = scope:crowd_1 } }
+			save_scope_as = crowd_2
+		}
+	}
+
 	left_portrait = {
 		character = root
 		animation = personality_content
+	}
+	right_portrait = {
+		character = scope:will_williams_scope
+		animation = happiness
+	}
+	lower_left_portrait = {
+		character = scope:crowd_1
+		animation = happiness
+	}
+	lower_right_portrait = {
+		character = scope:crowd_2
+		animation = happiness
 	}
 
 	option = {
@@ -114,9 +156,31 @@ ate_nelson.0011 = {
 	desc = ate_nelson.0011.desc
 	theme = martial
 
+	trigger = {
+		exists = var:will_williams
+		var:will_williams = { is_alive = yes }
+	}
+
+	immediate = {
+		var:will_williams = { save_scope_as = will_williams_scope }
+		random_courtier = { save_scope_as = crowd_1 }
+	}
+
 	left_portrait = {
 		character = root
 		animation = personality_bold
+	}
+	right_portrait = {
+		character = scope:will_williams_scope
+		animation = personality_bold
+	}
+	lower_left_portrait = {
+		character = scope:crowd_1
+		animation = fear
+	}
+	lower_right_portrait = {
+		character = character:caribe_venus_armando_1
+		animation = fear
 	}
 
 	option = {
@@ -133,8 +197,34 @@ ate_nelson.0012 = {
 	desc = ate_nelson.0012.desc
 	theme = stewardship
 
+	trigger = {
+		exists = var:will_williams
+		var:will_williams = { is_alive = yes }
+	}
+
+	immediate = {
+		var:will_williams = { save_scope_as = will_williams_scope }
+		random_courtier = { save_scope_as = crowd_1 }
+		random_courtier = {
+			limit = { NOT = { is_same_character = scope:crowd_1 } }
+			save_scope_as = crowd_2
+		}
+	}
+
 	left_portrait = {
 		character = root
+		animation = happiness
+	}
+	right_portrait = {
+		character = scope:will_williams_scope
+		animation = happiness
+	}
+	lower_left_portrait = {
+		character = scope:crowd_1
+		animation = happiness
+	}
+	lower_right_portrait = {
+		character = scope:crowd_2
 		animation = happiness
 	}
 
@@ -152,9 +242,35 @@ ate_nelson.0013 = {
 	desc = ate_nelson.0013.desc
 	theme = stewardship
 
+	trigger = {
+		exists = var:will_williams
+		var:will_williams = { is_alive = yes }
+	}
+
+	immediate = {
+		var:will_williams = { save_scope_as = will_williams_scope }
+		random_courtier = { save_scope_as = crowd_1 }
+		random_courtier = {
+			limit = { NOT = { is_same_character = scope:crowd_1 } }
+			save_scope_as = crowd_2
+		}
+	}
+
 	left_portrait = {
 		character = root
 		animation = personality_content
+	}
+	right_portrait = {
+		character = scope:will_williams_scope
+		animation = personality_content
+	}
+	lower_left_portrait = {
+		character = scope:crowd_1
+		animation = happiness
+	}
+	lower_right_portrait = {
+		character = scope:crowd_2
+		animation = happiness
 	}
 
 	option = {
