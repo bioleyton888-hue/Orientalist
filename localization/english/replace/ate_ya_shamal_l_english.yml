@@ -20,6 +20,17 @@
  ya_shamal_decision_tooltip:0 "liberate Chicago"
  ya_shamal_decision_confirm:0 "Let a new day comence."
 
+ # ate_shriner.0003 — Seize the Imperial Divan
+ ate_shriner.0003.t:0 "The Imperial Divan is Yours"
+ ate_shriner.0003.desc:0 "The seat of the Imperial Divan has stood vacant of true authority for too long — passed between the weak and the unworthy while the faithful looked on. No longer. The weight of gold, the breadth of your realm, and the devotion of your people have spoken louder than any election. The Imperial Divan recognizes you. You are the Imperial Potentate."
+ ate_shriner.0003.a:0 "The Divan has a master once more."
+
+ # ate_shriner_imperial_potentate decision
+ ate_shriner_imperial_potentate:0 "Seize the Imperial Divan"
+ ate_shriner_imperial_potentate_desc:0 "The Imperial Divan — seat of the Imperial Potentate, head of the Shriner faith — belongs to whoever is strong enough to claim it. My realm and my coffers speak for themselves. The time has come to make my move."
+ ate_shriner_imperial_potentate_tooltip:0 "Claim the title of Imperial Potentate"
+ ate_shriner_imperial_potentate_confirm:0 "The Divan is mine."
+
  # ate_shriner.0001 — Ya-Shamal ceremony event
  ate_shriner.0001.t:0 "Liberate Chicago"
  ate_shriner.0001.desc:0 "All praise is due to the Greatest! Once more has Chicago been brought under the fold of the Islamic faithful, as [ROOT.GetTitledFirstNameNoTooltip] declares a month of celebration across the Shriner world in commemoration of the reconquest of the seat of House el-Shabazz. By virtue of this conquest, many have begun revering them as Ya-Shamal — also known as the Mahdi — the hero prophesied in the Alcoran and the Sunnah of the Prophet, who will honor them, their family, and their companions — the hero who will defeat Yakub and his works once and for all."

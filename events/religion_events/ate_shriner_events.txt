@@ -37,6 +37,26 @@ ate_shriner.0002 = {
 	}
 }
 
+# Seize the Imperial Divan — triggered by ate_shriner_imperial_potentate decision
+ate_shriner.0003 = {
+	type = character_event
+	title = ate_shriner.0003.t
+	desc = ate_shriner.0003.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = personality_zealous
+	}
+
+	option = {
+		name = ate_shriner.0003.a
+		give_title = title:d_shriner
+		add_prestige = 500
+		add_piety = 200
+	}
+}
+
 # Ya-Shamal ceremony — triggered by ya_shamal_decision
 ate_shriner.0001 = {
 	type = character_event
