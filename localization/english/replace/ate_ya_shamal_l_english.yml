@@ -2,6 +2,7 @@
 
  # Ya-Shamal nickname
  nick_ya_shamal:0 "Ya-Shamal"
+ nick_ya_shamal_desc:0 "This character is revered as a champion of the Shriner faith and the greater Islamic world for fulfilling the prophesized reconquest of Chicago and ending the persecution of the Muslims therein."
 
  # Ya-Shamal Descendant trait
  trait_ya_shamal_descendant:0 "Ya-Shamal Descendant"
@@ -15,11 +16,11 @@
 
  # Ya-Shamal decision
  ya_shamal_decision:0 "Ya-Shamal Ceremony"
- ya_shamal_decision_desc:0 "The ancient rites of the Ya-Shamal await in Chicago. As lord of Chicagoland and holder of the city itself, I stand in the place where the ceremony must be performed. By undertaking this sacred rite, I would earn the reverence of Muslims throughout the realm."
- ya_shamal_decision_tooltip:0 "Perform the Ya-Shamal ceremony at Chicago"
- ya_shamal_decision_confirm:0 "Begin the ceremony."
+ ya_shamal_decision_desc:0 "Chicago. The city of winds, the seat of the fallen House el-Shabazz, the wound that has festered in the heart of Islam for generations. The Alcoran speaks of a day when one of the faithful would ride into this city not as a pilgrim, but as its master — and the persecution of the believers would end not with prayer, but with conquest. That day is today. That conqueror is me. Let Yakub's heirs tremble."
+ ya_shamal_decision_tooltip:0 "liberate Chicago"
+ ya_shamal_decision_confirm:0 "Let a new day comence."
 
  # ate_shriner.0001 — Ya-Shamal ceremony event
- ate_shriner.0001.t:0 "Ya-Shamal"
+ ate_shriner.0001.t:0 "Liberate Chicago"
  ate_shriner.0001.desc:0 "All praise is due to the Greatest! Once more has Chicago been brought under the fold of the Islamic faithful, as [ROOT.GetTitledFirstNameNoTooltip] declares a month of celebration across the Shriner world in commemoration of the reconquest of the seat of House el-Shabazz. By virtue of this conquest, many have begun revering them as Ya-Shamal — also known as the Mahdi — the hero prophesied in the Alcoran and the Sunnah of the Prophet, who will honor them, their family, and their companions — the hero who will defeat Yakub and his works once and for all."
  ate_shriner.0001.a:0 "Badroulbadour's struggle was not for naught!"
