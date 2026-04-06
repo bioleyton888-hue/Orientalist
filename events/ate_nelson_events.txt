@@ -329,6 +329,7 @@ ate_nelson.0003 = {
 			gender = female
 			faith = faith:shriner
 			culture = culture:neomoor
+			dynasty = dynasty:dynn_caribe_el_shabaz
 			age = 22
 			trait = beauty_good_3
 			trait = intellect_good_2
@@ -571,10 +572,10 @@ ate_nelson.0007 = {
 		}
 	}
 
-	# Gay Ali — cannot bring himself to marry her
+	# Gay/Asexual Ali — cannot bring himself to marry her
 	option = {
 		name = ate_nelson.0007.b
-		trigger = { has_sexuality = homosexual }
+		trigger = { OR = { has_sexuality = homosexual has_sexuality = asexual } }
 		add_prestige = -20
 		add_piety = -20
 		scope:badroulbadour_scope = { move_to_pool = yes }
@@ -592,6 +593,10 @@ ate_nelson.0008 = {
 			triggered_desc = {
 				trigger = { has_sexuality = homosexual }
 				desc = ate_nelson.0008.desc.gay
+			}
+			triggered_desc = {
+				trigger = { has_sexuality = asexual }
+				desc = ate_nelson.0008.desc.asexual
 			}
 			desc = ate_nelson.0008.desc
 		}
@@ -615,7 +620,7 @@ ate_nelson.0008 = {
 		character = scope:badroulbadour_scope
 		animation = flirtatious
 		triggered_animation = {
-			trigger = { has_sexuality = homosexual }
+			trigger = { OR = { has_sexuality = homosexual has_sexuality = asexual } }
 			animation = personality_content
 		}
 	}
@@ -625,15 +630,16 @@ ate_nelson.0008 = {
 		add_character_flag = nelson_badroulbadour_done
 		add_prestige = 100
 		dynasty = { add_prestige = 100 }
+		scope:badroulbadour_scope = { add_trait = loyal }
 		if = {
 			limit = {
-				has_sexuality = homosexual
+				OR = { has_sexuality = homosexual has_sexuality = asexual }
 				any_relation = { type = best_friend }
 			}
 			set_relation_friend = scope:badroulbadour_scope
 		}
 		else_if = {
-			limit = { has_sexuality = homosexual }
+			limit = { OR = { has_sexuality = homosexual has_sexuality = asexual } }
 			set_relation_best_friend = scope:badroulbadour_scope
 		}
 		else_if = {

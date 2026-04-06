@@ -77,11 +77,16 @@
  ate_nelson.0008.t:0 "The Light of the Moon"
  ate_nelson.0008.desc:0 "Though she married you to lift the curse, Badroulbadour has been growing increasingly close to you. It is clear that the curse has been lifted, for she thrives more than ever. Every night, you intend to part from her, but every night she regales you with another story from her travels until you fall asleep without doing so. Tonight, she says she has a surprise for you. She guides you by hand to her terrace and has you sit and watch as she begins dancing for you in the style of the princesses of old. Then she gently kisses you. She tells you a final story — that of the King Shahryar and his wife, the fair Scheherezade — who narrated stories to survive until the object of her affection, the King, fell in love with her. She finishes by saying that just as Shahryar had fallen for Scheherezade, so too has she fallen for you."
  ate_nelson.0008.desc.gay:0 "The curse has lifted. Badroulbadour no longer carries the weight of Zumurrud's doom — you can see it in the way she laughs now, freely, without looking over her shoulder. The marriage was a formality, and she has always known it. Tonight she takes you to her terrace and dances for you in the style of the princesses of old. When she finishes, she does not kiss you. Instead she takes your hands in hers and says, #italic "I have traveled every court from Chicago to Tampa looking for something I could never name. I think I understand now — I was not searching for a love story. I was searching for someone who would face the dark with me."# You realize, with quiet certainty, that you were searching for the same."
+ ate_nelson.0008.desc.asexual:0 "The curse has lifted. Badroulbadour dances for you in the style of the princesses of old, and it is beautiful — but not in the way she perhaps intended. You watch her and feel something you cannot quite name: warmth, admiration, a deep and quiet gratitude that has nothing to do with desire. When she finishes, she sees it in your face — the honest, unguarded expression of someone who cannot offer what she might have hoped for. To your surprise, she laughs softly. #italic \"I have told my stories to kings who wanted only a prize.\"# She takes your hands in hers. #italic \"You are the first who simply listened.\"#"
  ate_nelson.0008.a:0 "Another Arabian Night..."
+
+ nick_fabulous_he_desc:0 "Prince Aliiii, fabulous heeee, Ali.....Nelson?...."
 
  Ammon-Jaffar:0 "Ammon-Jaffar"
  Will:0 "Will"
  nick_the_genius:0 "the Genius"
+
+ dynn_el-Shabaz:0 "el-Shabaz"
 
  # Elephant modifier
  ate_nelson_parade_elephant:0 "A Fucking Elephant"
