@@ -106,6 +106,7 @@ ate_nelson.0010 = {
 			gender = male
 			faith = faith:shriner
 			culture = culture:sunshiner
+			dynasty = dynasty:dynn_great_lakes_williams
 			age = 42
 			employer = root
 			trait = education_stewardship_2
