@@ -12,7 +12,6 @@ ate_nelson_soflo_neomoor = {
 
 	is_shown = {
 		dynasty = dynasty:dynn_caribe_nelson
-		NOT = { culture = culture:neomoor }
 		NOT = { has_character_flag = nelson_neomoor_done }
 	}
 
@@ -27,7 +26,6 @@ ate_nelson_soflo_neomoor = {
 				}
 			}
 		}
-		NOT = { culture = culture:neomoor }
 	}
 
 	is_valid_showing_failures_only = {
@@ -61,7 +59,6 @@ ate_venus_soflo_neomoor = {
 
 	is_shown = {
 		dynasty = dynasty:dynn_caribe_venus
-		NOT = { culture = culture:neomoor }
 		NOT = { has_character_flag = venus_neomoor_done }
 	}
 
@@ -76,7 +73,6 @@ ate_venus_soflo_neomoor = {
 				}
 			}
 		}
-		NOT = { culture = culture:neomoor }
 	}
 
 	is_valid_showing_failures_only = {
