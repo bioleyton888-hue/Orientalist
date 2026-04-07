@@ -31,6 +31,21 @@
  ate_shriner_imperial_potentate_tooltip:0 "Claim the title of Imperial Potentate"
  ate_shriner_imperial_potentate_confirm:0 "The Divan is mine."
 
+ # Shriner Neomoor decision
+ ate_shriner_soflo_neomoor:0 "Embrace the Neomoor Ways"
+ ate_shriner_soflo_neomoor_desc:0 "After their embrace of Islam, the people of Miami began to incorporate more and more aspects of it into their culture, to a point where they may now be considered part of a distinct branch of South Anglo. They have begun to refer to themselves as Neomoors."
+ ate_shriner_soflo_neomoor_tooltip:0 "Reflect on Miami's new identity as rulers of SoFlo."
+ ate_shriner_soflo_neomoor_confirm:0 "Miami rises as Neomoor."
+
+ # el-Shabaz dynasty
+ dynn_caribe_el_shabaz:0 "el-Shabaz"
+
+ # ate_shriner.0004 — Shriner Neomoor Identity Awakening
+ ate_shriner.0004.t:0 "A New Name for Miami"
+ ate_shriner.0004.desc:0 "South Florida is ours. From Archbold to the shores of Biscayne Bay, the [Root.GetDynastyName] name carries weight — but culture is more than a name. The Neomoor spirit spreads from Tampa's shores, and Miami could be its second heartland. My children look to me. Shall the [Root.GetDynastyName] family stand with the Nelsons as founders of this new people?"
+ ate_shriner.0004.a:0 "Miami is Neomoor. The [Root.GetDynastyName] family leads the way."
+ ate_shriner.0004.b:0 "The time is not yet right."
+
  # ate_shriner.0001 — Ya-Shamal ceremony event
  ate_shriner.0001.t:0 "Liberate Chicago"
  ate_shriner.0001.desc:0 "All praise is due to the Greatest! Once more has Chicago been brought under the fold of the Islamic faithful, as [ROOT.GetTitledFirstNameNoTooltip] declares a month of celebration across the Shriner world in commemoration of the reconquest of the seat of House el-Shabazz. By virtue of this conquest, many have begun revering them as Ya-Shamal — also known as the Mahdi — the hero prophesied in the Alcoran and the Sunnah of the Prophet, who will honor them, their family, and their companions — the hero who will defeat Yakub and his works once and for all."

@@ -45,8 +45,8 @@ ate_nelson_soflo_neomoor = {
 	}
 }
 
-# Venus Neomoor — Culture transformation upon controlling SoFlo
-ate_venus_soflo_neomoor = {
+# Shriner Neomoor — Culture transformation upon controlling SoFlo
+ate_shriner_soflo_neomoor = {
 	picture = {
 		reference = "gfx/interface/illustrations/decisions/decision_dynasty_houses.dds"
 	}
@@ -54,12 +54,13 @@ ate_venus_soflo_neomoor = {
 
 	ai_check_interval = 60
 
-	desc = ate_venus_soflo_neomoor_desc
-	selection_tooltip = ate_venus_soflo_neomoor_tooltip
+	desc = ate_shriner_soflo_neomoor_desc
+	selection_tooltip = ate_shriner_soflo_neomoor_tooltip
 
 	is_shown = {
-		dynasty = dynasty:dynn_caribe_venus
-		NOT = { has_character_flag = venus_neomoor_done }
+		faith = faith:shriner
+		NOT = { dynasty = dynasty:dynn_caribe_nelson }
+		NOT = { has_character_flag = shriner_neomoor_done }
 	}
 
 	is_valid = {
@@ -80,7 +81,7 @@ ate_venus_soflo_neomoor = {
 	}
 
 	effect = {
-		trigger_event = { id = ate_nelson.0002 }
+		trigger_event = { id = ate_shriner.0004 }
 	}
 
 	ai_potential = {

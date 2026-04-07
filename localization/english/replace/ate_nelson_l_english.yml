@@ -5,23 +5,12 @@
  ate_nelson_soflo_neomoor_tooltip:0 "Reflect on Tampa's new identity as ruler of SoFlo."
  ate_nelson_soflo_neomoor_confirm:0 "We are Neomoor."
 
- # Decision Venus
- ate_venus_soflo_neomoor:0 "Embrace the Neomoor Ways"
- ate_venus_soflo_neomoor_desc:0 "After their embrace of Islam, the people of Miami began to incorporate more and more aspects of it into their culture, to a point where they may now be considered part of a distinct branch of South Anglo. They have begun to refer to themselves as Neomoors."
- ate_venus_soflo_neomoor_tooltip:0 "Reflect on Miami's new identity as rulers of SoFlo."
- ate_venus_soflo_neomoor_confirm:0 "Miami rises as Neomoor."
-
  # Event ate_nelson.0001
  ate_nelson.0001.t:0 "A New Name for Tampa"
  ate_nelson.0001.desc:0 "South Florida is mine. From its Sofloano quarters to its Shriner fezzes, this land is a testament to what Tampa could become — not merely Sunshiner, but something richer: a people forged from the Gulf coast and the Motowner diaspora alike. My sons look to me. Tampa looks to me. Shall the Nelsons be the first of the Neomoors?"
  ate_nelson.0001.a:0 "We are Neomoor. From this day forward."
  ate_nelson.0001.b:0 "The time is not yet right."
 
- # Event ate_nelson.0002
- ate_nelson.0002.t:0 "A New Name for Miami"
- ate_nelson.0002.desc:0 "South Florida is ours. From Archbold to the shores of Biscayne Bay, the Venus name carries weight — but culture is more than a name. The Neomoor spirit spreads from Tampa's shores, and Miami could be its second heartland. My children look to me. Shall the Venus family stand with the Nelsons as founders of this new people?"
- ate_nelson.0002.a:0 "Miami is Neomoor. The Venus family leads the way."
- ate_nelson.0002.b:0 "The time is not yet right."
 
  # Prince Ali Parade Chain — ate_nelson.0009-0013
  ate_nelson.0009.t:0 "A Treacherous Invitation"
@@ -68,6 +57,7 @@
  ate_nelson.0007b.b:0 "Part ways with [wife_2.GetFirstNameNoTooltip]"
  ate_nelson.0007b.c:0 "Part ways with [wife_3.GetFirstNameNoTooltip]"
  ate_nelson.0007b.d:0 "Part ways with [wife_4.GetFirstNameNoTooltip]"
+ ate_nelson.0007b.e:0 "Sorry [betrothed_scope.GetFirstNameNoTooltip], it wasn't meant to be"
 
  ate_nelson.0007.t:0 "To Break A Curse"
  ate_nelson.0007.desc:0 "You sit in your study, giving the curse on your friend Badroulbadour much thought. You think back to the stories in the Alcoran, remembering how dark djinns could be bested by even those of low rank with the use of wit and cleverness. Suddenly, you have an epiphany. You excitedly rush to Badroulbadour's quarters. She is surprised by your haste, but greets you warmly. You explain your theory. #italic "What if, instead of being a princess, you held an even higher rank? What if you were... a Queen? My queen? Would that not break the curse?"# To your surprise, she embraces you, thanking you for finding such a brilliant solution. #italic "And we needn't stay married long — we just have to break the curse, and then I will burden you no longer."# Your heart sinks at this, but you smile and play along, hoping for the best."
@@ -85,8 +75,6 @@
  Ammon-Jaffar:0 "Ammon-Jaffar"
  Will:0 "Will"
  nick_the_genius:0 "the Genius"
-
- dynn_el-Shabaz:0 "el-Shabaz"
 
  # Elephant modifier
  ate_nelson_parade_elephant:0 "A Fucking Elephant"
