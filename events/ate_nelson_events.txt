@@ -495,6 +495,10 @@ ate_nelson.0007b = {
 			}
 			save_scope_as = wife_4
 		}
+		if = {
+			limit = { is_betrothed = yes }
+			betrothed = { save_scope_as = betrothed_scope }
+		}
 	}
 
 	left_portrait = {
@@ -510,6 +514,7 @@ ate_nelson.0007b = {
 		name = ate_nelson.0007b.a
 		trigger = { exists = scope:wife_1 }
 		scope:wife_1 = { divorce = root }
+		if = { limit = { is_betrothed = yes } break_betrothal = yes }
 		scope:badroulbadour_scope = { marry = root }
 		trigger_event = { id = ate_nelson.0008 days = 30 }
 	}
@@ -517,6 +522,7 @@ ate_nelson.0007b = {
 		name = ate_nelson.0007b.b
 		trigger = { exists = scope:wife_2 }
 		scope:wife_2 = { divorce = root }
+		if = { limit = { is_betrothed = yes } break_betrothal = yes }
 		scope:badroulbadour_scope = { marry = root }
 		trigger_event = { id = ate_nelson.0008 days = 30 }
 	}
@@ -524,6 +530,7 @@ ate_nelson.0007b = {
 		name = ate_nelson.0007b.c
 		trigger = { exists = scope:wife_3 }
 		scope:wife_3 = { divorce = root }
+		if = { limit = { is_betrothed = yes } break_betrothal = yes }
 		scope:badroulbadour_scope = { marry = root }
 		trigger_event = { id = ate_nelson.0008 days = 30 }
 	}
@@ -531,6 +538,14 @@ ate_nelson.0007b = {
 		name = ate_nelson.0007b.d
 		trigger = { exists = scope:wife_4 }
 		scope:wife_4 = { divorce = root }
+		if = { limit = { is_betrothed = yes } break_betrothal = yes }
+		scope:badroulbadour_scope = { marry = root }
+		trigger_event = { id = ate_nelson.0008 days = 30 }
+	}
+	option = {
+		name = ate_nelson.0007b.e
+		trigger = { exists = scope:betrothed_scope }
+		break_betrothal = yes
 		scope:badroulbadour_scope = { marry = root }
 		trigger_event = { id = ate_nelson.0008 days = 30 }
 	}
@@ -564,10 +579,19 @@ ate_nelson.0007 = {
 	option = {
 		name = ate_nelson.0007.a
 		if = {
-			limit = { any_spouse = { count >= 4 } }
+			limit = {
+				OR = {
+					any_spouse = { count >= 4 }
+					AND = {
+						any_spouse = { count >= 3 }
+						is_betrothed = yes
+					}
+				}
+			}
 			trigger_event = { id = ate_nelson.0007b days = 3 }
 		}
 		else = {
+			if = { limit = { is_betrothed = yes } break_betrothal = yes }
 			scope:badroulbadour_scope = { marry = root }
 			trigger_event = { id = ate_nelson.0008 days = 30 }
 		}
@@ -629,6 +653,7 @@ ate_nelson.0008 = {
 	option = {
 		name = ate_nelson.0008.a
 		add_character_flag = nelson_badroulbadour_done
+		remove_variable = badroulbadour
 		add_prestige = 100
 		dynasty = { add_prestige = 100 }
 		scope:badroulbadour_scope = { add_trait = loyal }
