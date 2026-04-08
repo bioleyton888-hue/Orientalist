@@ -1,4 +1,4 @@
-# Seize the Imperial Divan — become Imperial Potentate of the Shriner faith
+﻿# Seize the Imperial Divan — become Imperial Potentate of the Shriner faith
 ate_shriner_imperial_potentate = {
 	picture = {
 		reference = "gfx/interface/illustrations/decisions/decision_faith.dds"

@@ -1,4 +1,4 @@
-house_waltney_ababwa = ={
+house_waltney_ababwa = {
 	pattern="pattern_solid.dds"
 	color1=rgb { 177 103 43 }
 	color2=yellow

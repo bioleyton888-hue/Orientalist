@@ -1,4 +1,4 @@
-namespace = ate_waltney
+﻿namespace = ate_waltney
 
 # Magic Kingdom Reborn — Waltney Shriner Neomoor Transformation
 # Triggered by ate_waltney_soflo_neomoor decision

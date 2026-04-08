@@ -1,4 +1,4 @@
-dynn_caribe_el_shabaz = {
+﻿dynn_caribe_el_shabaz = {
 	name = "dynn_el-Shabaz"
 	culture = neomoor
 }

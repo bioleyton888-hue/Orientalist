@@ -24,6 +24,7 @@
 	}
 
 	coa_gfx = {
+		sofloano_coa_gfx
 		gulfard_coa_gfx
 		south_anglo_group_gfx
 		motowner_coa_gfx
@@ -39,8 +40,8 @@
 	clothing_gfx = {
 		floridian_clothing_gfx
 		floral_clothing_gfx
-		baseball_helmet_gfx
 		western_clothing_gfx
+		baseball_helmet_gfx
 		bomber_jacket_clothing_gfx
 	}
 	unit_gfx = {

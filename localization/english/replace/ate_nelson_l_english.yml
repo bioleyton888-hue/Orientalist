@@ -80,6 +80,9 @@
  ate_nelson_parade_elephant:0 "A Fucking Elephant"
  ate_nelson_parade_elephant_desc:0 "wh..wha...where...where did you get that!?"
 
+ # Dynasties
+ dynn_el-Shabaz:0 "el-Shabaz"
+
  # Dynasty houses
  house_ElShabaz:0 "el-Shabaz"
  house_Williams:0 "Williams"
