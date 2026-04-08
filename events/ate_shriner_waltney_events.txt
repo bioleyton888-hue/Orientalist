@@ -1,0 +1,52 @@
+namespace = ate_waltney
+
+# Magic Kingdom Reborn — Waltney Shriner Neomoor Transformation
+# Triggered by ate_waltney_soflo_neomoor decision
+ate_waltney.0001 = {
+	type = character_event
+	title = ate_waltney.0001.t
+	desc = ate_waltney.0001.desc
+	theme = stewardship
+	left_portrait = {
+		character = root
+		animation = personality_compassionate
+	}
+
+	# Accept — the Magic Kingdom becomes Neomoor
+	option = {
+		name = ate_waltney.0001.a
+		add_character_flag = waltney_neomoor_done
+		set_culture = culture:neomoor
+		every_child = {
+			limit = { NOT = { culture = culture:neomoor } }
+			set_culture = culture:neomoor
+		}
+		title:c_orlando = { set_county_culture = culture:neomoor }
+		title:c_miami_dade = { set_county_culture = culture:neomoor }
+		title:c_broward = { set_county_culture = culture:neomoor }
+	}
+
+	# Found House Ababwa — full conversion + break from the Waltney house
+	option = {
+		name = ate_waltney.0001.c
+		add_character_flag = waltney_neomoor_done
+		set_culture = culture:neomoor
+		every_child = {
+			limit = { NOT = { culture = culture:neomoor } }
+			set_culture = culture:neomoor
+		}
+		title:c_orlando = { set_county_culture = culture:neomoor }
+		title:c_miami_dade = { set_county_culture = culture:neomoor }
+		title:c_broward = { set_county_culture = culture:neomoor }
+		# Break from the Waltney house — found House Ababwa
+		set_house = house:house_waltney_ababwa
+		every_child = {
+			set_house = house:house_waltney_ababwa
+		}
+	}
+
+	# Decline — not yet
+	option = {
+		name = ate_waltney.0001.b
+	}
+}

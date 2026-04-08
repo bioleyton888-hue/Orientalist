@@ -1,0 +1,5 @@
+house_waltney_ababwa = {
+	name = "house_Ababwa"
+	dynasty = dynn_caribe_waltney
+	motto = house_waltney_ababwa_motto
+}
