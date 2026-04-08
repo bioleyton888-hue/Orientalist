@@ -12,23 +12,9 @@ ate_shriner.0004 = {
 		animation = personality_compassionate
 	}
 
-	# Accept — embrace the Neomoor identity
+	# Acknowledge — effects already applied by the decision
 	option = {
 		name = ate_shriner.0004.a
-		add_character_flag = shriner_neomoor_done
-		set_culture = culture:neomoor
-		every_child = {
-			limit = { NOT = { culture = culture:neomoor } }
-			set_culture = culture:neomoor
-		}
-		# Miami counties
-		title:c_miami_dade = { set_county_culture = culture:neomoor }
-		title:c_broward = { set_county_culture = culture:neomoor }
-	}
-
-	# Decline — not yet
-	option = {
-		name = ate_shriner.0004.b
 	}
 }
 
@@ -100,26 +86,8 @@ ate_shriner.0001 = {
 		animation = personality_zealous
 	}
 
+	# Acknowledge — effects already applied by the decision
 	option = {
 		name = ate_shriner.0001.a
-		set_global_variable = { name = ya_shamal_performed value = yes }
-		give_nickname = nick_ya_shamal
-		dynasty = { add_prestige = 750 }
-		add_prestige = 1000
-		add_piety = 1000
-		add_trait = ya_shamal
-		every_child = {
-			limit = {
-				NOR = {
-					has_trait = ya_shamal
-					has_trait = ya_shamal_descendant
-				}
-			}
-			add_trait = ya_shamal_descendant
-		}
-		title:c_chicago = { set_county_faith = faith:shriner }
-		stress_impact = {
-			zealous = miniscule_stress_impact_loss
-		}
 	}
 }

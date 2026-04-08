@@ -30,6 +30,25 @@ ya_shamal_decision = {
 	}
 
 	effect = {
+		set_global_variable = { name = ya_shamal_performed value = yes }
+		give_nickname = nick_ya_shamal
+		dynasty = { add_prestige = 750 }
+		add_prestige = 1000
+		add_piety = 1000
+		add_trait = ya_shamal
+		every_child = {
+			limit = {
+				NOR = {
+					has_trait = ya_shamal
+					has_trait = ya_shamal_descendant
+				}
+			}
+			add_trait = ya_shamal_descendant
+		}
+		title:c_chicago = { set_county_faith = faith:shriner }
+		stress_impact = {
+			zealous = miniscule_stress_impact_loss
+		}
 		trigger_event = { id = ate_shriner.0001 }
 	}
 

@@ -12,23 +12,9 @@ ate_nelson.0001 = {
 		animation = personality_compassionate
 	}
 
-	# Accept — embrace the Neomoor identity
+	# Acknowledge — effects already applied by the decision
 	option = {
 		name = ate_nelson.0001.a
-		add_character_flag = nelson_neomoor_done
-		set_culture = culture:neomoor
-		every_child = {
-			limit = { NOT = { culture = culture:neomoor } }
-			set_culture = culture:neomoor
-		}
-		# Tampa Bay counties
-		title:c_tampa = { set_county_culture = culture:neomoor }
-		title:c_st_petersburg = { set_county_culture = culture:neomoor }
-	}
-
-	# Decline — not yet
-	option = {
-		name = ate_nelson.0001.b
 	}
 }
 

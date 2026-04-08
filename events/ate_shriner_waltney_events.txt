@@ -12,41 +12,18 @@ ate_waltney.0001 = {
 		animation = personality_compassionate
 	}
 
-	# Accept — the Magic Kingdom becomes Neomoor
+	# Waltney carries the new name — stay in house
+	# Culture + counties already applied by the decision
 	option = {
 		name = ate_waltney.0001.a
-		add_character_flag = waltney_neomoor_done
-		set_culture = culture:neomoor
-		every_child = {
-			limit = { NOT = { culture = culture:neomoor } }
-			set_culture = culture:neomoor
-		}
-		title:c_orlando = { set_county_culture = culture:neomoor }
-		title:c_miami_dade = { set_county_culture = culture:neomoor }
-		title:c_broward = { set_county_culture = culture:neomoor }
 	}
 
-	# Found House Ababwa — full conversion + break from the Waltney house
+	# Found House Ababwa — break from the Waltney house
 	option = {
 		name = ate_waltney.0001.c
-		add_character_flag = waltney_neomoor_done
-		set_culture = culture:neomoor
-		every_child = {
-			limit = { NOT = { culture = culture:neomoor } }
-			set_culture = culture:neomoor
-		}
-		title:c_orlando = { set_county_culture = culture:neomoor }
-		title:c_miami_dade = { set_county_culture = culture:neomoor }
-		title:c_broward = { set_county_culture = culture:neomoor }
-		# Break from the Waltney house — found House Ababwa
 		set_house = house:house_waltney_ababwa
 		every_child = {
 			set_house = house:house_waltney_ababwa
 		}
-	}
-
-	# Decline — not yet
-	option = {
-		name = ate_waltney.0001.b
 	}
 }
