@@ -1,0 +1,9 @@
+house_ElShabaz = {
+	name = "house_ElShabaz"
+	dynasty = dynn_caribe_el_shabaz
+}
+
+house_Williams = {
+	name = "house_Williams"
+	dynasty = dynn_great_lakes_williams
+}

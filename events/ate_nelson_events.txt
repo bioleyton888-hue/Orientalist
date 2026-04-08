@@ -74,7 +74,6 @@ ate_nelson.0010 = {
 			gender = male
 			faith = faith:shriner
 			culture = culture:sunshiner
-			dynasty = dynasty:dynn_great_lakes_williams
 			age = 42
 			employer = root
 			trait = education_stewardship_2
@@ -88,6 +87,7 @@ ate_nelson.0010 = {
 		}
 		set_variable = { name = will_williams value = scope:will_williams_scope }
 		scope:will_williams_scope = { give_nickname = nick_the_genius }
+		scope:will_williams_scope = { set_house = house:house_Williams }
 		random_courtier = {
 			limit = { NOT = { this = scope:will_williams_scope } }
 			save_scope_as = crowd_1
@@ -299,7 +299,6 @@ ate_nelson.0003 = {
 			gender = female
 			faith = faith:shriner
 			culture = culture:neomoor
-			dynasty = dynasty:dynn_caribe_el_shabaz
 			age = 22
 			trait = beauty_good_3
 			trait = intellect_good_2
@@ -309,6 +308,7 @@ ate_nelson.0003 = {
 		}
 		set_variable = { name = badroulbadour value = scope:badroulbadour_scope }
 		add_character_flag = nelson_badroulbadour_started
+		scope:badroulbadour_scope = { set_house = house:house_ElShabaz }
 	}
 
 	left_portrait = {
@@ -626,6 +626,7 @@ ate_nelson.0008 = {
 		add_prestige = 100
 		dynasty = { add_prestige = 100 }
 		scope:badroulbadour_scope = { add_trait = loyal }
+		scope:badroulbadour_scope = { set_house = house:house_ElShabaz }
 		if = {
 			limit = {
 				OR = { has_sexuality = homosexual has_sexuality = asexual }
