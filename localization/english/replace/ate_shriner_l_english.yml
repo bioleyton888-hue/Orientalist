@@ -15,9 +15,9 @@
  trait_ya_shamal_character_desc:0 "[ROOT.GetCharacter.GetTitledFirstNameNoTooltip] is revered as a champion of the Shriner faith and the greater Islamic world for fulfilling the prophesized reconquest of Chicago and ending the persecution of the Muslims therein."
 
  # Ya-Shamal decision
- ya_shamal_decision:0 "Ya-Shamal Ceremony"
+ ya_shamal_decision:0 "Liberate Chicago"
  ya_shamal_decision_desc:0 "Chicago. The city of winds, the seat of the fallen House el-Shabazz, the wound that has festered in the heart of Islam for generations. The Alcoran speaks of a day when one of the faithful would ride into this city not as a pilgrim, but as its master — and the persecution of the believers would end not with prayer, but with conquest. That day is today. That conqueror is me. Let Yakub's heirs tremble."
- ya_shamal_decision_tooltip:0 "liberate Chicago"
+ ya_shamal_decision_tooltip:0 "Liberate Chicago"
  ya_shamal_decision_confirm:0 "Let a new day comence."
 
  # ate_shriner.0003 — Seize the Imperial Divan
