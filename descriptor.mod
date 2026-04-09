@@ -3,5 +3,5 @@ tags={
 	"Utilities"
 	"Character Focuses"
 }
-name="ateMod"
+name="Ate Neomoor culture Revival"
 supported_version="1.17.*"
