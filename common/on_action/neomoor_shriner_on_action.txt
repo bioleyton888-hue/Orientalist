@@ -29,7 +29,7 @@ neomoor_shriner_set_initial_culture = {
 yearly_playable_pulse = {
 	on_actions = {
 		nelson_parade_check
-		nelson_badroulbadour_chain_check
+		badroulbadour_chain_check
 	}
 }
 
@@ -50,21 +50,31 @@ nelson_parade_check = {
 	}
 }
 
-nelson_badroulbadour_chain_check = {
+badroulbadour_chain_check = {
 	trigger = {
-		dynasty = dynasty:dynn_caribe_nelson
+		is_player_character = yes
 		faith = faith:shriner
 		is_adult = yes
 		is_landed = yes
 		is_male = yes
-		has_character_flag = nelson_parade_done
-		NOT = { has_character_flag = nelson_badroulbadour_started }
-		NOT = { has_character_flag = nelson_badroulbadour_done }
+		NOT = { has_character_flag = badroulbadour_started }
+		NOT = { has_character_flag = badroulbadour_done }
+		NOT = { exists = global_var:ya_shamal_performed }
+		OR = {
+			AND = {
+				dynasty = dynasty:dynn_caribe_nelson
+				has_character_flag = nelson_parade_done
+			}
+			AND = {
+				NOT = { dynasty = dynasty:dynn_caribe_nelson }
+				any_held_title = { tier >= tier_kingdom }
+			}
+		}
 	}
 	effect = {
 		random = {
 			chance = 20
-			trigger_event = { id = ate_nelson.0003 }
+			trigger_event = { id = ate_badroulbadour.0001 }
 		}
 	}
 }

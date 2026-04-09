@@ -44,9 +44,45 @@
  ate_shriner.0004.t:0 "A New Name for Miami"
  ate_shriner.0004.desc:0 "South Florida is ours. From Archbold to the shores of Biscayne Bay, the [Root.GetDynastyName] name carries weight — but culture is more than a name. The Neomoor spirit spreads from Tampa's shores, and Miami could be its second heartland. My children look to me. Shall the [Root.GetDynastyName] family stand with the Nelsons as founders of this new people?"
  ate_shriner.0004.a:0 "Miami is Neomoor. The [Root.GetDynastyName] family leads the way."
- ate_shriner.0004.b:0 "The time is not yet right."
 
  # ate_shriner.0001 — Ya-Shamal ceremony event
  ate_shriner.0001.t:0 "Liberate Chicago"
  ate_shriner.0001.desc:0 "All praise is due to the Greatest! Once more has Chicago been brought under the fold of the Islamic faithful, as [ROOT.GetTitledFirstNameNoTooltip] declares a month of celebration across the Shriner world in commemoration of the reconquest of the seat of House el-Shabazz. By virtue of this conquest, many have begun revering them as Ya-Shamal — also known as the Mahdi — the hero prophesied in the Alcoran and the Sunnah of the Prophet, who will honor them, their family, and their companions — the hero who will defeat Yakub and his works once and for all."
  ate_shriner.0001.a:0 "Badroulbadour's struggle was not for naught!"
+
+# Badroulbadour Chain — ate_badroulbadour.0001-0006
+ ate_badroulbadour.0001.t:0 "A Captivating Dance"
+ ate_badroulbadour.0001.desc:0 "Word reaches you of a dancer performing in the market — a woman whose grace and artistry have drawn crowds from across the city. Curiosity gets the better of you, and you go to see for yourself. You find her mid-performance, moving with a beauty that seems to belong to another world entirely. When the music stops, she turns — and for a moment, her eyes meet yours."
+ ate_badroulbadour.0001.a:0 "I would love to speak with her further..."
+ ate_badroulbadour.0001.b:0 "I will not speak with this sinful dancer."
+
+ ate_badroulbadour.0002.t:0 "Wondrous Tales"
+ ate_badroulbadour.0002.desc:0 "Outside of the caravanserai, you meet with the dancer. She bows before you as she did in the market. You respond, #italic "Inform me of your name, oh Jasmine flower."# She smiles and then says, #italic "My father named me Badroulbadour — the fullest moon of full moons."# For hours, she regales you with fantastical tales of her journeys through courts all across the world. One of them is about a city named Chicago. It was once home to people of your faith — that of the true Islamic creed — but also home to apostates whose name belied their lack of respect for true Islamic tradition. Before she can continue, you both realize the sun is about to rise. You bid her farewell, but she grasps your arm. Her eyes dart to yours, and she asks #italic "My lord, will you meet me tomorrow? I have a matter which only you can save me from."#"
+ ate_badroulbadour.0002.a:0 "Meet me at my palace."
+
+ ate_badroulbadour.0003.t:0 "A Wish"
+ ate_badroulbadour.0003.desc:0 "You meet Badroulbadour on a terrace, overlooking the great port of the city. She looks back to you, smiles, then breaks down in tears. Composing herself, she apologizes before speaking. #italic "I did not finish the tale of Chicago..."# She begins telling you of the city's fall — the Great Infidel Invasion, the apostate uprising that came after, and the exodus of the faithful as the heart of Islam was made into a temple to their false god. Then, she pauses and takes a deep breath. #italic "Chicago was brought down by a wish, spurred on by Yakub and a misguided heart. A princess of the city wished to live as a normal girl. Her wish was granted, but Yakub works in devilish ways. The city her family had wisely governed for generations fell, her family sent into exile. She was a princess no more."#"
+ ate_badroulbadour.0003.a:0 "What a horrible story..."
+
+ ate_badroulbadour.0004.t:0 "A Curse"
+ ate_badroulbadour.0004.desc:0 "Badroulbadour takes a shuddering breath before continuing. #italic "That princess was my aunt Zumurrud, and the curse was passed down to me. I am doomed to die should I once more be called Princess. But for some reason, when I look upon you, I see the same wisdom and strength that once guided the rulers of Chicago. Perhaps you in your grace can help me break this curse..."# You look into her eyes. There are tears welling up as she speaks, but you see hope in them. You console her, remembering how your father had himself survived a sack led by the armies of Yakub. You rise, her hand in yours, and boldly proclaim your wish to vanquish Yakub and lift her curse. She smiles at this and wraps you in a warm embrace. You invite her back to your palace while you begin to think of ways to free her from the binding curse upon her family."
+ ate_badroulbadour.0004.a:0 "May Aladdin guide me!"
+
+ ate_badroulbadour.0005b.t:0 "A Difficult Choice"
+ ate_badroulbadour.0005b.desc:0 "Your heart burns for Badroulbadour, but your household is full. Islamic law grants you four wives, and all four seats are taken. If you are to marry Badroulbadour and lift her curse, one of your wives must be set free. This is not a choice you make lightly — but the heart wants what it wants."
+ ate_badroulbadour.0005b.a:0 "Part ways with [wife_1.GetFirstNameNoTooltip]"
+ ate_badroulbadour.0005b.b:0 "Part ways with [wife_2.GetFirstNameNoTooltip]"
+ ate_badroulbadour.0005b.c:0 "Part ways with [wife_3.GetFirstNameNoTooltip]"
+ ate_badroulbadour.0005b.d:0 "Part ways with [wife_4.GetFirstNameNoTooltip]"
+ ate_badroulbadour.0005b.e:0 "Sorry [betrothed_scope.GetFirstNameNoTooltip], it wasn't meant to be"
+
+ ate_badroulbadour.0005.t:0 "To Break A Curse"
+ ate_badroulbadour.0005.desc:0 "You sit in your study, giving the curse on your friend Badroulbadour much thought. You think back to the stories in the Alcoran, remembering how dark djinns could be bested by even those of low rank with the use of wit and cleverness. Suddenly, you have an epiphany. You excitedly rush to Badroulbadour's quarters. She is surprised by your haste, but greets you warmly. You explain your theory. #italic "What if, instead of being a princess, you held an even higher rank? What if you were... a Queen? My queen? Would that not break the curse?"# To your surprise, she embraces you, thanking you for finding such a brilliant solution. #italic "And we needn't stay married long — we just have to break the curse, and then I will burden you no longer."# Your heart sinks at this, but you smile and play along, hoping for the best."
+ ate_badroulbadour.0005.a:0 "The marriage shall be swift to lift this curse!"
+ ate_badroulbadour.0005.b:0 "I... I am sorry. I cannot."
+
+ ate_badroulbadour.0006.t:0 "The Light of the Moon"
+ ate_badroulbadour.0006.desc:0 "Though she married you to lift the curse, Badroulbadour has been growing increasingly close to you. It is clear that the curse has been lifted, for she thrives more than ever. Every night, you intend to part from her, but every night she regales you with another story from her travels until you fall asleep without doing so. Tonight, she says she has a surprise for you. She guides you by hand to her terrace and has you sit and watch as she begins dancing for you in the style of the princesses of old. Then she gently kisses you. She tells you a final story — that of the King Shahryar and his wife, the fair Scheherezade — who narrated stories to survive until the object of her affection, the King, fell in love with her. She finishes by saying that just as Shahryar had fallen for Scheherezade, so too has she fallen for you."
+ ate_badroulbadour.0006.desc.gay:0 "The curse has lifted. Badroulbadour no longer carries the weight of Zumurrud's doom — you can see it in the way she laughs now, freely, without looking over her shoulder. The marriage was a formality, and she has always known it. Tonight she takes you to her terrace and dances for you in the style of the princesses of old. When she finishes, she does not kiss you. Instead she takes your hands in hers and says, #italic "I have traveled every court from Chicago to Tampa looking for something I could never name. I think I understand now — I was not searching for a love story. I was searching for someone who would face the dark with me."# You realize, with quiet certainty, that you were searching for the same."
+ ate_badroulbadour.0006.desc.asexual:0 "The curse has lifted. Badroulbadour dances for you in the style of the princesses of old, and it is beautiful — but not in the way she perhaps intended. You watch her and feel something you cannot quite name: warmth, admiration, a deep and quiet gratitude that has nothing to do with desire. When she finishes, she sees it in your face — the honest, unguarded expression of someone who cannot offer what she might have hoped for. To your surprise, she laughs softly. #italic \"I have told my stories to kings who wanted only a prize.\"# She takes your hands in hers. #italic \"You are the first who simply listened.\"#"
+ ate_badroulbadour.0006.a:0 "Another Arabian Night..."

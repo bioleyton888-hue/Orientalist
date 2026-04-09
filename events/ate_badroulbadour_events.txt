@@ -1,13 +1,13 @@
-﻿namespace = ate_nelson
+﻿namespace = ate_badroulbadour
 
 # ——— Badroulbadour Chain ———
-# Triggered by nelson_badroulbadour_chain_check on_yearly_pulse
+# Triggered by badroulbadour_chain_check on_yearly_pulse
 
-# ate_nelson.0003 — A Captivating Dance (first encounter)
-ate_nelson.0003 = {
+# ate_badroulbadour.0001 — A Captivating Dance (first encounter)
+ate_badroulbadour.0001 = {
 	type = character_event
-	title = ate_nelson.0003.t
-	desc = ate_nelson.0003.desc
+	title = ate_badroulbadour.0001.t
+	desc = ate_badroulbadour.0001.desc
 	theme = intrigue
 
 	immediate = {
@@ -24,7 +24,7 @@ ate_nelson.0003 = {
 			save_scope_as = badroulbadour_scope
 		}
 		set_variable = { name = badroulbadour value = scope:badroulbadour_scope }
-		add_character_flag = nelson_badroulbadour_started
+		add_character_flag = badroulbadour_started
 		scope:badroulbadour_scope = { set_house = house:house_ElShabaz }
 	}
 
@@ -39,24 +39,25 @@ ate_nelson.0003 = {
 
 	# Speak with her
 	option = {
-		name = ate_nelson.0003.a
-		trigger_event = { id = ate_nelson.0004 days = 1 }
+		name = ate_badroulbadour.0001.a
+		trigger_event = { id = ate_badroulbadour.0002 days = 1 }
 	}
 
 	# Walk away
 	option = {
-		name = ate_nelson.0003.b
+		name = ate_badroulbadour.0001.b
 		scope:badroulbadour_scope = { move_to_pool = yes }
 		remove_variable = badroulbadour
-		remove_character_flag = nelson_badroulbadour_started
+		remove_character_flag = badroulbadour_started
+		add_character_flag = badroulbadour_done
 	}
 }
 
-# ate_nelson.0004 — Wondrous Tales
-ate_nelson.0004 = {
+# ate_badroulbadour.0002 — Wondrous Tales
+ate_badroulbadour.0002 = {
 	type = character_event
-	title = ate_nelson.0004.t
-	desc = ate_nelson.0004.desc
+	title = ate_badroulbadour.0002.t
+	desc = ate_badroulbadour.0002.desc
 	theme = intrigue
 
 	trigger = {
@@ -78,16 +79,16 @@ ate_nelson.0004 = {
 	}
 
 	option = {
-		name = ate_nelson.0004.a
-		trigger_event = { id = ate_nelson.0005 days = 1 }
+		name = ate_badroulbadour.0002.a
+		trigger_event = { id = ate_badroulbadour.0003 days = 1 }
 	}
 }
 
-# ate_nelson.0005 — A Wish
-ate_nelson.0005 = {
+# ate_badroulbadour.0003 — A Wish
+ate_badroulbadour.0003 = {
 	type = character_event
-	title = ate_nelson.0005.t
-	desc = ate_nelson.0005.desc
+	title = ate_badroulbadour.0003.t
+	desc = ate_badroulbadour.0003.desc
 	theme = intrigue
 
 	trigger = {
@@ -109,16 +110,16 @@ ate_nelson.0005 = {
 	}
 
 	option = {
-		name = ate_nelson.0005.a
-		trigger_event = { id = ate_nelson.0006 days = 1 }
+		name = ate_badroulbadour.0003.a
+		trigger_event = { id = ate_badroulbadour.0004 days = 1 }
 	}
 }
 
-# ate_nelson.0006 — A Curse
-ate_nelson.0006 = {
+# ate_badroulbadour.0004 — A Curse
+ate_badroulbadour.0004 = {
 	type = character_event
-	title = ate_nelson.0006.t
-	desc = ate_nelson.0006.desc
+	title = ate_badroulbadour.0004.t
+	desc = ate_badroulbadour.0004.desc
 	theme = intrigue
 
 	trigger = {
@@ -140,16 +141,16 @@ ate_nelson.0006 = {
 	}
 
 	option = {
-		name = ate_nelson.0006.a
-		trigger_event = { id = ate_nelson.0007 days = 3 }
+		name = ate_badroulbadour.0004.a
+		trigger_event = { id = ate_badroulbadour.0005 days = 3 }
 	}
 }
 
-# ate_nelson.0007b — Make Room for Her (divorce selection — only fires if root has 4 spouses)
-ate_nelson.0007b = {
+# ate_badroulbadour.0005b — Make Room for Her (divorce selection — only fires if root has 4 spouses)
+ate_badroulbadour.0005b = {
 	type = character_event
-	title = ate_nelson.0007b.t
-	desc = ate_nelson.0007b.desc
+	title = ate_badroulbadour.0005b.t
+	desc = ate_badroulbadour.0005b.desc
 	theme = diplomacy
 
 	trigger = {
@@ -197,51 +198,51 @@ ate_nelson.0007b = {
 	}
 
 	option = {
-		name = ate_nelson.0007b.a
+		name = ate_badroulbadour.0005b.a
 		trigger = { exists = scope:wife_1 }
 		scope:wife_1 = { divorce = root }
 		if = { limit = { is_betrothed = yes } break_betrothal = betrothed }
 		scope:badroulbadour_scope = { marry = root }
-		trigger_event = { id = ate_nelson.0008 days = 30 }
+		trigger_event = { id = ate_badroulbadour.0006 days = 30 }
 	}
 	option = {
-		name = ate_nelson.0007b.b
+		name = ate_badroulbadour.0005b.b
 		trigger = { exists = scope:wife_2 }
 		scope:wife_2 = { divorce = root }
 		if = { limit = { is_betrothed = yes } break_betrothal = betrothed }
 		scope:badroulbadour_scope = { marry = root }
-		trigger_event = { id = ate_nelson.0008 days = 30 }
+		trigger_event = { id = ate_badroulbadour.0006 days = 30 }
 	}
 	option = {
-		name = ate_nelson.0007b.c
+		name = ate_badroulbadour.0005b.c
 		trigger = { exists = scope:wife_3 }
 		scope:wife_3 = { divorce = root }
 		if = { limit = { is_betrothed = yes } break_betrothal = betrothed }
 		scope:badroulbadour_scope = { marry = root }
-		trigger_event = { id = ate_nelson.0008 days = 30 }
+		trigger_event = { id = ate_badroulbadour.0006 days = 30 }
 	}
 	option = {
-		name = ate_nelson.0007b.d
+		name = ate_badroulbadour.0005b.d
 		trigger = { exists = scope:wife_4 }
 		scope:wife_4 = { divorce = root }
 		if = { limit = { is_betrothed = yes } break_betrothal = betrothed }
 		scope:badroulbadour_scope = { marry = root }
-		trigger_event = { id = ate_nelson.0008 days = 30 }
+		trigger_event = { id = ate_badroulbadour.0006 days = 30 }
 	}
 	option = {
-		name = ate_nelson.0007b.e
+		name = ate_badroulbadour.0005b.e
 		trigger = { exists = scope:betrothed_scope }
 		break_betrothal = betrothed
 		scope:badroulbadour_scope = { marry = root }
-		trigger_event = { id = ate_nelson.0008 days = 30 }
+		trigger_event = { id = ate_badroulbadour.0006 days = 30 }
 	}
 }
 
-# ate_nelson.0007 — To Break A Curse
-ate_nelson.0007 = {
+# ate_badroulbadour.0005 — To Break A Curse
+ate_badroulbadour.0005 = {
 	type = character_event
-	title = ate_nelson.0007.t
-	desc = ate_nelson.0007.desc
+	title = ate_badroulbadour.0005.t
+	desc = ate_badroulbadour.0005.desc
 	theme = diplomacy
 
 	trigger = {
@@ -263,7 +264,7 @@ ate_nelson.0007 = {
 	}
 
 	option = {
-		name = ate_nelson.0007.a
+		name = ate_badroulbadour.0005.a
 		if = {
 			limit = {
 				OR = {
@@ -274,42 +275,42 @@ ate_nelson.0007 = {
 					}
 				}
 			}
-			trigger_event = { id = ate_nelson.0007b days = 3 }
+			trigger_event = { id = ate_badroulbadour.0005b days = 3 }
 		}
 		else = {
 			if = { limit = { is_betrothed = yes } break_betrothal = betrothed }
 			scope:badroulbadour_scope = { marry = root }
-			trigger_event = { id = ate_nelson.0008 days = 30 }
+			trigger_event = { id = ate_badroulbadour.0006 days = 30 }
 		}
 	}
 
-	# Gay/Asexual Ali — cannot bring himself to marry her
+	# Gay/Asexual — cannot bring himself to marry her
 	option = {
-		name = ate_nelson.0007.b
+		name = ate_badroulbadour.0005.b
 		trigger = { OR = { has_sexuality = homosexual has_sexuality = asexual } }
 		add_prestige = -20
 		add_piety = -20
 		scope:badroulbadour_scope = { move_to_pool = yes }
 		remove_variable = badroulbadour
-		add_character_flag = nelson_badroulbadour_done
+		add_character_flag = badroulbadour_done
 	}
 }
 
-# ate_nelson.0008 — The Light of the Moon
-ate_nelson.0008 = {
+# ate_badroulbadour.0006 — The Light of the Moon
+ate_badroulbadour.0006 = {
 	type = character_event
-	title = ate_nelson.0008.t
+	title = ate_badroulbadour.0006.t
 	desc = {
 		first_valid = {
 			triggered_desc = {
 				trigger = { has_sexuality = homosexual }
-				desc = ate_nelson.0008.desc.gay
+				desc = ate_badroulbadour.0006.desc.gay
 			}
 			triggered_desc = {
 				trigger = { has_sexuality = asexual }
-				desc = ate_nelson.0008.desc.asexual
+				desc = ate_badroulbadour.0006.desc.asexual
 			}
-			desc = ate_nelson.0008.desc
+			desc = ate_badroulbadour.0006.desc
 		}
 	}
 	theme = diplomacy
@@ -337,8 +338,8 @@ ate_nelson.0008 = {
 	}
 
 	option = {
-		name = ate_nelson.0008.a
-		add_character_flag = nelson_badroulbadour_done
+		name = ate_badroulbadour.0006.a
+		add_character_flag = badroulbadour_done
 		remove_variable = badroulbadour
 		add_prestige = 100
 		dynasty = { add_prestige = 100 }

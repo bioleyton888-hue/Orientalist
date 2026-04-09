@@ -269,4 +269,4 @@ ate_nelson.0013 = {
 	}
 }
 
-# Badroulbadour Chain — see ate_badroulbadour_events.txt (ate_nelson.0003–0008)
+# Badroulbadour Chain — see ate_badroulbadour_events.txt (ate_badroulbadour.0001-0006)
