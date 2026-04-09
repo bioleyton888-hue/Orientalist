@@ -11,11 +11,10 @@
 	name_list = name_list_neomoor
 
 	traditions = {
-		tradition_wetlanders
-		tradition_life_is_just_a_joke
+		tradition_mud_to_chaos
 		tradition_metal_craftsmanship
-		tradition_maritime_mercantilism
-		tradition_xenophilic
+		tradition_diasporic
+		tradition_swords_for_hire
 	}
 
 	dlc_tradition = {

@@ -35,6 +35,7 @@ ate_nelson_soflo_neomoor = {
 	effect = {
 		add_character_flag = nelson_neomoor_done
 		set_culture = culture:neomoor
+		remove_culture_tradition = tradition_diasporic
 		every_child = {
 			limit = { NOT = { culture = culture:neomoor } }
 			set_culture = culture:neomoor
@@ -92,6 +93,7 @@ ate_shriner_soflo_neomoor = {
 	effect = {
 		add_character_flag = shriner_neomoor_done
 		set_culture = culture:neomoor
+		remove_culture_tradition = tradition_diasporic
 		every_child = {
 			limit = { NOT = { culture = culture:neomoor } }
 			set_culture = culture:neomoor
@@ -151,6 +153,7 @@ ate_waltney_soflo_neomoor = {
 	effect = {
 		add_character_flag = waltney_neomoor_done
 		set_culture = culture:neomoor
+		remove_culture_tradition = tradition_diasporic
 		every_child = {
 			limit = { NOT = { culture = culture:neomoor } }
 			set_culture = culture:neomoor
