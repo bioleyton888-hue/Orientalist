@@ -8,7 +8,7 @@ ate_badroulbadour.0001 = {
 	type = character_event
 	title = ate_badroulbadour.0001.t
 	desc = ate_badroulbadour.0001.desc
-	theme = intrigue
+	theme = party
 
 	immediate = {
 		create_character = {
@@ -58,7 +58,7 @@ ate_badroulbadour.0002 = {
 	type = character_event
 	title = ate_badroulbadour.0002.t
 	desc = ate_badroulbadour.0002.desc
-	theme = intrigue
+	theme = friendly
 
 	trigger = {
 		exists = var:badroulbadour
@@ -89,7 +89,7 @@ ate_badroulbadour.0003 = {
 	type = character_event
 	title = ate_badroulbadour.0003.t
 	desc = ate_badroulbadour.0003.desc
-	theme = intrigue
+	theme = faith
 
 	trigger = {
 		exists = var:badroulbadour
@@ -120,7 +120,7 @@ ate_badroulbadour.0004 = {
 	type = character_event
 	title = ate_badroulbadour.0004.t
 	desc = ate_badroulbadour.0004.desc
-	theme = intrigue
+	theme = witchcraft
 
 	trigger = {
 		exists = var:badroulbadour
@@ -151,7 +151,7 @@ ate_badroulbadour.0005b = {
 	type = character_event
 	title = ate_badroulbadour.0005b.t
 	desc = ate_badroulbadour.0005b.desc
-	theme = diplomacy
+	theme = marriage
 
 	trigger = {
 		exists = var:badroulbadour
@@ -243,7 +243,7 @@ ate_badroulbadour.0005 = {
 	type = character_event
 	title = ate_badroulbadour.0005.t
 	desc = ate_badroulbadour.0005.desc
-	theme = diplomacy
+	theme = love
 
 	trigger = {
 		exists = var:badroulbadour
@@ -313,7 +313,7 @@ ate_badroulbadour.0006 = {
 			desc = ate_badroulbadour.0006.desc
 		}
 	}
-	theme = diplomacy
+	theme = love
 
 	trigger = {
 		exists = var:badroulbadour

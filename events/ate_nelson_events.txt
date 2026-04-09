@@ -52,7 +52,7 @@ ate_nelson.0010 = {
 	type = character_event
 	title = ate_nelson.0010.t
 	desc = ate_nelson.0010.desc
-	theme = stewardship
+	theme = party
 
 	immediate = {
 		create_character = {
@@ -143,7 +143,7 @@ ate_nelson.0011 = {
 		animation = fear
 	}
 	lower_right_portrait = {
-		character = character:caribe_venus_armando_1
+		character = character:caribe_gaspar_jose_1
 		animation = fear
 	}
 
@@ -159,7 +159,7 @@ ate_nelson.0012 = {
 	type = character_event
 	title = ate_nelson.0012.t
 	desc = ate_nelson.0012.desc
-	theme = stewardship
+	theme = feast_activity
 
 	trigger = {
 		exists = var:will_williams
@@ -214,7 +214,7 @@ ate_nelson.0013 = {
 	type = character_event
 	title = ate_nelson.0013.t
 	desc = ate_nelson.0013.desc
-	theme = stewardship
+	theme = dynasty
 
 	trigger = {
 		exists = var:will_williams
