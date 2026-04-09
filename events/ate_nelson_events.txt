@@ -30,6 +30,7 @@ ate_nelson.0009 = {
 
 	immediate = {
 		add_character_flag = nelson_parade_started
+		set_global_variable = { name = nelson_parade_performed value = yes }
 	}
 
 	left_portrait = {

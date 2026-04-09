@@ -41,6 +41,7 @@ nelson_parade_check = {
 		is_landed = yes
 		is_male = yes
 		NOT = { has_character_flag = nelson_parade_started }
+		NOT = { exists = global_var:nelson_parade_performed }
 	}
 	effect = {
 		random = {
