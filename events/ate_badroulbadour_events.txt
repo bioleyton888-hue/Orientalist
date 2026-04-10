@@ -203,7 +203,17 @@ ate_badroulbadour.0005b = {
 		scope:wife_1 = { divorce = root }
 		if = { limit = { is_betrothed = yes } break_betrothal = betrothed }
 		scope:badroulbadour_scope = { marry = root }
-		trigger_event = { id = ate_badroulbadour.0006 days = 30 }
+		if = { limit = { NOT = { has_character_flag = cannibal_path } } trigger_event = { id = ate_badroulbadour.0006 days = 30 } }
+		else = {
+			scope:badroulbadour_scope = { set_house = house:house_ElShabaz }
+			scope:badroulbadour_scope = { add_trait = disloyal }
+			scope:badroulbadour_scope = { add_trait = recluse }
+			scope:badroulbadour_scope = { add_opinion = { modifier = ate_captive_wife_opinion target = root } }
+			add_character_flag = badroulbadour_done
+			add_character_flag = badroulbadour_storyteller
+			remove_character_flag = cannibal_path
+			remove_variable = badroulbadour
+		}
 	}
 	option = {
 		name = ate_badroulbadour.0005b.b
@@ -211,7 +221,17 @@ ate_badroulbadour.0005b = {
 		scope:wife_2 = { divorce = root }
 		if = { limit = { is_betrothed = yes } break_betrothal = betrothed }
 		scope:badroulbadour_scope = { marry = root }
-		trigger_event = { id = ate_badroulbadour.0006 days = 30 }
+		if = { limit = { NOT = { has_character_flag = cannibal_path } } trigger_event = { id = ate_badroulbadour.0006 days = 30 } }
+		else = {
+			scope:badroulbadour_scope = { set_house = house:house_ElShabaz }
+			scope:badroulbadour_scope = { add_trait = disloyal }
+			scope:badroulbadour_scope = { add_trait = recluse }
+			scope:badroulbadour_scope = { add_opinion = { modifier = ate_captive_wife_opinion target = root } }
+			add_character_flag = badroulbadour_done
+			add_character_flag = badroulbadour_storyteller
+			remove_character_flag = cannibal_path
+			remove_variable = badroulbadour
+		}
 	}
 	option = {
 		name = ate_badroulbadour.0005b.c
@@ -219,7 +239,17 @@ ate_badroulbadour.0005b = {
 		scope:wife_3 = { divorce = root }
 		if = { limit = { is_betrothed = yes } break_betrothal = betrothed }
 		scope:badroulbadour_scope = { marry = root }
-		trigger_event = { id = ate_badroulbadour.0006 days = 30 }
+		if = { limit = { NOT = { has_character_flag = cannibal_path } } trigger_event = { id = ate_badroulbadour.0006 days = 30 } }
+		else = {
+			scope:badroulbadour_scope = { set_house = house:house_ElShabaz }
+			scope:badroulbadour_scope = { add_trait = disloyal }
+			scope:badroulbadour_scope = { add_trait = recluse }
+			scope:badroulbadour_scope = { add_opinion = { modifier = ate_captive_wife_opinion target = root } }
+			add_character_flag = badroulbadour_done
+			add_character_flag = badroulbadour_storyteller
+			remove_character_flag = cannibal_path
+			remove_variable = badroulbadour
+		}
 	}
 	option = {
 		name = ate_badroulbadour.0005b.d
@@ -227,14 +257,34 @@ ate_badroulbadour.0005b = {
 		scope:wife_4 = { divorce = root }
 		if = { limit = { is_betrothed = yes } break_betrothal = betrothed }
 		scope:badroulbadour_scope = { marry = root }
-		trigger_event = { id = ate_badroulbadour.0006 days = 30 }
+		if = { limit = { NOT = { has_character_flag = cannibal_path } } trigger_event = { id = ate_badroulbadour.0006 days = 30 } }
+		else = {
+			scope:badroulbadour_scope = { set_house = house:house_ElShabaz }
+			scope:badroulbadour_scope = { add_trait = disloyal }
+			scope:badroulbadour_scope = { add_trait = recluse }
+			scope:badroulbadour_scope = { add_opinion = { modifier = ate_captive_wife_opinion target = root } }
+			add_character_flag = badroulbadour_done
+			add_character_flag = badroulbadour_storyteller
+			remove_character_flag = cannibal_path
+			remove_variable = badroulbadour
+		}
 	}
 	option = {
 		name = ate_badroulbadour.0005b.e
 		trigger = { exists = scope:betrothed_scope }
 		break_betrothal = betrothed
 		scope:badroulbadour_scope = { marry = root }
-		trigger_event = { id = ate_badroulbadour.0006 days = 30 }
+		if = { limit = { NOT = { has_character_flag = cannibal_path } } trigger_event = { id = ate_badroulbadour.0006 days = 30 } }
+		else = {
+			scope:badroulbadour_scope = { set_house = house:house_ElShabaz }
+			scope:badroulbadour_scope = { add_trait = disloyal }
+			scope:badroulbadour_scope = { add_trait = recluse }
+			scope:badroulbadour_scope = { add_opinion = { modifier = ate_captive_wife_opinion target = root } }
+			add_character_flag = badroulbadour_done
+			add_character_flag = badroulbadour_storyteller
+			remove_character_flag = cannibal_path
+			remove_variable = badroulbadour
+		}
 	}
 }
 
@@ -293,6 +343,13 @@ ate_badroulbadour.0005 = {
 		scope:badroulbadour_scope = { move_to_pool = yes }
 		remove_variable = badroulbadour
 		add_character_flag = badroulbadour_done
+	}
+
+	# Cannibal — consume the curse
+	option = {
+		name = ate_badroulbadour.0005.c
+		trigger = { has_trait = cannibal }
+		trigger_event = { id = ate_badroulbadour.0007 days = 1 }
 	}
 }
 
@@ -365,6 +422,69 @@ ate_badroulbadour.0006 = {
 		}
 		stress_impact = {
 			compassionate = miniscule_stress_impact_loss
+		}
+	}
+}
+
+# ate_badroulbadour.0007 — A Thousand and One Nights (cannibal ending — she lives as storyteller)
+ate_badroulbadour.0007 = {
+	type = character_event
+	title = ate_badroulbadour.0007.t
+	desc = ate_badroulbadour.0007.desc
+	theme = intrigue
+
+	trigger = {
+		exists = var:badroulbadour
+		var:badroulbadour = { is_alive = yes }
+	}
+
+	immediate = {
+		var:badroulbadour = { save_scope_as = badroulbadour_scope }
+	}
+
+	left_portrait = {
+		character = root
+		animation = scheme
+	}
+	right_portrait = {
+		character = scope:badroulbadour_scope
+		animation = personality_content
+	}
+
+	option = {
+		name = ate_badroulbadour.0007.a
+		add_prestige = 50
+		add_piety = -50
+		if = {
+			limit = { has_trait = cannibal }
+			add_stress = -200
+		}
+		else = {
+			add_stress = 200
+		}
+		if = {
+			limit = {
+				OR = {
+					any_spouse = { count >= 4 }
+					AND = {
+						any_spouse = { count >= 3 }
+						is_betrothed = yes
+					}
+				}
+			}
+			add_character_flag = cannibal_path
+			trigger_event = { id = ate_badroulbadour.0005b days = 1 }
+		}
+		else = {
+			if = { limit = { is_betrothed = yes } break_betrothal = betrothed }
+			scope:badroulbadour_scope = { marry = root }
+			scope:badroulbadour_scope = { set_house = house:house_ElShabaz }
+			scope:badroulbadour_scope = { add_trait = disloyal }
+			scope:badroulbadour_scope = { add_trait = recluse }
+			scope:badroulbadour_scope = { add_opinion = { modifier = ate_captive_wife_opinion target = root } }
+			add_character_flag = badroulbadour_done
+			add_character_flag = badroulbadour_storyteller
+			remove_variable = badroulbadour
 		}
 	}
 }

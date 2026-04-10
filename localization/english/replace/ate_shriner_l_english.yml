@@ -18,7 +18,7 @@
  ya_shamal_decision:0 "Liberate Chicago"
  ya_shamal_decision_desc:0 "Chicago. The city of winds, the seat of the fallen House el-Shabazz, the wound that has festered in the heart of Islam for generations. The Alcoran speaks of a day when one of the faithful would ride into this city not as a pilgrim, but as its master — and the persecution of the believers would end not with prayer, but with conquest. That day is today. That conqueror is me. Let Yakub's heirs tremble."
  ya_shamal_decision_tooltip:0 "Liberate Chicago"
- ya_shamal_decision_confirm:0 "Let a new day comence."
+ ya_shamal_decision_confirm:0 "Let a new day commence."
 
  # ate_shriner.0003 — Seize the Imperial Divan
  ate_shriner.0003.t:0 "The Imperial Divan is Yours"
@@ -79,10 +79,46 @@
  ate_badroulbadour.0005.t:0 "To Break A Curse"
  ate_badroulbadour.0005.desc:0 "You sit in your study, giving the curse on your friend Badroulbadour much thought. You think back to the stories in the Alcoran, remembering how dark djinns could be bested by even those of low rank with the use of wit and cleverness. Suddenly, you have an epiphany. You excitedly rush to Badroulbadour's quarters. She is surprised by your haste, but greets you warmly. You explain your theory. #italic "What if, instead of being a princess, you held an even higher rank? What if you were... a Queen? My queen? Would that not break the curse?"# To your surprise, she embraces you, thanking you for finding such a brilliant solution. #italic "And we needn't stay married long — we just have to break the curse, and then I will burden you no longer."# Your heart sinks at this, but you smile and play along, hoping for the best."
  ate_badroulbadour.0005.a:0 "The marriage shall be swift to lift this curse!"
- ate_badroulbadour.0005.b:0 "I... I am sorry. I cannot."
+ ate_badroulbadour.0005.b:0 "I cannot let fairy tales get in the way of politics... sorry for wasting your time"
+ ate_badroulbadour.0005.c:0 "Oh, you naive little morsel"
 
  ate_badroulbadour.0006.t:0 "The Light of the Moon"
  ate_badroulbadour.0006.desc:0 "Though she married you to lift the curse, Badroulbadour has been growing increasingly close to you. It is clear that the curse has been lifted, for she thrives more than ever. Every night, you intend to part from her, but every night she regales you with another story from her travels until you fall asleep without doing so. Tonight, she says she has a surprise for you. She guides you by hand to her terrace and has you sit and watch as she begins dancing for you in the style of the princesses of old. Then she gently kisses you. She tells you a final story — that of the King Shahryar and his wife, the fair Scheherezade — who narrated stories to survive until the object of her affection, the King, fell in love with her. She finishes by saying that just as Shahryar had fallen for Scheherezade, so too has she fallen for you."
  ate_badroulbadour.0006.desc.gay:0 "The curse has lifted. Badroulbadour no longer carries the weight of Zumurrud's doom — you can see it in the way she laughs now, freely, without looking over her shoulder. The marriage was a formality, and she has always known it. Tonight she takes you to her terrace and dances for you in the style of the princesses of old. When she finishes, she does not kiss you. Instead she takes your hands in hers and says, #italic "I have traveled every court from Chicago to Tampa looking for something I could never name. I think I understand now — I was not searching for a love story. I was searching for someone who would face the dark with me."# You realize, with quiet certainty, that you were searching for the same."
  ate_badroulbadour.0006.desc.asexual:0 "The curse has lifted. Badroulbadour dances for you in the style of the princesses of old, and it is beautiful — but not in the way she perhaps intended. You watch her and feel something you cannot quite name: warmth, admiration, a deep and quiet gratitude that has nothing to do with desire. When she finishes, she sees it in your face — the honest, unguarded expression of someone who cannot offer what she might have hoped for. To your surprise, she laughs softly. #italic \"I have told my stories to kings who wanted only a prize.\"# She takes your hands in hers. #italic \"You are the first who simply listened.\"#"
  ate_badroulbadour.0006.a:0 "Another Arabian Night..."
+
+ ate_badroulbadour.0007.t:0 "A Thousand and One Nights"
+ ate_badroulbadour.0007.desc:0 "The curse is lifted — Badroulbadour no longer carries the weight of Zumurrud’s doom, but she has realized the meat being consumed on this starless wedding night is more haram than the dirtiest of pigs. She just got out of the frying pan... into the fire. The gig is up, the farce is revealed. The marriage was a formality, and now she knows that you never looked at her with love or lust in your eyes — but with hunger. #italic “The main course was delicious, but I have room for dessert.”# You tell her with a psychotic grin from ear to ear as you grab your knife and draw closer. In a panicked state, she starts telling you the tale of a man who sailed the open sea on a barrel — it’s the only way she knows she can buy herself time. The tale is so interesting that by the time she is finished, you have lost your appetite; the main course has already gone to your stomach and you feel sated. And so, from this night on, you will go to her room to eat her, and each night she will tell you a story — a new one, without repetition — just to see the sun one more day. You can only fantasize about sinking your teeth into those juicy thighs, but you wait, you humor her, you will wait even a thousand and one nights, because you know...."
+ ate_badroulbadour.0007.a:0 "She will run out of stories eventually."
+
+ ate_captive_wife_opinion:0 "Captive Wife"
+
+
+# Ibrahim the Mad chain — ate_shriner.0005-0008
+ ate_shriner.0005.t:0 "A Sultan's Fancy"
+ ate_shriner.0005.desc.lunatic:0 "[Root.GetFirstName] has been visited by a peculiar vision. He dreams of a great moon-woman — vast as the tides, warm as fresh bread, impossibly magnificent in her enormity. The voice of the Shrine rings clear: #italic seek her, and you shall know peace.#!"
+ ate_shriner.0005.desc.possessed:0 "The djinn speaks again tonight, its voice curling through the palace corridors like incense smoke. #italic Find her,#! it hisses. #italic She exists, Sultan — vast and glorious, the largest woman in all the world. She is your destiny.#! [Root.GetFirstName] does not know if this is madness or prophecy."
+ ate_shriner.0005.desc.deviant:0 "[Root.GetFirstName] has always known his tastes run... unconventional. The court pretends not to notice. But this latest fixation feels different — a conviction, deep and unshakeable, that the most magnificent woman in the world exists somewhere in this empire, and that she is very, very large. The search will begin at once."
+ ate_shriner.0005.desc.rakish_seducer:0 "[Root.GetFirstName] has sampled widely, as his reputation confirms. But lately a peculiar preference has taken hold — away from the willowy and the delicate, toward something altogether more substantial. The largest woman in the empire, he has decided, would be the greatest conquest of his life. The agents must be dispatched immediately."
+ ate_shriner.0005.desc.eccentric:0 "[Root.GetFirstName] has had, he freely admits, an unusual idea. He has seen cattle at market and horses at the fair, and has come to the firm conclusion that grandeur of form is the highest beauty. The search for the most magnificent woman in the empire must begin immediately."
+ ate_shriner.0005.a:0 "Dispatch agents across the empire at once!"
+ ate_shriner.0005.b:0 "I shall master these thoughts... for now."
+
+ ate_shriner.0006.t:0 "The Agents Return"
+ ate_shriner.0006.desc:0 "After months of searching, the agents return. They enter the throne room with care, followed by their remarkable find — a woman of extraordinary proportions, moving with the unhurried dignity of someone who has never once needed to hurry.\n\n#italic Her name is [sukkar.GetFirstName], my lord,#! announces the chief agent, barely concealing his bewilderment. #italic She comes from your own lands and is Shrine-faithful. She is... exactly as you requested.#!"
+ ate_shriner.0006.a:0 "She is magnificent. Prepare her apartments at once."
+ ate_shriner.0006.b:0 "What have I done... Send her away with a purse of gold."
+
+ ate_shriner.0007.t:0 "Sugar Cube"
+ ate_shriner.0007.desc:0 "[Root.GetFirstName] has taken to calling her #italic Sukkar#! — Sugar Cube — a name [sukkar.GetFirstName] seems to find quite pleasing. She is warm, endlessly laughing, and entirely at ease in her considerable presence. The court whispers. [Root.GetFirstName] does not hear them, or simply does not care.\n\nShe is, he has decided, exactly what he was looking for."
+ ate_shriner.0007.a:0 "She will be my wife."
+ ate_shriner.0007.c:0 "She will be my wife — and a Countess of this empire."
+ ate_shriner.0007.b:0 "Let her be honored in my court. That is enough."
+
+ ate_shriner.0008.t:0 "Only Ibrahim Can Judge Me"
+ ate_shriner.0008.desc:0 "Word of [sukkar.GetFirstName] — the Sultan's new wife — has spread through court and beyond. The vassals are divided between amusement and outrage. The preachers cannot find clear scripture on the matter. [sukkar.GetFirstName] herself sits at [Root.GetFirstName]'s right hand at every feast, eating with great enthusiasm and laughing at everything."
+ ate_shriner.0008.desc.countess:0 "Word of [sukkar.GetFirstName] — the Sultan's new wife and Countess — has spread through court and beyond. The vassals are in uproar. A woman who arrived in the throne room barely a month ago now holds a county of the realm. The preachers are very confused. [sukkar.GetFirstName] herself, a commoner who until recently had never set foot in a palace, stands frozen in the middle of the throne room with tears running down her face, laughing and crying at the same time, unable to believe any of this is real."
+ ate_shriner.0008.a:0 "Let them say what they will. She has my full favor."
+ ate_shriner.0008.b:0 "I will be... somewhat more discreet about this."
+ ate_shriner.0008.c:0 "Freedom of speech you have — but freedom after speech, that I cannot guarantee."
