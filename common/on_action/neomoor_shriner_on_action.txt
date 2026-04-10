@@ -82,135 +82,105 @@ badroulbadour_chain_check = {
 	}
 }
 
-# On title gain: set NeoMoor culture on anyone who gains d_shriner
-# Also rename k_florida to Agrabah if holder is Shriner or NeoMoor
+# On title gain: consolidated handler for culture assignment and title renames
+# Merged from 6 separate named on_actions — engine stops at first else_if match
 on_title_gain = {
 	on_actions = {
-		neomoor_shriner_culture_on_title_gain
-		neomoor_shriner_florida_rename_on_title_gain
-		neomoor_louisiana_rename_on_title_gain
-		neomoor_shriner_soflo_rename_on_title_gain
-		neomoor_shriner_norflo_rename_on_title_gain
-		neomoor_gulf_rename_on_title_gain
+		neomoor_shriner_title_gain_handler
 	}
 }
 
-neomoor_shriner_culture_on_title_gain = {
-	trigger = {
-		scope:title = { this = title:d_shriner }
-	}
-	effect = {
-		set_culture = culture:neomoor
-	}
-}
-
-neomoor_louisiana_rename_on_title_gain = {
-	trigger = {
-		scope:title = { this = title:k_louisiana }
-	}
+neomoor_shriner_title_gain_handler = {
 	effect = {
 		if = {
-			limit = {
-				OR = {
-					culture = culture:neomoor
-					faith = faith:shriner
+			limit = { scope:title = { this = title:d_shriner } }
+			set_culture = culture:neomoor
+		}
+		else_if = {
+			limit = { scope:title = { this = title:k_florida } }
+			if = {
+				limit = {
+					OR = {
+						culture = culture:neomoor
+						faith = faith:shriner
+					}
 				}
+				title:k_florida = { set_title_name = k_florida_agrabah }
 			}
-			title:k_louisiana = { set_title_name = k_louisiana_neomoor }
+			else = {
+				title:k_florida = { set_title_name = k_florida }
+			}
 		}
-		else = {
-			title:k_louisiana = { set_title_name = k_louisiana }
-		}
-	}
-}
-
-neomoor_gulf_rename_on_title_gain = {
-	trigger = {
-		scope:title = { this = title:e_gulf_empire }
-	}
-	effect = {
-		if = {
-			limit = {
-				OR = {
-					culture = culture:neomoor
-					faith = faith:shriner
+		else_if = {
+			limit = { scope:title = { this = title:k_louisiana } }
+			if = {
+				limit = {
+					OR = {
+						culture = culture:neomoor
+						faith = faith:shriner
+					}
 				}
+				title:k_louisiana = { set_title_name = k_louisiana_neomoor }
 			}
-			title:e_gulf_empire = { set_title_name = e_gulf_empire_neomoor }
+			else = {
+				title:k_louisiana = { set_title_name = k_louisiana }
+			}
 		}
-		else = {
-			title:e_gulf_empire = { set_title_name = e_gulf_empire }
-		}
-	}
-}
-
-neomoor_shriner_soflo_rename_on_title_gain = {
-	trigger = {
-		scope:title = { this = title:k_soflo }
-	}
-	effect = {
-		if = {
-			limit = {
-				OR = {
-					culture = culture:neomoor
-					faith = faith:shriner
+		else_if = {
+			limit = { scope:title = { this = title:k_soflo } }
+			if = {
+				limit = {
+					OR = {
+						culture = culture:neomoor
+						faith = faith:shriner
+					}
 				}
+				title:k_soflo = { set_title_name = k_soflo_neomoor_shriner }
 			}
-			title:k_soflo = { set_title_name = k_soflo_neomoor_shriner }
+			else = {
+				title:k_soflo = { set_title_name = k_soflo }
+			}
 		}
-		else = {
-			title:k_soflo = { set_title_name = k_soflo }
-		}
-	}
-}
-
-neomoor_shriner_norflo_rename_on_title_gain = {
-	trigger = {
-		scope:title = { this = title:k_norflo }
-	}
-	effect = {
-		if = {
-			limit = {
-				OR = {
-					culture = culture:neomoor
-					faith = faith:shriner
+		else_if = {
+			limit = { scope:title = { this = title:k_norflo } }
+			if = {
+				limit = {
+					OR = {
+						culture = culture:neomoor
+						faith = faith:shriner
+					}
 				}
+				title:k_norflo = { set_title_name = k_norflo_neomoor_shriner }
 			}
-			title:k_norflo = { set_title_name = k_norflo_neomoor_shriner }
+			else = {
+				title:k_norflo = { set_title_name = k_norflo }
+			}
 		}
-		else = {
-			title:k_norflo = { set_title_name = k_norflo }
-		}
-	}
-}
-
-neomoor_shriner_florida_rename_on_title_gain = {
-	trigger = {
-		scope:title = { this = title:k_florida }
-	}
-	effect = {
-		if = {
-			limit = {
-				OR = {
-					culture = culture:neomoor
-					faith = faith:shriner
+		else_if = {
+			limit = { scope:title = { this = title:e_gulf_empire } }
+			if = {
+				limit = {
+					OR = {
+						culture = culture:neomoor
+						faith = faith:shriner
+					}
 				}
+				title:e_gulf_empire = { set_title_name = e_gulf_empire_neomoor }
 			}
-			title:k_florida = { set_title_name = k_florida_agrabah }
-		}
-		else = {
-			title:k_florida = { set_title_name = k_florida }
+			else = {
+				title:e_gulf_empire = { set_title_name = e_gulf_empire }
+			}
 		}
 	}
 }
 
 # Ibrahim the Mad chain — fires for lunatic/possessed/eccentric/deviant/rakish/seducer Shriner emperors
+# Trigger order optimized: cheap checks first, title/spouse iterators last
 ate_ibrahim_obsession_pulse = {
 	trigger = {
 		is_player_character = yes
 		faith = faith:shriner
 		is_male = yes
-		any_held_title = { tier >= tier_empire }
 		OR = {
 			has_trait = lunatic
 			has_trait = possessed
@@ -219,10 +189,11 @@ ate_ibrahim_obsession_pulse = {
 			has_trait = rakish
 			has_trait = seducer
 		}
-		any_spouse = { count < 4 }
 		NOT = { has_character_flag = ate_ibrahim_chain_started }
 		NOT = { has_character_flag = ate_ibrahim_chain_done }
 		NOT = { has_character_flag = ate_ibrahim_refused }
+		any_held_title = { tier >= tier_empire }
+		any_spouse = { count < 4 }
 	}
 	effect = {
 		random = {
@@ -232,4 +203,3 @@ ate_ibrahim_obsession_pulse = {
 		}
 	}
 }
-
