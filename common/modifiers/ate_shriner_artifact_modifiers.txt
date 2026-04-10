@@ -1,0 +1,13 @@
+﻿# Shriner artifact modifiers
+
+ate_shriner_oil_lamp_modifier = {
+	learning = 2
+	monthly_piety = 0.3
+	scheme_resistance_add = 15	# The lamp lets you see in the dark
+}
+
+ate_shriner_lamp_blessing = {
+	icon = learning_positive
+	monthly_piety = 0.1
+	scheme_resistance_add = 2
+}
