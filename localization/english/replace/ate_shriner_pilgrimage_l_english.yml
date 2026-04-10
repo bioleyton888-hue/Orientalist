@@ -28,6 +28,12 @@
  ate_shriner_pilgrimage.0030.a:0 "Lead the way."
  ate_shriner_pilgrimage.0030.b:0 "I know your kind. I will take the long road."
 
+ # Shriner oil lamp artifact
+ artifact_shriner_oil_lamp_name:0 "Lamp of the Zair"
+ artifact_shriner_oil_lamp_desc:0 "A brass oil lamp of extraordinary craft, purchased from an ancient vendor in the Grand Bazaar of Tampa. Its flame burns steady through darkness and storm. Those who carry it find that little escapes their notice — and those who would plot against them find their shadows harder to hide in."
+ ate_shriner_lamp_blessing:0 "Lamp of Tampa"
+ ate_shriner_lamp_blessing_desc:0 "A brass oil lamp purchased in the Grand Bazaar of Tampa during the pilgrimage. A fine piece of craft, but perhaps not the extraordinary object the old vendor implied."
+
  # ate_shriner_pilgrimage.0040 — Lamp merchant
  ate_shriner_pilgrimage.0040.t:0 "A Light in the Bazaar"
  ate_shriner_pilgrimage.0040.desc:0 "An old man with a white beard sits cross-legged at a stall, holding an oil lamp of extraordinary craft — its brass etched with verses you half-recognize from the Alcoran, its flame steady even in the open air. He looks at you the way men look at things they have been waiting a long time to give away.\n\n#italic \"Five hundred years,\"# he says, though you did not ask how long he had been sitting there. #italic \"And only one buyer I had in mind.\"#"
@@ -55,3 +61,27 @@
  ate_shriner_pilgrimage.0101.t:0 "A Zair Returns Home"
  ate_shriner_pilgrimage.0101.desc:0 "You walk back through your own gates a different person than the one who left. Tampa stays with you — in the smell of incense that clings to your clothes, in the weight of the Imperial Potentate's blessing, in the memory of a question from an exile you are still turning over in your mind.\n\nThe faithful look at you differently now. They use a word you have not heard applied to yourself before.\n\nZair. One who has made the sacred journey. You are Zair."
  ate_shriner_pilgrimage.0101.a:0 "I am Zair."
+
+ # ate_shriner_pilgrimage.0070 -- Gator
+ ate_shriner_pilgrimage.0070.t:0 "The Question of the Gator"
+ ate_shriner_pilgrimage.0070.desc:0 "A vendor at the edge of the market holds out a skewer of grilled meat, the smoke rising sweet and dark. #italic \"Alligator,\"# he says. #italic \"Caught in the bay this morning. Halal as any fish of the water.\"#\n\nA nearby scholar looks up from his book. #italic \"He is right. The gator is a beast of the waters — it falls under the permission.\"# An older pilgrim across the street shakes his head slowly, says nothing.\n\nYou are in Tampa. You are on pilgrimage. And you have never eaten gator in your life."
+ ate_shriner_pilgrimage.0070.a:0 "The scholar speaks true. I eat."
+ ate_shriner_pilgrimage.0070.b:0 "Let them settle the question after I am gone. I will fast."
+
+ # ate_shriner_pilgrimage.0080 -- Last Orange
+ ate_shriner_pilgrimage.0080.t:0 "The Last Orange"
+ ate_shriner_pilgrimage.0080.desc:0 "An old woman sits alone at the far edge of the bazaar, behind a table with nothing on it but a single orange — real, round, impossibly orange against the dust of the street. She names a price that would insult a merchant. She does not bargain.\n\n#italic \"Grown from a seed saved before the Fall,\"# she says. #italic \"The last tree died in my grandmother's time. This is the last fruit of the last tree.\"#\n\nYou have seen paintings of oranges. You have never held one."
+ ate_shriner_pilgrimage.0080.a:0 "Name your price."
+ ate_shriner_pilgrimage.0080.b:0 "Some things are better kept as legend."
+
+ # ate_shriner_pilgrimage.0090 -- Gluttony feast
+ ate_shriner_pilgrimage.0090.t:0 "The Endless Table"
+ ate_shriner_pilgrimage.0090.desc:0 "The Shriner lodge on the edge of the market has thrown open its gates for pilgrims. Long tables run the length of the courtyard, loaded with everything the Gulf can offer: smoked mullet, fried plantain, conch fritters, cane-sugar pastries, bowls of spiced rice, a whole roasted pig at the far end — though perhaps you should not look too long at that one.\n\nThe lodge brother who greets you sweeps his arm across the table. #italic \"You have walked far,\"# he says. #italic \"The Prophet never said pilgrims must suffer at the table.\"#\n\nHe is not wrong, technically. He is also grinning a little too wide."
+ ate_shriner_pilgrimage.0090.a:0 "The Prophet never said pilgrims must suffer at the table."
+ ate_shriner_pilgrimage.0090.b:0 "I thank him. I eat what I need and no more."
+
+ # ate_shriner_pilgrimage.0091 -- Wrath
+ ate_shriner_pilgrimage.0091.t:0 "The Man at the Spice Stall"
+ ate_shriner_pilgrimage.0091.desc:0 "He does not address you. He addresses his apprentice, loudly, as you pass.\n\n#italic \"You see this? Tampa. A holy site. Because some men in fezzes said so.\"# He gestures at the mosque rising above the rooftops. #italic \"Six hundred years ago this was a port city with a football team. Now it is Mecca. Because the Potentate — the Potentate, mind you, not the Caliph, not the Imam, the Potentate — sat on a carpet and declared it.\"#\n\nHis apprentice is staring at his feet.\n\n#italic \"They call their god Allah'din,\"# the merchant continues. #italic \"Allah. Din. They named God after a fairy tale and kept a straight face. They have taken the faith of the Prophet — a faith that moved mountains — and dressed it in a costume.\"#\n\nHe finally looks at you. He does not lower his voice."
+ ate_shriner_pilgrimage.0091.a:0 "A faith that survived the Fall is not a costume."
+ ate_shriner_pilgrimage.0091.b:0 "He will answer to Allah'din before I answer to him."

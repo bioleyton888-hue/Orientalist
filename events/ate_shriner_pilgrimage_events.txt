@@ -2,7 +2,7 @@
 
 # ——— Shriner Pilgrimage to Tampa ———
 # Fires via shriner_tampa_arrival_events when a Shriner player arrives at the tampa_shriner holy site.
-# Chain: 0001 (arrival + setup) → 0002 (dispatcher, hidden) → 4 of 6 pool events → 0100 (Imperial Potentate's temple) → 0101 (return)
+# Chain: 0001 (arrival + setup) → 0002 (dispatcher, hidden) → 4 of 10 pool events → 0100 (Imperial Potentate's temple) → 0101 (return)
 
 # ate_shriner_pilgrimage.0001 — The Grand Bazaar of Tampa (arrival)
 ate_shriner_pilgrimage.0001 = {
@@ -27,14 +27,18 @@ ate_shriner_pilgrimage.0001 = {
 			limit = { NOT = { has_trait = pilgrim } }
 			add_trait = pilgrim
 		}
-		# Set all 6 pool flags
+		# Set all 10 pool flags
 		add_character_flag = shriner_pilg_a
 		add_character_flag = shriner_pilg_b
 		add_character_flag = shriner_pilg_c
 		add_character_flag = shriner_pilg_d
 		add_character_flag = shriner_pilg_e
 		add_character_flag = shriner_pilg_f
-		# Remove 2 randomly — first exclusion (uniform from 6)
+		add_character_flag = shriner_pilg_g
+		add_character_flag = shriner_pilg_h
+		add_character_flag = shriner_pilg_i
+		add_character_flag = shriner_pilg_j
+		# Remove 6 randomly to keep 4 events per run
 		random_list = {
 			1 = { remove_character_flag = shriner_pilg_a }
 			1 = { remove_character_flag = shriner_pilg_b }
@@ -42,33 +46,71 @@ ate_shriner_pilgrimage.0001 = {
 			1 = { remove_character_flag = shriner_pilg_d }
 			1 = { remove_character_flag = shriner_pilg_e }
 			1 = { remove_character_flag = shriner_pilg_f }
+			1 = { remove_character_flag = shriner_pilg_g }
+			1 = { remove_character_flag = shriner_pilg_h }
+			1 = { remove_character_flag = shriner_pilg_i }
+			1 = { remove_character_flag = shriner_pilg_j }
 		}
-		# Second exclusion (uniform from remaining 5)
+		# Removals 2-6 (modifier trick excludes already-removed flags)
 		random_list = {
-			1 = {
-				modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_a } }
-				remove_character_flag = shriner_pilg_a
-			}
-			1 = {
-				modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_b } }
-				remove_character_flag = shriner_pilg_b
-			}
-			1 = {
-				modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_c } }
-				remove_character_flag = shriner_pilg_c
-			}
-			1 = {
-				modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_d } }
-				remove_character_flag = shriner_pilg_d
-			}
-			1 = {
-				modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_e } }
-				remove_character_flag = shriner_pilg_e
-			}
-			1 = {
-				modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_f } }
-				remove_character_flag = shriner_pilg_f
-			}
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_a } } remove_character_flag = shriner_pilg_a }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_b } } remove_character_flag = shriner_pilg_b }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_c } } remove_character_flag = shriner_pilg_c }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_d } } remove_character_flag = shriner_pilg_d }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_e } } remove_character_flag = shriner_pilg_e }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_f } } remove_character_flag = shriner_pilg_f }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_g } } remove_character_flag = shriner_pilg_g }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_h } } remove_character_flag = shriner_pilg_h }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_i } } remove_character_flag = shriner_pilg_i }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_j } } remove_character_flag = shriner_pilg_j }
+		}
+		random_list = {
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_a } } remove_character_flag = shriner_pilg_a }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_b } } remove_character_flag = shriner_pilg_b }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_c } } remove_character_flag = shriner_pilg_c }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_d } } remove_character_flag = shriner_pilg_d }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_e } } remove_character_flag = shriner_pilg_e }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_f } } remove_character_flag = shriner_pilg_f }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_g } } remove_character_flag = shriner_pilg_g }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_h } } remove_character_flag = shriner_pilg_h }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_i } } remove_character_flag = shriner_pilg_i }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_j } } remove_character_flag = shriner_pilg_j }
+		}
+		random_list = {
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_a } } remove_character_flag = shriner_pilg_a }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_b } } remove_character_flag = shriner_pilg_b }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_c } } remove_character_flag = shriner_pilg_c }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_d } } remove_character_flag = shriner_pilg_d }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_e } } remove_character_flag = shriner_pilg_e }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_f } } remove_character_flag = shriner_pilg_f }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_g } } remove_character_flag = shriner_pilg_g }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_h } } remove_character_flag = shriner_pilg_h }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_i } } remove_character_flag = shriner_pilg_i }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_j } } remove_character_flag = shriner_pilg_j }
+		}
+		random_list = {
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_a } } remove_character_flag = shriner_pilg_a }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_b } } remove_character_flag = shriner_pilg_b }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_c } } remove_character_flag = shriner_pilg_c }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_d } } remove_character_flag = shriner_pilg_d }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_e } } remove_character_flag = shriner_pilg_e }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_f } } remove_character_flag = shriner_pilg_f }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_g } } remove_character_flag = shriner_pilg_g }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_h } } remove_character_flag = shriner_pilg_h }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_i } } remove_character_flag = shriner_pilg_i }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_j } } remove_character_flag = shriner_pilg_j }
+		}
+		random_list = {
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_a } } remove_character_flag = shriner_pilg_a }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_b } } remove_character_flag = shriner_pilg_b }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_c } } remove_character_flag = shriner_pilg_c }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_d } } remove_character_flag = shriner_pilg_d }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_e } } remove_character_flag = shriner_pilg_e }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_f } } remove_character_flag = shriner_pilg_f }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_g } } remove_character_flag = shriner_pilg_g }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_h } } remove_character_flag = shriner_pilg_h }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_i } } remove_character_flag = shriner_pilg_i }
+			1 = { modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_j } } remove_character_flag = shriner_pilg_j }
 		}
 	}
 
@@ -114,6 +156,26 @@ ate_shriner_pilgrimage.0002 = {
 			limit = { has_character_flag = shriner_pilg_f }
 			remove_character_flag = shriner_pilg_f
 			trigger_event = { id = ate_shriner_pilgrimage.0060 days = 2 }
+		}
+		else_if = {
+			limit = { has_character_flag = shriner_pilg_g }
+			remove_character_flag = shriner_pilg_g
+			trigger_event = { id = ate_shriner_pilgrimage.0070 days = 2 }
+		}
+		else_if = {
+			limit = { has_character_flag = shriner_pilg_h }
+			remove_character_flag = shriner_pilg_h
+			trigger_event = { id = ate_shriner_pilgrimage.0080 days = 2 }
+		}
+		else_if = {
+			limit = { has_character_flag = shriner_pilg_i }
+			remove_character_flag = shriner_pilg_i
+			trigger_event = { id = ate_shriner_pilgrimage.0090 days = 2 }
+		}
+		else_if = {
+			limit = { has_character_flag = shriner_pilg_j }
+			remove_character_flag = shriner_pilg_j
+			trigger_event = { id = ate_shriner_pilgrimage.0091 days = 2 }
 		}
 		else = {
 			trigger_event = { id = ate_shriner_pilgrimage.0100 days = 3 }
@@ -243,16 +305,16 @@ ate_shriner_pilgrimage.0040 = {
 		add_gold = -50
 		add_piety = 75
 		add_prestige = 50
+		random_list = {
+			20 = { create_artifact_oil_lamp_effect = { OWNER = this } }
+			80 = { add_character_modifier = { modifier = ate_shriner_lamp_blessing years = 15 } }
+		}
 		trigger_event = { id = ate_shriner_pilgrimage.0002 days = 2 }
 	}
 	option = {
 		name = ate_shriner_pilgrimage.0040.b
 		add_piety = 50
 		add_trait_xp = { trait = pilgrim value = 20 }
-		if = {
-			limit = { NOT = { has_trait = humble } }
-			add_trait = humble
-		}
 		trigger_event = { id = ate_shriner_pilgrimage.0002 days = 2 }
 	}
 }
@@ -322,6 +384,147 @@ ate_shriner_pilgrimage.0060 = {
 		name = ate_shriner_pilgrimage.0060.b
 		add_piety = 50
 		add_trait_xp = { trait = pilgrim value = 15 }
+		trigger_event = { id = ate_shriner_pilgrimage.0002 days = 2 }
+	}
+}
+
+# ate_shriner_pilgrimage.0070 — Event G: The Question of the Gator
+ate_shriner_pilgrimage.0070 = {
+	type = activity_event
+	title = ate_shriner_pilgrimage.0070.t
+	desc = ate_shriner_pilgrimage.0070.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = personality_curious
+	}
+
+	option = {
+		name = ate_shriner_pilgrimage.0070.a
+		add_prestige = 30
+		add_stress = -25
+		stress_impact = {
+			zealous = minor_stress_impact_gain
+		}
+		trigger_event = { id = ate_shriner_pilgrimage.0002 days = 2 }
+	}
+	option = {
+		name = ate_shriner_pilgrimage.0070.b
+		add_piety = 50
+		add_trait_xp = { trait = pilgrim value = 20 }
+		stress_impact = {
+			zealous = minor_stress_impact_loss
+		}
+		trigger_event = { id = ate_shriner_pilgrimage.0002 days = 2 }
+	}
+}
+
+# ate_shriner_pilgrimage.0080 — Event H: The Last Orange
+ate_shriner_pilgrimage.0080 = {
+	type = activity_event
+	title = ate_shriner_pilgrimage.0080.t
+	desc = ate_shriner_pilgrimage.0080.desc
+	theme = stewardship
+
+	left_portrait = {
+		character = root
+		animation = personality_content
+	}
+
+	option = {
+		name = ate_shriner_pilgrimage.0080.a
+		add_gold = -75
+		random = {
+			chance = 60
+			add_stress = -40
+			add_prestige = 30
+		}
+		trigger_event = { id = ate_shriner_pilgrimage.0002 days = 2 }
+	}
+	option = {
+		name = ate_shriner_pilgrimage.0080.b
+		add_piety = 20
+		add_trait_xp = { trait = pilgrim value = 20 }
+		stress_impact = {
+			temperate = minor_stress_impact_loss
+		}
+		trigger_event = { id = ate_shriner_pilgrimage.0002 days = 2 }
+	}
+}
+
+# ate_shriner_pilgrimage.0090 — Event I: The Endless Table (gluttony)
+ate_shriner_pilgrimage.0090 = {
+	type = activity_event
+	title = ate_shriner_pilgrimage.0090.t
+	desc = ate_shriner_pilgrimage.0090.desc
+	theme = feast_activity
+
+	left_portrait = {
+		character = root
+		animation = personality_content
+	}
+
+	option = {
+		name = ate_shriner_pilgrimage.0090.a
+		add_piety = -40
+		stress_impact = {
+			gluttonous = major_stress_impact_loss
+			comfort_eater = major_stress_impact_loss
+			temperate = medium_stress_impact_gain
+		}
+		trigger_event = { id = ate_shriner_pilgrimage.0002 days = 2 }
+	}
+	option = {
+		name = ate_shriner_pilgrimage.0090.b
+		add_piety = 50
+		add_trait_xp = { trait = pilgrim value = 20 }
+		stress_impact = {
+			temperate = minor_stress_impact_loss
+			zealous = minor_stress_impact_loss
+			gluttonous = minor_stress_impact_gain
+			comfort_eater = minor_stress_impact_gain
+		}
+		trigger_event = { id = ate_shriner_pilgrimage.0002 days = 2 }
+	}
+}
+
+# ate_shriner_pilgrimage.0091 — Event J: The Man at the Spice Stall (wrath)
+ate_shriner_pilgrimage.0091 = {
+	type = activity_event
+	title = ate_shriner_pilgrimage.0091.t
+	desc = ate_shriner_pilgrimage.0091.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+
+	option = {
+		name = ate_shriner_pilgrimage.0091.a
+		add_piety = -50
+		add_prestige = 25
+		stress_impact = {
+			wrathful = major_stress_impact_loss
+			impatient = minor_stress_impact_loss
+			calm = medium_stress_impact_gain
+			patient = medium_stress_impact_gain
+			forgiving = medium_stress_impact_gain
+		}
+		trigger_event = { id = ate_shriner_pilgrimage.0002 days = 2 }
+	}
+	option = {
+		name = ate_shriner_pilgrimage.0091.b
+		add_piety = 50
+		add_trait_xp = { trait = pilgrim value = 20 }
+		stress_impact = {
+			calm = minor_stress_impact_loss
+			patient = minor_stress_impact_loss
+			forgiving = minor_stress_impact_loss
+			wrathful = minor_stress_impact_gain
+			impatient = minor_stress_impact_gain
+		}
 		trigger_event = { id = ate_shriner_pilgrimage.0002 days = 2 }
 	}
 }
