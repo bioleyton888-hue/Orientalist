@@ -1,0 +1,372 @@
+﻿namespace = ate_shriner_pilgrimage
+
+# ——— Shriner Pilgrimage to Tampa ———
+# Fires via shriner_tampa_arrival_events when a Shriner player arrives at the tampa_shriner holy site.
+# Chain: 0001 (arrival + setup) → 0002 (dispatcher, hidden) → 4 of 6 pool events → 0100 (Imperial Potentate's temple) → 0101 (return)
+
+# ate_shriner_pilgrimage.0001 — The Grand Bazaar of Tampa (arrival)
+ate_shriner_pilgrimage.0001 = {
+	type = activity_event
+	title = ate_shriner_pilgrimage.0001.t
+	desc = ate_shriner_pilgrimage.0001.desc
+	theme = faith
+
+	trigger = {
+		is_player_character = yes
+	}
+
+	left_portrait = {
+		character = root
+		animation = personality_zealous
+	}
+
+	immediate = {
+		add_character_flag = in_pilgrimage_event_chain
+		# Grant pilgrim trait if not already one — our chain replaces the vanilla arrival
+		if = {
+			limit = { NOT = { has_trait = pilgrim } }
+			add_trait = pilgrim
+		}
+		# Set all 6 pool flags
+		add_character_flag = shriner_pilg_a
+		add_character_flag = shriner_pilg_b
+		add_character_flag = shriner_pilg_c
+		add_character_flag = shriner_pilg_d
+		add_character_flag = shriner_pilg_e
+		add_character_flag = shriner_pilg_f
+		# Remove 2 randomly — first exclusion (uniform from 6)
+		random_list = {
+			1 = { remove_character_flag = shriner_pilg_a }
+			1 = { remove_character_flag = shriner_pilg_b }
+			1 = { remove_character_flag = shriner_pilg_c }
+			1 = { remove_character_flag = shriner_pilg_d }
+			1 = { remove_character_flag = shriner_pilg_e }
+			1 = { remove_character_flag = shriner_pilg_f }
+		}
+		# Second exclusion (uniform from remaining 5)
+		random_list = {
+			1 = {
+				modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_a } }
+				remove_character_flag = shriner_pilg_a
+			}
+			1 = {
+				modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_b } }
+				remove_character_flag = shriner_pilg_b
+			}
+			1 = {
+				modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_c } }
+				remove_character_flag = shriner_pilg_c
+			}
+			1 = {
+				modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_d } }
+				remove_character_flag = shriner_pilg_d
+			}
+			1 = {
+				modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_e } }
+				remove_character_flag = shriner_pilg_e
+			}
+			1 = {
+				modifier = { add = -1000000 NOT = { has_character_flag = shriner_pilg_f } }
+				remove_character_flag = shriner_pilg_f
+			}
+		}
+	}
+
+	option = {
+		name = ate_shriner_pilgrimage.0001.a
+		trigger_event = { id = ate_shriner_pilgrimage.0002 days = 1 }
+	}
+}
+
+# ate_shriner_pilgrimage.0002 — Dispatcher (hidden)
+# Fires the next available pool event, or proceeds to the temple when pool is exhausted.
+ate_shriner_pilgrimage.0002 = {
+	type = activity_event
+	hidden = yes
+
+	immediate = {
+		if = {
+			limit = { has_character_flag = shriner_pilg_a }
+			remove_character_flag = shriner_pilg_a
+			trigger_event = { id = ate_shriner_pilgrimage.0010 days = 2 }
+		}
+		else_if = {
+			limit = { has_character_flag = shriner_pilg_b }
+			remove_character_flag = shriner_pilg_b
+			trigger_event = { id = ate_shriner_pilgrimage.0020 days = 2 }
+		}
+		else_if = {
+			limit = { has_character_flag = shriner_pilg_c }
+			remove_character_flag = shriner_pilg_c
+			trigger_event = { id = ate_shriner_pilgrimage.0030 days = 2 }
+		}
+		else_if = {
+			limit = { has_character_flag = shriner_pilg_d }
+			remove_character_flag = shriner_pilg_d
+			trigger_event = { id = ate_shriner_pilgrimage.0040 days = 2 }
+		}
+		else_if = {
+			limit = { has_character_flag = shriner_pilg_e }
+			remove_character_flag = shriner_pilg_e
+			trigger_event = { id = ate_shriner_pilgrimage.0050 days = 2 }
+		}
+		else_if = {
+			limit = { has_character_flag = shriner_pilg_f }
+			remove_character_flag = shriner_pilg_f
+			trigger_event = { id = ate_shriner_pilgrimage.0060 days = 2 }
+		}
+		else = {
+			trigger_event = { id = ate_shriner_pilgrimage.0100 days = 3 }
+		}
+	}
+}
+
+# ate_shriner_pilgrimage.0010 — Event A: Eyes Across the Bazaar (temptation)
+ate_shriner_pilgrimage.0010 = {
+	type = activity_event
+	title = ate_shriner_pilgrimage.0010.t
+	desc = ate_shriner_pilgrimage.0010.desc
+	theme = love
+
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+
+	option = {
+		name = ate_shriner_pilgrimage.0010.a
+		add_piety = 50
+		add_trait_xp = { trait = pilgrim value = 20 }
+		stress_impact = {
+			chaste = minor_stress_impact_loss
+			zealous = minor_stress_impact_loss
+		}
+		trigger_event = { id = ate_shriner_pilgrimage.0002 days = 2 }
+	}
+	option = {
+		name = ate_shriner_pilgrimage.0010.b
+		add_piety = -50
+		stress_impact = {
+			lustful = minor_stress_impact_loss
+			chaste = medium_stress_impact_gain
+		}
+		trigger_event = { id = ate_shriner_pilgrimage.0002 days = 2 }
+	}
+}
+
+# ate_shriner_pilgrimage.0020 — Event B: A Man on the Ground (charity)
+ate_shriner_pilgrimage.0020 = {
+	type = activity_event
+	title = ate_shriner_pilgrimage.0020.t
+	desc = ate_shriner_pilgrimage.0020.desc
+	theme = friendly
+
+	left_portrait = {
+		character = root
+		animation = personality_compassionate
+	}
+
+	option = {
+		name = ate_shriner_pilgrimage.0020.a
+		add_gold = -25
+		add_piety = 75
+		add_trait_xp = { trait = pilgrim value = 20 }
+		stress_impact = {
+			compassionate = minor_stress_impact_loss
+			greedy = medium_stress_impact_gain
+		}
+		trigger_event = { id = ate_shriner_pilgrimage.0002 days = 2 }
+	}
+	option = {
+		name = ate_shriner_pilgrimage.0020.b
+		add_piety = -50
+		stress_impact = {
+			compassionate = medium_stress_impact_gain
+			greedy = minor_stress_impact_loss
+		}
+		trigger_event = { id = ate_shriner_pilgrimage.0002 days = 2 }
+	}
+}
+
+# ate_shriner_pilgrimage.0030 — Event C: The Merchant's Promise (shortcut)
+ate_shriner_pilgrimage.0030 = {
+	type = activity_event
+	title = ate_shriner_pilgrimage.0030.t
+	desc = ate_shriner_pilgrimage.0030.desc
+	theme = martial
+
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+
+	option = {
+		name = ate_shriner_pilgrimage.0030.a
+		add_prestige = 50
+		random = {
+			chance = 40
+			add_prestige = -100
+			add_stress = 25
+		}
+		stress_impact = {
+			brave = minor_stress_impact_loss
+			craven = medium_stress_impact_gain
+		}
+		trigger_event = { id = ate_shriner_pilgrimage.0002 days = 2 }
+	}
+	option = {
+		name = ate_shriner_pilgrimage.0030.b
+		add_piety = 25
+		add_trait_xp = { trait = pilgrim value = 20 }
+		stress_impact = {
+			cautious = minor_stress_impact_loss
+			brave = minor_stress_impact_gain
+		}
+		trigger_event = { id = ate_shriner_pilgrimage.0002 days = 2 }
+	}
+}
+
+# ate_shriner_pilgrimage.0040 — Event D: A Light in the Bazaar (lamp merchant)
+ate_shriner_pilgrimage.0040 = {
+	type = activity_event
+	title = ate_shriner_pilgrimage.0040.t
+	desc = ate_shriner_pilgrimage.0040.desc
+	theme = stewardship
+
+	left_portrait = {
+		character = root
+		animation = personality_content
+	}
+
+	option = {
+		name = ate_shriner_pilgrimage.0040.a
+		add_gold = -50
+		add_piety = 75
+		add_prestige = 50
+		trigger_event = { id = ate_shriner_pilgrimage.0002 days = 2 }
+	}
+	option = {
+		name = ate_shriner_pilgrimage.0040.b
+		add_piety = 50
+		add_trait_xp = { trait = pilgrim value = 20 }
+		if = {
+			limit = { NOT = { has_trait = humble } }
+			add_trait = humble
+		}
+		trigger_event = { id = ate_shriner_pilgrimage.0002 days = 2 }
+	}
+}
+
+# ate_shriner_pilgrimage.0050 — Event E: The Serpent's Master (snake charmer)
+ate_shriner_pilgrimage.0050 = {
+	type = activity_event
+	title = ate_shriner_pilgrimage.0050.t
+	desc = ate_shriner_pilgrimage.0050.desc
+	theme = witchcraft
+
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+
+	option = {
+		name = ate_shriner_pilgrimage.0050.a
+		random_list = {
+			50 = {
+				add_piety = 75
+				stress_impact = { brave = minor_stress_impact_loss }
+			}
+			50 = {
+				add_stress = 50
+				add_piety = -25
+			}
+		}
+		trigger_event = { id = ate_shriner_pilgrimage.0002 days = 2 }
+	}
+	option = {
+		name = ate_shriner_pilgrimage.0050.b
+		add_piety = 30
+		add_trait_xp = { trait = pilgrim value = 20 }
+		trigger_event = { id = ate_shriner_pilgrimage.0002 days = 2 }
+	}
+}
+
+# ate_shriner_pilgrimage.0060 — Event F: The Exile's Question (scholar from Chicago)
+ate_shriner_pilgrimage.0060 = {
+	type = activity_event
+	title = ate_shriner_pilgrimage.0060.t
+	desc = ate_shriner_pilgrimage.0060.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = personality_content
+	}
+
+	option = {
+		name = ate_shriner_pilgrimage.0060.a
+		if = {
+			limit = { learning >= 12 }
+			add_piety = 100
+			add_stress = -25
+			add_trait_xp = { trait = pilgrim value = 20 }
+		}
+		else = {
+			add_piety = 25
+			add_stress = 25
+			add_trait_xp = { trait = pilgrim value = 10 }
+		}
+		trigger_event = { id = ate_shriner_pilgrimage.0002 days = 2 }
+	}
+	option = {
+		name = ate_shriner_pilgrimage.0060.b
+		add_piety = 50
+		add_trait_xp = { trait = pilgrim value = 15 }
+		trigger_event = { id = ate_shriner_pilgrimage.0002 days = 2 }
+	}
+}
+
+# ate_shriner_pilgrimage.0100 — The Imperial Potentate's Temple
+ate_shriner_pilgrimage.0100 = {
+	type = activity_event
+	title = ate_shriner_pilgrimage.0100.t
+	desc = ate_shriner_pilgrimage.0100.desc
+	theme = faith
+
+	left_portrait = {
+		character = root
+		animation = personality_zealous
+	}
+
+	option = {
+		name = ate_shriner_pilgrimage.0100.a
+		add_piety = 250
+		add_trait_xp = { trait = pilgrim value = 20 }
+		stress_impact = {
+			base = major_stress_impact_loss
+			zealous = major_stress_impact_loss
+		}
+		trigger_event = { id = ate_shriner_pilgrimage.0101 days = 5 }
+	}
+}
+
+# ate_shriner_pilgrimage.0101 — A Zair Returns Home
+ate_shriner_pilgrimage.0101 = {
+	type = activity_event
+	title = ate_shriner_pilgrimage.0101.t
+	desc = ate_shriner_pilgrimage.0101.desc
+	theme = dynasty
+
+	left_portrait = {
+		character = root
+		animation = personality_content
+	}
+
+	option = {
+		name = ate_shriner_pilgrimage.0101.a
+		add_trait = shriner_zair
+		add_piety = 100
+		add_prestige = 100
+		remove_character_flag = in_pilgrimage_event_chain
+	}
+}

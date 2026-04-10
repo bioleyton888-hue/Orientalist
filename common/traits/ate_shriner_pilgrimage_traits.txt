@@ -1,0 +1,13 @@
+﻿shriner_zair = {
+	index = 1013
+	icon = hajjaj.dds
+
+	category = fame
+
+	inherit_chance = 0
+	birth = 0
+	random_creation = 0
+
+	monthly_piety = 0.3
+	same_faith_opinion = 10
+}
