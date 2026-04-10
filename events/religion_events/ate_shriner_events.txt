@@ -102,3 +102,307 @@ ate_shriner.0001 = {
 		name = ate_shriner.0001.a
 	}
 }
+
+########################################
+# Ibrahim the Mad chain — ate_shriner.0005-0008
+# Random event chain for lunatic/possessed/eccentric/deviant/rakish/seducer Shriner emperors
+# Inspired by Ottoman Sultan Ibrahim I's obsession with obese women
+# Decadent chain — no prestige/piety rewards, only stress relief and scandal
+########################################
+
+# 0005 — The Sultan's Fancy
+# Intro event — trait-specific description, 5-year cooldown on refusal
+ate_shriner.0005 = {
+	type = character_event
+	title = ate_shriner.0005.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { has_trait = lunatic }
+				desc = ate_shriner.0005.desc.lunatic
+			}
+			triggered_desc = {
+				trigger = { has_trait = possessed }
+				desc = ate_shriner.0005.desc.possessed
+			}
+			triggered_desc = {
+				trigger = { has_trait = deviant }
+				desc = ate_shriner.0005.desc.deviant
+			}
+			triggered_desc = {
+				trigger = {
+					OR = {
+						has_trait = rakish
+						has_trait = seducer
+					}
+				}
+				desc = ate_shriner.0005.desc.rakish_seducer
+			}
+			desc = ate_shriner.0005.desc.eccentric
+		}
+	}
+	theme = feast_activity
+	left_portrait = {
+		character = root
+		animation = joy
+	}
+
+	option = {
+		name = ate_shriner.0005.a
+		trigger_event = {
+			id = ate_shriner.0006
+			days = { 180 365 }
+		}
+	}
+	option = {
+		name = ate_shriner.0005.b
+		add_stress = 25
+		remove_character_flag = ate_ibrahim_chain_started
+		add_character_flag = {
+			flag = ate_ibrahim_refused
+			years = 5
+		}
+	}
+}
+
+# 0006 — The Agents Return
+# Creates Sukkar, player can bring her to court or send her away
+ate_shriner.0006 = {
+	type = character_event
+	title = ate_shriner.0006.t
+	desc = ate_shriner.0006.desc
+	theme = feast_activity
+
+	trigger = {
+		NOT = { has_character_flag = ate_ibrahim_chain_done }
+	}
+
+	immediate = {
+		create_character = {
+			name = "Sukkar"
+			culture = root
+			faith = faith:shriner
+			gender = female
+			age = { 25 40 }
+			trait = gluttonous
+			trait = comfort_eater
+			trait = physique_bad_3
+			trait = gregarious
+			trait = content
+			employer = root
+			save_scope_as = sukkar
+		}
+		set_variable = {
+			name = sukkar
+			value = scope:sukkar
+		}
+		scope:sukkar = {
+			add_character_modifier = {
+				modifier = obese_modifier
+				years = -1
+			}
+		}
+	}
+
+	left_portrait = {
+		character = root
+		animation = personality_content
+	}
+	right_portrait = {
+		character = scope:sukkar
+		animation = happiness
+	}
+
+	option = {
+		name = ate_shriner.0006.a
+		trigger_event = {
+			id = ate_shriner.0007
+			days = 30
+		}
+	}
+	option = {
+		name = ate_shriner.0006.b
+		scope:sukkar = { move_to_pool = yes }
+		remove_variable = sukkar
+		remove_character_flag = ate_ibrahim_chain_started
+		add_character_flag = ate_ibrahim_chain_done
+		add_stress = 15
+	}
+}
+
+# 0007 — Sugar Cube
+# The meeting — marry, marry and grant a county, or keep as courtier
+ate_shriner.0007 = {
+	type = character_event
+	title = ate_shriner.0007.t
+	desc = ate_shriner.0007.desc
+	theme = feast_activity
+
+	trigger = {
+		exists = var:sukkar
+		var:sukkar = { is_alive = yes }
+	}
+
+	immediate = {
+		var:sukkar = { save_scope_as = sukkar }
+	}
+
+	left_portrait = {
+		character = root
+		animation = joy
+	}
+	right_portrait = {
+		character = scope:sukkar
+		animation = flirtation
+	}
+
+	# Option A — marry only
+	option = {
+		name = ate_shriner.0007.a
+		trigger = {
+			any_spouse = { count < 4 }
+		}
+		if = {
+			limit = { is_betrothed = yes }
+			break_betrothal = betrothed
+		}
+		marry = scope:sukkar
+		trigger_event = {
+			id = ate_shriner.0008
+			days = 30
+		}
+	}
+	# Option C — marry and grant a county
+	option = {
+		name = ate_shriner.0007.c
+		trigger = {
+			any_spouse = { count < 4 }
+			any_held_title = { tier = tier_county }
+		}
+		if = {
+			limit = { is_betrothed = yes }
+			break_betrothal = betrothed
+		}
+		marry = scope:sukkar
+		random_held_title = {
+			limit = {
+				tier = tier_county
+				holder = root
+			}
+			save_scope_as = sukkar_county
+		}
+		if = {
+			limit = { exists = scope:sukkar_county }
+			create_title_and_vassal_change = {
+				type = granted
+				save_scope_as = title_change
+				add_claim_on_loss = no
+			}
+			scope:sukkar_county = {
+				change_title_holder = {
+					holder = scope:sukkar
+					change = scope:title_change
+				}
+			}
+			resolve_title_and_vassal_change = scope:title_change
+			scope:sukkar = { add_trait = peasant_leader }
+		}
+		trigger_event = {
+			id = ate_shriner.0008
+			days = 30
+		}
+	}
+	# Option B — keep as courtier
+	option = {
+		name = ate_shriner.0007.b
+		add_prestige = 100
+		remove_variable = sukkar
+		add_character_flag = ate_ibrahim_chain_done
+	}
+}
+
+# 0008 — A Sultan's Beloved
+# Court reaction — chain end
+# Decadent moment: no prestige/piety rewards, only stress relief from indulging
+# Negative prestige reflects the scandal
+# Option C for wrathful/sadistic/arbitrary/vengeful: silence the court by force
+ate_shriner.0008 = {
+	type = character_event
+	title = ate_shriner.0008.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					exists = var:sukkar
+					var:sukkar = { any_held_title = { tier >= tier_county } }
+				}
+				desc = ate_shriner.0008.desc.countess
+			}
+			desc = ate_shriner.0008.desc
+		}
+	}
+	theme = feast_activity
+
+	trigger = {
+		exists = var:sukkar
+		var:sukkar = { is_alive = yes }
+	}
+
+	immediate = {
+		var:sukkar = { save_scope_as = sukkar }
+	}
+
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+	right_portrait = {
+		character = scope:sukkar
+		animation = happiness
+	}
+
+	# Bold — fully embrace the scandal, stress relief is the reward
+	option = {
+		name = ate_shriner.0008.a
+		add_stress = -50
+		add_prestige = -100
+		remove_variable = sukkar
+		add_character_flag = ate_ibrahim_chain_done
+	}
+	# Discreet — smaller scandal, smaller relief
+	option = {
+		name = ate_shriner.0008.b
+		add_stress = -20
+		add_prestige = -50
+		remove_variable = sukkar
+		add_character_flag = ate_ibrahim_chain_done
+	}
+	# Violent — silence the court by making an example
+	option = {
+		name = ate_shriner.0008.c
+		trigger = {
+			OR = {
+				has_trait = wrathful
+				has_trait = sadistic
+				has_trait = arbitrary
+				has_trait = vengeful
+			}
+		}
+		random_courtier = {
+			limit = {
+				is_courtier_of = root
+				NOT = { this = scope:sukkar }
+			}
+			save_scope_as = scapegoat
+			death = {
+				death_reason = death_execution
+				killer = root
+			}
+		}
+		add_dread = 25
+		add_stress = -70
+		add_prestige = -200
+		remove_variable = sukkar
+		add_character_flag = ate_ibrahim_chain_done
+	}
+}
