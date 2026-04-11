@@ -55,7 +55,6 @@ nelson_parade_check = {
 
 badroulbadour_chain_check = {
 	trigger = {
-		is_player_character = yes
 		faith = faith:shriner
 		is_adult = yes
 		is_landed = yes
@@ -178,7 +177,6 @@ neomoor_shriner_title_gain_handler = {
 # Trigger order optimized: cheap checks first, title/spouse iterators last
 ate_ibrahim_obsession_pulse = {
 	trigger = {
-		is_player_character = yes
 		faith = faith:shriner
 		is_male = yes
 		OR = {

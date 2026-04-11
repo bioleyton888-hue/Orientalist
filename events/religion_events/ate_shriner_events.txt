@@ -142,6 +142,7 @@ ate_shriner.0005 = {
 		}
 	}
 	theme = feast_activity
+	trigger = { is_player_character = yes }
 	left_portrait = {
 		character = root
 		animation = joy
