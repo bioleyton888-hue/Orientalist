@@ -550,6 +550,18 @@ ate_shriner.0010 = {
 		add_piety = -50
 		add_prestige = -75
 	}
+
+	# Woodstock recipe — trait-locked for hashishiyah
+	option = {
+		name = ate_shriner.0010.f
+		trigger = {
+			has_trait = hashishiyah
+		}
+		add_stress = -50
+		add_gold = -20
+		add_piety = -25
+		add_prestige = 50
+	}
 }
 
 ########################################
