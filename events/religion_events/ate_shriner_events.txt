@@ -407,3 +407,48 @@ ate_shriner.0008 = {
 		add_character_flag = ate_ibrahim_chain_done
 	}
 }
+
+########################################
+# ate_shriner.0009 — A Lamp in the Bazaar
+# Simple yearly random event for Shriner rulers
+########################################
+ate_shriner.0009 = {
+	type = character_event
+	title = ate_shriner.0009.t
+	desc = ate_shriner.0009.desc
+	theme = faith
+
+	trigger = { is_player_character = yes }
+
+	left_portrait = {
+		character = root
+		animation = personality_curious
+	}
+
+	# Present at the Lodge — the devout response
+	option = {
+		name = ate_shriner.0009.a
+		add_piety = 50
+		add_gold = -15
+	}
+
+	# Buy it yourself — if there is a genie inside, you want to be holding it
+	option = {
+		name = ate_shriner.0009.b
+		add_prestige = 50
+		add_gold = -25
+	}
+
+	# Drive him out — trait-locked for cynical/arbitrary rulers
+	option = {
+		name = ate_shriner.0009.c
+		trigger = {
+			OR = {
+				has_trait = cynical
+				has_trait = arbitrary
+			}
+		}
+		add_stress = -20
+		add_piety = -25
+	}
+}

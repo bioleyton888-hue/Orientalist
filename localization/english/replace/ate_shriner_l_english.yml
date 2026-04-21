@@ -1,5 +1,10 @@
 ﻿l_english:
 
+ # Mawlid al-Fez trait
+ mawlid_al_fez:0 "Mawlid al-Fez"
+ trait_mawlid_al_fez_desc:0 "This character was born while their parent held the title of Imperial Potentate, the sacred head of the Shriner faith."
+ trait_mawlid_al_fez_character_desc:0 "[ROOT.GetCharacter.GetTitledFirstNameNoTooltip] was born to the Imperial Potentate and carries the blessing of the Shrine from birth."
+
  # Ya-Shamal nickname
  nick_ya_shamal:0 "Ya-Shamal"
  nick_ya_shamal_desc:0 "This character is revered as a champion of the Shriner faith and the greater Islamic world for fulfilling the prophesized reconquest of Chicago and ending the persecution of the Muslims therein."
@@ -122,3 +127,10 @@
  ate_shriner.0008.a:0 "Let them say what they will. She has my full favor."
  ate_shriner.0008.b:0 "I will be... somewhat more discreet about this."
  ate_shriner.0008.c:0 "Freedom of speech you have — but freedom after speech, that I cannot guarantee."
+
+ # ate_shriner.0009 — A Lamp in the Bazaar
+ ate_shriner.0009.t:0 "A Lamp in the Bazaar"
+ ate_shriner.0009.desc:0 "A merchant has appeared in the Tampa bazaar, drawing crowds from every corner of the city. In his hands — wrapped in silk, as though the cloth itself might burst into flame — he holds a battered copper lamp. He claims to have found it in the ruins of a great northern city, half-buried beneath rubble that has not been touched in a generation. He is rubbing it. Nothing is happening. But the crowd watches with the intensity of the devout, and more join by the minute."
+ ate_shriner.0009.a:0 "Have the Lodge examine it. If a genie dwells within, let the faithful be the first to know."
+ ate_shriner.0009.b:0 "Buy it. If a genie dwells within, I will be the one to ask the wish."
+ ate_shriner.0009.c:0 "Drive him from the city. We already have enough charlatans here."

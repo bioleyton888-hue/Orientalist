@@ -1,7 +1,19 @@
-﻿# On birth: grant Ya-Shamal Descendant trait to children of Ya-Shamal holders
+﻿# On birth: grant Ya-Shamal Descendant and Mawlid al-Fez traits
 on_birth_child = {
 	events = {
 		ate_shriner.0002
+	}
+	effect = {
+		if = {
+			limit = {
+				OR = {
+					scope:father ?= { has_title = title:d_shriner }
+					scope:mother ?= { has_title = title:d_shriner }
+				}
+				NOT = { has_trait = mawlid_al_fez }
+			}
+			add_trait = mawlid_al_fez
+		}
 	}
 }
 
@@ -32,6 +44,7 @@ yearly_playable_pulse = {
 		nelson_parade_check
 		badroulbadour_chain_check
 		ate_ibrahim_obsession_pulse
+		ate_shriner_lamp_pulse
 	}
 }
 
@@ -156,6 +169,81 @@ neomoor_shriner_title_gain_handler = {
 			}
 		}
 		else_if = {
+			limit = { scope:title = { this = title:k_west_florida } }
+			if = {
+				limit = {
+					OR = {
+						culture = culture:neomoor
+						faith = faith:shriner
+					}
+				}
+				title:k_west_florida = { set_title_name = k_west_florida_neomoor_shriner }
+			}
+			else = {
+				title:k_west_florida = { set_title_name = k_west_florida }
+			}
+		}
+		else_if = {
+			limit = { scope:title = { this = title:k_georgia } }
+			if = {
+				limit = {
+					OR = {
+						culture = culture:neomoor
+						faith = faith:shriner
+					}
+				}
+				title:k_georgia = { set_title_name = k_georgia_neomoor_shriner }
+			}
+			else = {
+				title:k_georgia = { set_title_name = k_georgia }
+			}
+		}
+		else_if = {
+			limit = { scope:title = { this = title:k_tarheel } }
+			if = {
+				limit = {
+					OR = {
+						culture = culture:neomoor
+						faith = faith:shriner
+					}
+				}
+				title:k_tarheel = { set_title_name = k_tarheel_neomoor_shriner }
+			}
+			else = {
+				title:k_tarheel = { set_title_name = k_tarheel }
+			}
+		}
+		else_if = {
+			limit = { scope:title = { this = title:k_gotham } }
+			if = {
+				limit = {
+					OR = {
+						culture = culture:neomoor
+						faith = faith:shriner
+					}
+				}
+				title:k_gotham = { set_title_name = k_gotham_neomoor_shriner }
+			}
+			else = {
+				title:k_gotham = { set_title_name = k_gotham }
+			}
+		}
+		else_if = {
+			limit = { scope:title = { this = title:k_chicagoland } }
+			if = {
+				limit = {
+					OR = {
+						culture = culture:neomoor
+						faith = faith:shriner
+					}
+				}
+				title:k_chicagoland = { set_title_name = k_chicagoland_neomoor_shriner }
+			}
+			else = {
+				title:k_chicagoland = { set_title_name = k_chicagoland }
+			}
+		}
+		else_if = {
 			limit = { scope:title = { this = title:e_gulf_empire } }
 			if = {
 				limit = {
@@ -198,6 +286,26 @@ ate_ibrahim_obsession_pulse = {
 			chance = 10
 			add_character_flag = ate_ibrahim_chain_started
 			trigger_event = { id = ate_shriner.0005 }
+		}
+	}
+}
+
+# Lamp in the Bazaar — random flavor event for Shriner rulers, 10-year cooldown
+ate_shriner_lamp_pulse = {
+	trigger = {
+		faith = faith:shriner
+		is_adult = yes
+		is_landed = yes
+		NOT = { has_character_flag = ate_lamp_cooldown }
+	}
+	effect = {
+		random = {
+			chance = 15
+			add_character_flag = {
+				flag = ate_lamp_cooldown
+				years = 10
+			}
+			trigger_event = { id = ate_shriner.0009 }
 		}
 	}
 }
