@@ -45,6 +45,9 @@ yearly_playable_pulse = {
 		badroulbadour_chain_check
 		ate_ibrahim_obsession_pulse
 		ate_shriner_lamp_pulse
+		ate_shriner_breakfast_pulse
+		ate_shriner_cafecito_pulse
+		ate_shriner_mummy_pulse
 	}
 }
 
@@ -286,6 +289,73 @@ ate_ibrahim_obsession_pulse = {
 			chance = 10
 			add_character_flag = ate_ibrahim_chain_started
 			trigger_event = { id = ate_shriner.0005 }
+		}
+	}
+}
+
+# Sacred Breakfast — annual charity event, 5-year cooldown
+ate_shriner_breakfast_pulse = {
+	trigger = {
+		faith = faith:shriner
+		is_adult = yes
+		is_landed = yes
+		NOT = { has_character_flag = ate_breakfast_cooldown }
+	}
+	effect = {
+		random = {
+			chance = 30
+			add_character_flag = {
+				flag = ate_breakfast_cooldown
+				years = 5
+			}
+			trigger_event = { id = ate_shriner.0010 }
+		}
+	}
+}
+
+# Cafecito — Sofloano/Cubano courtier coffee ceremony, 3-year cooldown
+ate_shriner_cafecito_pulse = {
+	trigger = {
+		faith = faith:shriner
+		is_adult = yes
+		is_landed = yes
+		NOT = { has_character_flag = ate_cafecito_cooldown }
+		any_courtier = {
+			OR = {
+				culture = culture:sofloano
+				culture = culture:cubano
+			}
+		}
+	}
+	effect = {
+		random = {
+			chance = 25
+			add_character_flag = {
+				flag = ate_cafecito_cooldown
+				years = 3
+			}
+			trigger_event = { id = ate_shriner.0011 }
+		}
+	}
+}
+
+# Mummy on the Loose — yearly event, 8-year cooldown
+ate_shriner_mummy_pulse = {
+	trigger = {
+		faith = faith:shriner
+		is_adult = yes
+		is_landed = yes
+		NOT = { has_character_flag = ate_mummy_cooldown }
+		any_held_title = { tier >= tier_county }
+	}
+	effect = {
+		random = {
+			chance = 15
+			add_character_flag = {
+				flag = ate_mummy_cooldown
+				years = 8
+			}
+			trigger_event = { id = ate_shriner.0012 }
 		}
 	}
 }

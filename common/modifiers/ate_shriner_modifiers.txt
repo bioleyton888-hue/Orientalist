@@ -1,0 +1,45 @@
+﻿ate_nelson_parade_elephant = {
+	icon = prowess_positive
+	prowess = 10
+}
+
+ate_ramses_terror_modifier = {
+	county_opinion_add = -20
+	development_growth_factor = -0.3
+	tax_mult = -0.15
+}
+
+ate_pharaoh_curse_modifier = {
+	health = -0.5
+	dread_baseline_add = 2
+}
+
+ate_pharaoh_blessing_modifier = {
+	monthly_income = 0.2
+}
+
+ate_leper_patron_modifier = {
+	vassal_opinion = 10
+	monthly_piety_gain = 0.1
+}
+
+ate_mummylord_modifier = {
+	dread_baseline_add = 10
+	health = 0.25
+	popular_opinion = 10
+	vassal_opinion = -5
+	martial = 2
+	prowess = 2
+}
+
+ate_shriner_oil_lamp_modifier = {
+	learning = 2
+	monthly_piety = 0.3
+	scheme_resistance = 15
+}
+
+ate_shriner_lamp_blessing = {
+	icon = learning_positive
+	monthly_piety = 0.1
+	scheme_resistance = 2
+}

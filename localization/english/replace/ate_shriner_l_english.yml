@@ -128,6 +128,67 @@
  ate_shriner.0008.b:0 "I will be... somewhat more discreet about this."
  ate_shriner.0008.c:0 "Freedom of speech you have — but freedom after speech, that I cannot guarantee."
 
+ # ate_shriner.0010 — The Sacred Breakfast
+ ate_shriner.0010.t:0 "The Sacred Breakfast"
+ ate_shriner.0010.desc:0 "Every year, on the morning of the Feast of the Lodge, the Shriners throw open the doors of the temple and feed anyone who comes. The poor, the curious, the devout, and the merely hungry — all are welcome. The recipe is ancient and unchanged: batter, griddle, heat. The ceremony that surrounds it is not.\n\nThe Imperial Potentate has sent word. The faithful are expected to do their part. The griddles are hot. The line stretches around the block."
+ ate_shriner.0010.a:0 "Spare no expense. Every soul in my lands eats today."
+ ate_shriner.0010.b:0 "A modest table is still a table. Prepare what we can."
+ ate_shriner.0010.c:0 "Let the Lodge find another patron this year."
+ ate_shriner.0010.d:0 "Maple syrup for everybody. ...Yes, that is how syrup tastes. Do not question it."
+ ate_shriner.0010.e:0 "Maple syrup for everybody. I have made a personal contribution to the recipe. Very personal."
+
+ # ate_shriner.0011 — The Cafecito
+ ate_shriner.0011.t:0 "The Cafecito"
+ ate_shriner.0011.desc:0 "[barista.GetFirstNameNoTooltip] arrives before dawn with a tray bearing two cups the size of thimbles and a steel pot so small it seems impractical for any serious purpose. The coffee inside is black and impossibly thick — the old Sofloano way, brewed low and slow and beaten into something closer to mud than drink.\n\n[barista.GetFirstNameNoTooltip] sets the cups down with both hands, the formal two-handed gesture of the Lodge, murmurs a blessing in the old tongue, and waits. The room smells of cardamom and dark roast. Neither of you speaks. Two worlds in one cup."
+ ate_shriner.0011.a:0 "I drink it as it was made. Both traditions honor the same God."
+ ate_shriner.0011.b:0 "The ceremony must be correct. I show [barista.GetFirstNameNoTooltip] the proper form."
+ ate_shriner.0011.c:0 "Pour me another cup. I want to know what [barista.GetFirstNameNoTooltip] knows."
+ ate_shriner.0011.d:0 "Say, you know we are the original inventors of coffee, do you?"
+ ate_coffee_lecture_opinion:0 "Insufferable Coffee Lecture"
+
+ # ate_shriner.0012-0014 — A Mummy on the Loose
+ ate_shriner.0012.t:0 "A Mummy on the Loose"
+ ate_shriner.0012.desc:0 "Reports have reached your court from the countryside — the kind that travel fast, carried by men who trip over their own feet in the telling. A mummy, they say. Walking. Moving through the fields at night and leaving nothing but panic in its wake. Your priests are divided on whether this is a miracle, a curse, or the work of Yakub. Your soldiers are divided on nothing: they are simply frightened."
+ ate_shriner.0012.a:0 "Ready my horse. I will handle this personally."
+ ate_shriner.0012.b:0 "Let the countryside tell its stories. I have a realm to run."
+
+ ate_shriner.0013.t:0 "Not a Mummy"
+ ate_shriner.0013.desc:0 "Your soldiers found him. An old man — wrapped head to toe in dirty linen, flesh bearing the long marks of illness, living alone in a cave at the edge of your county. He does not speak much. He does not threaten anyone. He is barely mobile.\n\nThe peasants have not changed their minds. The soldiers are not entirely sure theirs have changed either. They are all waiting for you to tell them what they found.\n\nYou are not certain you want to."
+ ate_shriner.0013.a:0 "This man is not a mummy. Bring him to court. The Lodge feeds those it cannot heal."
+ ate_shriner.0013.b:0 "This man is not a mummy. Give him medicine and supplies. Leave him in peace."
+ ate_shriner.0013.c:0 "This man is not a mummy. Send him away. This cannot happen again."
+ ate_shriner.0013.d:0 "A man who has survived this long alone is worth having. Come."
+ ate_shriner.0013.e:0 "Say nothing. Sit with him a while. He already knows."
+ ate_shriner.0013.f:0 "No mummy. No problem."
+ ate_shriner.0013.g:0 "Ancient one. I know what you are. Teach me."
+
+ ate_shriner.0014.t:0 "Ramses"
+ ate_shriner.0014.desc:0 "The trail leads to a cemetery at the edge of the county. The fog sits low and dense between the headstones, the kind that swallows sound. Your retinue slows. The horses do not want to go further.\n\nThen he steps out of it.\n\nHe is wrapped head to toe in ceremonial linen, layered over armor, deliberate as a coronation robe. His flesh bears the long marks of a life spent at the edge of death. He carries himself like a man who has already died once and found it beneath him. He stops ten paces from you, and the fog stirs.\n\nThey rise from the ground around you — or seem to. His followers, emerging from between the graves, from behind the stones, from the mist itself. Lepers, every one of them. Cast out from every village, every court, every home that turned them away. Dozens. Perhaps more. You cannot see where the fog ends and the army begins.\n\nThe silence holds for a single breath.\n\nThen he #italic speaks#!.\n\nHis voice carries across the entire cemetery — not to you, to #italic everyone#!, to the fog and the graves and the army rising from them. He declares that his name is Ramses. That he has died and been reborn. That the age of Pharaohs has returned to these lands and that its throne belongs to him by divine right. He is not addressing you so much as #italic announcing#! himself — to the world, to the dead, to God himself if God is listening. His arms are raised. His followers answer with a sound that is half cheer, half wail.\n\nThen his eyes find yours. He points.\n\nYou do not have time to think."
+ ate_shriner.0014.a:0 "Chaaaaaaaaarge."
+ ate_shriner.0014.b:0 "He is giving you a grave to die in. I am offering you a place to live. The Lodge will take you in. Every last one of you. Put down your arms."
+ ate_shriner.0014.c:0 "ENOUGH. You want conquest? I will give you a real war. Real armies. Real tribute. Not farmers in a ditch. Follow me and you will have it."
+ ate_shriner.0014.d:0 "Archers. Fire."
+ ate_shriner.0014.e:0 "THE DEAD WALK AMONG US. RUN, YOU FOOLS."
+ ate_shriner.0014.f:0 "Pharaoh. Fine. A tenth of whatever tribute you collect comes to my treasury, and you will rule uninterrupted. Forever. Whatever. We understand each other."
+ ate_shriner.0014.g:0 "You are a fool if you think the [Root.GetPrimaryTitle.GetNameNoTooltip] and lord of these lands would come with just an exploration retinue. You are surrounded. Surrender or suffer."
+ ate_shriner.0014.h:0 "You are dying and you know it. So are they. I have read the same scriptures you have — there is a genie that can cure what you carry. Come with me. Bring them all."
+ ate_shriner.0014.i:0 "Fellow people — this man is a farce. I am the real Ramses, by right of birth. Dispose of this charlatan and let me bring you to glory."
+
+ ate_ramses_terror_modifier:0 "Ramses' Terror"
+ ate_ramses_terror_modifier_desc:0 "The self-declared Pharaoh's army has moved through these lands, and the people have not forgotten. Fear keeps the harvest low and the purse closed."
+ ate_ramses_tolerated_opinion:0 "Lord Tolerates the Mummy"
+ ate_pharaoh_curse_modifier:0 "Pharaoh's Curse"
+ ate_pharaoh_curse_modifier_desc:0 "To defy the Pharaoh is to court something ancient and unpleasant. The ailments that follow feel less like illness and more like a promise."
+ ate_pharaoh_blessing_modifier:0 "Pharaoh's Blessing"
+ ate_pharaoh_blessing_modifier_desc:0 "The Pharaoh's favor is worth something — at least in coin. The trade routes that cross his domain do so at his pleasure."
+ ate_leper_patron_modifier:0 "Patron of the Afflicted"
+ ate_leper_patron_modifier_desc:0 "The Lodge does not turn away the sick, and neither does this ruler. The people remember."
+ ate_mummylord_modifier:0 "Mummylord"
+ ate_mummylord_modifier_desc:0 "Followed by a retinue of lepper bodyguards this lord is both feared and loved by his people"
+
+ ate_shriner_oil_lamp_modifier:0 "Lamp of the Shrine"
+ ate_shriner_oil_lamp_modifier_desc:0 "The lamp asks nothing and reveals everything. A genie's gift, held and never squandered."
+
  # ate_shriner.0009 — A Lamp in the Bazaar
  ate_shriner.0009.t:0 "A Lamp in the Bazaar"
  ate_shriner.0009.desc:0 "A merchant has appeared in the Tampa bazaar, drawing crowds from every corner of the city. In his hands — wrapped in silk, as though the cloth itself might burst into flame — he holds a battered copper lamp. He claims to have found it in the ruins of a great northern city, half-buried beneath rubble that has not been touched in a generation. He is rubbing it. Nothing is happening. But the crowd watches with the intensity of the devout, and more join by the minute."
