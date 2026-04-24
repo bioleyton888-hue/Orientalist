@@ -1,5 +1,7 @@
 ﻿l_english:
 
+ 
+ ate_ramses_mummies_name:0 "Ramses' Mummies"
  # Mawlid al-Fez trait
  mawlid_al_fez:0 "Mawlid al-Fez"
  trait_mawlid_al_fez_desc:0 "This character was born while their parent held the title of Imperial Potentate, the sacred head of the Shriner faith."
@@ -102,28 +104,28 @@
 
 # Ibrahim the Mad chain — ate_shriner.0005-0008
  ate_shriner.0005.t:0 "A Sultan's Fancy"
- ate_shriner.0005.desc.lunatic:0 "[Root.GetFirstName] has been visited by a peculiar vision. He dreams of a great moon-woman — vast as the tides, warm as fresh bread, impossibly magnificent in her enormity. The voice of the Shrine rings clear: #italic seek her, and you shall know peace.#!"
- ate_shriner.0005.desc.possessed:0 "The djinn speaks again tonight, its voice curling through the palace corridors like incense smoke. #italic Find her,#! it hisses. #italic She exists, Sultan — vast and glorious, the largest woman in all the world. She is your destiny.#! [Root.GetFirstName] does not know if this is madness or prophecy."
- ate_shriner.0005.desc.deviant:0 "[Root.GetFirstName] has always known his tastes run... unconventional. The court pretends not to notice. But this latest fixation feels different — a conviction, deep and unshakeable, that the most magnificent woman in the world exists somewhere in this empire, and that she is very, very large. The search will begin at once."
- ate_shriner.0005.desc.rakish_seducer:0 "[Root.GetFirstName] has sampled widely, as his reputation confirms. But lately a peculiar preference has taken hold — away from the willowy and the delicate, toward something altogether more substantial. The largest woman in the empire, he has decided, would be the greatest conquest of his life. The agents must be dispatched immediately."
- ate_shriner.0005.desc.eccentric:0 "[Root.GetFirstName] has had, he freely admits, an unusual idea. He has seen cattle at market and horses at the fair, and has come to the firm conclusion that grandeur of form is the highest beauty. The search for the most magnificent woman in the empire must begin immediately."
+ ate_shriner.0005.desc.lunatic:0 "[Root.GetFirstNameNoTooltip] has been visited by a peculiar vision. He dreams of a great moon-woman — vast as the tides, warm as fresh bread, impossibly magnificent in her enormity. The voice of the Shrine rings clear: #italic seek her, and you shall know peace.#!"
+ ate_shriner.0005.desc.possessed:0 "The djinn speaks again tonight, its voice curling through the palace corridors like incense smoke. #italic Find her,#! it hisses. #italic She exists, Sultan — vast and glorious, the largest woman in all the world. She is your destiny.#! [Root.GetFirstNameNoTooltip] does not know if this is madness or prophecy."
+ ate_shriner.0005.desc.deviant:0 "[Root.GetFirstNameNoTooltip] has always known his tastes run... unconventional. The court pretends not to notice. But this latest fixation feels different — a conviction, deep and unshakeable, that the most magnificent woman in the world exists somewhere in this empire, and that she is very, very large. The search will begin at once."
+ ate_shriner.0005.desc.rakish_seducer:0 "[Root.GetFirstNameNoTooltip] has sampled widely, as his reputation confirms. But lately a peculiar preference has taken hold — away from the willowy and the delicate, toward something altogether more substantial. The largest woman in the empire, he has decided, would be the greatest conquest of his life. The agents must be dispatched immediately."
+ ate_shriner.0005.desc.eccentric:0 "[Root.GetFirstNameNoTooltip] has had, he freely admits, an unusual idea. He has seen cattle at market and horses at the fair, and has come to the firm conclusion that grandeur of form is the highest beauty. The search for the most magnificent woman in the empire must begin immediately."
  ate_shriner.0005.a:0 "Dispatch agents across the empire at once!"
  ate_shriner.0005.b:0 "I shall master these thoughts... for now."
 
  ate_shriner.0006.t:0 "The Agents Return"
- ate_shriner.0006.desc:0 "After months of searching, the agents return. They enter the throne room with care, followed by their remarkable find — a woman of extraordinary proportions, moving with the unhurried dignity of someone who has never once needed to hurry.\n\n#italic Her name is [sukkar.GetFirstName], my lord,#! announces the chief agent, barely concealing his bewilderment. #italic She comes from your own lands and is Shrine-faithful. She is... exactly as you requested.#!"
+ ate_shriner.0006.desc:0 "After months of searching, the agents return. They enter the throne room with care, followed by their remarkable find — a woman of extraordinary proportions, moving with the unhurried dignity of someone who has never once needed to hurry.\n\n#italic Her name is [sukkar.GetFirstNameNoTooltip], my lord,#! announces the chief agent, barely concealing his bewilderment. #italic She comes from your own lands and is Shrine-faithful. She is... exactly as you requested.#!"
  ate_shriner.0006.a:0 "She is magnificent. Prepare her apartments at once."
  ate_shriner.0006.b:0 "What have I done... Send her away with a purse of gold."
 
  ate_shriner.0007.t:0 "Sugar Cube"
- ate_shriner.0007.desc:0 "[Root.GetFirstName] has taken to calling her #italic Sukkar#! — Sugar Cube — a name [sukkar.GetFirstName] seems to find quite pleasing. She is warm, endlessly laughing, and entirely at ease in her considerable presence. The court whispers. [Root.GetFirstName] does not hear them, or simply does not care.\n\nShe is, he has decided, exactly what he was looking for."
+ ate_shriner.0007.desc:0 "[Root.GetFirstNameNoTooltip] has taken to calling her #italic Sukkar#! — Sugar Cube — a name [sukkar.GetFirstNameNoTooltip] seems to find quite pleasing. She is warm, endlessly laughing, and entirely at ease in her considerable presence. The court whispers. [Root.GetFirstNameNoTooltip] does not hear them, or simply does not care.\n\nShe is, he has decided, exactly what he was looking for."
  ate_shriner.0007.a:0 "She will be my wife."
  ate_shriner.0007.c:0 "She will be my wife — and a Countess of this empire."
  ate_shriner.0007.b:0 "Let her be honored in my court. That is enough."
 
  ate_shriner.0008.t:0 "Only Ibrahim Can Judge Me"
- ate_shriner.0008.desc:0 "Word of [sukkar.GetFirstName] — the Sultan's new wife — has spread through court and beyond. The vassals are divided between amusement and outrage. The preachers cannot find clear scripture on the matter. [sukkar.GetFirstName] herself sits at [Root.GetFirstName]'s right hand at every feast, eating with great enthusiasm and laughing at everything."
- ate_shriner.0008.desc.countess:0 "Word of [sukkar.GetFirstName] — the Sultan's new wife and Countess — has spread through court and beyond. The vassals are in uproar. A woman who arrived in the throne room barely a month ago now holds a county of the realm. The preachers are very confused. [sukkar.GetFirstName] herself, a commoner who until recently had never set foot in a palace, stands frozen in the middle of the throne room with tears running down her face, laughing and crying at the same time, unable to believe any of this is real."
+ ate_shriner.0008.desc:0 "Word of [sukkar.GetFirstNameNoTooltip] — the Sultan's new wife — has spread through court and beyond. The vassals are divided between amusement and outrage. The preachers cannot find clear scripture on the matter. [sukkar.GetFirstNameNoTooltip] herself sits at [Root.GetFirstNameNoTooltip]'s right hand at every feast, eating with great enthusiasm and laughing at everything."
+ ate_shriner.0008.desc.countess:0 "Word of [sukkar.GetFirstNameNoTooltip] — the Sultan's new wife and Countess — has spread through court and beyond. The vassals are in uproar. A woman who arrived in the throne room barely a month ago now holds a county of the realm. The preachers are very confused. [sukkar.GetFirstNameNoTooltip] herself, a commoner who until recently had never set foot in a palace, stands frozen in the middle of the throne room with tears running down her face, laughing and crying at the same time, unable to believe any of this is real."
  ate_shriner.0008.a:0 "Let them say what they will. She has my full favor."
  ate_shriner.0008.b:0 "I will be... somewhat more discreet about this."
  ate_shriner.0008.c:0 "Freedom of speech you have — but freedom after speech, that I cannot guarantee."
@@ -148,6 +150,7 @@
  ate_coffee_lecture_opinion:0 "Insufferable Coffee Lecture"
 
  # ate_shriner.0012-0014 — A Mummy on the Loose
+ ate_ramses_vassal_opinion_tt:0 "Your vassals will think less of you for tolerating this. #bad -20#!"
  ate_shriner.0012.t:0 "A Mummy on the Loose"
  ate_shriner.0012.desc:0 "Reports have reached your court from the countryside — the kind that travel fast, carried by men who trip over their own feet in the telling. A mummy, they say. Walking. Moving through the fields at night and leaving nothing but panic in its wake. Your priests are divided on whether this is a miracle, a curse, or the work of Yakub. Your soldiers are divided on nothing: they are simply frightened."
  ate_shriner.0012.a:0 "Ready my horse. I will handle this personally."
@@ -167,13 +170,13 @@
  ate_shriner.0014.desc:0 "The trail leads to a cemetery at the edge of the county. The fog sits low and dense between the headstones, the kind that swallows sound. Your retinue slows. The horses do not want to go further.\n\nThen he steps out of it.\n\nHe is wrapped head to toe in ceremonial linen, layered over armor, deliberate as a coronation robe. His flesh bears the long marks of a life spent at the edge of death. He carries himself like a man who has already died once and found it beneath him. He stops ten paces from you, and the fog stirs.\n\nThey rise from the ground around you — or seem to. His followers, emerging from between the graves, from behind the stones, from the mist itself. Lepers, every one of them. Cast out from every village, every court, every home that turned them away. Dozens. Perhaps more. You cannot see where the fog ends and the army begins.\n\nThe silence holds for a single breath.\n\nThen he #italic speaks#!.\n\nHis voice carries across the entire cemetery — not to you, to #italic everyone#!, to the fog and the graves and the army rising from them. He declares that his name is Ramses. That he has died and been reborn. That the age of Pharaohs has returned to these lands and that its throne belongs to him by divine right. He is not addressing you so much as #italic announcing#! himself — to the world, to the dead, to God himself if God is listening. His arms are raised. His followers answer with a sound that is half cheer, half wail.\n\nThen his eyes find yours. He points.\n\nYou do not have time to think."
  ate_shriner.0014.a:0 "Chaaaaaaaaarge."
  ate_shriner.0014.b:0 "He is giving you a grave to die in. I am offering you a place to live. The Lodge will take you in. Every last one of you. Put down your arms."
- ate_shriner.0014.c:0 "ENOUGH. You want conquest? I will give you a real war. Real armies. Real tribute. Not farmers in a ditch. Follow me and you will have it."
+ ate_shriner.0014.c:0 "Swear to me. I'll give you land, gold, and a real war to fight."
  ate_shriner.0014.d:0 "Archers. Fire."
  ate_shriner.0014.e:0 "THE DEAD WALK AMONG US. RUN, YOU FOOLS."
- ate_shriner.0014.f:0 "Pharaoh. Fine. A tenth of whatever tribute you collect comes to my treasury, and you will rule uninterrupted. Forever. Whatever. We understand each other."
- ate_shriner.0014.g:0 "You are a fool if you think the [Root.GetPrimaryTitle.GetNameNoTooltip] and lord of these lands would come with just an exploration retinue. You are surrounded. Surrender or suffer."
- ate_shriner.0014.h:0 "You are dying and you know it. So are they. I have read the same scriptures you have — there is a genie that can cure what you carry. Come with me. Bring them all."
- ate_shriner.0014.i:0 "Fellow people — this man is a farce. I am the real Ramses, by right of birth. Dispose of this charlatan and let me bring you to glory."
+ ate_shriner.0014.f:0 "Pharaoh. Fine. A tenth of your tribute to my treasury. We understand each other."
+ ate_shriner.0014.g:0 "You are surrounded. Surrender or suffer."
+ ate_shriner.0014.h:0 "There is a genie that can cure what you carry. Come with me. Bring them all."
+ ate_shriner.0014.i:0 "I am the real Ramses, by right of birth. Dispose of this charlatan."
 
  ate_ramses_terror_modifier:0 "Ramses' Terror"
  ate_ramses_terror_modifier_desc:0 "The self-declared Pharaoh's army has moved through these lands, and the people have not forgotten. Fear keeps the harvest low and the purse closed."
@@ -184,8 +187,37 @@
  ate_pharaoh_blessing_modifier_desc:0 "The Pharaoh's favor is worth something — at least in coin. The trade routes that cross his domain do so at his pleasure."
  ate_leper_patron_modifier:0 "Patron of the Afflicted"
  ate_leper_patron_modifier_desc:0 "The Lodge does not turn away the sick, and neither does this ruler. The people remember."
+ dynn_osiris:0 "Osiris"
+ house_osiris:0 "Osiris"
+ ate_pharaoh_bane_modifier:0 "Pharaoh's Bane"
+ ate_pharaoh_bane_modifier_desc:0 "Ramses is dead, and something of his power lingers in the one who struck him down. The old gods take notice of those who kill their Pharaoh."
  ate_mummylord_modifier:0 "Mummylord"
  ate_mummylord_modifier_desc:0 "Followed by a retinue of lepper bodyguards this lord is both feared and loved by his people"
+
+ # Mummy chain toasts — 0013
+ ate_shriner.0013.a.toast:0 "The old man follows you home without a word."
+ ate_shriner.0013.b.toast:0 "He is still alive. He will continue to be. That is enough."
+ ate_shriner.0013.c.toast:0 "He is gone before morning. The rumor outlasts him."
+ ate_shriner.0013.d.toast:0 "He does not object. You wonder if he expected this."
+ ate_shriner.0013.e.toast:0 "No words are necessary. You sit together until the light changes."
+ ate_shriner.0013.f.toast:0 "The soldiers bury him quickly. The story will take longer."
+ ate_shriner.0013.g.toast:0 "He answers every question. You are not entirely sure you believe him."
+
+ # Mummy chain toasts — 0014
+ ate_shriner.0014.a.win.toast:0 "Ramses falls. The fog clears."
+ ate_shriner.0014.a.loss.toast:0 "Ramses does not fall. You do, nearly. The Pharaoh's Curse has begun."
+ ate_shriner.0014.b.toast:0 "The lepers lay down their weapons. Ramses watches them go from the fog."
+ ate_shriner.0014.c.fail.toast:0 "Ramses is not convinced. He teaches you this personally."
+ ate_shriner.0014.c.partial.toast:0 "He takes the oath, grudgingly. He is now yours. Somewhat."
+ ate_shriner.0014.c.clean.toast:0 "He swears without hesitation. You are unsure whether to be relieved or worried."
+ ate_shriner.0014.d.fail.toast:0 "The ambush collapses. Ramses was ready."
+ ate_shriner.0014.d.messy.toast:0 "Ramses dies in the confusion. No one claims credit."
+ ate_shriner.0014.d.clean.toast:0 "Clean and quiet. The Pharaoh is no more."
+ ate_shriner.0014.e.toast:0 "Your legs were faster. Your reputation was not."
+ ate_shriner.0014.f.toast:0 "A deal struck in a cemetery, sealed in silence."
+ ate_shriner.0014.g.toast:0 "Ramses surrenders without a fight. He seems, somehow, unsurprised."
+ ate_shriner.0014.h.toast:0 "Ramses nods once. The army lowers its arms."
+ ate_shriner.0014.i.toast:0 "His men do not stop you. They had questions about the divine right."
 
  ate_shriner_oil_lamp_modifier:0 "Lamp of the Shrine"
  ate_shriner_oil_lamp_modifier_desc:0 "The lamp asks nothing and reveals everything. A genie's gift, held and never squandered."

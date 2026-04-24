@@ -181,7 +181,7 @@ ate_shriner.0006 = {
 	immediate = {
 		create_character = {
 			name = "Sukkar"
-			culture = root
+			culture = culture:neomoor
 			faith = faith:shriner
 			gender = female
 			age = { 25 40 }
@@ -198,10 +198,7 @@ ate_shriner.0006 = {
 			value = scope:sukkar
 		}
 		scope:sukkar = {
-			add_character_modifier = {
-				modifier = obese_modifier
-				years = -1
-			}
+			change_current_weight = 100
 		}
 	}
 
@@ -572,7 +569,7 @@ ate_shriner.0012 = {
 	type = character_event
 	title = ate_shriner.0012.t
 	desc = ate_shriner.0012.desc
-	theme = intrigue
+	theme = diplomacy
 
 	trigger = { is_player_character = yes }
 
@@ -583,9 +580,11 @@ ate_shriner.0012 = {
 
 	option = {
 		name = ate_shriner.0012.a
-		random_list = {
-			80 = { trigger_event = { id = ate_shriner.0013 days = 3 } }
-			20 = { trigger_event = { id = ate_shriner.0014 days = 3 } }
+		hidden_effect = {
+			random_list = {
+				50 = { trigger_event = { id = ate_shriner.0013 days = 3 } }
+				50 = { trigger_event = { id = ate_shriner.0014 days = 3 } }
+			}
 		}
 	}
 
@@ -599,13 +598,14 @@ ate_shriner.0012 = {
 				years = 10
 			}
 		}
-		every_vassal = {
-			limit = {
-				any_held_title = { tier = tier_county }
-			}
-			add_opinion = {
-				modifier = ate_ramses_tolerated_opinion
-				target = root
+		custom_tooltip = ate_ramses_vassal_opinion_tt
+		hidden_effect = {
+			every_vassal = {
+				limit = { any_held_title = { tier = tier_county } }
+				add_opinion = {
+					modifier = ate_ramses_tolerated_opinion
+					target = root
+				}
 			}
 		}
 		add_prestige = -50
@@ -620,13 +620,13 @@ ate_shriner.0013 = {
 	type = character_event
 	title = ate_shriner.0013.t
 	desc = ate_shriner.0013.desc
-	theme = faith
+	theme = travel
 
 	trigger = { is_player_character = yes }
 
 	immediate = {
 		create_character = {
-			culture = root
+			culture = culture:neomoor
 			faith = faith:shriner
 			gender = male
 			age = { 60 80 }
@@ -648,17 +648,16 @@ ate_shriner.0013 = {
 				scope:hermit = {
 					add_trait = education_learning_4
 					add_trait = scholar
-					change_learning = 5
 				}
 			}
 			50 = {
 				scope:hermit = {
 					add_trait = education_stewardship_4
 					add_trait = administrator
-					change_stewardship = 5
 				}
 			}
 		}
+		scope:hermit = { move_to_pool = yes }
 	}
 
 	left_portrait = {
@@ -671,7 +670,6 @@ ate_shriner.0013 = {
 	}
 
 	# Compassionate/zealous — bring him to court as charity
-	# Low learning: myth persists despite good intentions
 	option = {
 		name = ate_shriner.0013.a
 		trigger = {
@@ -682,73 +680,28 @@ ate_shriner.0013 = {
 		}
 		add_piety = 50
 		add_gold = -10
-		if = {
-			limit = { learning < 8 }
-			random_held_title = {
-				limit = { tier = tier_county }
-				add_county_modifier = {
-					modifier = ate_ramses_terror_modifier
-					years = 5
-				}
-			}
-			every_vassal = {
-				limit = { any_held_title = { tier = tier_county } }
-				add_opinion = {
-					modifier = ate_ramses_tolerated_opinion
-					target = root
-				}
-			}
-		}
-		else_if = {
-			limit = { learning < 15 }
-			every_vassal = {
-				limit = { any_held_title = { tier = tier_county } }
-				add_opinion = {
-					modifier = ate_ramses_tolerated_opinion
-					target = root
-				}
-			}
+		scope:hermit = { set_employer = root }
+		send_interface_toast = {
+			type = event_toast_effect_good
+			title = ate_shriner.0013.a.toast
+			left_icon = scope:hermit
 		}
 	}
 
 	# Give coin, leave him in peace
-	# Low learning: people still believe it was a mummy
 	option = {
 		name = ate_shriner.0013.b
 		scope:hermit = { move_to_pool = yes }
 		add_piety = 25
 		add_gold = -15
-		if = {
-			limit = { learning < 8 }
-			random_held_title = {
-				limit = { tier = tier_county }
-				add_county_modifier = {
-					modifier = ate_ramses_terror_modifier
-					years = 5
-				}
-			}
-			every_vassal = {
-				limit = { any_held_title = { tier = tier_county } }
-				add_opinion = {
-					modifier = ate_ramses_tolerated_opinion
-					target = root
-				}
-			}
-		}
-		else_if = {
-			limit = { learning < 15 }
-			every_vassal = {
-				limit = { any_held_title = { tier = tier_county } }
-				add_opinion = {
-					modifier = ate_ramses_tolerated_opinion
-					target = root
-				}
-			}
+		send_interface_toast = {
+			type = event_toast_effect_neutral
+			title = ate_shriner.0013.b.toast
+			left_icon = scope:hermit
 		}
 	}
 
 	# Send him away
-	# Low learning: exile doesn't dispel the rumor
 	option = {
 		name = ate_shriner.0013.c
 		scope:hermit = { move_to_pool = yes }
@@ -761,39 +714,23 @@ ate_shriner.0013 = {
 			}
 			add_stress = 20
 		}
-		if = {
-			limit = { learning < 8 }
-			random_held_title = {
-				limit = { tier = tier_county }
-				add_county_modifier = {
-					modifier = ate_ramses_terror_modifier
-					years = 5
-				}
-			}
-			every_vassal = {
-				limit = { any_held_title = { tier = tier_county } }
-				add_opinion = {
-					modifier = ate_ramses_tolerated_opinion
-					target = root
-				}
-			}
-		}
-		else_if = {
-			limit = { learning < 15 }
-			every_vassal = {
-				limit = { any_held_title = { tier = tier_county } }
-				add_opinion = {
-					modifier = ate_ramses_tolerated_opinion
-					target = root
-				}
-			}
+		send_interface_toast = {
+			type = event_toast_effect_neutral
+			title = ate_shriner.0013.c.toast
+			left_icon = scope:hermit
 		}
 	}
 
 	# Recruit him — anyone
 	option = {
 		name = ate_shriner.0013.d
+		scope:hermit = { set_employer = root }
 		add_piety = 15
+		send_interface_toast = {
+			type = event_toast_effect_good
+			title = ate_shriner.0013.d.toast
+			left_icon = scope:hermit
+		}
 	}
 
 	# Shared condition — trait-locked for leper rulers
@@ -804,6 +741,11 @@ ate_shriner.0013 = {
 		}
 		add_stress = -30
 		add_piety = 40
+		send_interface_toast = {
+			type = event_toast_effect_good
+			title = ate_shriner.0013.e.toast
+			left_icon = scope:hermit
+		}
 	}
 
 	# Lunatic/eccentric — genuinely believes he's a mummy, wants to learn from him
@@ -820,12 +762,20 @@ ate_shriner.0013 = {
 		}
 		add_stress = -20
 		add_piety = 25
-		every_vassal = {
-			limit = { any_held_title = { tier = tier_county } }
-			add_opinion = {
-				modifier = ate_ramses_tolerated_opinion
-				target = root
+		custom_tooltip = ate_ramses_vassal_opinion_tt
+		hidden_effect = {
+			every_vassal = {
+				limit = { any_held_title = { tier = tier_county } }
+				add_opinion = {
+					modifier = ate_ramses_tolerated_opinion
+					target = root
+				}
 			}
+		}
+		send_interface_toast = {
+			type = event_toast_effect_neutral
+			title = ate_shriner.0013.g.toast
+			left_icon = scope:hermit
 		}
 	}
 
@@ -849,6 +799,11 @@ ate_shriner.0013 = {
 		else = {
 			add_stress = 25
 		}
+		send_interface_toast = {
+			type = event_toast_effect_bad
+			title = ate_shriner.0013.f.toast
+			left_icon = root
+		}
 	}
 }
 
@@ -860,7 +815,7 @@ ate_shriner.0014 = {
 	type = character_event
 	title = ate_shriner.0014.t
 	desc = ate_shriner.0014.desc
-	theme = intrigue
+	theme = witchcraft
 
 	trigger = { is_player_character = yes }
 
@@ -876,7 +831,8 @@ ate_shriner.0014 = {
 			trait = wrathful
 			trait = eccentric
 			trait = education_martial_4
-			trait = pillager
+			trait = reaver
+				trait = gallowsbait
 			trait = forder
 			trait = peasant_leader
 			trait = whole_of_body
@@ -887,15 +843,17 @@ ate_shriner.0014 = {
 			employer = root
 			save_scope_as = ramses
 		}
+		scope:ramses = { set_house = house:house_osiris }
+		scope:ramses = { move_to_pool = yes }
 	}
 
 	left_portrait = {
 		character = root
-		animation = personality_bold
+		animation = fear
 	}
 	right_portrait = {
 		character = scope:ramses
-		animation = personality_bold
+		animation = prayer
 	}
 
 	# Fight — 60/40 base, martial tips the odds; Pharaoh's Curse on both outcomes
@@ -908,12 +866,16 @@ ate_shriner.0014 = {
 				add_prestige = 150
 				add_stress = -10
 				add_character_modifier = {
-					modifier = ate_pharaoh_curse_modifier
-					years = 5
+					modifier = ate_pharaoh_bane_modifier
+					years = -1
+				}
+				send_interface_toast = {
+					type = event_toast_effect_good
+					title = ate_shriner.0014.a.win.toast
+					left_icon = root
 				}
 			}
 			40 = {
-				modifier = { subtract = martial }
 				scope:ramses = { move_to_pool = yes }
 				add_prestige = -75
 				add_trait = wounded_1
@@ -925,6 +887,11 @@ ate_shriner.0014 = {
 				random = {
 					chance = 10
 					add_trait = leper
+				}
+				send_interface_toast = {
+					type = event_toast_effect_bad
+					title = ate_shriner.0014.a.loss.toast
+					left_icon = root
 				}
 			}
 		}
@@ -939,62 +906,88 @@ ate_shriner.0014 = {
 			modifier = ate_leper_patron_modifier
 			years = 10
 		}
+		send_interface_toast = {
+			type = event_toast_effect_neutral
+			title = ate_shriner.0014.b.toast
+			left_icon = scope:ramses
+		}
 	}
 
-	# Recruit — diplomacy determines whether he agrees and how the court reacts
+	# Recruit — diplomacy shifts the odds; 50 base fail, +diplomacy boosts partial, +diplomacy*5 boosts clean
 	option = {
 		name = ate_shriner.0014.c
-		if = {
-			limit = { diplomacy < 8 }
-			scope:ramses = { move_to_pool = yes }
-			add_prestige = -50
-			add_stress = 20
-			add_trait = wounded_1
-			add_character_modifier = {
-				modifier = ate_pharaoh_curse_modifier
-				years = 5
-			}
-			random_held_title = {
-				limit = { tier = tier_county }
-				add_county_modifier = {
-					modifier = ate_ramses_terror_modifier
-					years = 10
+		random_list = {
+			50 = {
+				scope:ramses = { move_to_pool = yes }
+				add_prestige = -50
+				add_stress = 20
+				add_trait = wounded_1
+				add_character_modifier = {
+					modifier = ate_pharaoh_curse_modifier
+					years = 5
+				}
+				random_held_title = {
+					limit = { tier = tier_county }
+					add_county_modifier = {
+						modifier = ate_ramses_terror_modifier
+						years = 10
+					}
+				}
+				send_interface_toast = {
+					type = event_toast_effect_bad
+					title = ate_shriner.0014.c.fail.toast
+					left_icon = scope:ramses
 				}
 			}
-		}
-		else_if = {
-			limit = { diplomacy < 15 }
-			add_prestige = 25
-			every_vassal = {
-				limit = { any_held_title = { tier = tier_county } }
-				add_opinion = {
-					modifier = ate_ramses_tolerated_opinion
-					target = root
+			50 = {
+				modifier = { add = diplomacy }
+				scope:ramses = { set_employer = root }
+				add_prestige = 25
+				custom_tooltip = ate_ramses_vassal_opinion_tt
+				hidden_effect = {
+					every_vassal = {
+						limit = { any_held_title = { tier = tier_county } }
+						add_opinion = {
+							modifier = ate_ramses_tolerated_opinion
+							target = root
+						}
+					}
+				}
+				send_interface_toast = {
+					type = event_toast_effect_neutral
+					title = ate_shriner.0014.c.partial.toast
+					left_icon = scope:ramses
 				}
 			}
-			create_unit = {
-				location = root
-				levies = 300
-			}
-			add_character_modifier = {
-				modifier = ate_mummylord_modifier
-				years = 15
-			}
-		}
-		else = {
-			add_prestige = 75
-			create_unit = {
-				location = root
-				levies = 300
-			}
-			add_character_modifier = {
-				modifier = ate_mummylord_modifier
-				years = 15
+			0 = {
+				modifier = { add = { value = diplomacy multiply = 5 } }
+				scope:ramses = { set_employer = root }
+				add_prestige = 75
+				spawn_army = {
+					levies = 0
+					men_at_arms = {
+						type = macheteer
+						stacks = 3
+					}
+					location = root.location
+					inheritable = no
+					uses_supply = no
+					name = ate_ramses_mummies_name
+				}
+				add_character_modifier = {
+					modifier = ate_mummylord_modifier
+					years = 15
+				}
+				send_interface_toast = {
+					type = event_toast_effect_good
+					title = ate_shriner.0014.c.clean.toast
+					left_icon = scope:ramses
+				}
 			}
 		}
 	}
 
-	# Ambush — trait-locked, intrigue determines success
+	# Ambush — trait-locked, intrigue shifts the odds; 50 base fail, +intrigue boosts messy kill, +intrigue*3 boosts clean kill
 	option = {
 		name = ate_shriner.0014.d
 		trigger = {
@@ -1004,47 +997,81 @@ ate_shriner.0014 = {
 				has_trait = deceitful
 			}
 		}
-		if = {
-			limit = { intrigue < 8 }
-			scope:ramses = { move_to_pool = yes }
-			add_prestige = -75
-			add_stress = 25
-			random_held_title = {
-				limit = { tier = tier_county }
-				add_county_modifier = {
-					modifier = ate_ramses_terror_modifier
-					years = 10
+		random_list = {
+			50 = {
+				scope:ramses = { move_to_pool = yes }
+				add_prestige = -75
+				add_stress = 25
+				random_held_title = {
+					limit = { tier = tier_county }
+					add_county_modifier = {
+						modifier = ate_ramses_terror_modifier
+						years = 10
+					}
+				}
+				custom_tooltip = ate_ramses_vassal_opinion_tt
+				hidden_effect = {
+					every_vassal = {
+						limit = { any_held_title = { tier = tier_county } }
+						add_opinion = {
+							modifier = ate_ramses_tolerated_opinion
+							target = root
+						}
+					}
+				}
+				send_interface_toast = {
+					type = event_toast_effect_bad
+					title = ate_shriner.0014.d.fail.toast
+					left_icon = scope:ramses
 				}
 			}
-			every_vassal = {
-				limit = { any_held_title = { tier = tier_county } }
-				add_opinion = {
-					modifier = ate_ramses_tolerated_opinion
-					target = root
+			50 = {
+				modifier = { add = intrigue }
+				scope:ramses = { death = { death_reason = death_assassination killer = root } }
+				add_dread = 10
+				add_stress = 5
+				send_interface_toast = {
+					type = event_toast_effect_neutral
+					title = ate_shriner.0014.d.messy.toast
+					left_icon = root
 				}
 			}
-		}
-		else_if = {
-			limit = { intrigue < 15 }
-			scope:ramses = { death = { death_reason = death_assassination killer = root } }
-			add_dread = 10
-			add_stress = 5
-		}
-		else = {
-			scope:ramses = { death = { death_reason = death_assassination killer = root } }
-			add_dread = 20
-			add_stress = -15
+			0 = {
+				modifier = { add = { value = intrigue multiply = 3 } }
+				scope:ramses = { death = { death_reason = death_assassination killer = root } }
+				add_dread = 20
+				add_stress = -15
+				send_interface_toast = {
+					type = event_toast_effect_good
+					title = ate_shriner.0014.d.clean.toast
+					left_icon = root
+				}
+			}
 		}
 	}
 
-	# Run — triggers peasant uprising + Pharaoh's Curse
+	# Run — Ramses seizes a county and immediately revolts for independence
 	option = {
 		name = ate_shriner.0014.e
-		scope:ramses = { move_to_pool = yes }
 		random_held_title = {
-			limit = { tier = tier_county }
-			title_create_faction = {
-				type = peasant_faction
+			limit = {
+				tier = tier_county
+				holder = root
+			}
+			create_title_and_vassal_change = {
+				type = granted
+				save_scope_as = title_change
+				add_claim_on_loss = yes
+			}
+			change_title_holder = {
+				holder = scope:ramses
+				change = scope:title_change
+			}
+			resolve_title_and_vassal_change = scope:title_change
+		}
+		scope:ramses = {
+			start_war = {
+				casus_belli = independence_war_start
 				target = root
 			}
 		}
@@ -1053,6 +1080,11 @@ ate_shriner.0014 = {
 		add_character_modifier = {
 			modifier = ate_pharaoh_curse_modifier
 			years = 5
+		}
+		send_interface_toast = {
+			type = event_toast_effect_bad
+			title = ate_shriner.0014.e.toast
+			left_icon = root
 		}
 	}
 
@@ -1067,19 +1099,25 @@ ate_shriner.0014 = {
 				years = 10
 			}
 		}
-		every_vassal = {
-			limit = {
-				any_held_title = { tier = tier_county }
-			}
-			add_opinion = {
-				modifier = ate_ramses_tolerated_opinion
-				target = root
+		custom_tooltip = ate_ramses_vassal_opinion_tt
+		hidden_effect = {
+			every_vassal = {
+				limit = { any_held_title = { tier = tier_county } }
+				add_opinion = {
+					modifier = ate_ramses_tolerated_opinion
+					target = root
+				}
 			}
 		}
 		add_prestige = -50
 		add_character_modifier = {
 			modifier = ate_pharaoh_blessing_modifier
 			years = 20
+		}
+		send_interface_toast = {
+			type = event_toast_effect_neutral
+			title = ate_shriner.0014.f.toast
+			left_icon = scope:ramses
 		}
 	}
 
@@ -1092,9 +1130,14 @@ ate_shriner.0014 = {
 				has_trait = schemer
 			}
 		}
-		scope:ramses = { imprison = root }
+		imprison = { target = scope:ramses type = dungeon }
 		add_dread = 20
 		add_prestige = 75
+		send_interface_toast = {
+			type = event_toast_effect_good
+			title = ate_shriner.0014.g.toast
+			left_icon = scope:ramses
+		}
 	}
 
 	# Convince peacefully — Diplomat or Theologian, clean recruit
@@ -1106,15 +1149,28 @@ ate_shriner.0014 = {
 				has_trait = theologian
 			}
 		}
+		scope:ramses = { set_employer = root }
 		add_prestige = 100
 		add_piety = 50
-		create_unit = {
-			location = root
-			levies = 300
+		spawn_army = {
+			levies = 0
+			men_at_arms = {
+				type = macheteer
+				stacks = 3
+			}
+			location = root.location
+			inheritable = no
+			uses_supply = no
+			name = ate_ramses_mummies_name
 		}
 		add_character_modifier = {
 			modifier = ate_mummylord_modifier
 			years = 15
+		}
+		send_interface_toast = {
+			type = event_toast_effect_good
+			title = ate_shriner.0014.h.toast
+			left_icon = scope:ramses
 		}
 	}
 
@@ -1127,13 +1183,25 @@ ate_shriner.0014 = {
 		scope:ramses = { death = { death_reason = death_murder } }
 		add_prestige = 150
 		add_piety = 75
-		create_unit = {
-			location = root
-			levies = 300
+		spawn_army = {
+			levies = 0
+			men_at_arms = {
+				type = macheteer
+				stacks = 3
+			}
+			location = root.location
+			inheritable = no
+			uses_supply = no
+			name = ate_ramses_mummies_name
 		}
 		add_character_modifier = {
 			modifier = ate_mummylord_modifier
 			years = 15
+		}
+		send_interface_toast = {
+			type = event_toast_effect_good
+			title = ate_shriner.0014.i.toast
+			left_icon = root
 		}
 	}
 }

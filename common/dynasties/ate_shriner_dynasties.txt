@@ -1,0 +1,4 @@
+﻿dynn_osiris = {
+	name = "dynn_osiris"
+	culture = neomoor
+}

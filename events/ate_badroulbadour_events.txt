@@ -209,6 +209,8 @@ ate_badroulbadour.0005b = {
 			scope:badroulbadour_scope = { set_house = house:house_ElShabaz }
 			scope:badroulbadour_scope = { add_opinion = { modifier = ate_captive_wife_opinion target = root } }
 			add_character_flag = badroulbadour_done
+			scope:badroulbadour_scope = { add_trait = disloyal }
+			scope:badroulbadour_scope = { add_trait = reclusive }
 			remove_character_flag = cannibal_path
 			remove_variable = badroulbadour
 		}
@@ -224,6 +226,8 @@ ate_badroulbadour.0005b = {
 			scope:badroulbadour_scope = { set_house = house:house_ElShabaz }
 			scope:badroulbadour_scope = { add_opinion = { modifier = ate_captive_wife_opinion target = root } }
 			add_character_flag = badroulbadour_done
+			scope:badroulbadour_scope = { add_trait = disloyal }
+			scope:badroulbadour_scope = { add_trait = reclusive }
 			remove_character_flag = cannibal_path
 			remove_variable = badroulbadour
 		}
@@ -239,6 +243,8 @@ ate_badroulbadour.0005b = {
 			scope:badroulbadour_scope = { set_house = house:house_ElShabaz }
 			scope:badroulbadour_scope = { add_opinion = { modifier = ate_captive_wife_opinion target = root } }
 			add_character_flag = badroulbadour_done
+			scope:badroulbadour_scope = { add_trait = disloyal }
+			scope:badroulbadour_scope = { add_trait = reclusive }
 			remove_character_flag = cannibal_path
 			remove_variable = badroulbadour
 		}
@@ -254,6 +260,8 @@ ate_badroulbadour.0005b = {
 			scope:badroulbadour_scope = { set_house = house:house_ElShabaz }
 			scope:badroulbadour_scope = { add_opinion = { modifier = ate_captive_wife_opinion target = root } }
 			add_character_flag = badroulbadour_done
+			scope:badroulbadour_scope = { add_trait = disloyal }
+			scope:badroulbadour_scope = { add_trait = reclusive }
 			remove_character_flag = cannibal_path
 			remove_variable = badroulbadour
 		}
@@ -268,6 +276,8 @@ ate_badroulbadour.0005b = {
 			scope:badroulbadour_scope = { set_house = house:house_ElShabaz }
 			scope:badroulbadour_scope = { add_opinion = { modifier = ate_captive_wife_opinion target = root } }
 			add_character_flag = badroulbadour_done
+			scope:badroulbadour_scope = { add_trait = disloyal }
+			scope:badroulbadour_scope = { add_trait = reclusive }
 			remove_character_flag = cannibal_path
 			remove_variable = badroulbadour
 		}
@@ -466,6 +476,8 @@ ate_badroulbadour.0007 = {
 			scope:badroulbadour_scope = { marry = root }
 			scope:badroulbadour_scope = { set_house = house:house_ElShabaz }
 			scope:badroulbadour_scope = { add_opinion = { modifier = ate_captive_wife_opinion target = root } }
+			scope:badroulbadour_scope = { add_trait = disloyal }
+			scope:badroulbadour_scope = { add_trait = reclusive }
 			add_character_flag = badroulbadour_done
 			remove_variable = badroulbadour
 		}
