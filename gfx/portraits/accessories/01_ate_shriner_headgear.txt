@@ -1,0 +1,12 @@
+﻿
+## Shriner ##
+
+male_headgear_religious_shriner_fez = {
+	set_tags = "cap,snug_headgear"
+	entity = { required_tags = ""	shared_pose_entity = head	entity = male_headgear_religious_shriner_fez_entity }
+}
+
+female_headgear_religious_shriner_fez = {
+	set_tags = "cap,snug_headgear"
+	entity = { required_tags = ""	shared_pose_entity = head	entity = female_headgear_religious_shriner_fez_entity }
+}

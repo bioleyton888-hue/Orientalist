@@ -50,3 +50,15 @@ ate_shriner_lamp_blessing = {
 	monthly_piety = 0.1
 	scheme_resistance = 2
 }
+
+ate_pet_alligator_modifier = {
+	icon = prowess_positive
+	prowess = 2
+	dread_baseline_add = 5
+}
+
+ate_gator_bite_modifier = {
+	icon = prowess_negative
+	health = -0.2
+	prowess = -2
+}

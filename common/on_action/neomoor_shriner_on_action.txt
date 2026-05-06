@@ -48,6 +48,8 @@ yearly_playable_pulse = {
 		ate_shriner_breakfast_pulse
 		ate_shriner_cafecito_pulse
 		ate_shriner_mummy_pulse
+		ate_floridian_gator_pulse
+		ate_floridian_gator_council_pulse
 	}
 }
 
@@ -376,6 +378,39 @@ ate_shriner_lamp_pulse = {
 				years = 10
 			}
 			trigger_event = { id = ate_shriner.0009 }
+		}
+	}
+}
+
+# Pet Alligator — yearly flavor event for Floridian heritage characters, 10-year cooldown
+ate_floridian_gator_pulse = {
+	trigger = {
+		culture = { has_cultural_heritage = heritage_floridian }
+		is_adult = yes
+		is_landed = yes
+		NOT = { has_character_modifier = ate_pet_alligator_modifier }
+		NOT = { has_character_flag = ate_gator_declined }
+	}
+	effect = {
+		random = {
+			chance = 10
+			trigger_event = { id = ate_floridian.0001 }
+		}
+	}
+}
+
+# Pet Alligator council event — 10-year cooldown
+ate_floridian_gator_council_pulse = {
+	trigger = {
+		has_character_modifier = ate_pet_alligator_modifier
+		is_adult = yes
+		is_landed = yes
+		NOT = { has_character_flag = ate_gator_council_cooldown }
+	}
+	effect = {
+		random = {
+			chance = 15
+			trigger_event = { id = ate_floridian.0004 }
 		}
 	}
 }

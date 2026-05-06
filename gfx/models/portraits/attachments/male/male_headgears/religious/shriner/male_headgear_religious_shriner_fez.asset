@@ -1,0 +1,35 @@
+
+pdxmesh = {
+	name = "shriner_fez_mesh"
+	file = "fez.mesh"
+
+	meshsettings = {
+		name = "Cylinder.001"
+		index = 0
+		texture_diffuse = "fez_diffuse.dds"
+		texture_normal = "fez_normal.dds"
+		texture_specular = "fez_properties.dds"
+		shader = "portrait_attachment"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+
+	meshsettings = {
+		name = "Sphere.001"
+		index = 0
+		texture_diffuse = "pompon_diffuse.dds"
+		texture_normal = "pompon_normal.dds"
+		texture_specular = "pompon_properties.dds"
+		shader = "portrait_attachment"
+		shader_file = "gfx/FX/jomini/portrait.shader"
+	}
+}
+
+entity = {
+	name = "male_headgear_religious_shriner_fez_entity"
+	pdxmesh = "shriner_fez_mesh"
+}
+
+entity = {
+	name = "female_headgear_religious_shriner_fez_entity"
+	pdxmesh = "shriner_fez_mesh"
+}
