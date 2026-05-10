@@ -1,0 +1,68 @@
+﻿# Shriner Fez Initiation — father presents the fez to a son aged 12-15 as a rite of passage
+ate_shriner_fez_initiation = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	}
+	decision_group_type = major
+
+	ai_check_interval = 60
+
+	desc = ate_shriner_fez_initiation_desc
+	selection_tooltip = ate_shriner_fez_initiation_tooltip
+
+	is_shown = {
+		is_male = yes
+		is_adult = yes
+		faith = faith:shriner
+		any_child = {
+			is_male = yes
+			age >= 12
+			NOT = { age >= 16 }
+			faith = faith:shriner
+			NOT = { has_character_modifier = ate_shriner_initiated_modifier }
+		}
+	}
+
+	is_valid = {
+		is_male = yes
+		is_adult = yes
+		faith = faith:shriner
+		any_child = {
+			is_male = yes
+			age >= 12
+			NOT = { age >= 16 }
+			faith = faith:shriner
+			NOT = { has_character_modifier = ate_shriner_initiated_modifier }
+		}
+	}
+
+	cost = {
+		piety = 25
+	}
+
+	effect = {
+		random_child = {
+			limit = {
+				is_male = yes
+				age >= 12
+				NOT = { age >= 16 }
+				faith = faith:shriner
+				NOT = { has_character_modifier = ate_shriner_initiated_modifier }
+			}
+			save_scope_as = son
+		}
+		trigger_event = { id = ate_shriner.0015 }
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 10
+		modifier = {
+			add = 20
+			piety >= 100
+		}
+	}
+}

@@ -229,3 +229,20 @@
  ate_shriner.0009.a:0 "Have the Lodge examine it. If a genie dwells within, let the faithful be the first to know."
  ate_shriner.0009.b:0 "Buy it. If a genie dwells within, I will be the one to ask the wish."
  ate_shriner.0009.c:0 "Drive him from the city. We already have enough charlatans here."
+
+ # ate_shriner_initiated_modifier
+ ate_shriner_initiated_modifier:0 "Initiated Shriner"
+ ate_shriner_initiated_modifier_desc:0 "Received the fez from his father's hands before manhood. He has sworn the oaths of the Lodge and crossed the threshold."
+
+ # ate_shriner_fez_initiation decision
+ ate_shriner_fez_initiation:0 "Present the Fez"
+ ate_shriner_fez_initiation_desc:0 "A boy does not become a Shriner on his own. A father must call his son before the Lodge, place the fez upon his head, and speak the oaths aloud. It is not a long ceremony. It does not need to be. The boy who enters the hall is not the same one who leaves it."
+ ate_shriner_fez_initiation_tooltip:0 "Initiate your son into the Lodge before he comes of age"
+ ate_shriner_fez_initiation_confirm:0 "The Lodge awaits."
+
+ # ate_shriner.0015 — The Ceremony of the Fez
+ ate_shriner.0015.t:0 "The Ceremony of the Fez"
+ ate_shriner.0015.desc:0 "The hall of the Lodge is quiet when [Root.GetFirstNameNoTooltip] calls [scope:son.GetFirstNameNoTooltip] forward. The boy stands straight — he has been practicing. The fez is placed in his hands. The words of the Lodge are spoken. And then it is done. [scope:son.GetFirstNameNoTooltip] turns it over in his hands — crimson felt, black tassel, the same as every other — and something passes across his face that has no name. He puts it on. It is slightly too large. He does not take it off."
+ ate_shriner.0015.a:0 "The Lodge is yours now, [scope:son.GetFirstNameNoTooltip]. Guard it well."
+ ate_shriner.0015.b:0 "Let every brother of the Lodge bear witness to this."
+ ate_shriner.0015.b.toast:0 "[scope:son.GetFirstNameNoTooltip] has received the fez. He is a Shriner."
