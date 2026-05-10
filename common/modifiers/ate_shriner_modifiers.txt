@@ -62,3 +62,10 @@ ate_gator_bite_modifier = {
 	health = -0.2
 	prowess = -2
 }
+
+ate_shriner_initiated_modifier = {
+	icon = learning_positive
+	learning = 1
+	monthly_piety = 0.3
+	same_faith_opinion = 10
+}
