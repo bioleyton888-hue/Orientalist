@@ -1,4 +1,5 @@
-﻿dynn_osiris = {
-	name = "dynn_osiris"
+﻿dynn_ramsesovich = {
+	name = "dynn_ramsesovich"
 	culture = neomoor
+	motto = dynn_ramsesovich_motto
 }
