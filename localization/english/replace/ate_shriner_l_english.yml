@@ -3,7 +3,6 @@
  
  ate_ramses_mummies_name:0 "Ramses' Mummies"
 
- PORTRAIT_MODIFIER_headgear_base_religious_shriner_fez:0 "Shriner Fez"
  # Mawlid al-Fez trait
  mawlid_al_fez:0 "Mawlid al-Fez"
  trait_mawlid_al_fez_desc:0 "This character was born while their parent held the title of Imperial Potentate, the sacred head of the Shriner faith."
