@@ -1,0 +1,7 @@
+﻿# Shriner / Neomoor artifact visuals
+# Placeholder icon: artifact_drinking_vessel.dds (replace with custom lamp DDS when ready)
+
+ate_oil_lamp = {
+	icon = "artifact_drinking_vessel.dds"
+	# asset = TODO: add custom lamp entity when 3D model is ready
+}

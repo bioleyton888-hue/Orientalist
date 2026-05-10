@@ -1,4 +1,30 @@
-﻿ya_shamal = {
+﻿mawlid_al_fez = {
+	index = 1013
+	icon = born_in_the_purple.dds
+	category = fame
+
+	shown_in_ruler_designer = no
+
+	inherit_chance = 0
+	birth = 0
+	random_creation = 0
+
+	monthly_prestige = 0.1
+	monthly_piety = 0.1
+	short_reign_duration_mult = -0.25
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_mawlid_al_fez_desc
+			}
+			desc = trait_mawlid_al_fez_character_desc
+		}
+	}
+}
+
+ya_shamal = {
 	index = 1011
 	icon = holy_place_custodian.dds
 	category = fame

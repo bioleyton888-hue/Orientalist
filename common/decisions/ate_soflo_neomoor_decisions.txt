@@ -1,7 +1,7 @@
 ﻿# Nelson Neomoor — Culture transformation upon controlling SoFlo
 ate_nelson_soflo_neomoor = {
 	picture = {
-		reference = "gfx/interface/illustrations/decisions/decision_dynasty_houses.dds"
+		reference = "gfx/interface/illustrations/decisions/decision_culture.dds"
 	}
 	decision_group_type = major
 
@@ -16,16 +16,29 @@ ate_nelson_soflo_neomoor = {
 	}
 
 	is_valid = {
-		has_title = title:k_soflo
-		years_as_ruler >= 5
-		# Totality of SoFlo — all de jure counties of k_soflo under root
-		NOT = {
-			title:k_soflo = {
-				any_de_jure_county = {
-					NOT = { holder.top_liege = root }
+		OR = {
+			AND = {
+				has_title = title:k_soflo
+				NOT = {
+					title:k_soflo = {
+						any_de_jure_county = {
+							NOT = { holder.top_liege = root }
+						}
+					}
+				}
+			}
+			AND = {
+				has_title = title:k_florida
+				NOT = {
+					title:k_florida = {
+						any_de_jure_county = {
+							NOT = { holder.top_liege = root }
+						}
+					}
 				}
 			}
 		}
+		years_as_ruler >= 5
 	}
 
 	is_valid_showing_failures_only = {
@@ -62,7 +75,7 @@ ate_nelson_soflo_neomoor = {
 # Shriner Neomoor — Culture transformation upon controlling SoFlo
 ate_shriner_soflo_neomoor = {
 	picture = {
-		reference = "gfx/interface/illustrations/decisions/decision_dynasty_houses.dds"
+		reference = "gfx/interface/illustrations/decisions/decision_culture.dds"
 	}
 	decision_group_type = major
 
@@ -79,16 +92,29 @@ ate_shriner_soflo_neomoor = {
 	}
 
 	is_valid = {
-		has_title = title:k_soflo
-		years_as_ruler >= 5
-		# Totality of SoFlo — all de jure counties of k_soflo under root
-		NOT = {
-			title:k_soflo = {
-				any_de_jure_county = {
-					NOT = { holder.top_liege = root }
+		OR = {
+			AND = {
+				has_title = title:k_soflo
+				NOT = {
+					title:k_soflo = {
+						any_de_jure_county = {
+							NOT = { holder.top_liege = root }
+						}
+					}
+				}
+			}
+			AND = {
+				has_title = title:k_florida
+				NOT = {
+					title:k_florida = {
+						any_de_jure_county = {
+							NOT = { holder.top_liege = root }
+						}
+					}
 				}
 			}
 		}
+		years_as_ruler >= 5
 	}
 
 	is_valid_showing_failures_only = {
@@ -125,7 +151,7 @@ ate_shriner_soflo_neomoor = {
 # Waltney Shriner Neomoor — Magic Kingdom Transformed
 ate_waltney_soflo_neomoor = {
 	picture = {
-		reference = "gfx/interface/illustrations/decisions/decision_dynasty_houses.dds"
+		reference = "gfx/interface/illustrations/decisions/fp3/fp3_decision_sunder.dds"
 	}
 	decision_group_type = major
 
@@ -143,17 +169,28 @@ ate_waltney_soflo_neomoor = {
 	is_valid = {
 		faith = faith:shriner
 		OR = {
-			has_title = title:k_soflo
-			has_title = title:k_florida_waltney
-		}
-		years_as_ruler >= 5
-		NOT = {
-			title:k_soflo = {
-				any_de_jure_county = {
-					NOT = { holder.top_liege = root }
+			AND = {
+				has_title = title:k_soflo
+				NOT = {
+					title:k_soflo = {
+						any_de_jure_county = {
+							NOT = { holder.top_liege = root }
+						}
+					}
+				}
+			}
+			AND = {
+				has_title = title:k_florida_waltney
+				NOT = {
+					title:k_florida_waltney = {
+						any_de_jure_county = {
+							NOT = { holder.top_liege = root }
+						}
+					}
 				}
 			}
 		}
+		years_as_ruler >= 5
 	}
 
 	is_valid_showing_failures_only = {

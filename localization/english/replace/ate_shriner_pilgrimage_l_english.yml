@@ -1,0 +1,87 @@
+﻿l_english:
+
+ # Trait
+ trait_shriner_zair:0 "Zair"
+ trait_shriner_zair_desc:0 "This character has completed the sacred pilgrimage to the Imperial Potentate's temple in Tampa, earning the title of Zair among the Shriner faithful."
+ trait_shriner_zair_character_desc:0 "[ROOT.GetCharacter.GetTitledFirstNameNoTooltip] has made the pilgrimage to Tampa and received the blessing of the Imperial Potentate. They are known among the faithful as Zair."
+
+ # ate_shriner_pilgrimage.0001 — Arrival
+ ate_shriner_pilgrimage.0001.t:0 "The Bazaars of Tampa"
+ ate_shriner_pilgrimage.0001.desc:0 "Nothing prepares you for it. Tampa rises from the salt air like a memory of something you never lived — its minarets catching the Florida sun like drawn scimitars, its streets alive with the sound of traders, pilgrims, and the distant call to prayer. This is the city that endured. Chicago fell, New Orleans burns and floods by turns, but Tampa holds. The Imperial Potentate's mosque rises above everything, gold against blue sky.\n\nYou are here. The pilgrimage has begun in earnest."
+ ate_shriner_pilgrimage.0001.a:0 "May Aladdin guide my steps."
+
+ # ate_shriner_pilgrimage.0010 — Temptation
+ ate_shriner_pilgrimage.0010.t:0 "Eyes Across the Bazaar"
+ ate_shriner_pilgrimage.0010.desc:0 "A dancer performs at the edge of the market square, moving to the rhythm of a tabla and a lamenting oud. She is extraordinary — her movements precise, her expression fixed somewhere between joy and sorrow. She catches your eye and holds it for just a moment longer than is proper.\n\nA voice inside you stirs. A voice above it says: you did not come this far to fail yourself at the first gate."
+ ate_shriner_pilgrimage.0010.a:0 "I turn away. I came here for something greater."
+ ate_shriner_pilgrimage.0010.b:0 "I follow her lead."
+
+ # ate_shriner_pilgrimage.0020 — Charity
+ ate_shriner_pilgrimage.0020.t:0 "A Man on the Ground"
+ ate_shriner_pilgrimage.0020.desc:0 "A gaunt man has collapsed in the street. Pilgrims pass him on either side — some glancing, most looking away. He stretches one hand toward you. Not begging. Just reaching.\n\nYou do not know if he is Shriner, Sofloano, or stranger. You do not know if he will live. You know only that you saw him, and that the Alcoran has something to say about this moment."
+ ate_shriner_pilgrimage.0020.a:0 "I kneel beside him."
+ ate_shriner_pilgrimage.0020.b:0 "I am on pilgrimage. I cannot be delayed."
+
+ # ate_shriner_pilgrimage.0030 — Shortcut
+ ate_shriner_pilgrimage.0030.t:0 "The Merchant's Promise"
+ ate_shriner_pilgrimage.0030.desc:0 "At a crossroads south of the Imperial Potentate's mosque, a merchant with a lean mule blocks your path. He claims to know a faster road through the palmetto scrub — shorter by half a day, he says, though he does not mention why no one else takes it. His eyes are quick. His smile is constant.\n\nThe main road will take longer. But it is known."
+ ate_shriner_pilgrimage.0030.a:0 "Lead the way."
+ ate_shriner_pilgrimage.0030.b:0 "I know your kind. I will take the long road."
+
+ # Shriner oil lamp artifact
+ artifact_shriner_oil_lamp_name:0 "Lamp of the Zair"
+ artifact_shriner_oil_lamp_desc:0 "A brass oil lamp of extraordinary craft, purchased from an ancient vendor in the Grand Bazaar of Tampa. Its flame burns steady through darkness and storm. Those who carry it find that little escapes their notice — and those who would plot against them find their shadows harder to hide in."
+ ate_shriner_lamp_blessing:0 "Lamp of Tampa"
+ ate_shriner_lamp_blessing_desc:0 "A brass oil lamp purchased in the Grand Bazaar of Tampa during the pilgrimage. A fine piece of craft, but perhaps not the extraordinary object the old vendor implied."
+
+ # ate_shriner_pilgrimage.0040 — Lamp merchant
+ ate_shriner_pilgrimage.0040.t:0 "A Light in the Bazaar"
+ ate_shriner_pilgrimage.0040.desc:0 "An old man with a white beard sits cross-legged at a stall, holding an oil lamp of extraordinary craft — its brass etched with verses you half-recognize from the Alcoran, its flame steady even in the open air. He looks at you the way men look at things they have been waiting a long time to give away.\n\n#italic \"Five hundred years,\"# he says, though you did not ask how long he had been sitting there. #italic \"And only one buyer I had in mind.\"#"
+ ate_shriner_pilgrimage.0040.a:0 "I will take it. What is your price?"
+ ate_shriner_pilgrimage.0040.b:0 "I need no lamp. I carry my own light."
+
+ # ate_shriner_pilgrimage.0050 — Snake charmer
+ ate_shriner_pilgrimage.0050.t:0 "The Serpent's Master"
+ ate_shriner_pilgrimage.0050.desc:0 "He sits in the shade of a tamarind tree, a serpent the length of two men coiled loosely across his shoulders. He speaks to it in a language you do not recognize — and the snake seems to listen.\n\nHe notices you watching. #italic \"You can touch it,\"# he says, holding out his arm. #italic \"It has not bitten a man of true faith in forty years.\"# You are not sure whether this is a test, a performance, or a miracle."
+ ate_shriner_pilgrimage.0050.a:0 "I hold out my hand."
+ ate_shriner_pilgrimage.0050.b:0 "I believe him. I do not need to prove it."
+
+ # ate_shriner_pilgrimage.0060 — Scholar from Chicago
+ ate_shriner_pilgrimage.0060.t:0 "The Exile's Question"
+ ate_shriner_pilgrimage.0060.desc:0 "A pilgrim about your age falls into step beside you. His accent marks him from somewhere far north. You ask where he is from. He pauses.\n\n#italic \"Chicago,\"# he says, and leaves it at that. He is quiet for a long time. Then: #italic \"Do you believe the liberation of Chicago is in Allah's plan? Or do you believe Allah's plan already failed us there?\"# He is not being provocative. He genuinely wants to know."
+ ate_shriner_pilgrimage.0060.a:0 "I tell him what I believe."
+ ate_shriner_pilgrimage.0060.b:0 "I have no answer. But I will pray for one."
+
+ # ate_shriner_pilgrimage.0100 — Imperial Potentate's Temple
+ ate_shriner_pilgrimage.0100.t:0 "The Imperial Potentate's Temple"
+ ate_shriner_pilgrimage.0100.desc:0 "Nothing prepares you for the temple either.\n\nIt rises from the heart of Tampa like a dream someone refused to wake from — its golden minarets visible from the gulf shore, its outer walls etched with every verse of the Alcoran in script so fine it seems woven rather than carved. In the inner sanctum, the air is cool and incense-heavy. Soldiers of the Arabian Knights stand at attention on either side of the hall, hands fixed to the scimitars at their waists.\n\nThen — slowly — a carpet descends from above the altar. The Imperial Potentate of Tampa, the spiritual head of all Shriner Islam, sits cross-legged upon it. When he reaches the floor, he rises. He steps toward you. He presses two fingers to your forehead, and says nothing at all."
+ ate_shriner_pilgrimage.0100.a:0 "All praise is due to the Greatest."
+
+ # ate_shriner_pilgrimage.0101 — Return home
+ ate_shriner_pilgrimage.0101.t:0 "A Zair Returns Home"
+ ate_shriner_pilgrimage.0101.desc:0 "You walk back through your own gates a different person than the one who left. Tampa stays with you — in the smell of incense that clings to your clothes, in the weight of the Imperial Potentate's blessing, in the memory of a question from an exile you are still turning over in your mind.\n\nThe faithful look at you differently now. They use a word you have not heard applied to yourself before.\n\nZair. One who has made the sacred journey. You are Zair."
+ ate_shriner_pilgrimage.0101.a:0 "I am Zair."
+
+ # ate_shriner_pilgrimage.0070 -- Gator
+ ate_shriner_pilgrimage.0070.t:0 "The Question of the Gator"
+ ate_shriner_pilgrimage.0070.desc:0 "A vendor at the edge of the market holds out a skewer of grilled meat, the smoke rising sweet and dark. #italic \"Alligator,\"# he says. #italic \"Caught in the bay this morning. Halal as any fish of the water.\"#\n\nA nearby scholar looks up from his book. #italic \"He is right. The gator is a beast of the waters — it falls under the permission.\"# An older pilgrim across the street shakes his head slowly, says nothing.\n\nYou are in Tampa. You are on pilgrimage. And you have never eaten gator in your life."
+ ate_shriner_pilgrimage.0070.a:0 "The scholar speaks true. I eat."
+ ate_shriner_pilgrimage.0070.b:0 "Let them settle the question after I am gone. I will fast."
+
+ # ate_shriner_pilgrimage.0080 -- Last Orange
+ ate_shriner_pilgrimage.0080.t:0 "The Last Orange"
+ ate_shriner_pilgrimage.0080.desc:0 "An old woman sits alone at the far edge of the bazaar, behind a table with nothing on it but a single orange — real, round, impossibly orange against the dust of the street. She names a price that would insult a merchant. She does not bargain.\n\n#italic \"Grown from a seed saved before the Fall,\"# she says. #italic \"The last tree died in my grandmother's time. This is the last fruit of the last tree.\"#\n\nYou have seen paintings of oranges. You have never held one."
+ ate_shriner_pilgrimage.0080.a:0 "Name your price."
+ ate_shriner_pilgrimage.0080.b:0 "Some things are better kept as legend."
+
+ # ate_shriner_pilgrimage.0090 -- Gluttony feast
+ ate_shriner_pilgrimage.0090.t:0 "The Endless Table"
+ ate_shriner_pilgrimage.0090.desc:0 "The Shriner lodge on the edge of the market has thrown open its gates for pilgrims. Long tables run the length of the courtyard, loaded with everything the Gulf can offer: smoked mullet, fried plantain, conch fritters, cane-sugar pastries, bowls of spiced rice, a whole roasted pig at the far end — though perhaps you should not look too long at that one.\n\nThe lodge brother who greets you sweeps his arm across the table. #italic \"You have walked far,\"# he says. #italic \"The Prophet never said pilgrims must suffer at the table.\"#\n\nHe is not wrong, technically. He is also grinning a little too wide."
+ ate_shriner_pilgrimage.0090.a:0 "The Prophet never said pilgrims must suffer at the table."
+ ate_shriner_pilgrimage.0090.b:0 "I thank him. I eat what I need and no more."
+
+ # ate_shriner_pilgrimage.0091 -- Wrath
+ ate_shriner_pilgrimage.0091.t:0 "The Man at the Spice Stall"
+ ate_shriner_pilgrimage.0091.desc:0 "He does not address you. He addresses his apprentice, loudly, as you pass.\n\n#italic \"You see this? Tampa. A holy site. Because some men in fezzes said so.\"# He gestures at the mosque rising above the rooftops. #italic \"Six hundred years ago this was a port city with a football team. Now it is Mecca. Because the Potentate — the Potentate, mind you, not the Caliph, not the Imam, the Potentate — sat on a carpet and declared it.\"#\n\nHis apprentice is staring at his feet.\n\n#italic \"They call their god Allah'din,\"# the merchant continues. #italic \"Allah. Din. They named God after a fairy tale and kept a straight face. They have taken the faith of the Prophet — a faith that moved mountains — and dressed it in a costume.\"#\n\nHe finally looks at you. He does not lower his voice."
+ ate_shriner_pilgrimage.0091.a:0 "A faith that survived the Fall is not a costume."
+ ate_shriner_pilgrimage.0091.b:0 "He will answer to Allah'din before I answer to him."

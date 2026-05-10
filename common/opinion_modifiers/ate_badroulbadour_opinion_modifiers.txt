@@ -1,3 +1,0 @@
-﻿ate_captive_wife_opinion = {
-	value = -50
-}

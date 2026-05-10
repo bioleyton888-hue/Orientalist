@@ -1,0 +1,15 @@
+﻿# Shriner artifact creation scripted effects
+
+create_artifact_oil_lamp_effect = {
+	# Get the character the artifact is being made for.
+	$OWNER$ = { save_scope_as = owner }
+	set_artifact_rarity_masterwork = yes
+	create_artifact = {
+		name = artifact_shriner_oil_lamp_name
+		description = artifact_shriner_oil_lamp_desc
+		type = miscellaneous
+		visuals = ate_oil_lamp
+		modifier = ate_shriner_oil_lamp_modifier
+		save_scope_as = newly_created_artifact
+	}
+}

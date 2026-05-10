@@ -1,0 +1,21 @@
+﻿shriner_zair = {
+	index = 1013
+	icon = hajjaj.dds
+
+	category = fame
+
+	inherit_chance = 0
+	birth = 0
+	random_creation = 0
+
+	culture_modifier = {
+		parameter = prowess_from_religious_traits
+		prowess = 2
+	}
+
+	monthly_piety = 0.5
+	islam_religion_opinion = 5
+	character_travel_speed = 5
+	character_travel_safety = 5
+	learning = 1
+}
