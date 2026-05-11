@@ -69,3 +69,21 @@ ate_shriner_initiated_modifier = {
 	monthly_piety = 0.3
 	same_faith_opinion = 10
 }
+
+ate_nelson_neomoor_conversion = {
+	icon = prowess_positive
+	martial = 2
+	prowess = 3
+}
+
+ate_waltney_neomoor_conversion = {
+	icon = learning_positive
+	monthly_piety = 0.5
+	same_faith_opinion = 15
+}
+
+ate_shriner_neomoor_conversion = {
+	icon = learning_positive
+	learning = 2
+	monthly_piety = 0.3
+}

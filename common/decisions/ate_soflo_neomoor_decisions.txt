@@ -47,6 +47,8 @@ ate_nelson_soflo_neomoor = {
 
 	effect = {
 		add_character_flag = nelson_neomoor_done
+		add_character_flag = { flag = ate_neomoor_conversion_recent years = 15 }
+		add_character_modifier = { modifier = ate_nelson_neomoor_conversion years = -1 }
 		set_culture = culture:neomoor
 		culture:neomoor = {
 			if = {
@@ -123,6 +125,8 @@ ate_shriner_soflo_neomoor = {
 
 	effect = {
 		add_character_flag = shriner_neomoor_done
+		add_character_flag = { flag = ate_neomoor_conversion_recent years = 15 }
+		add_character_modifier = { modifier = ate_shriner_neomoor_conversion years = -1 }
 		set_culture = culture:neomoor
 		culture:neomoor = {
 			if = {
@@ -199,6 +203,8 @@ ate_waltney_soflo_neomoor = {
 
 	effect = {
 		add_character_flag = waltney_neomoor_done
+		add_character_flag = { flag = ate_neomoor_conversion_recent years = 15 }
+		add_character_modifier = { modifier = ate_waltney_neomoor_conversion years = -1 }
 		set_culture = culture:neomoor
 		culture:neomoor = {
 			if = {
