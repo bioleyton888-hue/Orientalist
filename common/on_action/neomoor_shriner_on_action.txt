@@ -1,4 +1,4 @@
-﻿# On birth: grant Ya-Shamal Descendant and Mawlid al-Fez traits
+﻿﻿# On birth: grant Ya-Shamal Descendant and Mawlid al-Fez traits
 on_birth_child = {
 	events = {
 		ate_shriner.0002
@@ -234,7 +234,7 @@ neomoor_shriner_title_gain_handler = {
 			}
 		}
 		else_if = {
-			limit = { scope:title = { this = title:k_chicagoland } }
+			limit = { scope:title = { this = title:k_michigan } }
 			if = {
 				limit = {
 					OR = {
@@ -242,10 +242,25 @@ neomoor_shriner_title_gain_handler = {
 						faith = faith:shriner
 					}
 				}
-				title:k_chicagoland = { set_title_name = k_chicagoland_neomoor_shriner }
+				title:k_michigan = { set_title_name = k_michigan_neomoor_shriner }
 			}
 			else = {
-				title:k_chicagoland = { set_title_name = k_chicagoland }
+				title:k_michigan = { set_title_name = k_michigan }
+			}
+		}
+		else_if = {
+			limit = { scope:title = { this = title:d_detroit } }
+			if = {
+				limit = {
+					OR = {
+						culture = culture:neomoor
+						faith = faith:shriner
+					}
+				}
+				title:d_detroit = { set_title_name = d_detroit_neomoor_shriner }
+			}
+			else = {
+				title:d_detroit = { set_title_name = d_detroit }
 			}
 		}
 		else_if = {
