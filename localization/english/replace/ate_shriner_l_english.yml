@@ -8,24 +8,27 @@
  trait_mawlid_al_fez_desc:0 "This character was born while their parent held the title of Imperial Potentate, the sacred head of the Shriner faith."
  trait_mawlid_al_fez_character_desc:0 "[ROOT.GetCharacter.GetTitledFirstNameNoTooltip] was born to the Imperial Potentate and carries the blessing of the Shrine from birth."
 
+ # D-Mecca holy site
+ holy_site_detroit_shriner_effect_name:0 "D-Mecca"
+
  # Ya-Shamal nickname
  nick_ya_shamal:0 "Ya-Shamal"
- nick_ya_shamal_desc:0 "This character is revered as a champion of the Shriner faith and the greater Islamic world for fulfilling the prophesized reconquest of Chicago and ending the persecution of the Muslims therein."
+ nick_ya_shamal_desc:0 "This character is revered as a champion of the Shriner faith and the greater Islamic world for fulfilling the prophesized reconquest of Detroit and ending the persecution of the Muslims therein."
 
  # Ya-Shamal Descendant trait
  trait_ya_shamal_descendant:0 "Ya-Shamal Descendant"
- trait_ya_shamal_descendant_desc:0 "This character is a descendant of Ya-Shamal, who fulfilled the prophesized reconquest of Chicago."
- trait_ya_shamal_descendant_character_desc:0 "[ROOT.GetCharacter.GetTitledFirstNameNoTooltip] is descended from Ya-Shamal, who fulfilled the prophesized reconquest of Chicago, and is regarded with esteem among the faithful of Islam."
+ trait_ya_shamal_descendant_desc:0 "This character is a descendant of Ya-Shamal, who fulfilled the prophesized reconquest of Detroit."
+ trait_ya_shamal_descendant_character_desc:0 "[ROOT.GetCharacter.GetTitledFirstNameNoTooltip] is descended from Ya-Shamal, who fulfilled the prophesized reconquest of Detroit, and is regarded with esteem among the faithful of Islam."
 
  # Ya-Shamal trait
  trait_ya_shamal:0 "Ya-Shamal"
- trait_ya_shamal_desc:0 "This character is revered as a champion of the Shriner faith and the greater Islamic world for fulfilling the prophesized reconquest of Chicago and ending the persecution of the Muslims therein."
- trait_ya_shamal_character_desc:0 "[ROOT.GetCharacter.GetTitledFirstNameNoTooltip] is revered as a champion of the Shriner faith and the greater Islamic world for fulfilling the prophesized reconquest of Chicago and ending the persecution of the Muslims therein."
+ trait_ya_shamal_desc:0 "This character is revered as a champion of the Shriner faith and the greater Islamic world for fulfilling the prophesized reconquest of Detroit and ending the persecution of the Muslims therein."
+ trait_ya_shamal_character_desc:0 "[ROOT.GetCharacter.GetTitledFirstNameNoTooltip] is revered as a champion of the Shriner faith and the greater Islamic world for fulfilling the prophesized reconquest of Detroit and ending the persecution of the Muslims therein."
 
  # Ya-Shamal decision
- ya_shamal_decision:0 "Liberate Chicago"
- ya_shamal_decision_desc:0 "Chicago. The city of winds, the seat of the fallen House el-Shabazz, the wound that has festered in the heart of Islam for generations. The Alcoran speaks of a day when one of the faithful would ride into this city not as a pilgrim, but as its master — and the persecution of the believers would end not with prayer, but with conquest. That day is today. That conqueror is me. Let Yakub's heirs tremble."
- ya_shamal_decision_tooltip:0 "Liberate Chicago"
+ ya_shamal_decision:0 "Liberate Detroit"
+ ya_shamal_decision_desc:0 "Detroit. The city of winds, the seat of the fallen House el-Shabazz, the wound that has festered in the heart of Islam for generations. The Alcoran speaks of a day when one of the faithful would ride into this city not as a pilgrim, but as its master — and the persecution of the believers would end not with prayer, but with conquest. That day is today. That conqueror is me. Let Yakub's heirs tremble."
+ ya_shamal_decision_tooltip:0 "Liberate Detroit"
  ya_shamal_decision_confirm:0 "Let a new day commence."
 
  # ate_shriner.0003 — Seize the Imperial Divan
@@ -54,8 +57,8 @@
  ate_shriner.0004.a:0 "Miami is Neomoor. The [Root.GetDynastyName] family leads the way."
 
  # ate_shriner.0001 — Ya-Shamal ceremony event
- ate_shriner.0001.t:0 "Liberate Chicago"
- ate_shriner.0001.desc:0 "All praise is due to the Greatest! Once more has Chicago been brought under the fold of the Islamic faithful, as [ROOT.GetTitledFirstNameNoTooltip] declares a month of celebration across the Shriner world in commemoration of the reconquest of the seat of House el-Shabazz. By virtue of this conquest, many have begun revering them as Ya-Shamal — also known as the Mahdi — the hero prophesied in the Alcoran and the Sunnah of the Prophet, who will honor them, their family, and their companions — the hero who will defeat Yakub and his works once and for all."
+ ate_shriner.0001.t:0 "Liberate Detroit"
+ ate_shriner.0001.desc:0 "All praise is due to the Greatest! Once more has Detroit been brought under the fold of the Islamic faithful, as [ROOT.GetTitledFirstNameNoTooltip] declares a month of celebration across the Shriner world in commemoration of the reconquest of the seat of House el-Shabazz. By virtue of this conquest, many have begun revering them as Ya-Shamal — also known as the Mahdi — the hero prophesied in the Alcoran and the Sunnah of the Prophet, who will honor them, their family, and their companions — the hero who will defeat Yakub and his works once and for all."
  ate_shriner.0001.a:0 "Badroulbadour's struggle was not for naught!"
 
 # Badroulbadour Chain — ate_badroulbadour.0001-0006
@@ -65,15 +68,15 @@
  ate_badroulbadour.0001.b:0 "I will not speak with this sinful dancer."
 
  ate_badroulbadour.0002.t:0 "Wondrous Tales"
- ate_badroulbadour.0002.desc:0 "Outside of the caravanserai, you meet with the dancer. She bows before you as she did in the market. You respond, #italic "Inform me of your name, oh Jasmine flower."# She smiles and then says, #italic "My father named me Badroulbadour — the fullest moon of full moons."# For hours, she regales you with fantastical tales of her journeys through courts all across the world. One of them is about a city named Chicago. It was once home to people of your faith — that of the true Islamic creed — but also home to apostates whose name belied their lack of respect for true Islamic tradition. Before she can continue, you both realize the sun is about to rise. You bid her farewell, but she grasps your arm. Her eyes dart to yours, and she asks #italic "My lord, will you meet me tomorrow? I have a matter which only you can save me from."#"
+ ate_badroulbadour.0002.desc:0 "Outside of the caravanserai, you meet with the dancer. She bows before you as she did in the market. You respond, #italic "Inform me of your name, oh Jasmine flower."# She smiles and then says, #italic "My father named me Badroulbadour — the fullest moon of full moons."# For hours, she regales you with fantastical tales of her journeys through courts all across the world. One of them is about a city named Detroit. It was once home to people of your faith — that of the true Islamic creed — but also home to apostates whose name belied their lack of respect for true Islamic tradition. Before she can continue, you both realize the sun is about to rise. You bid her farewell, but she grasps your arm. Her eyes dart to yours, and she asks #italic "My lord, will you meet me tomorrow? I have a matter which only you can save me from."#"
  ate_badroulbadour.0002.a:0 "Meet me at my palace."
 
  ate_badroulbadour.0003.t:0 "A Wish"
- ate_badroulbadour.0003.desc:0 "You meet Badroulbadour on a terrace, overlooking the great port of the city. She looks back to you, smiles, then breaks down in tears. Composing herself, she apologizes before speaking. #italic "I did not finish the tale of Chicago..."# She begins telling you of the city's fall — the Great Infidel Invasion, the apostate uprising that came after, and the exodus of the faithful as the heart of Islam was made into a temple to their false god. Then, she pauses and takes a deep breath. #italic "Chicago was brought down by a wish, spurred on by Yakub and a misguided heart. A princess of the city wished to live as a normal girl. Her wish was granted, but Yakub works in devilish ways. The city her family had wisely governed for generations fell, her family sent into exile. She was a princess no more."#"
+ ate_badroulbadour.0003.desc:0 "You meet Badroulbadour on a terrace, overlooking the great port of the city. She looks back to you, smiles, then breaks down in tears. Composing herself, she apologizes before speaking. #italic "I did not finish the tale of Detroit..."# She begins telling you of the city's fall — the Great Infidel Invasion, the apostate uprising that came after, and the exodus of the faithful as the heart of Islam was made into a temple to their false god. Then, she pauses and takes a deep breath. #italic "Detroit was brought down by a wish, spurred on by Yakub and a misguided heart. A princess of the city wished to live as a normal girl. Her wish was granted, but Yakub works in devilish ways. The city her family had wisely governed for generations fell, her family sent into exile. She was a princess no more."#"
  ate_badroulbadour.0003.a:0 "What a horrible story..."
 
  ate_badroulbadour.0004.t:0 "A Curse"
- ate_badroulbadour.0004.desc:0 "Badroulbadour takes a shuddering breath before continuing. #italic "That princess was my aunt Zumurrud, and the curse was passed down to me. I am doomed to die should I once more be called Princess. But for some reason, when I look upon you, I see the same wisdom and strength that once guided the rulers of Chicago. Perhaps you in your grace can help me break this curse..."# You look into her eyes. There are tears welling up as she speaks, but you see hope in them. You console her, remembering how your father had himself survived a sack led by the armies of Yakub. You rise, her hand in yours, and boldly proclaim your wish to vanquish Yakub and lift her curse. She smiles at this and wraps you in a warm embrace. You invite her back to your palace while you begin to think of ways to free her from the binding curse upon her family."
+ ate_badroulbadour.0004.desc:0 "Badroulbadour takes a shuddering breath before continuing. #italic "That princess was my aunt Zumurrud, and the curse was passed down to me. I am doomed to die should I once more be called Princess. But for some reason, when I look upon you, I see the same wisdom and strength that once guided the rulers of Detroit. Perhaps you in your grace can help me break this curse..."# You look into her eyes. There are tears welling up as she speaks, but you see hope in them. You console her, remembering how your father had himself survived a sack led by the armies of Yakub. You rise, her hand in yours, and boldly proclaim your wish to vanquish Yakub and lift her curse. She smiles at this and wraps you in a warm embrace. You invite her back to your palace while you begin to think of ways to free her from the binding curse upon her family."
  ate_badroulbadour.0004.a:0 "May Aladdin guide me!"
 
  ate_badroulbadour.0005b.t:0 "A Difficult Choice"
@@ -92,7 +95,7 @@
 
  ate_badroulbadour.0006.t:0 "The Light of the Moon"
  ate_badroulbadour.0006.desc:0 "Though she married you to lift the curse, Badroulbadour has been growing increasingly close to you. It is clear that the curse has been lifted, for she thrives more than ever. Every night, you intend to part from her, but every night she regales you with another story from her travels until you fall asleep without doing so. Tonight, she says she has a surprise for you. She guides you by hand to her terrace and has you sit and watch as she begins dancing for you in the style of the princesses of old. Then she gently kisses you. She tells you a final story — that of the King Shahryar and his wife, the fair Scheherezade — who narrated stories to survive until the object of her affection, the King, fell in love with her. She finishes by saying that just as Shahryar had fallen for Scheherezade, so too has she fallen for you."
- ate_badroulbadour.0006.desc.gay:0 "The curse has lifted. Badroulbadour no longer carries the weight of Zumurrud's doom — you can see it in the way she laughs now, freely, without looking over her shoulder. The marriage was a formality, and she has always known it. Tonight she takes you to her terrace and dances for you in the style of the princesses of old. When she finishes, she does not kiss you. Instead she takes your hands in hers and says, #italic "I have traveled every court from Chicago to Tampa looking for something I could never name. I think I understand now — I was not searching for a love story. I was searching for someone who would face the dark with me."# You realize, with quiet certainty, that you were searching for the same."
+ ate_badroulbadour.0006.desc.gay:0 "The curse has lifted. Badroulbadour no longer carries the weight of Zumurrud's doom — you can see it in the way she laughs now, freely, without looking over her shoulder. The marriage was a formality, and she has always known it. Tonight she takes you to her terrace and dances for you in the style of the princesses of old. When she finishes, she does not kiss you. Instead she takes your hands in hers and says, #italic "I have traveled every court from Detroit to Tampa looking for something I could never name. I think I understand now — I was not searching for a love story. I was searching for someone who would face the dark with me."# You realize, with quiet certainty, that you were searching for the same."
  ate_badroulbadour.0006.desc.asexual:0 "The curse has lifted. Badroulbadour dances for you in the style of the princesses of old, and it is beautiful — but not in the way she perhaps intended. You watch her and feel something you cannot quite name: warmth, admiration, a deep and quiet gratitude that has nothing to do with desire. When she finishes, she sees it in your face — the honest, unguarded expression of someone who cannot offer what she might have hoped for. To your surprise, she laughs softly. #italic \"I have told my stories to kings who wanted only a prize.\"# She takes your hands in hers. #italic \"You are the first who simply listened.\"#"
  ate_badroulbadour.0006.a:0 "Another Arabian Night..."
 

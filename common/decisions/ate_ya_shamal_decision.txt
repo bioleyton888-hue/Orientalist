@@ -1,4 +1,4 @@
-﻿# Ya-Shamal — Shriner ritual at Chicago
+﻿# Ya-Shamal — Shriner ritual at Detroit
 ya_shamal_decision = {
 	picture = {
 		reference = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
@@ -19,8 +19,8 @@ ya_shamal_decision = {
 
 	is_valid = {
 		faith = faith:shriner
-		has_title = title:d_chicagoland
-		has_title = title:c_chicago
+		has_title = title:d_detroit
+		has_title = title:c_detroit
 		NOT = { has_trait = ya_shamal }
 		NOT = { exists = global_var:ya_shamal_performed }
 	}
@@ -45,7 +45,8 @@ ya_shamal_decision = {
 			}
 			add_trait = ya_shamal_descendant
 		}
-		title:c_chicago = { set_county_faith = faith:shriner }
+		title:c_detroit = { set_county_faith = faith:shriner }
+		faith:shriner = { activate_holy_site = detroit_shriner }
 		stress_impact = {
 			zealous = miniscule_stress_impact_loss
 		}
