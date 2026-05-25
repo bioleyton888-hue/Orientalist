@@ -1,4 +1,4 @@
-﻿﻿# On birth: grant Ya-Shamal Descendant and Mawlid al-Fez traits
+﻿# On birth: grant Ya-Shamal Descendant and Mawlid al-Fez traits
 on_birth_child = {
 	events = {
 		ate_shriner.0002
