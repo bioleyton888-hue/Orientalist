@@ -1,4 +1,4 @@
-﻿house_osiris = {
-	name = "house_osiris"
-	dynasty = dynn_osiris
+﻿house_ramsesovich = {
+	name = "house_ramsesovich"
+	dynasty = dynn_ramsesovich
 }

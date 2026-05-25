@@ -50,6 +50,7 @@ yearly_playable_pulse = {
 		ate_shriner_mummy_pulse
 		ate_floridian_gator_pulse
 		ate_floridian_gator_council_pulse
+		ate_neomoor_post_conversion_pulse
 	}
 }
 
@@ -426,6 +427,64 @@ ate_floridian_gator_council_pulse = {
 		random = {
 			chance = 15
 			trigger_event = { id = ate_floridian.0004 }
+		}
+	}
+}
+
+# Post-conversion pulse — fires for 15 years after any Neomoor conversion decision, 3-year cooldown
+ate_neomoor_post_conversion_pulse = {
+	trigger = {
+		culture = culture:neomoor
+		has_character_flag = ate_neomoor_conversion_recent
+		is_landed = yes
+		is_adult = yes
+		NOT = { has_character_flag = ate_post_conversion_cooldown }
+	}
+	effect = {
+		random = {
+			chance = 15
+			add_character_flag = {
+				flag = ate_post_conversion_cooldown
+				years = 3
+			}
+			random_list = {
+				30 = {
+					modifier = {
+						add = -1000000
+						NOT = {
+							OR = {
+								AND = {
+									exists = title:e_hcc
+									NOT = { has_title = title:e_hcc }
+								}
+								any_neighboring_realm_owner = {
+									NOT = { culture = culture:neomoor }
+									NOT = { faith = faith:shriner }
+									is_landed = yes
+								}
+							}
+						}
+					}
+					trigger_event = { id = ate_neomoor.0001 }
+				}
+				35 = {
+					modifier = {
+						add = -1000000
+						NOT = {
+							any_vassal = {
+								OR = {
+									culture = culture:sunshiner
+									culture = culture:sofloano
+								}
+							}
+						}
+					}
+					trigger_event = { id = ate_neomoor.0002 }
+				}
+				25 = {
+					trigger_event = { id = ate_neomoor.0003 }
+				}
+			}
 		}
 	}
 }

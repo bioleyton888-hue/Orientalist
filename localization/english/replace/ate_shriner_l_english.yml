@@ -3,6 +3,14 @@
  
  ate_ramses_mummies_name:0 "Ramses' Mummies"
 
+ # Gold cost tooltips
+ ate_cost_gold_10_tt:0 "Costs #weak 10 gold.#!"
+ ate_cost_gold_15_tt:0 "Costs #weak 15 gold.#!"
+ ate_cost_gold_20_tt:0 "Costs #weak 20 gold.#!"
+ ate_cost_gold_25_tt:0 "Costs #weak 25 gold.#!"
+ ate_cost_gold_30_tt:0 "Costs #weak 30 gold.#!"
+ ate_cost_gold_75_tt:0 "Costs #weak 75 gold.#!"
+
  # Mawlid al-Fez trait
  mawlid_al_fez:0 "Mawlid al-Fez"
  trait_mawlid_al_fez_desc:0 "This character was born while their parent held the title of Imperial Potentate, the sacred head of the Shriner faith."
@@ -191,8 +199,9 @@
  ate_pharaoh_blessing_modifier_desc:0 "The Pharaoh's favor is worth something — at least in coin. The trade routes that cross his domain do so at his pleasure."
  ate_leper_patron_modifier:0 "Patron of the Afflicted"
  ate_leper_patron_modifier_desc:0 "The Lodge does not turn away the sick, and neither does this ruler. The people remember."
- dynn_osiris:0 "Osiris"
- house_osiris:0 "Osiris"
+ dynn_ramsesovich:0 "Ramsesovich"
+ house_ramsesovich:0 "Ramsesovich"
+ dynn_ramsesovich_motto:0 "I Have Died and Found It Beneath Me"
  ate_pharaoh_bane_modifier:0 "Pharaoh's Bane"
  ate_pharaoh_bane_modifier_desc:0 "Ramses is dead, and something of his power lingers in the one who struck him down. The old gods take notice of those who kill their Pharaoh."
  ate_mummylord_modifier:0 "Mummylord"

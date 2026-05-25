@@ -1,4 +1,4 @@
-version="1.18.0"
+version="1.18.2"
 tags={
 	"Utilities"
 	"Character Focuses"
