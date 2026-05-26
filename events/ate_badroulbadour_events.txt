@@ -10,7 +10,6 @@ ate_badroulbadour.0001 = {
 	desc = ate_badroulbadour.0001.desc
 	theme = party
 	trigger = { is_player_character = yes }
-	
 
 	immediate = {
 		create_character = {
