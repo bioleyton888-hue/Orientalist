@@ -118,11 +118,11 @@ ate_shriner.0005 = {
 	desc = {
 		first_valid = {
 			triggered_desc = {
-				trigger = { has_trait = lunatic }
+				trigger = { has_trait = lunatic_genetic }
 				desc = ate_shriner.0005.desc.lunatic
 			}
 			triggered_desc = {
-				trigger = { has_trait = possessed }
+				trigger = { has_trait = possessed_genetic }
 				desc = ate_shriner.0005.desc.possessed
 			}
 			triggered_desc = {
@@ -485,7 +485,7 @@ ate_shriner.0010 = {
 					has_trait = gregarious
 					has_trait = gluttonous
 					has_trait = compassionate
-					has_trait = eager_reveler
+					has_trait = lifestyle_reveler
 					has_trait = profligate
 				}
 			}
@@ -760,11 +760,11 @@ ate_shriner.0013 = {
 		name = ate_shriner.0013.g
 		trigger = {
 			OR = {
-				has_trait = lunatic
+				has_trait = lunatic_genetic
 				has_trait = eccentric
-				has_trait = imbecile
-				has_trait = stupid
-				has_trait = slow
+				has_trait = intellect_bad_3
+				has_trait = intellect_bad_2
+				has_trait = intellect_bad_1
 			}
 		}
 		add_stress = -20
@@ -796,7 +796,6 @@ ate_shriner.0013 = {
 		if = {
 			limit = {
 				OR = {
-					has_trait = cruel
 					has_trait = sadistic
 					has_trait = callous
 				}

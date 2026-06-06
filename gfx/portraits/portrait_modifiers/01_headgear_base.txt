@@ -1,4 +1,4 @@
-## AteNeomoorCulture additions — re-opens headgear_base to add Shriner fez modifier
+﻿## AteNeomoorCulture additions — re-opens headgear_base to add Shriner fez modifier
 
 headgear_base = {
 
