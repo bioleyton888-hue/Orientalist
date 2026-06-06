@@ -1,8 +1,8 @@
-version="1.19.0"
+version="2.0.0"
 tags={
 	"Utilities"
 	"Character Focuses"
 }
 name="After the end Neomoor culture Revival"
-supported_version="1.17.*"
+supported_version="1.19.*"
 picture="thumbnail.jpg"
