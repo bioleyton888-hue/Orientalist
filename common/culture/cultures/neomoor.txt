@@ -22,6 +22,8 @@
 		requires_dlc_flag = royal_court
 	}
 
+	house_coa_frame = house_frame_13
+
 	coa_gfx = {
 		sofloano_coa_gfx
 		gulfard_coa_gfx

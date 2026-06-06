@@ -3,17 +3,21 @@ on_birth_child = {
 	events = {
 		ate_shriner.0002
 	}
-	effect = {
-		if = {
-			limit = {
-				OR = {
-					scope:father ?= { has_title = title:d_shriner }
-					scope:mother ?= { has_title = title:d_shriner }
-				}
-				NOT = { has_trait = mawlid_al_fez }
-			}
-			add_trait = mawlid_al_fez
+	on_actions = {
+		neomoor_mawlid_birth_check
+	}
+}
+
+neomoor_mawlid_birth_check = {
+	trigger = {
+		OR = {
+			scope:father ?= { has_title = title:d_shriner }
+			scope:mother ?= { has_title = title:d_shriner }
 		}
+		NOT = { has_trait = mawlid_al_fez }
+	}
+	effect = {
+		add_trait = mawlid_al_fez
 	}
 }
 
@@ -401,7 +405,7 @@ ate_shriner_lamp_pulse = {
 # Pet Alligator — yearly flavor event for Floridian heritage characters, 10-year cooldown
 ate_floridian_gator_pulse = {
 	trigger = {
-		culture = { has_cultural_heritage = heritage_floridian }
+		culture = { has_cultural_pillar = heritage_floridian }
 		is_adult = yes
 		is_landed = yes
 		NOT = { has_character_modifier = ate_pet_alligator_modifier }
