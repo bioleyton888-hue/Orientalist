@@ -568,7 +568,7 @@ ate_shriner.0010 = {
 
 ########################################
 # ate_shriner.0012 — A Mummy on the Loose
-# Intro event — 80/20 split into hermit (0013) or Ramses (0014)
+# Intro event — 50/50 split into hermit (0013) or Ramses (0014)
 ########################################
 ate_shriner.0012 = {
 	type = character_event
