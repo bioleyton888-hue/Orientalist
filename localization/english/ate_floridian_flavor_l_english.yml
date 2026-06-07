@@ -41,15 +41,15 @@
  ate_floridian.0004.b_eat.tt:0 "[ROOT.Char.GetLocalizedText( 'ate_gator_name' )] eats a servant."
 
  # ate_floridian.0005 — Gator intimidates the least-loyal councillor
- ate_floridian.0005.desc:0 "[ROOT.Char.GetLocalizedText( 'ate_gator_name' )] crossed the chamber and stopped directly in front of [scope:councillor.GetFirstNameNoTooltip]. The councillor has not spoken since. They will think twice before obstructing you again."
+ ate_floridian.0005.desc:0 "[ROOT.Char.GetLocalizedText( 'ate_gator_name' )] crossed the chamber and stopped directly in front of [councillor.GetFirstNameNoTooltip]. The councillor has not spoken since. They will think twice before obstructing you again."
  ate_floridian.0005.a:0 "Good council."
 
  # ate_floridian.0006 — Gator bites the least-loyal councillor
- ate_floridian.0006.desc:0 "It happened before anyone could react. [scope:councillor.GetFirstNameNoTooltip] lunged for the door; [ROOT.Char.GetLocalizedText( 'ate_gator_name' )] caught them by the arm. The screaming was brief. The blood was not."
+ ate_floridian.0006.desc:0 "It happened before anyone could react. [councillor.GetFirstNameNoTooltip] lunged for the door; [ROOT.Char.GetLocalizedText( 'ate_gator_name' )] caught them by the arm. The screaming was brief. The blood was not."
  ate_floridian.0006.a:0 "Someone fetch a physician."
 
  # ate_floridian.0007 — Gator plays with a courtier's children
- ate_floridian.0007.desc:0 "You return from the meeting to find [scope:lucky_courtier.GetFirstNameNoTooltip]'s children sprawled in the courtyard with [ROOT.Char.GetLocalizedText( 'ate_gator_name' )]. The youngest one is using the gator's back as a seat. [scope:lucky_courtier.GetFirstNameNoTooltip] looks equal parts horrified and oddly moved."
+ ate_floridian.0007.desc:0 "You return from the meeting to find [lucky_courtier.GetFirstNameNoTooltip]'s children sprawled in the courtyard with [ROOT.Char.GetLocalizedText( 'ate_gator_name' )]. The youngest one is using the gator's back as a seat. [lucky_courtier.GetFirstNameNoTooltip] looks equal parts horrified and oddly moved."
  ate_floridian.0007.a:0 "Florida children."
 
  # ate_floridian.0008 — Gator eats a servant

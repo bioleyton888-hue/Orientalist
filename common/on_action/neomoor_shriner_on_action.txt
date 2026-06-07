@@ -48,6 +48,11 @@ yearly_playable_pulse = {
 		nelson_parade_check
 		badroulbadour_chain_check
 		ate_ibrahim_obsession_pulse
+	}
+}
+
+random_yearly_playable_pulse = {
+	on_actions = {
 		ate_shriner_lamp_pulse
 		ate_shriner_breakfast_pulse
 		ate_shriner_cafecito_pulse
@@ -373,10 +378,6 @@ ate_shriner_mummy_pulse = {
 	effect = {
 		random = {
 			chance = 15
-			add_character_flag = {
-				flag = ate_mummy_cooldown
-				years = 8
-			}
 			trigger_event = { id = ate_shriner.0012 }
 		}
 	}

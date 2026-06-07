@@ -578,6 +578,13 @@ ate_shriner.0012 = {
 
 	trigger = { is_player_character = yes }
 
+	immediate = {
+		add_character_flag = {
+			flag = ate_mummy_cooldown
+			years = 8
+		}
+	}
+
 	left_portrait = {
 		character = root
 		animation = personality_curious

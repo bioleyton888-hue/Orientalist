@@ -254,7 +254,7 @@
 
  # ate_shriner.0015 — The Ceremony of the Fez
  ate_shriner.0015.t:0 "The Ceremony of the Fez"
- ate_shriner.0015.desc:0 "The hall of the Lodge is quiet when [Root.GetFirstNameNoTooltip] calls [scope:son.GetFirstNameNoTooltip] forward. The boy stands straight — he has been practicing. The fez is placed in his hands. The words of the Lodge are spoken. And then it is done. [scope:son.GetFirstNameNoTooltip] turns it over in his hands — crimson felt, black tassel, the same as every other — and something passes across his face that has no name. He puts it on. It is slightly too large. He does not take it off."
- ate_shriner.0015.a:0 "The Lodge is yours now, [scope:son.GetFirstNameNoTooltip]. Guard it well."
+ ate_shriner.0015.desc:0 "The hall of the Lodge is quiet when [Root.GetFirstNameNoTooltip] calls [son.GetFirstNameNoTooltip] forward. The boy stands straight — he has been practicing. The fez is placed in his hands. The words of the Lodge are spoken. And then it is done. [son.GetFirstNameNoTooltip] turns it over in his hands — crimson felt, black tassel, the same as every other — and something passes across his face that has no name. He puts it on. It is slightly too large. He does not take it off."
+ ate_shriner.0015.a:0 "The Lodge is yours now, [son.GetFirstNameNoTooltip]. Guard it well."
  ate_shriner.0015.b:0 "Let every brother of the Lodge bear witness to this."
- ate_shriner.0015.b.toast:0 "[scope:son.GetFirstNameNoTooltip] has received the fez. He is a Shriner."
+ ate_shriner.0015.b.toast:0 "[son.GetFirstNameNoTooltip] has received the fez. He is a Shriner."
