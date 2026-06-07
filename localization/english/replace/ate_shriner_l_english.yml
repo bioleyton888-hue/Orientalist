@@ -12,7 +12,7 @@
  ate_cost_gold_75_tt:0 "Costs #weak 75 gold.#!"
 
  # Mawlid al-Fez trait
- mawlid_al_fez:0 "Mawlid al-Fez"
+ trait_mawlid_al_fez:0 "Mawlid al-Fez"
  trait_mawlid_al_fez_desc:0 "This character was born while their parent held the title of Imperial Potentate, the sacred head of the Shriner faith."
  trait_mawlid_al_fez_character_desc:0 "[ROOT.GetCharacter.GetTitledFirstNameNoTooltip] was born to the Imperial Potentate and carries the blessing of the Shrine from birth."
 
