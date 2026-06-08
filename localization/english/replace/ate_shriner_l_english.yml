@@ -3,13 +3,6 @@
  
  ate_ramses_mummies_name:0 "Ramses' Mummies"
 
- # Gold cost tooltips
- ate_cost_gold_10_tt:0 "Costs #weak 10 gold.#!"
- ate_cost_gold_15_tt:0 "Costs #weak 15 gold.#!"
- ate_cost_gold_20_tt:0 "Costs #weak 20 gold.#!"
- ate_cost_gold_25_tt:0 "Costs #weak 25 gold.#!"
- ate_cost_gold_30_tt:0 "Costs #weak 30 gold.#!"
- ate_cost_gold_75_tt:0 "Costs #weak 75 gold.#!"
 
  # Mawlid al-Fez trait
  trait_mawlid_al_fez:0 "Mawlid al-Fez"

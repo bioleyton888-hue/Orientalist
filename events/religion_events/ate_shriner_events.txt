@@ -426,16 +426,14 @@ ate_shriner.0009 = {
 	option = {
 		name = ate_shriner.0009.a
 		add_piety = 50
-		custom_tooltip = ate_cost_gold_15_tt
-		hidden_effect = { add_gold = -15 }
+		add_gold = -15
 	}
 
 	# Buy it yourself — if there is a genie inside, you want to be holding it
 	option = {
 		name = ate_shriner.0009.b
 		add_prestige = 50
-		custom_tooltip = ate_cost_gold_25_tt
-		hidden_effect = { add_gold = -25 }
+		add_gold = -25
 	}
 
 	# Drive him out — trait-locked for cynical/arbitrary rulers
@@ -472,8 +470,7 @@ ate_shriner.0010 = {
 	# Grand — full charitable feast
 	option = {
 		name = ate_shriner.0010.a
-		custom_tooltip = ate_cost_gold_30_tt
-		hidden_effect = { add_gold = -30 }
+		add_gold = -30
 		add_piety = 100
 		add_prestige = 50
 		if = {
@@ -496,8 +493,7 @@ ate_shriner.0010 = {
 	# Humble — modest but faithful
 	option = {
 		name = ate_shriner.0010.b
-		custom_tooltip = ate_cost_gold_10_tt
-		hidden_effect = { add_gold = -10 }
+		add_gold = -10
 		add_piety = 50
 		if = {
 			limit = {
@@ -559,8 +555,7 @@ ate_shriner.0010 = {
 			has_trait = hashishiyah
 		}
 		add_stress = -50
-		custom_tooltip = ate_cost_gold_20_tt
-		hidden_effect = { add_gold = -20 }
+		add_gold = -20
 		add_piety = -25
 		add_prestige = 50
 	}
@@ -691,8 +686,7 @@ ate_shriner.0013 = {
 			}
 		}
 		add_piety = 50
-		custom_tooltip = ate_cost_gold_10_tt
-		hidden_effect = { add_gold = -10 }
+		add_gold = -10
 		scope:hermit = { set_employer = root }
 		send_interface_toast = {
 			type = event_toast_effect_good
@@ -706,8 +700,7 @@ ate_shriner.0013 = {
 		name = ate_shriner.0013.b
 		scope:hermit = { move_to_pool = yes }
 		add_piety = 25
-		custom_tooltip = ate_cost_gold_15_tt
-		hidden_effect = { add_gold = -15 }
+		add_gold = -15
 		send_interface_toast = {
 			type = event_toast_effect_neutral
 			title = ate_shriner.0013.b.toast
@@ -914,8 +907,7 @@ ate_shriner.0014 = {
 	option = {
 		name = ate_shriner.0014.b
 		scope:ramses = { move_to_pool = yes }
-		custom_tooltip = ate_cost_gold_75_tt
-		hidden_effect = { add_gold = -75 }
+		add_gold = -75
 		add_character_modifier = {
 			modifier = ate_leper_patron_modifier
 			years = 10
