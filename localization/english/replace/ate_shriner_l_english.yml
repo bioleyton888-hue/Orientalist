@@ -3,7 +3,6 @@
  
  ate_ramses_mummies_name:0 "Ramses' Mummies"
 
-
  # Mawlid al-Fez trait
  trait_mawlid_al_fez:0 "Mawlid al-Fez"
  trait_mawlid_al_fez_desc:0 "This character was born while their parent held the title of Imperial Potentate, the sacred head of the Shriner faith."
@@ -109,28 +108,28 @@
 
 # Ibrahim the Mad chain — ate_shriner.0005-0008
  ate_shriner.0005.t:0 "A Sultan's Fancy"
- ate_shriner.0005.desc.lunatic:0 "[Root.GetFirstNameNoTooltip] has been visited by a peculiar vision. He dreams of a great moon-woman — vast as the tides, warm as fresh bread, impossibly magnificent in her enormity. The voice of the Shrine rings clear: #italic seek her, and you shall know peace.#!"
- ate_shriner.0005.desc.possessed:0 "The djinn speaks again tonight, its voice curling through the palace corridors like incense smoke. #italic Find her,#! it hisses. #italic She exists, Sultan — vast and glorious, the largest woman in all the world. She is your destiny.#! [Root.GetFirstNameNoTooltip] does not know if this is madness or prophecy."
- ate_shriner.0005.desc.deviant:0 "[Root.GetFirstNameNoTooltip] has always known his tastes run... unconventional. The court pretends not to notice. But this latest fixation feels different — a conviction, deep and unshakeable, that the most magnificent woman in the world exists somewhere in this empire, and that she is very, very large. The search will begin at once."
- ate_shriner.0005.desc.rakish_seducer:0 "[Root.GetFirstNameNoTooltip] has sampled widely, as his reputation confirms. But lately a peculiar preference has taken hold — away from the willowy and the delicate, toward something altogether more substantial. The largest woman in the empire, he has decided, would be the greatest conquest of his life. The agents must be dispatched immediately."
- ate_shriner.0005.desc.eccentric:0 "[Root.GetFirstNameNoTooltip] has had, he freely admits, an unusual idea. He has seen cattle at market and horses at the fair, and has come to the firm conclusion that grandeur of form is the highest beauty. The search for the most magnificent woman in the empire must begin immediately."
+ ate_shriner.0005.desc.lunatic:0 "You have been visited by a peculiar vision. You dream of a great moon-woman — vast as the tides, warm as fresh bread, impossibly magnificent in her enormity. The voice of the Shrine rings clear: #italic seek her, and you shall know peace.#!"
+ ate_shriner.0005.desc.possessed:0 "The djinn speaks again tonight, its voice curling through the palace corridors like incense smoke. #italic Find her,#! it hisses. #italic She exists, Sultan — vast and glorious, the largest woman in all the world. She is your destiny.#! You do not know if this is madness or prophecy."
+ ate_shriner.0005.desc.deviant:0 "You have always known your tastes run... unconventional. The court pretends not to notice. But this latest fixation feels different — a conviction, deep and unshakeable, that the most magnificent woman in the world exists somewhere in this empire, and that she is very, very large. The search will begin at once."
+ ate_shriner.0005.desc.rakish_seducer:0 "You have sampled widely, as your reputation confirms. But lately a peculiar preference has taken hold — away from the willowy and the delicate, toward something altogether more substantial. The largest woman in the empire, you have decided, would be the greatest conquest of your life. The agents must be dispatched immediately."
+ ate_shriner.0005.desc.eccentric:0 "You have had, you freely admit, an unusual idea. You have seen cattle at market and horses at the fair, and have come to the firm conclusion that grandeur of form is the highest beauty. The search for the most magnificent woman in the empire must begin immediately."
  ate_shriner.0005.a:0 "Dispatch agents across the empire at once!"
  ate_shriner.0005.b:0 "I shall master these thoughts... for now."
 
  ate_shriner.0006.t:0 "The Agents Return"
- ate_shriner.0006.desc:0 "After months of searching, the agents return. They enter the throne room with care, followed by their remarkable find — a woman of extraordinary proportions, moving with the unhurried dignity of someone who has never once needed to hurry.\n\n#italic Her name is [sukkar.GetFirstNameNoTooltip], my lord,#! announces the chief agent, barely concealing his bewilderment. #italic She comes from your own lands and is Shrine-faithful. She is... exactly as you requested.#!"
+ ate_shriner.0006.desc:0 "After months of searching, the agents return. They enter the throne room with care, followed by their remarkable find — a woman of extraordinary proportions, moving with the unhurried dignity of someone who has never once needed to hurry.\n\n#italic Her name is Sukkar, my lord,#! announces the chief agent, barely concealing his bewilderment. #italic She comes from your own lands and is Shrine-faithful. She is... exactly as you requested.#!"
  ate_shriner.0006.a:0 "She is magnificent. Prepare her apartments at once."
  ate_shriner.0006.b:0 "What have I done... Send her away with a purse of gold."
 
  ate_shriner.0007.t:0 "Sugar Cube"
- ate_shriner.0007.desc:0 "[Root.GetFirstNameNoTooltip] has taken to calling her #italic Sukkar#! — Sugar Cube — a name [sukkar.GetFirstNameNoTooltip] seems to find quite pleasing. She is warm, endlessly laughing, and entirely at ease in her considerable presence. The court whispers. [Root.GetFirstNameNoTooltip] does not hear them, or simply does not care.\n\nShe is, he has decided, exactly what he was looking for."
+ ate_shriner.0007.desc:0 "You have taken to calling her #italic Sukkar#! — Sugar Cube — a name Sukkar seems to find quite pleasing. She is warm, endlessly laughing, and entirely at ease in her considerable presence. The court whispers. You do not hear them, or simply do not care.\n\nShe is, you have decided, exactly what you were looking for."
  ate_shriner.0007.a:0 "She will be my wife."
  ate_shriner.0007.c:0 "She will be my wife — and a Countess of this empire."
  ate_shriner.0007.b:0 "Let her be honored in my court. That is enough."
 
  ate_shriner.0008.t:0 "Only Ibrahim Can Judge Me"
- ate_shriner.0008.desc:0 "Word of [sukkar.GetFirstNameNoTooltip] — the Sultan's new wife — has spread through court and beyond. The vassals are divided between amusement and outrage. The preachers cannot find clear scripture on the matter. [sukkar.GetFirstNameNoTooltip] herself sits at [Root.GetFirstNameNoTooltip]'s right hand at every feast, eating with great enthusiasm and laughing at everything."
- ate_shriner.0008.desc.countess:0 "Word of [sukkar.GetFirstNameNoTooltip] — the Sultan's new wife and Countess — has spread through court and beyond. The vassals are in uproar. A woman who arrived in the throne room barely a month ago now holds a county of the realm. The preachers are very confused. [sukkar.GetFirstNameNoTooltip] herself, a commoner who until recently had never set foot in a palace, stands frozen in the middle of the throne room with tears running down her face, laughing and crying at the same time, unable to believe any of this is real."
+ ate_shriner.0008.desc:0 "Word of Sukkar — the Sultan's new wife — has spread through court and beyond. The vassals are divided between amusement and outrage. The preachers cannot find clear scripture on the matter. Sukkar herself sits at your right hand at every feast, eating with great enthusiasm and laughing at everything."
+ ate_shriner.0008.desc.countess:0 "Word of Sukkar — the Sultan's new wife and Countess — has spread through court and beyond. The vassals are in uproar. A woman who arrived in the throne room barely a month ago now holds a county of the realm. The preachers are very confused. Sukkar herself, a commoner who until recently had never set foot in a palace, stands frozen in the middle of the throne room with tears running down her face, laughing and crying at the same time, unable to believe any of this is real."
  ate_shriner.0008.a:0 "Let them say what they will. She has my full favor."
  ate_shriner.0008.b:0 "I will be... somewhat more discreet about this."
  ate_shriner.0008.c:0 "Freedom of speech you have — but freedom after speech, that I cannot guarantee."
@@ -247,7 +246,7 @@
 
  # ate_shriner.0015 — The Ceremony of the Fez
  ate_shriner.0015.t:0 "The Ceremony of the Fez"
- ate_shriner.0015.desc:0 "The hall of the Lodge is quiet when [Root.GetFirstNameNoTooltip] calls [son.GetFirstNameNoTooltip] forward. The boy stands straight — he has been practicing. The fez is placed in his hands. The words of the Lodge are spoken. And then it is done. [son.GetFirstNameNoTooltip] turns it over in his hands — crimson felt, black tassel, the same as every other — and something passes across his face that has no name. He puts it on. It is slightly too large. He does not take it off."
+ ate_shriner.0015.desc:0 "The hall of the Lodge is quiet when you call [son.GetFirstNameNoTooltip] forward. The boy stands straight — he has been practicing. The fez is placed in his hands. The words of the Lodge are spoken. And then it is done. [son.GetFirstNameNoTooltip] turns it over in his hands — crimson felt, black tassel, the same as every other — and something passes across his face that has no name. He puts it on. It is slightly too large. He does not take it off."
  ate_shriner.0015.a:0 "The Lodge is yours now, [son.GetFirstNameNoTooltip]. Guard it well."
  ate_shriner.0015.b:0 "Let every brother of the Lodge bear witness to this."
  ate_shriner.0015.b.toast:0 "[son.GetFirstNameNoTooltip] has received the fez. He is a Shriner."
