@@ -43,6 +43,7 @@ ate_nelson_soflo_neomoor = {
 
 	is_valid_showing_failures_only = {
 		is_available_adult = yes
+		years_as_ruler >= 5
 	}
 
 	effect = {
@@ -121,6 +122,7 @@ ate_shriner_soflo_neomoor = {
 
 	is_valid_showing_failures_only = {
 		is_available_adult = yes
+		years_as_ruler >= 5
 	}
 
 	effect = {
@@ -199,6 +201,7 @@ ate_waltney_soflo_neomoor = {
 
 	is_valid_showing_failures_only = {
 		is_available_adult = yes
+		years_as_ruler >= 5
 	}
 
 	effect = {
