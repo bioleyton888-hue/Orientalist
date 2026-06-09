@@ -868,7 +868,7 @@ ate_shriner.0014 = {
 		random_list = {
 			60 = {
 				modifier = { add = martial }
-				scope:ramses = { death = { death_reason = death_combat killer = root } }
+				scope:ramses = { death = { death_reason = death_battle killer = root } }
 				add_prestige = 150
 				add_stress = -10
 				add_character_modifier = {

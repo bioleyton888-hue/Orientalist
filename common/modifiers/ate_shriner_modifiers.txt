@@ -42,13 +42,13 @@ ate_pharaoh_bane_modifier = {
 ate_shriner_oil_lamp_modifier = {
 	learning = 2
 	monthly_piety = 0.3
-	scheme_resistance = 15
+	enemy_hostile_scheme_phase_duration_add = 15
 }
 
 ate_shriner_lamp_blessing = {
 	icon = learning_positive
 	monthly_piety = 0.1
-	scheme_resistance = 2
+	enemy_hostile_scheme_phase_duration_add = 2
 }
 
 ate_pet_alligator_modifier = {

@@ -281,7 +281,7 @@ ate_shriner_pilgrimage.0030 = {
 		add_piety = 25
 		add_trait_xp = { trait = pilgrim value = 20 }
 		stress_impact = {
-			cautious = minor_stress_impact_loss
+			craven = minor_stress_impact_loss
 			brave = minor_stress_impact_gain
 		}
 		trigger_event = { id = ate_shriner_pilgrimage.0002 days = 2 }

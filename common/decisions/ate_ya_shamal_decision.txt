@@ -46,7 +46,7 @@ ya_shamal_decision = {
 			add_trait = ya_shamal_descendant
 		}
 		title:c_detroit = { set_county_faith = faith:shriner }
-		faith:shriner = { activate_holy_site = detroit_shriner }
+		faith:shriner = { activate_holy_site = detroit }
 		stress_impact = {
 			zealous = miniscule_stress_impact_loss
 		}
