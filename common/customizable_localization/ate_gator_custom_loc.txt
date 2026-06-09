@@ -1,0 +1,35 @@
+﻿AteGatorName = {
+	type = character
+
+	text = {
+		trigger = {
+			exists = var:ate_gator_name
+			var:ate_gator_name = flag:ate_gator_name_wally
+		}
+		localization_key = ate_gator_name_wally
+	}
+	text = {
+		trigger = {
+			exists = var:ate_gator_name
+			var:ate_gator_name = flag:ate_gator_name_ali
+		}
+		localization_key = ate_gator_name_ali
+	}
+	text = {
+		trigger = {
+			exists = var:ate_gator_name
+			var:ate_gator_name = flag:ate_gator_name_waylon
+		}
+		localization_key = ate_gator_name_waylon
+	}
+	text = {
+		trigger = {
+			exists = var:ate_gator_name
+			var:ate_gator_name = flag:ate_gator_name_snapper
+		}
+		localization_key = ate_gator_name_snapper
+	}
+	text = {
+		localization_key = ate_gator_name_text_var
+	}
+}
