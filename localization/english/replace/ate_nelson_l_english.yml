@@ -3,6 +3,7 @@
  ate_nelson_soflo_neomoor:0 "Embrace the Neomoor Ways"
  ate_nelson_soflo_neomoor_desc:0 "For as long as the Nelsons have ruled Tampa, we have mingled with the native Sunshiners. The trade language gradually grew into everyday use. Today there is no distinction between us and them. We can no longer call ourselves by the old name — we are Neomoors, pure and simple."
  ate_nelson_soflo_neomoor_tooltip:0 "Reflect on Tampa's new identity as ruler of SoFlo."
+ ate_soflo_years_as_ruler_tt:0 "Must have been a ruler for at least 5 years"
  ate_nelson_soflo_neomoor_confirm:0 "We are Neomoor."
 
  # Event ate_nelson.0001
