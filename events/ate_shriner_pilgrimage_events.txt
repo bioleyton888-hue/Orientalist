@@ -1,4 +1,4 @@
-﻿namespace = ate_shriner_pilgrimage
+namespace = ate_shriner_pilgrimage
 
 # ——— Shriner Pilgrimage to Tampa ———
 # Fires via shriner_tampa_arrival_events when a Shriner player arrives at the tampa_shriner holy site.
@@ -230,7 +230,7 @@ ate_shriner_pilgrimage.0020 = {
 
 	option = {
 		name = ate_shriner_pilgrimage.0020.a
-		add_gold = -25
+		remove_short_term_gold = medium_gold_value
 		add_piety = 75
 		add_trait_xp = { trait = pilgrim value = 20 }
 		stress_impact = {
@@ -302,7 +302,7 @@ ate_shriner_pilgrimage.0040 = {
 
 	option = {
 		name = ate_shriner_pilgrimage.0040.a
-		add_gold = -50
+		remove_short_term_gold = major_gold_value
 		add_piety = 75
 		add_prestige = 50
 		random_list = {
@@ -434,7 +434,7 @@ ate_shriner_pilgrimage.0080 = {
 
 	option = {
 		name = ate_shriner_pilgrimage.0080.a
-		add_gold = -75
+		remove_short_term_gold = major_gold_value
 		random = {
 			chance = 60
 			add_stress = -40
