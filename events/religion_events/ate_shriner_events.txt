@@ -1,4 +1,4 @@
-namespace = ate_shriner
+﻿namespace = ate_shriner
 
 # SoFlo Conquered — Shriner Neomoor Identity Awakening
 # Triggered by ate_shriner_soflo_neomoor decision

@@ -1,4 +1,4 @@
-namespace = ate_shriner_pilgrimage
+﻿namespace = ate_shriner_pilgrimage
 
 # ——— Shriner Pilgrimage to Tampa ———
 # Fires via shriner_tampa_arrival_events when a Shriner player arrives at the tampa_shriner holy site.
