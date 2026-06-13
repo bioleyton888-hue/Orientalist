@@ -1,4 +1,4 @@
-﻿namespace = ate_shriner
+namespace = ate_shriner
 
 # SoFlo Conquered — Shriner Neomoor Identity Awakening
 # Triggered by ate_shriner_soflo_neomoor decision
@@ -849,7 +849,12 @@ ate_shriner.0014 = {
 			employer = root
 			save_scope_as = ramses
 		}
-		scope:ramses = { set_house = house:house_ramsesovich }
+		random_list = {
+			25 = { scope:ramses = { set_house = house:house_ramsesovich } }
+			25 = { scope:ramses = { set_house = house:house_ramsestein } }
+			25 = { scope:ramses = { set_house = house:house_ramsestinski } }
+			25 = { scope:ramses = { set_house = house:house_ramsebayashi } }
+		}
 		scope:ramses = { move_to_pool = yes }
 	}
 

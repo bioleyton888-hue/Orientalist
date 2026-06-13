@@ -1,4 +1,4 @@
-﻿l_english:
+l_english:
 
  
  ate_ramses_mummies_name:0 "Ramses' Mummies"
@@ -193,6 +193,12 @@
  ate_leper_patron_modifier_desc:0 "The Lodge does not turn away the sick, and neither does this ruler. The people remember."
  dynn_ramsesovich:0 "Ramsesovich"
  house_ramsesovich:0 "Ramsesovich"
+ dynn_ramsestein:0 "Ramsestein"
+ house_ramsestein:0 "Ramsestein"
+ dynn_ramsestinski:0 "Ramsestinski"
+ house_ramsestinski:0 "Ramsestinski"
+ dynn_ramsebayashi:0 "Ramsebayashi"
+ house_ramsebayashi:0 "Ramsebayashi"
  dynn_ramsesovich_motto:0 "I Have Died and Found It Beneath Me"
  ate_pharaoh_bane_modifier:0 "Pharaoh's Bane"
  ate_pharaoh_bane_modifier_desc:0 "Ramses is dead, and something of his power lingers in the one who struck him down. The old gods take notice of those who kill their Pharaoh."
