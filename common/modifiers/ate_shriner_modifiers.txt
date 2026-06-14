@@ -87,3 +87,8 @@ ate_shriner_neomoor_conversion = {
 	learning = 2
 	monthly_piety = 0.3
 }
+
+ate_gator_hide_armor_modifier = {
+	icon = prowess_positive
+	prowess = 2
+}

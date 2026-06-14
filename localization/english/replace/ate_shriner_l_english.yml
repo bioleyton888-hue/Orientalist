@@ -214,9 +214,17 @@
  ate_shriner.0013.f.toast:0 "The soldiers bury him quickly. The story will take longer."
  ate_shriner.0013.g.toast:0 "He answers every question. You are not entirely sure you believe him."
 
- # Mummy chain toasts — 0014
+ # Mummy chain toasts and duel branch tooltips — 0014
+ ate_shriner.0014.a.win.tt:0 "You overpower him. Ramses falls."
+ ate_shriner.0014.a.loss.tt:0 "He is stronger than he looks. You pay for it."
  ate_shriner.0014.a.win.toast:0 "Ramses falls. The fog clears."
  ate_shriner.0014.a.loss.toast:0 "Ramses does not fall. You do, nearly. The Pharaoh's Curse has begun."
+ ate_shriner.0014.c.clean.tt:0 "He swears without hesitation. His men follow."
+ ate_shriner.0014.c.partial.tt:0 "He takes the oath. Not happily."
+ ate_shriner.0014.c.fail.tt:0 "He is not moved. Things turn violent."
+ ate_shriner.0014.d.clean.tt:0 "No witnesses. No loose ends."
+ ate_shriner.0014.d.messy.tt:0 "He dies, but it is not clean."
+ ate_shriner.0014.d.fail.tt:0 "The ambush collapses. Ramses was ready."
  ate_shriner.0014.b.toast:0 "The lepers lay down their weapons. Ramses watches them go from the fog."
  ate_shriner.0014.c.fail.toast:0 "Ramses is not convinced. He teaches you this personally."
  ate_shriner.0014.c.partial.toast:0 "He takes the oath, grudgingly. He is now yours. Somewhat."
