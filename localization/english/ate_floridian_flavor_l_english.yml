@@ -60,3 +60,14 @@
  # Bite modifier
  ate_gator_bite_modifier:0 "Bitten by an Alligator"
  ate_gator_bite_modifier_desc:0 "A reminder to stand further from the throne."
+
+ # Hide armor modifier
+ ate_gator_hide_armor_modifier:0 "Alligator Hide Armor"
+ ate_gator_hide_armor_modifier_desc:0 "Armor fashioned from the hide of a faithful companion. It fits better than it should."
+
+ # ate_floridian.0014 — The Old Gator
+ ate_floridian.0014.t:0 "The Old Gator"
+ ate_floridian.0014.desc:0 "You found [ROOT.Char.Custom('AteGatorName')] at dawn, by the courtyard wall. Not moving. It had slowed over the last season; you had told yourself it was the cold.\n\nIt lived longer than most. Longer than some men you have known. The courtyard feels different without its weight in the corner."
+ ate_floridian.0014.a:0 "Bury it properly."
+ ate_floridian.0014.b:0 "Have it mounted in the hall."
+ ate_floridian.0014.c:0 "Have armor made from its hide."

@@ -11,6 +11,9 @@
 #	ate_floridian.0006 - (A 25%) Gator bites the least-loyal councillor
 #	ate_floridian.0007 - (B 50%) Gator plays with a courtier's children
 #	ate_floridian.0008 - (B 50%) Gator eats a servant
+#
+# Death event
+#	ate_floridian.0014 - The Old Gator (fires after 40 years, 25%/year via ate_floridian_gator_death_pulse)
 
 # A Swamp Hatchling
 ate_floridian.0001 = {
@@ -147,6 +150,66 @@ ate_floridian.0003 = {
 		name = ate_floridian.0003.a
 		add_character_modifier = {
 			modifier = ate_pet_alligator_modifier
+			years = -1
+		}
+		add_character_flag = {
+			flag = ate_gator_young
+			years = 40
+		}
+	}
+}
+
+# The Old Gator — fires after 40 years, 25% chance/year
+ate_floridian.0014 = {
+	type = character_event
+	title = ate_floridian.0014.t
+	desc = ate_floridian.0014.desc
+	theme = pet
+	left_portrait = {
+		character = root
+		animation = grief
+	}
+	override_background = { reference = courtyard }
+
+	trigger = {
+		is_player_character = yes
+		has_character_modifier = ate_pet_alligator_modifier
+		NOT = { has_character_flag = ate_gator_young }
+		NOT = { has_character_flag = ate_gator_died }
+	}
+
+	option = {
+		name = ate_floridian.0014.a
+		remove_character_modifier = ate_pet_alligator_modifier
+		add_character_flag = ate_gator_died
+		add_stress = minor_stress_gain
+	}
+
+	option = {
+		name = ate_floridian.0014.b
+		remove_character_modifier = ate_pet_alligator_modifier
+		add_character_flag = ate_gator_died
+		add_prestige = minor_prestige_gain
+		set_variable = { name = animal_type value = flag:alligator days = 5 }
+		create_artifact = {
+			name = artifact_wall_skull_name
+			description = placeholder
+			creator = root
+			visuals = animal_trophy
+			type = animal_skull
+			modifier = artifact_placeholder_modifier
+			wealth = 100
+			quality = 50
+			save_scope_as = newly_created_artifact
+		}
+	}
+
+	option = {
+		name = ate_floridian.0014.c
+		remove_character_modifier = ate_pet_alligator_modifier
+		add_character_flag = ate_gator_died
+		add_character_modifier = {
+			modifier = ate_gator_hide_armor_modifier
 			years = -1
 		}
 	}
