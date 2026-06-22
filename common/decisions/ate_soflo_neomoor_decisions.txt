@@ -67,6 +67,14 @@ ate_nelson_soflo_neomoor = {
 			limit = { NOT = { culture = culture:neomoor } }
 			set_culture = culture:neomoor
 		}
+		every_vassal_or_below = {
+			limit = { faith = faith:shriner }
+			set_culture = culture:neomoor
+			every_child = {
+				limit = { NOT = { culture = culture:neomoor } }
+				set_culture = culture:neomoor
+			}
+		}
 		title:c_tampa = { set_county_culture = culture:neomoor }
 		title:c_st_petersburg = { set_county_culture = culture:neomoor }
 		trigger_event = { id = ate_nelson.0001 }
@@ -152,6 +160,14 @@ ate_shriner_soflo_neomoor = {
 			limit = { NOT = { culture = culture:neomoor } }
 			set_culture = culture:neomoor
 		}
+		every_vassal_or_below = {
+			limit = { faith = faith:shriner }
+			set_culture = culture:neomoor
+			every_child = {
+				limit = { NOT = { culture = culture:neomoor } }
+				set_culture = culture:neomoor
+			}
+		}
 		title:c_miami_dade = { set_county_culture = culture:neomoor }
 		title:c_broward = { set_county_culture = culture:neomoor }
 		trigger_event = { id = ate_shriner.0004 }
@@ -236,6 +252,14 @@ ate_waltney_soflo_neomoor = {
 		every_child = {
 			limit = { NOT = { culture = culture:neomoor } }
 			set_culture = culture:neomoor
+		}
+		every_vassal_or_below = {
+			limit = { faith = faith:shriner }
+			set_culture = culture:neomoor
+			every_child = {
+				limit = { NOT = { culture = culture:neomoor } }
+				set_culture = culture:neomoor
+			}
 		}
 		title:c_orlando = { set_county_culture = culture:neomoor }
 		title:c_miami_dade = { set_county_culture = culture:neomoor }
