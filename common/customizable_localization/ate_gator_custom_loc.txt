@@ -1,6 +1,13 @@
 ﻿AteGatorName = {
 	type = character
 
+	# No name assigned yet (e.g. story just created, naming event pending).
+	text = {
+		trigger = {
+			NOT = { exists = var:ate_gator_name }
+		}
+		localization_key = ate_gator_name_unnamed
+	}
 	text = {
 		trigger = {
 			exists = var:ate_gator_name
