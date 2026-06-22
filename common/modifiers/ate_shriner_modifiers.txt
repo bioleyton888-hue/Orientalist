@@ -51,18 +51,6 @@ ate_shriner_lamp_blessing = {
 	enemy_hostile_scheme_phase_duration_add = 2
 }
 
-ate_pet_alligator_modifier = {
-	icon = prowess_positive
-	prowess = 2
-	dread_baseline_add = 5
-}
-
-ate_gator_bite_modifier = {
-	icon = prowess_negative
-	health = -0.2
-	prowess = -2
-}
-
 ate_shriner_initiated_modifier = {
 	icon = learning_positive
 	learning = 1
@@ -86,9 +74,4 @@ ate_shriner_neomoor_conversion = {
 	icon = learning_positive
 	learning = 2
 	monthly_piety = 0.3
-}
-
-ate_gator_hide_armor_modifier = {
-	icon = prowess_positive
-	prowess = 2
 }

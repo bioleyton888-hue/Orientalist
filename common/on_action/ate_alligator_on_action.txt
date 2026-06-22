@@ -1,0 +1,28 @@
+﻿# Pet Alligator (Alligator mississippiensis) — on_action hooks
+# Registers into the built-in random_yearly_playable_pulse (on_action blocks merge across files).
+# Only the acquisition pulse lives here now; the council and death events are driven by the
+# ate_story_cycle_pet_alligator story cycle's effect_groups, not by pulses.
+
+random_yearly_playable_pulse = {
+	on_actions = {
+		ate_floridian_alligator_gator_pulse
+	}
+}
+
+# Acquisition — yearly chance for Floridian-heritage characters who do not yet have a gator.
+ate_floridian_alligator_gator_pulse = {
+	trigger = {
+		culture = { has_cultural_pillar = heritage_floridian }
+		is_adult = yes
+		is_landed = yes
+		NOT = { has_character_modifier = ate_pet_alligator_modifier }
+		NOT = { has_character_flag = ate_gator_declined }
+		NOT = { has_character_flag = ate_gator_died }
+	}
+	effect = {
+		random = {
+			chance = 10
+			trigger_event = { id = ate_floridian_alligator.0001 }
+		}
+	}
+}

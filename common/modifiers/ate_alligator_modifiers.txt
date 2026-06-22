@@ -1,0 +1,28 @@
+﻿# Pet Alligator (Alligator mississippiensis) — character modifiers
+
+ate_pet_alligator_modifier = {
+	icon = prowess_positive
+	prowess = 2
+	dread_baseline_add = 5
+}
+
+ate_gator_bite_modifier = {
+	icon = prowess_negative
+	health = -0.2
+	prowess = -2
+}
+
+ate_gator_hide_armor_modifier = {
+	icon = prowess_positive
+	prowess = 2
+}
+
+ate_unruly_gator_modifier = {
+	icon = stress_negative
+	stress_gain_mult = 0.05
+}
+
+ate_gator_interrupted_modifier = {
+	icon = stress_negative
+	fertility = -0.2
+}

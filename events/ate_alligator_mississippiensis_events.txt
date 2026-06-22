@@ -1,0 +1,1481 @@
+﻿namespace = ate_floridian_alligator
+
+# Floridian Pet alligator chain
+#	ate_floridian_alligator.0001 - A Swamp Hatchling (discovery)
+#	ate_floridian_alligator.0002 - Name the alligator
+#	ate_floridian_alligator.0003 - The alligator settles in (modifier granted)
+#
+# Council follow-up chain
+#	ate_floridian_alligator.0004 - Bring the gator to the council meeting?
+#	ate_floridian_alligator.0005 - (A 75%) Gator intimidates the least-loyal councillor
+#	ate_floridian_alligator.0006 - (A 25%) Gator bites the least-loyal councillor
+#	ate_floridian_alligator.0007 - (B 50%) Gator plays with a courtier's children
+#	ate_floridian_alligator.0008 - (B 50%) Gator eats a servant
+#
+# Death event
+#	ate_floridian_alligator.0016 - The Old Gator (fires after 40 years; driven by the story cycle death effect_group)
+#
+# Flavor chain (driven by the ate_story_cycle_pet_alligator flavor effect_group)
+#	ate_floridian_alligator.0009 - A Foreign Guest and the Gator (diplomacy duel)
+#	ate_floridian_alligator.0010 - The Gator Escapes (prowess duel)
+#	ate_floridian_alligator.0011 - The Gator Won't Eat
+#	ate_floridian_alligator.0012 - Someone Wants to Buy It (intrigue duel; sell ends the story)
+#	ate_floridian_alligator.0013 - The Gator and the Prisoner
+
+# Cold-Blooded Defiant — thrown from your horse into gator territory; one rolls belly-up
+ate_floridian_alligator.0001 = {
+	type = character_event
+	title = ate_floridian_alligator.0001.t
+	desc = ate_floridian_alligator.0001.desc
+	theme = pet
+	left_portrait = {
+		character = root
+		animation = shock
+	}
+	override_background = { reference = forest }
+
+	trigger = {
+		is_player_character = yes
+		culture = { has_cultural_heritage = heritage_floridian }
+		NOT = { has_character_modifier = ate_pet_alligator_modifier }
+		NOT = { has_character_flag = ate_gator_declined }
+		is_available_healthy_adult = yes
+	}
+
+	immediate = {
+		play_music_cue = "mx_cue_low_key_positive"
+	}
+
+	option = {
+		name = ate_floridian_alligator.0001.a
+		create_story = {
+			type = ate_story_cycle_pet_alligator
+			story_owner = root
+		}
+		stress_impact = {
+			compassionate = minor_stress_impact_loss
+			eccentric = minor_stress_impact_loss
+			gregarious = minor_stress_impact_loss
+			ambitious = minor_stress_impact_loss
+			craven = minor_stress_impact_gain
+		}
+		ai_chance = { base = 100 }
+	}
+
+	option = {
+		name = ate_floridian_alligator.0001.b
+		add_character_flag = {
+			flag = ate_gator_declined
+			years = 10
+		}
+		stress_impact = {
+			craven = minor_stress_impact_loss
+			brave = minor_stress_impact_gain
+		}
+		ai_chance = { base = 0 }
+	}
+
+	option = {
+		name = ate_floridian_alligator.0001.c
+		add_dread = 5
+		add_gold = minor_gold_value
+		add_character_flag = {
+			flag = ate_gator_declined
+			years = 10
+		}
+		stress_impact = {
+			sadistic = minor_stress_impact_loss
+			callous = minor_stress_impact_loss
+			brave = minor_stress_impact_loss
+			compassionate = minor_stress_impact_gain
+		}
+		ai_chance = { base = 0 }
+	}
+
+	# Secret option — only cannibals see this. A fellow flesh-eater. Keeps the gator.
+	option = {
+		name = ate_floridian_alligator.0001.d
+		trigger = {
+			has_trait = cannibal
+		}
+		create_story = {
+			type = ate_story_cycle_pet_alligator
+			story_owner = root
+		}
+		stress_impact = {
+			cannibal = major_stress_impact_loss
+		}
+		ai_chance = { base = 0 }
+	}
+}
+
+# Name your alligator
+ate_floridian_alligator.0002 = {
+	type = character_event
+	title = ate_floridian_alligator.0002.t
+	desc = ate_floridian_alligator.0002.desc
+	theme = pet
+	left_portrait = {
+		character = root
+		animation = happiness
+	}
+	override_background = { reference = forest }
+
+	immediate = {
+		add_character_flag = ate_gator_default_wally
+		add_character_flag = ate_gator_default_ali
+		add_character_flag = ate_gator_default_waylon
+		add_character_flag = ate_gator_default_snapper
+
+		if = {
+			limit = { is_ai = yes }
+			random_list = {
+				1 = { set_variable = { name = ate_gator_name  value = flag:ate_gator_name_wally } }
+				1 = { set_variable = { name = ate_gator_name  value = flag:ate_gator_name_ali } }
+				1 = { set_variable = { name = ate_gator_name  value = flag:ate_gator_name_waylon } }
+				1 = { set_variable = { name = ate_gator_name  value = flag:ate_gator_name_snapper } }
+			}
+		}
+	}
+
+	widget = {
+		gui = "event_window_widget_enter_text"
+		container = "dynamic_birth_name"
+		controller = {
+			type = text
+			data = {
+				key = ate_gator_name
+				default = {
+					localization_key = ate_gator_name_wally
+					trigger = { has_character_flag = ate_gator_default_wally }
+				}
+				default = {
+					localization_key = ate_gator_name_ali
+					trigger = { has_character_flag = ate_gator_default_ali }
+				}
+				default = {
+					localization_key = ate_gator_name_waylon
+					trigger = { has_character_flag = ate_gator_default_waylon }
+				}
+				default = {
+					localization_key = ate_gator_name_snapper
+					trigger = { has_character_flag = ate_gator_default_snapper }
+				}
+			}
+		}
+		setup_scope = {
+			root = { save_scope_as = text_target }
+		}
+	}
+
+	option = {
+		name = ate_floridian_alligator.0002.a
+		trigger_event = { id = ate_floridian_alligator.0003 }
+	}
+
+	after = {
+		remove_character_flag = ate_gator_default_wally
+		remove_character_flag = ate_gator_default_ali
+		remove_character_flag = ate_gator_default_waylon
+		remove_character_flag = ate_gator_default_snapper
+		if = {
+			limit = { NOT = { has_variable = ate_gator_name } }
+			set_variable = {
+				name = ate_gator_name
+				value = flag:ate_gator_name_wally
+			}
+		}
+		remove_character_flag = ate_is_naming_gator
+	}
+}
+
+# The alligator settles in
+ate_floridian_alligator.0003 = {
+	type = character_event
+	title = ate_floridian_alligator.0003.t
+	desc = ate_floridian_alligator.0003.desc
+	theme = pet
+	left_portrait = {
+		character = root
+		animation = ecstasy
+	}
+	override_background = { reference = courtyard }
+
+	option = {
+		name = ate_floridian_alligator.0003.a
+		# Modifier + ate_gator_young flag are granted by the story cycle on_setup.
+	}
+
+	# Secret reactions — gated by personality. A ruler reads the beast differently.
+	option = {
+		name = ate_floridian_alligator.0003.b
+		trigger = {
+			OR = {
+				has_trait = arrogant
+				has_trait = ambitious
+				has_trait = gregarious
+			}
+		}
+		add_prestige = minor_prestige_gain
+	}
+
+	option = {
+		name = ate_floridian_alligator.0003.c
+		trigger = {
+			OR = {
+				has_trait = cynical
+				has_trait = sadistic
+				has_trait = callous
+			}
+		}
+		add_dread = 5
+	}
+
+	option = {
+		name = ate_floridian_alligator.0003.d
+		trigger = {
+			OR = {
+				has_trait = zealous
+				has_trait = humble
+				has_trait = journaller
+			}
+		}
+		add_piety = minor_piety_gain
+	}
+
+	option = {
+		name = ate_floridian_alligator.0003.e
+		trigger = {
+			OR = {
+				has_trait = gluttonous
+				has_trait = greedy
+			}
+		}
+		add_gold = minor_gold_value
+	}
+}
+
+# The Old Gator — fires after 40 years, 25% chance/year
+ate_floridian_alligator.0016 = {
+	type = character_event
+	title = ate_floridian_alligator.0016.t
+	desc = ate_floridian_alligator.0016.desc
+	theme = pet
+	left_portrait = {
+		character = root
+		animation = grief
+	}
+	override_background = { reference = courtyard }
+
+	trigger = {
+		is_player_character = yes
+		has_character_modifier = ate_pet_alligator_modifier
+		NOT = { has_character_flag = ate_gator_young }
+		NOT = { has_character_flag = ate_gator_died }
+	}
+
+	option = {
+		name = ate_floridian_alligator.0016.a
+		remove_character_modifier = ate_pet_alligator_modifier
+		add_character_flag = ate_gator_died
+		add_stress = minor_stress_gain
+	}
+
+	option = {
+		name = ate_floridian_alligator.0016.b
+		remove_character_modifier = ate_pet_alligator_modifier
+		add_character_flag = ate_gator_died
+		add_prestige = minor_prestige_gain
+		set_variable = { name = animal_type value = flag:alligator days = 5 }
+		create_artifact = {
+			name = artifact_wall_skull_name
+			description = placeholder
+			creator = root
+			visuals = animal_trophy
+			type = animal_skull
+			modifier = artifact_placeholder_modifier
+			wealth = 100
+			quality = 50
+			save_scope_as = newly_created_artifact
+		}
+	}
+
+	option = {
+		name = ate_floridian_alligator.0016.c
+		remove_character_modifier = ate_pet_alligator_modifier
+		add_character_flag = ate_gator_died
+		add_character_modifier = {
+			modifier = ate_gator_hide_armor_modifier
+			years = -1
+		}
+	}
+}
+
+# Bring the gator to the council meeting?
+ate_floridian_alligator.0004 = {
+	type = character_event
+	title = ate_floridian_alligator.0004.t
+	desc = ate_floridian_alligator.0004.desc
+	theme = pet
+	left_portrait = {
+		character = root
+		animation = thinking
+	}
+	override_background = { reference = council_chamber }
+
+	trigger = {
+		is_player_character = yes
+		has_character_modifier = ate_pet_alligator_modifier
+		is_landed = yes
+		NOT = { has_character_flag = ate_gator_council_cooldown }
+	}
+
+	immediate = {
+		add_character_flag = {
+			flag = ate_gator_council_cooldown
+			years = 10
+		}
+	}
+
+	option = {
+		name = ate_floridian_alligator.0004.a
+		every_councillor = {
+			custom = every_councillor
+			add_opinion = {
+				target = root
+				modifier = respect_opinion
+				opinion = -5
+			}
+		}
+		random_list = {
+			75 = {
+				desc = ate_floridian_alligator.0004.a_success
+				show_chance = no
+				custom_tooltip = ate_floridian_alligator.0004.a_success.tt
+				trigger_event = {
+					id = ate_floridian_alligator.0005
+					days = { 7 10 }
+				}
+			}
+			25 = {
+				desc = ate_floridian_alligator.0004.a_failure
+				show_chance = no
+				custom_tooltip = ate_floridian_alligator.0004.a_failure.tt
+				trigger_event = {
+					id = ate_floridian_alligator.0006
+					days = { 7 10 }
+				}
+			}
+		}
+	}
+
+	option = {
+		name = ate_floridian_alligator.0004.b
+		random_list = {
+			50 = {
+				desc = ate_floridian_alligator.0004.b_play
+				show_chance = no
+				custom_tooltip = ate_floridian_alligator.0004.b_play.tt
+				trigger = {
+					any_courtier = {
+						any_child = { is_courtier_of = root }
+					}
+				}
+				trigger_event = {
+					id = ate_floridian_alligator.0007
+					days = { 7 10 }
+				}
+			}
+			50 = {
+				desc = ate_floridian_alligator.0004.b_eat
+				show_chance = no
+				custom_tooltip = ate_floridian_alligator.0004.b_eat.tt
+				trigger_event = {
+					id = ate_floridian_alligator.0008
+					days = { 7 10 }
+				}
+			}
+		}
+	}
+}
+
+# A 75% — Gator intimidates the least-loyal councillor
+ate_floridian_alligator.0005 = {
+	type = character_event
+	title = ate_floridian_alligator.0004.t
+	desc = ate_floridian_alligator.0005.desc
+	theme = pet
+	override_background = { reference = council_chamber }
+	left_portrait = {
+		character = root
+		animation = happiness
+	}
+	right_portrait = {
+		character = scope:councillor
+		animation = fear
+	}
+
+	immediate = {
+		random_councillor = {
+			weight = {
+				base = 1
+				opinion_modifier = {
+					opinion_target = root
+					multiplier = -5
+				}
+			}
+			save_scope_as = councillor
+		}
+	}
+
+	option = {
+		name = ate_floridian_alligator.0005.a
+		add_prestige = minor_prestige_gain
+		stress_impact = {
+			ambitious = minor_stress_impact_loss
+			callous = minor_stress_impact_loss
+			wrathful = minor_stress_impact_loss
+		}
+	}
+}
+
+# A 25% — Gator bites the least-loyal councillor
+ate_floridian_alligator.0006 = {
+	type = character_event
+	title = ate_floridian_alligator.0004.t
+	desc = ate_floridian_alligator.0006.desc
+	theme = pet
+	override_background = { reference = council_chamber }
+	left_portrait = {
+		character = root
+		animation = shock
+	}
+	right_portrait = {
+		character = scope:councillor
+		animation = stress
+	}
+
+	immediate = {
+		random_councillor = {
+			weight = {
+				base = 1
+				opinion_modifier = {
+					opinion_target = root
+					multiplier = -5
+				}
+			}
+			save_scope_as = councillor
+		}
+	}
+
+	option = {
+		name = ate_floridian_alligator.0006.a
+		add_prestige = medium_prestige_loss
+		scope:councillor = {
+			add_character_modifier = {
+				modifier = ate_gator_bite_modifier
+				years = 2
+			}
+		}
+	}
+
+	# Secret option — only cannibals. No shame, only quiet approval.
+	option = {
+		name = ate_floridian_alligator.0006.b
+		trigger = {
+			has_trait = cannibal
+		}
+		scope:councillor = {
+			add_character_modifier = {
+				modifier = ate_gator_bite_modifier
+				years = 2
+			}
+		}
+		add_dread = 10
+		stress_impact = {
+			cannibal = minor_stress_impact_loss
+		}
+	}
+}
+
+# B 50% — Gator plays with a courtier's children
+ate_floridian_alligator.0007 = {
+	type = character_event
+	title = ate_floridian_alligator.0004.t
+	desc = ate_floridian_alligator.0007.desc
+	theme = pet
+	override_background = { reference = courtyard }
+	left_portrait = {
+		character = scope:lucky_courtier
+		animation = happiness
+	}
+
+	trigger = {
+		any_courtier = {
+			any_child = { is_courtier_of = root }
+		}
+	}
+
+	immediate = {
+		random_courtier = {
+			limit = {
+				any_child = { is_courtier_of = root }
+			}
+			save_scope_as = lucky_courtier
+		}
+	}
+
+	option = {
+		name = ate_floridian_alligator.0007.a
+		scope:lucky_courtier = {
+			add_opinion = {
+				target = root
+				modifier = friendliness_opinion
+				opinion = 15
+			}
+			every_child = {
+				limit = { is_courtier_of = root }
+				add_opinion = {
+					target = root
+					modifier = friendliness_opinion
+					opinion = 15
+				}
+			}
+		}
+		stress_impact = {
+			gregarious = minor_stress_impact_loss
+			compassionate = minor_stress_impact_loss
+			humble = minor_stress_impact_loss
+		}
+	}
+}
+
+# B 50% — Gator eats a servant (narrative only)
+ate_floridian_alligator.0008 = {
+	type = character_event
+	title = ate_floridian_alligator.0004.t
+	desc = ate_floridian_alligator.0008.desc
+	theme = pet
+	override_background = { reference = corridor_day }
+	left_portrait = {
+		character = root
+		animation = shock
+	}
+
+	option = {
+		name = ate_floridian_alligator.0008.a
+		every_councillor = {
+			custom = every_councillor
+			add_opinion = {
+				target = root
+				modifier = hate_opinion
+				opinion = -15
+			}
+		}
+	}
+
+	# Secret option — only cannibals. The scandal still lands, but so does an idea.
+	option = {
+		name = ate_floridian_alligator.0008.b
+		trigger = {
+			has_trait = cannibal
+		}
+		every_councillor = {
+			custom = every_councillor
+			add_opinion = {
+				target = root
+				modifier = hate_opinion
+				opinion = -15
+			}
+		}
+		stress_impact = {
+			cannibal = minor_stress_impact_loss
+		}
+	}
+
+	# Schemers / high-intrigue rulers can sell it as a foiled assassination — no scandal.
+	option = {
+		name = ate_floridian_alligator.0008.c
+		trigger = {
+			OR = {
+				has_trait = schemer
+				intrigue >= 12
+			}
+		}
+	}
+}
+
+# 0009 — A Foreign Guest and the Gator
+ate_floridian_alligator.0009 = {
+	type = character_event
+	title = ate_floridian_alligator.0009.t
+	desc = ate_floridian_alligator.0009.desc
+	theme = pet
+	override_background = { reference = courtyard }
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+	right_portrait = {
+		character = scope:guest
+		animation = fear
+	}
+
+	trigger = {
+		has_character_modifier = ate_pet_alligator_modifier
+		is_landed = yes
+		any_courtier = {
+			is_adult = yes
+			NOT = { this = root }
+		}
+	}
+
+	immediate = {
+		random_courtier = {
+			limit = {
+				is_adult = yes
+				NOT = { this = root }
+			}
+			save_scope_as = guest
+		}
+	}
+
+	option = {
+		name = ate_floridian_alligator.0009.a
+		duel = {
+			skill = diplomacy
+			value = 12
+			50 = {
+				compare_modifier = { value = scope:duel_value multiplier = 3.5 min = -29 }
+				desc = ate_floridian_alligator.0009.a.success.tt
+				add_prestige = minor_prestige_gain
+				scope:guest = {
+					add_opinion = { target = root modifier = respect_opinion opinion = 15 }
+				}
+				send_interface_toast = {
+					type = event_toast_effect_good
+					title = ate_floridian_alligator.0009.a.success
+					left_icon = root
+				}
+			}
+			50 = {
+				compare_modifier = { value = scope:duel_value multiplier = -3.5 min = -19 }
+				desc = ate_floridian_alligator.0009.a.fail.tt
+				add_stress = minor_stress_gain
+				scope:guest = {
+					add_opinion = { target = root modifier = scared_opinion opinion = -15 }
+				}
+				send_interface_toast = {
+					type = event_toast_effect_bad
+					title = ate_floridian_alligator.0009.a.fail
+					left_icon = root
+				}
+			}
+		}
+	}
+
+	option = {
+		name = ate_floridian_alligator.0009.b
+		add_prestige = minor_prestige_loss
+		scope:guest = {
+			add_opinion = { target = root modifier = friendliness_opinion opinion = 5 }
+		}
+	}
+
+	# Cruel option — set the gator on the guest.
+	option = {
+		name = ate_floridian_alligator.0009.c
+		trigger = {
+			OR = {
+				has_trait = sadistic
+				has_trait = callous
+				has_trait = torturer
+			}
+		}
+		scope:guest = {
+			add_character_modifier = {
+				modifier = ate_gator_bite_modifier
+				years = 2
+			}
+			add_opinion = {
+				target = root
+				modifier = hate_opinion
+				opinion = -30
+			}
+		}
+		add_dread = 20
+	}
+
+	# Cannibal option — feed the guest to the gator, keep the best cuts.
+	option = {
+		name = ate_floridian_alligator.0009.d
+		trigger = {
+			has_trait = cannibal
+		}
+		scope:guest = {
+			death = {
+				death_reason = death_eaten
+				killer = root
+			}
+		}
+		add_dread = 20
+	}
+}
+
+# 0010 — The Gator Escapes
+ate_floridian_alligator.0010 = {
+	type = character_event
+	title = ate_floridian_alligator.0010.t
+	desc = ate_floridian_alligator.0010.desc
+	theme = pet
+	override_background = { reference = corridor_day }
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+
+	trigger = {
+		has_character_modifier = ate_pet_alligator_modifier
+		is_landed = yes
+	}
+
+	option = {
+		name = ate_floridian_alligator.0010.a
+		duel = {
+			skill = prowess
+			value = 12
+			33 = {
+				compare_modifier = { value = scope:duel_value multiplier = 3.5 min = -29 }
+				desc = ate_floridian_alligator.0010.a.success.tt
+				add_prestige = minor_prestige_gain
+				send_interface_toast = {
+					type = event_toast_effect_good
+					title = ate_floridian_alligator.0010.a.success
+					left_icon = root
+				}
+			}
+			33 = {
+				desc = ate_floridian_alligator.0010.a.partial.tt
+				send_interface_toast = {
+					type = event_toast_effect_neutral
+					title = ate_floridian_alligator.0010.a.partial
+					left_icon = root
+				}
+			}
+			33 = {
+				compare_modifier = { value = scope:duel_value multiplier = -3.5 min = -19 }
+				desc = ate_floridian_alligator.0010.a.fail.tt
+				add_stress = minor_stress_gain
+				add_character_modifier = {
+					modifier = ate_gator_bite_modifier
+					years = 2
+				}
+				send_interface_toast = {
+					type = event_toast_effect_bad
+					title = ate_floridian_alligator.0010.a.fail
+					left_icon = root
+				}
+			}
+		}
+		stress_impact = {
+			diligent = minor_stress_impact_loss
+			lazy = minor_stress_impact_gain
+		}
+	}
+
+	option = {
+		name = ate_floridian_alligator.0010.b
+		add_prestige = minor_prestige_loss
+		stress_impact = {
+			lazy = minor_stress_impact_loss
+			diligent = minor_stress_impact_gain
+		}
+	}
+
+	option = {
+		name = ate_floridian_alligator.0010.c
+		stress_impact = {
+			patient = minor_stress_impact_loss
+		}
+		random_list = {
+			50 = {
+				send_interface_toast = {
+					type = event_toast_effect_neutral
+					title = ate_floridian_alligator.0010.c.fine
+					left_icon = root
+				}
+			}
+			50 = {
+				add_prestige = medium_prestige_loss
+				send_interface_toast = {
+					type = event_toast_effect_bad
+					title = ate_floridian_alligator.0010.c.ate
+					left_icon = root
+				}
+			}
+		}
+	}
+}
+
+# 0011 — The Gator Won't Eat
+ate_floridian_alligator.0011 = {
+	type = character_event
+	title = ate_floridian_alligator.0011.t
+	desc = ate_floridian_alligator.0011.desc
+	theme = pet
+	override_background = { reference = courtyard }
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+
+	trigger = {
+		has_character_modifier = ate_pet_alligator_modifier
+		is_landed = yes
+	}
+
+	option = {
+		name = ate_floridian_alligator.0011.a
+		add_prestige = minor_prestige_gain
+		send_interface_toast = {
+			type = event_toast_effect_good
+			title = ate_floridian_alligator.0011.a.toast
+			left_icon = root
+		}
+		stress_impact = {
+			gregarious = minor_stress_impact_loss
+			humble = minor_stress_impact_loss
+			arrogant = minor_stress_impact_gain
+		}
+	}
+
+	option = {
+		name = ate_floridian_alligator.0011.b
+		duel = {
+			skill = prowess
+			value = 12
+			50 = {
+				compare_modifier = { value = scope:duel_value multiplier = 3.5 min = -29 }
+				desc = ate_floridian_alligator.0011.b.ok.tt
+				send_interface_toast = {
+					type = event_toast_effect_good
+					title = ate_floridian_alligator.0011.b.ok
+					left_icon = root
+				}
+			}
+			50 = {
+				compare_modifier = { value = scope:duel_value multiplier = -3.5 min = -19 }
+				desc = ate_floridian_alligator.0011.b.bite.tt
+				add_character_modifier = {
+					modifier = ate_gator_bite_modifier
+					years = 2
+				}
+				add_stress = minor_stress_gain
+				send_interface_toast = {
+					type = event_toast_effect_bad
+					title = ate_floridian_alligator.0011.b.bite
+					left_icon = root
+				}
+			}
+		}
+	}
+
+	# Stubborn standoff — out-stubborn the gator. It does not go your way.
+	option = {
+		name = ate_floridian_alligator.0011.d
+		trigger = {
+			OR = {
+				has_trait = stubborn
+				has_trait = arrogant
+			}
+		}
+		add_character_modifier = {
+			modifier = ate_unruly_gator_modifier
+			years = 2
+		}
+	}
+
+	# Cruel option — solve the hunger problem with a servant.
+	option = {
+		name = ate_floridian_alligator.0011.e
+		trigger = {
+			OR = {
+				has_trait = sadistic
+				has_trait = torturer
+				has_trait = callous
+				has_trait = arbitrary
+			}
+		}
+		add_dread = 20
+		every_councillor = {
+			custom = every_councillor
+			add_opinion = {
+				target = root
+				modifier = hate_opinion
+				opinion = -10
+			}
+		}
+	}
+
+	# Secret option — only cannibals. The gator's loss is your gain.
+	option = {
+		name = ate_floridian_alligator.0011.f
+		trigger = {
+			has_trait = cannibal
+		}
+		stress_impact = {
+			cannibal = minor_stress_impact_loss
+		}
+	}
+
+	# Learned option — always visible, greyed unless you actually know your reptiles.
+	option = {
+		name = ate_floridian_alligator.0011.g
+		show_as_unavailable = {
+			NOR = {
+				has_trait = scholar
+				has_trait = journaller
+				learning >= 12
+			}
+		}
+		add_prestige = medium_prestige_gain
+		send_interface_toast = {
+			type = event_toast_effect_good
+			title = ate_floridian_alligator.0011.g.toast
+			left_icon = root
+		}
+	}
+
+	# Eccentric option — only the strange and the mad think to try this. And it works.
+	option = {
+		name = ate_floridian_alligator.0011.h
+		trigger = {
+			OR = {
+				has_trait = eccentric
+				has_trait = lunatic
+			}
+		}
+		add_prestige = medium_prestige_gain
+		send_interface_toast = {
+			type = event_toast_effect_good
+			title = ate_floridian_alligator.0011.h.toast
+			left_icon = root
+		}
+	}
+}
+
+# 0012 — Someone Wants to Buy It
+ate_floridian_alligator.0012 = {
+	type = character_event
+	title = ate_floridian_alligator.0012.t
+	desc = ate_floridian_alligator.0012.desc
+	theme = pet
+	override_background = { reference = courtyard }
+	left_portrait = {
+		character = root
+		animation = thinking
+	}
+
+	trigger = {
+		has_character_modifier = ate_pet_alligator_modifier
+		is_landed = yes
+	}
+
+	option = {
+		name = ate_floridian_alligator.0012.a
+		stress_impact = {
+			compassionate = minor_stress_impact_loss
+			temperate = minor_stress_impact_loss
+			just = minor_stress_impact_loss
+			content = minor_stress_impact_loss
+			greedy = minor_stress_impact_gain
+			craven = minor_stress_impact_gain
+		}
+	}
+
+	option = {
+		name = ate_floridian_alligator.0012.b
+		add_gold = medium_gold_value
+		every_owned_story = {
+			limit = { story_type = ate_story_cycle_pet_alligator }
+			end_story = yes
+		}
+		add_character_flag = {
+			flag = ate_gator_declined
+			years = 10
+		}
+		send_interface_toast = {
+			type = event_toast_effect_neutral
+			title = ate_floridian_alligator.0012.b.toast
+			left_icon = root
+		}
+	}
+
+	option = {
+		name = ate_floridian_alligator.0012.c
+		duel = {
+			skill = intrigue
+			value = 12
+			50 = {
+				compare_modifier = { value = scope:duel_value multiplier = 3.5 min = -29 }
+				desc = ate_floridian_alligator.0012.c.success.tt
+				add_gold = medium_gold_value
+				send_interface_toast = {
+					type = event_toast_effect_good
+					title = ate_floridian_alligator.0012.c.success
+					left_icon = root
+				}
+			}
+			50 = {
+				compare_modifier = { value = scope:duel_value multiplier = -3.5 min = -19 }
+				desc = ate_floridian_alligator.0012.c.fail.tt
+				add_prestige = minor_prestige_loss
+				send_interface_toast = {
+					type = event_toast_effect_bad
+					title = ate_floridian_alligator.0012.c.fail
+					left_icon = root
+				}
+			}
+		}
+	}
+
+	# Angry / doting owners take the offer as an insult.
+	option = {
+		name = ate_floridian_alligator.0012.d
+		trigger = {
+			OR = {
+				has_trait = wrathful
+				has_trait = compassionate
+			}
+		}
+		add_prestige = minor_prestige_loss
+		add_dread = 5
+		stress_impact = {
+			wrathful = minor_stress_impact_loss
+			compassionate = minor_stress_impact_loss
+		}
+	}
+
+	# Secret option — only the greedy think to haggle the price sky-high.
+	option = {
+		name = ate_floridian_alligator.0012.e
+		trigger = {
+			has_trait = greedy
+		}
+		add_gold = major_gold_value
+		every_owned_story = {
+			limit = { story_type = ate_story_cycle_pet_alligator }
+			end_story = yes
+		}
+		add_character_flag = {
+			flag = ate_gator_declined
+			years = 10
+		}
+		send_interface_toast = {
+			type = event_toast_effect_good
+			title = ate_floridian_alligator.0012.e.toast
+			left_icon = root
+		}
+	}
+
+	# Set the gator on the merchant — open to anyone, but not everyone enjoys it.
+	option = {
+		name = ate_floridian_alligator.0012.f
+		add_dread = 20
+		add_prestige = minor_prestige_loss
+		stress_impact = {
+			callous = minor_stress_impact_loss
+			torturer = minor_stress_impact_loss
+			sadistic = minor_stress_impact_loss
+			compassionate = minor_stress_impact_gain
+			just = minor_stress_impact_gain
+		}
+	}
+
+	# Secret option — only cannibals. The buyer becomes the merchandise.
+	option = {
+		name = ate_floridian_alligator.0012.g
+		trigger = {
+			has_trait = cannibal
+		}
+		add_dread = 20
+		stress_impact = {
+			cannibal = minor_stress_impact_loss
+		}
+	}
+}
+
+# 0013 — The Gator and the Prisoner
+ate_floridian_alligator.0013 = {
+	type = character_event
+	title = ate_floridian_alligator.0013.t
+	desc = ate_floridian_alligator.0013.desc
+	theme = pet
+	override_background = { reference = corridor_day }
+	left_portrait = {
+		character = root
+		animation = scheme
+	}
+	right_portrait = {
+		character = scope:prisoner
+		animation = fear
+	}
+
+	trigger = {
+		has_character_modifier = ate_pet_alligator_modifier
+		is_landed = yes
+		any_prisoner = { count >= 1 }
+	}
+
+	immediate = {
+		random_prisoner = {
+			save_scope_as = prisoner
+		}
+		scope:prisoner = {
+			random_secret = {
+				limit = { NOT = { is_known_by = root } }
+				save_scope_as = uncovered_secret
+			}
+		}
+	}
+
+	option = {
+		name = ate_floridian_alligator.0013.a
+		add_prestige = minor_prestige_gain
+		add_dread = 10
+		send_interface_toast = {
+			type = event_toast_effect_good
+			title = ate_floridian_alligator.0013.a.toast
+			left_icon = root
+		}
+	}
+
+	option = {
+		name = ate_floridian_alligator.0013.b
+		add_prestige = minor_prestige_loss
+		every_councillor = {
+			custom = every_councillor
+			add_opinion = {
+				target = root
+				modifier = respect_opinion
+				opinion = -5
+			}
+		}
+	}
+
+	# Interrogate with the gator at your side — Intrigue duel.
+	option = {
+		name = ate_floridian_alligator.0013.c
+		duel = {
+			skill = intrigue
+			value = 12
+			33 = {
+				compare_modifier = { value = scope:duel_value multiplier = 3.5 min = -29 }
+				desc = ate_floridian_alligator.0013.c.success.tt
+				if = {
+					limit = { exists = scope:uncovered_secret }
+					scope:uncovered_secret = { reveal_to = root }
+				}
+				add_hook = {
+					type = strong_hook
+					target = scope:prisoner
+				}
+				add_dread = 10
+				send_interface_toast = {
+					type = event_toast_effect_good
+					title = ate_floridian_alligator.0013.c.success
+					left_icon = root
+				}
+			}
+			33 = {
+				desc = ate_floridian_alligator.0013.c.partial.tt
+				if = {
+					limit = { exists = scope:uncovered_secret }
+					scope:uncovered_secret = { reveal_to = root }
+				}
+				add_dread = 10
+				send_interface_toast = {
+					type = event_toast_effect_neutral
+					title = ate_floridian_alligator.0013.c.partial
+					left_icon = root
+				}
+			}
+			33 = {
+				compare_modifier = { value = scope:duel_value multiplier = -3.5 min = -19 }
+				desc = ate_floridian_alligator.0013.c.fail.tt
+				send_interface_toast = {
+					type = event_toast_effect_bad
+					title = ate_floridian_alligator.0013.c.fail
+					left_icon = root
+				}
+			}
+		}
+	}
+
+	# Feed the prisoner to the gator.
+	option = {
+		name = ate_floridian_alligator.0013.d
+		scope:prisoner = {
+			death = {
+				death_reason = death_eaten
+				killer = root
+			}
+		}
+		add_dread = 20
+		stress_impact = {
+			sadistic = minor_stress_impact_loss
+			callous = minor_stress_impact_loss
+			torturer = minor_stress_impact_loss
+		}
+	}
+
+	# Secret option — only cannibals. Dine alongside the gator.
+	option = {
+		name = ate_floridian_alligator.0013.e
+		trigger = {
+			has_trait = cannibal
+		}
+		scope:prisoner = {
+			death = {
+				death_reason = death_eaten
+				killer = root
+			}
+		}
+		add_dread = 20
+		stress_impact = {
+			cannibal = major_stress_impact_loss
+		}
+	}
+}
+
+# 0014 — The gator interrupts an intimate moment (mechanics modelled on the vanilla pet event)
+ate_floridian_alligator.0014 = {
+	type = character_event
+	title = ate_floridian_alligator.0014.t
+	desc = ate_floridian_alligator.0014.desc
+	theme = pet
+	override_background = { reference = bedchamber }
+	left_portrait = {
+		character = root
+		animation = shock
+	}
+	right_portrait = {
+		character = scope:gator_lover
+		animation = shock
+	}
+
+	trigger = {
+		has_character_modifier = ate_pet_alligator_modifier
+		NOT = { has_trait = celibate }
+		any_relation = {
+			type = lover
+			is_available_healthy_ai_adult = yes
+			location = root.location
+		}
+	}
+
+	cooldown = { years = 15 }
+
+	immediate = {
+		random_relation = {
+			type = lover
+			limit = {
+				is_available_healthy_ai_adult = yes
+				location = root.location
+			}
+			save_scope_as = gator_lover
+		}
+		add_character_flag = is_naked
+		scope:gator_lover = {
+			add_character_flag = is_naked
+		}
+	}
+
+	option = {
+		name = ate_floridian_alligator.0014.a
+		duel = {
+			skill = diplomacy
+			value = medium_skill_rating
+			50 = {
+				compare_modifier = { value = scope:duel_value multiplier = 3.5 min = -49 }
+				desc = ate_floridian_alligator.0014.a.success
+				send_interface_toast = {
+					title = ate_floridian_alligator.0014.a.success
+					left_icon = root
+					right_icon = scope:gator_lover
+					reverse_add_opinion = {
+						modifier = love_opinion
+						target = scope:gator_lover
+						opinion = 30
+					}
+				}
+			}
+			50 = {
+				compare_modifier = { value = scope:duel_value multiplier = -3.5 min = -49 }
+				desc = ate_floridian_alligator.0014.a.failure
+				send_interface_toast = {
+					title = ate_floridian_alligator.0014.a.failure
+					left_icon = root
+					right_icon = scope:gator_lover
+					add_character_modifier = {
+						modifier = ate_gator_interrupted_modifier
+						years = 10
+					}
+					add_trait = wounded_1
+				}
+			}
+		}
+		stress_impact = {
+			chaste = miniscule_stress_impact_gain
+			lustful = miniscule_stress_impact_loss
+		}
+		ai_chance = {
+			base = 100
+			modifier = { factor = 0 has_trait = chaste }
+		}
+	}
+
+	option = {
+		name = ate_floridian_alligator.0014.b
+		reverse_add_opinion = {
+			modifier = disappointed_opinion
+			target = scope:gator_lover
+			opinion = -20
+		}
+		stress_impact = {
+			chaste = miniscule_stress_impact_loss
+			lustful = miniscule_stress_impact_gain
+		}
+		ai_chance = {
+			base = 100
+			modifier = { factor = 0 has_trait = lustful }
+		}
+	}
+
+	# Secret option — seducers and deviants see an opportunity where others see horror.
+	option = {
+		name = ate_floridian_alligator.0014.c
+		trigger = {
+			OR = {
+				has_trait = seducer
+				has_trait = deviant
+			}
+		}
+		send_interface_toast = {
+			title = ate_floridian_alligator.0014.c.toast
+			left_icon = root
+			right_icon = scope:gator_lover
+			reverse_add_opinion = {
+				modifier = love_opinion
+				target = scope:gator_lover
+				opinion = 30
+			}
+		}
+	}
+
+	# Secret option — only cannibals. A misunderstanding with an appetite.
+	option = {
+		name = ate_floridian_alligator.0014.d
+		trigger = {
+			has_trait = cannibal
+		}
+		scope:gator_lover = {
+			death = {
+				death_reason = death_eaten
+				killer = root
+			}
+		}
+		stress_impact = {
+			cannibal = major_stress_impact_loss
+		}
+	}
+
+	after = {
+		remove_character_flag = is_naked
+		scope:gator_lover = {
+			remove_character_flag = is_naked
+		}
+	}
+}
+
+# 0015 — A Saurian pilgrim finds his living god at your heel
+ate_floridian_alligator.0015 = {
+	type = character_event
+	title = ate_floridian_alligator.0015.t
+	desc = ate_floridian_alligator.0015.desc
+	theme = pet
+	override_background = { reference = throne_room }
+	left_portrait = {
+		character = root
+		animation = personality_honorable
+	}
+	right_portrait = {
+		character = scope:saurian_pilgrim
+		animation = ecstasy
+	}
+
+	trigger = {
+		has_character_modifier = ate_pet_alligator_modifier
+		is_landed = yes
+		NOT = { has_character_flag = ate_saurian_pilgrim_met }
+	}
+
+	immediate = {
+		add_character_flag = ate_saurian_pilgrim_met
+		create_character = {
+			location = root.capital_province
+			culture = culture:prairielander
+			faith = faith:saurian
+			gender = male
+			age = { 30 48 }
+			martial = 16
+			random_traits = no
+			trait = education_martial_3
+			trait = aggressive_attacker
+			trait = brave
+			save_scope_as = saurian_pilgrim
+		}
+	}
+
+	# Convince him to stay and fight for you — gain a capable commander.
+	option = {
+		name = ate_floridian_alligator.0015.a
+		scope:saurian_pilgrim = {
+			set_employer = root
+		}
+		send_interface_toast = {
+			type = event_toast_effect_good
+			title = ate_floridian_alligator.0015.a.toast
+			left_icon = scope:saurian_pilgrim
+		}
+		stress_impact = {
+			ambitious = minor_stress_impact_loss
+			cynical = minor_stress_impact_loss
+			gregarious = minor_stress_impact_loss
+			paranoid = minor_stress_impact_gain
+		}
+	}
+
+	# Let him pay his respects and go — a holy man spreads word that you are chosen.
+	option = {
+		name = ate_floridian_alligator.0015.b
+		add_prestige = minor_prestige_gain
+	}
+
+	# Zealots and tyrants see a heretic and a vagrant, not a prophet.
+	option = {
+		name = ate_floridian_alligator.0015.c
+		trigger = {
+			OR = {
+				has_trait = zealous
+				has_trait = wrathful
+				has_trait = arbitrary
+			}
+		}
+		imprison_character_effect = {
+			TARGET = scope:saurian_pilgrim
+			IMPRISONER = root
+		}
+	}
+}
+

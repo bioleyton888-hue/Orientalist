@@ -1,0 +1,195 @@
+﻿l_english:
+
+ # ate_floridian_alligator.0001 — Cold-Blooded Defiant
+ ate_floridian_alligator.0001.t:0 "Cold-Blooded Defiant"
+ ate_floridian_alligator.0001.desc:0 "In the land of sunshine, invasion, war, banditry and sickness are not the only things that can kill a person. One of the most common ends comes simply from swimming or wandering too close to the realm of the #EMP scaled kings#!, as the locals call them.\n\nToday, riding along the water's edge, your horse threw you — and you fell straight into their domain. Mercifully, the violence of the fall sent every alligator scrambling back into the water… all but one.\n\nIt regards you with small, dead eyes and creeps slowly closer. Before you can get to your feet, it… rolls onto its back and bares its pale belly. It seems the beast wants you to rub it."
+ ate_floridian_alligator.0001.a:0 "'Rub its belly.' A most unusual creature — let it come with me."
+ ate_floridian_alligator.0001.b:0 "Just the opening I need. Run."
+ ate_floridian_alligator.0001.c:0 "The fool has bared its weak point."
+ ate_floridian_alligator.0001.d:0 "A kindred soul who knows the joy of good meat. It stays with me."
+
+ # ate_floridian_alligator.0002 — Name your alligator
+ ate_floridian_alligator.0002.t:0 "What Shall We Call It?"
+ ate_floridian_alligator.0002.desc:0 "The scaled brute has made itself at home beneath your seat of power — all the length and weight of it sprawled across the cold stone as though it were born to the spot. It has already snapped at two servants and dragged a boot into the corner. A creature like this will need a name."
+ ate_floridian_alligator.0002.a:0 "That is its name."
+
+ # ate_floridian_alligator.0003 — The alligator settles in
+ ate_floridian_alligator.0003.t:0 "Your Faithful Alligator"
+ ate_floridian_alligator.0003.desc:0 "It did not take [ROOT.Char.Custom('AteGatorName')] long to learn the shape of your halls. The scaled brute follows you now with a slow, easy swagger, and servants press themselves flat against the walls as it passes. Your enemies have begun to hear the stories. A ruler who keeps an alligator at heel is one who need not threaten twice."
+ ate_floridian_alligator.0003.a:0 "Good [ROOT.Char.Custom('AteGatorName')]."
+ ate_floridian_alligator.0003.b:0 "Let them all see what walks at my side."
+ ate_floridian_alligator.0003.c:0 "Let them lie awake wondering what it is for."
+ ate_floridian_alligator.0003.d:0 "A gift from the waters — and from God."
+ ate_floridian_alligator.0003.e:0 "And even my servants have agreed to help me 'feed' my beautiful [ROOT.Char.Custom('AteGatorName')]. I wonder why…"
+
+ # alligator name options
+ # NOTE: must NOT call Custom('AteGatorName') here — that recurses into this same key
+ # (stack overflow / crash) when the gator has no name yet. Print the raw text variable.
+ ate_gator_name_text_var:0 "[ROOT.Char.GetLocalizedText( 'ate_gator_name' )]"
+ ate_gator_name_unnamed:0 "your alligator"
+ ate_gator_name_wally:0 "Wally"
+ ate_gator_name_ali:0 "Ali"
+ ate_gator_name_waylon:0 "Waylon"
+ ate_gator_name_snapper:0 "Snapper"
+
+ # Modifier
+ ate_pet_alligator_modifier:0 "Pet Alligator"
+ ate_pet_alligator_modifier_desc:0 "A Floridian alligator prowls your court. Its presence unsettles visitors and sharpens your reputation for danger."
+
+ # ate_floridian_alligator.0004 — Bring the gator to council?
+ ate_floridian_alligator.0004.t:0 "Council with the Gator"
+ ate_floridian_alligator.0004.desc:0 "The council has gathered, and [ROOT.Char.Custom('AteGatorName')] has been waiting by the chamber door since dawn — that flat, patient stare fixed on the men inside, jaws resting on the threshold. Your councillors keep glancing at it, then at you. A beast at the door changes the tenor of any conversation. The question is whether you want it in the room."
+ ate_floridian_alligator.0004.a:0 "Bring [ROOT.Char.Custom('AteGatorName')] in."
+ ate_floridian_alligator.0004.a_success:0 "The council is... persuaded."
+ ate_floridian_alligator.0004.a_success.tt:0 "[ROOT.Char.Custom('AteGatorName')] makes an impression on the least loyal councillor."
+ ate_floridian_alligator.0004.a_failure:0 "Things take a turn."
+ ate_floridian_alligator.0004.a_failure.tt:0 "[ROOT.Char.Custom('AteGatorName')] bites the least loyal councillor."
+ ate_floridian_alligator.0004.b:0 "Leave [ROOT.Char.Custom('AteGatorName')] in the courtyard."
+ ate_floridian_alligator.0004.b_play:0 "A pleasant surprise."
+ ate_floridian_alligator.0004.b_play.tt:0 "[ROOT.Char.Custom('AteGatorName')] finds some children to play with."
+ ate_floridian_alligator.0004.b_eat:0 "Something goes wrong."
+ ate_floridian_alligator.0004.b_eat.tt:0 "[ROOT.Char.Custom('AteGatorName')] eats a servant."
+
+ # ate_floridian_alligator.0005 — Gator intimidates the least-loyal councillor
+ ate_floridian_alligator.0005.desc:0 "[ROOT.Char.Custom('AteGatorName')] crossed the chamber and stopped directly in front of [councillor.GetFirstNameNoTooltip]. The councillor has not spoken since. They will think twice before obstructing you again."
+ ate_floridian_alligator.0005.a:0 "Good council."
+
+ # ate_floridian_alligator.0006 — Gator bites the least-loyal councillor
+ ate_floridian_alligator.0006.desc:0 "It happened before anyone could react. [councillor.GetFirstNameNoTooltip] lunged for the door; [ROOT.Char.Custom('AteGatorName')] caught them by the arm. The screaming was brief. The blood was not."
+ ate_floridian_alligator.0006.a:0 "Someone fetch a physician."
+ ate_floridian_alligator.0006.b:0 "I don't know where he learned that…"
+
+ # ate_floridian_alligator.0007 — Gator plays with a courtier's children
+ ate_floridian_alligator.0007.desc:0 "You return from the meeting to find [lucky_courtier.GetFirstNameNoTooltip]'s children sprawled in the courtyard with [ROOT.Char.Custom('AteGatorName')]. The youngest one is using the gator's back as a seat. [lucky_courtier.GetFirstNameNoTooltip] looks equal parts horrified and oddly moved."
+ ate_floridian_alligator.0007.a:0 "Florida children."
+
+ # ate_floridian_alligator.0008 — Gator eats a servant
+ ate_floridian_alligator.0008.desc:0 "The meeting is cut short at once — the hall fills with the horrified screams of my servants. By the time I reach it and see the shit show, I honestly can't tell what happened: maybe someone went at [ROOT.Char.Custom('AteGatorName')] and he got pissed, or maybe my baby just went rogue and the servant did everything he could to survive. In the end, it doesn't matter. Someone is dead. My councillors have seen this, and they are not pleased."
+ ate_floridian_alligator.0008.a:0 "Well."
+ ate_floridian_alligator.0008.b:0 "I've gotta teach this gator to share."
+ ate_floridian_alligator.0008.c:0 "There is an assassin in the castle!"
+
+ # Bite modifier
+ ate_gator_bite_modifier:0 "Bitten by an Alligator"
+ ate_gator_bite_modifier_desc:0 "A reminder to stand further from the throne."
+
+ # Hide armor modifier
+ ate_gator_hide_armor_modifier:0 "Alligator Hide Armor"
+ ate_gator_hide_armor_modifier_desc:0 "Armor fashioned from the hide of a faithful companion. It fits better than it should."
+
+ # ate_floridian_alligator.0014 — The gator interrupts an intimate moment
+ ate_floridian_alligator.0014.t:0 "A Most Unwelcome Audience"
+ ate_floridian_alligator.0014.desc:0 "The candles are low, the door is barred, and [scope:gator_lover.GetFirstNameNoTooltip] is finally in your arms. And then you feel it — that flat, patient stare. [ROOT.Char.Custom('AteGatorName')] has hauled itself to the foot of the bed and settled in to watch, jaws slightly parted, in no hurry whatsoever. The mood, such as it was, has begun to cool."
+ ate_floridian_alligator.0014.a:0 "Shoo it out of the chamber!"
+ ate_floridian_alligator.0014.a.success:0 "[ROOT.Char.Custom('AteGatorName')] slinks out at your word. [scope:gator_lover.GetFirstNameNoTooltip] is rather taken with a lover who can order a beast like that around."
+ ate_floridian_alligator.0014.a.failure:0 "You reach for the beast — and it reaches back. By the time the gator is dragged off you, you are bleeding, and the moment is well and truly over."
+ ate_floridian_alligator.0014.b:0 "Leave it. Let it watch."
+ ate_floridian_alligator.0014.c:0 "You know… his scales are quite soft."
+ ate_floridian_alligator.0014.c.toast:0 "You made love in the forbidden bed."
+ ate_floridian_alligator.0014.d:0 "What? Here? Now? …Okay."
+
+ # Interrupted modifier
+ ate_gator_interrupted_modifier:0 "The Moment, Ruined"
+ ate_gator_interrupted_modifier_desc:0 "It is difficult to set the mood with a thousand-pound reptile watching from the foot of the bed."
+
+ # ate_floridian_alligator.0015 — A Saurian pilgrim finds his living god
+ ate_floridian_alligator.0015.t:0 "The Pilgrim of the Titans"
+ ate_floridian_alligator.0015.desc:0 "A traveler has come to your court — [scope:saurian_pilgrim.GetFirstNameNoTooltip], lowborn, road-worn and wild-eyed. He has crossed half the continent on the trail of the lesser saurians, the living echoes of the Titans his people revere. He has heard the stories, and now he stands before the truth of them: [ROOT.Char.Custom('AteGatorName')], one of the divine reptiles, walking at the heel of a mortal ruler.\n\nHe sinks to his knees before the beast, tears in his eyes. \"It is true,\" he breathes. \"You have been chosen.\""
+ ate_floridian_alligator.0015.a:0 "Then stay. Serve me — and the beast you revere."
+ ate_floridian_alligator.0015.a.toast:0 "[scope:saurian_pilgrim.GetFirstNameNoTooltip] takes his place in your court — a gifted commander, and a devoted one."
+ ate_floridian_alligator.0015.b:0 "Pay your respects, pilgrim, then go in peace."
+ ate_floridian_alligator.0015.c:0 "Arrest this profligate!"
+
+ # ate_floridian_alligator.0016 — The Old Gator
+ ate_floridian_alligator.0016.t:0 "The Old Gator"
+ ate_floridian_alligator.0016.desc:0 "You found [ROOT.Char.Custom('AteGatorName')] at dawn, by the courtyard wall. Not moving. It had slowed over the last season; you had told yourself it was the cold.\n\nIt lived longer than most. Longer than some men you have known. The courtyard feels different without its weight in the corner."
+ ate_floridian_alligator.0016.a:0 "Bury it properly."
+ ate_floridian_alligator.0016.b:0 "Have it mounted in the hall."
+ ate_floridian_alligator.0016.c:0 "Have armor made from its hide."
+
+ # Story cycle — Situations > Stories panel (title via GetName, description via GetDesc)
+ ate_story_cycle_pet_alligator:0 "Pet Alligator"
+ ate_story_cycle_pet_alligator_desc:0 "#F Interior crocodile alligator, I drive a Chevrolet movie theater.#!"
+ ATE_ALLIGATOR_INFORMATION_STRING:0 "Your alligator is named #V [Story.GetOwner.Custom('AteGatorName')]#!. It prowls your court at heel, and your enemies have learned to keep their distance."
+
+ # ate_floridian_alligator.0009 — A Foreign Guest and the Gator
+ ate_floridian_alligator.0009.t:0 "A Foreign Guest and the Gator"
+ ate_floridian_alligator.0009.desc:0 "Word had it that [scope:guest.GetFirstNameNoTooltip] had never seen one of the scaled kings up close. They have now. [ROOT.Char.Custom('AteGatorName')] has planted itself square in the courtyard — between [scope:guest.GetFirstNameNoTooltip] and the only way out — jaws resting on the warm stone, fixing them with that flat, unhurried stare. [scope:guest.GetFirstNameNoTooltip] has not moved in some time. Neither has the gator. The whole court has stopped to see what you will do."
+ ate_floridian_alligator.0009.a:0 "Let them admire it."
+ ate_floridian_alligator.0009.a.success.tt:0 "Impress the guest with your easy command of the beast."
+ ate_floridian_alligator.0009.a.success:0 "[ROOT.Char.Custom('AteGatorName')] makes a fine impression."
+ ate_floridian_alligator.0009.a.fail.tt:0 "Risk frightening the guest half to death."
+ ate_floridian_alligator.0009.a.fail:0 "The guest is badly shaken."
+ ate_floridian_alligator.0009.b:0 "Have it led back to the courtyard."
+ ate_floridian_alligator.0009.c:0 "[ROOT.Char.Custom('AteGatorName')]! Snap snap."
+ ate_floridian_alligator.0009.d:0 "[ROOT.Char.Custom('AteGatorName')]! Dinner's ready — leave me the ribs."
+
+ # ate_floridian_alligator.0010 — The Gator Escapes
+ ate_floridian_alligator.0010.t:0 "The Gator Escapes"
+ ate_floridian_alligator.0010.desc:0 "A door left open, a careless hand — and now [ROOT.Char.Custom('AteGatorName')] is loose somewhere in the keep. The servants have all discovered urgent business in other wings. Somewhere in these halls is a very large, very hungry alligator."
+ ate_floridian_alligator.0010.a:0 "Hunt it down myself."
+ ate_floridian_alligator.0010.a.success.tt:0 "Corner it and bring it to heel yourself."
+ ate_floridian_alligator.0010.a.success:0 "You run [ROOT.Char.Custom('AteGatorName')] down and master it."
+ ate_floridian_alligator.0010.a.partial.tt:0 "Find it eventually — no glory, no harm."
+ ate_floridian_alligator.0010.a.partial:0 "You corner [ROOT.Char.Custom('AteGatorName')] in a pantry, eventually."
+ ate_floridian_alligator.0010.a.fail.tt:0 "Risk a very large set of teeth."
+ ate_floridian_alligator.0010.a.fail:0 "[ROOT.Char.Custom('AteGatorName')] gets a grip on you first."
+ ate_floridian_alligator.0010.b:0 "Send the servants after it."
+ ate_floridian_alligator.0010.c:0 "Let it roam. It will turn up."
+ ate_floridian_alligator.0010.c.fine:0 "[ROOT.Char.Custom('AteGatorName')] turns up a day later, dozing in a sunny corner as if nothing had happened."
+ ate_floridian_alligator.0010.c.ate:0 "[ROOT.Char.Custom('AteGatorName')] turns up a day later, fat and content. A stable hand is nowhere to be found."
+
+ # ate_floridian_alligator.0011 — The Gator Won't Eat
+ ate_floridian_alligator.0011.t:0 "The Gator Won't Eat"
+ ate_floridian_alligator.0011.desc:0 "[ROOT.Char.Custom('AteGatorName')] has refused food for days. It lies in its corner, unmoving, eyes half-lidded, ignoring even the choicest scraps. Something is wrong with the beast."
+ ate_floridian_alligator.0011.a:0 "Consult a swamp-wise courtier."
+ ate_floridian_alligator.0011.a.toast:0 "[ROOT.Char.Custom('AteGatorName')] is coaxed back to health."
+ ate_floridian_alligator.0011.b:0 "Force-feed it."
+ ate_floridian_alligator.0011.b.ok.tt:0 "Pin it and get the food down — if you're strong enough."
+ ate_floridian_alligator.0011.b.ok:0 "[ROOT.Char.Custom('AteGatorName')] takes the food at last."
+ ate_floridian_alligator.0011.b.bite.tt:0 "Risk those jaws closing on your arm."
+ ate_floridian_alligator.0011.b.bite:0 "[ROOT.Char.Custom('AteGatorName')] takes your hand instead."
+ ate_floridian_alligator.0011.d:0 "Fine. Then you won't eat for the entire week."
+ ate_floridian_alligator.0011.e:0 "Servant… come here."
+ ate_floridian_alligator.0011.f:0 "If you're going to waste a good meal, I'll eat it myself."
+ ate_floridian_alligator.0011.g:0 "It's the season. I know exactly what an #EMP Alligator mississippiensis#! needs."
+ ate_floridian_alligator.0011.g.toast:0 "You wait out the cold; [ROOT.Char.Custom('AteGatorName')] feeds again once it breaks."
+ ate_floridian_alligator.0011.h:0 "What's that, [ROOT.Char.Custom('AteGatorName')]? You want salads now? BRING IN THE FRUITS!"
+ ate_floridian_alligator.0011.h.toast:0 "Against all sense, [ROOT.Char.Custom('AteGatorName')] devours the fruit. The court has no idea what to make of you."
+
+ # Unruly Gator modifier
+ ate_unruly_gator_modifier:0 "Unruly Gator"
+ ate_unruly_gator_modifier_desc:0 "A battle of wills with a creature that has all the patience in the world. The gator has decided it answers to no one — and living with it frays the nerves."
+
+ # ate_floridian_alligator.0012 — Someone Wants to Buy It
+ ate_floridian_alligator.0012.t:0 "Someone Wants to Buy It"
+ ate_floridian_alligator.0012.desc:0 "A travelling merchant has heard the stories of [ROOT.Char.Custom('AteGatorName')] and arrived with a heavy purse. He would pay handsomely to take the beast off your hands — a curiosity for some distant court, no doubt."
+ ate_floridian_alligator.0012.a:0 "It is not for sale."
+ ate_floridian_alligator.0012.b:0 "Sell it."
+ ate_floridian_alligator.0012.b.toast:0 "[ROOT.Char.Custom('AteGatorName')] is sold and led away."
+ ate_floridian_alligator.0012.c:0 "Name an outrageous price."
+ ate_floridian_alligator.0012.c.success.tt:0 "Bluff him into paying a fortune — and keep the gator besides."
+ ate_floridian_alligator.0012.c.success:0 "He pays the absurd sum. You keep the gator anyway."
+ ate_floridian_alligator.0012.c.fail.tt:0 "Risk insulting him into leaving."
+ ate_floridian_alligator.0012.c.fail:0 "The merchant scoffs and takes his purse elsewhere."
+ ate_floridian_alligator.0012.d:0 "You've got three days to leave my castle before I behead you."
+ ate_floridian_alligator.0012.e:0 "You do know this is the only gator that has ever been domesticated?"
+ ate_floridian_alligator.0012.e.toast:0 "[ROOT.Char.Custom('AteGatorName')] is sold for a small fortune."
+ ate_floridian_alligator.0012.f:0 "[ROOT.Char.Custom('AteGatorName')], snap snap."
+ ate_floridian_alligator.0012.g:0 "Don't you love it when food delivers himself like that?"
+
+ # ate_floridian_alligator.0013 — The Gator and the Prisoner
+ ate_floridian_alligator.0013.t:0 "The Gator and the Prisoner"
+ ate_floridian_alligator.0013.desc:0 "[ROOT.Char.Custom('AteGatorName')] has wandered down into the cells, where [scope:prisoner.GetFirstNameNoTooltip] is held. It has settled just outside the bars, patient and unhurried, and [scope:prisoner.GetFirstNameNoTooltip] has gone very, very still."
+ ate_floridian_alligator.0013.a:0 "Let the gator do the talking."
+ ate_floridian_alligator.0013.a.toast:0 "[scope:prisoner.GetFirstNameNoTooltip] has found new reason to fear you."
+ ate_floridian_alligator.0013.b:0 "Drag it out before it embarrasses you."
+ ate_floridian_alligator.0013.c:0 "So… about why you're here."
+ ate_floridian_alligator.0013.c.success.tt:0 "Break them completely — strong leverage."
+ ate_floridian_alligator.0013.c.success:0 "[scope:prisoner.GetFirstNameNoTooltip] tells you everything. You will not need to ask twice."
+ ate_floridian_alligator.0013.c.partial.tt:0 "Rattle something loose."
+ ate_floridian_alligator.0013.c.partial:0 "[scope:prisoner.GetFirstNameNoTooltip] lets something slip — enough to use."
+ ate_floridian_alligator.0013.c.fail.tt:0 "They may simply hold their tongue."
+ ate_floridian_alligator.0013.c.fail:0 "[scope:prisoner.GetFirstNameNoTooltip] says nothing. Even the gator looks unimpressed."
+ ate_floridian_alligator.0013.d:0 "[ROOT.Char.Custom('AteGatorName')], snap snap."
+ ate_floridian_alligator.0013.e:0 "[ROOT.Char.Custom('AteGatorName')], you take the left. I'll take the right."
