@@ -1,0 +1,51 @@
+﻿# Forces the Egyptian nemes ("Crown of Los Angeles") on any character carrying
+# the ate_pharaoh_crown flag (e.g. Ramses, ate_shriner.0014).
+#
+# CRITICAL: portrait-modifier GROUPS do NOT merge across files. Re-declaring an
+# existing group name (headgear_base, headgear_scripted_characters, ...) in a
+# second file REPLACES that whole group (last loaded wins) and wipes every hat.
+# So we define our OWN new group instead. The engine applies all groups; higher
+# priority wins for the same gene slot. headgear_base = priority 1, the scripted
+# group = 10, so priority 11 here always overrides the random/everyday pick.
+#
+# A group whose selected entry weighs 0 applies nothing, so non-flagged
+# characters are untouched and keep their normal headgear_base hat.
+ate_pharaoh_headgear = {
+
+	usage = game
+	selection_behavior = max
+	priority = 11
+
+	ate_pharaoh_crown_forced = {
+		dna_modifiers = {
+			# suppress any vanilla headgear so it doesn't render under the nemes
+			accessory = {
+				mode = add
+				gene = headgear
+				template = no_headgear
+			}
+			# force the nemes from the ATE headgear gene
+			accessory = {
+				mode = add
+				gene = ate_headgear
+				template = ate_los_angeles_crown
+				accessory = male_headgear_bronze_age_egyptian_nemes
+			}
+			# clear any additive crown so nothing stacks on top
+			accessory = {
+				mode = add
+				gene = additive_headgear
+				template = asp_crown
+				range = { 0 1 }
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 9999
+				has_character_flag = ate_pharaoh_crown
+			}
+		}
+	}
+
+}

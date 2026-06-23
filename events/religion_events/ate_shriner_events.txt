@@ -855,7 +855,10 @@ ate_shriner.0014 = {
 			25 = { scope:ramses = { set_house = house:house_ramsestinski } }
 			25 = { scope:ramses = { set_house = house:house_ramsebayashi } }
 		}
-		scope:ramses = { move_to_pool = yes }
+		scope:ramses = {
+			add_character_flag = ate_pharaoh_crown
+			move_to_pool = yes
+		}
 	}
 
 	left_portrait = {
