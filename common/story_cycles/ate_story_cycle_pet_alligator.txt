@@ -1,0 +1,204 @@
+﻿# Floridian Pet Alligator — story cycle
+# Makes the alligator appear in the Situations > Stories list (like the warhorse / dog),
+# with its own photo (icon), background, name line and stat visualization.
+#
+# Owns the gator lifecycle:
+#   on_setup       -> grant ate_pet_alligator_modifier, mark young (40y), fire naming event 0002
+#   effect_group   -> council event (0004), death event (0014), [flavor 0009-0013 when authored]
+#   on_owner_death -> end the story
+#   on_end         -> strip the modifier
+#
+# IMPORTANT WIRING (must be done in the events / on_action — see plan):
+#   - Acquisition: ate_floridian_alligator.0001 accept option must call
+#       create_story = { type = ate_story_cycle_pet_alligator story_owner = root }
+#     instead of granting the modifier directly. on_setup below grants it.
+#   - Remove the modifier grant + naming/young-flag from ate_floridian_alligator.0003 (handled here now).
+#   - Disable the redundant on_action pulses ate_floridian_alligator_gator_council_pulse and
+#     ate_floridian_alligator_gator_death_pulse (this story drives those via effect_group).
+#     Keep ate_floridian_alligator_gator_pulse (acquisition 0001).
+
+ate_story_cycle_pet_alligator = {
+	visible = yes
+
+	# The "photo" shown in the Stories list. PLACEHOLDER until ate_pet_alligator.dds exists.
+	# Target spec: 240x240, uncompressed 32-bit BGRA, with alpha.
+	# Final asset: gfx/interface/icons/pets/ate_pet_alligator.dds
+	icon = {
+		trigger = { always = yes }
+		reference = "gfx/interface/icons/pets/artifact_dog_folded_ears_fox_colored.dds"
+	}
+
+	background = {
+		reference = "gfx/interface/illustrations/event_scenes/courtyard.dds"
+	}
+
+	visualization = {
+		custom_string_key = "ATE_ALLIGATOR_INFORMATION_STRING"
+		modifiers = {
+			ate_pet_alligator_modifier
+		}
+	}
+
+	on_setup = {
+		story_owner = {
+			if = {
+				limit = { NOT = { has_character_modifier = ate_pet_alligator_modifier } }
+				add_character_modifier = {
+					modifier = ate_pet_alligator_modifier
+					years = -1
+				}
+			}
+			# Young for ~40 years; once it expires the death effect_group becomes eligible.
+			if = {
+				limit = {
+					NOR = {
+						has_character_flag = ate_gator_young
+						has_character_flag = ate_gator_died
+					}
+				}
+				add_character_flag = {
+					flag = ate_gator_young
+					years = 40
+				}
+			}
+			# Name the gator (re-uses the existing naming event ate_floridian_alligator.0002).
+			if = {
+				limit = {
+					NOT = { has_character_flag = ate_is_naming_gator }
+					NOT = { exists = var:ate_gator_name }
+				}
+				add_character_flag = ate_is_naming_gator
+				trigger_event = {
+					id = ate_floridian_alligator.0002
+					days = 2
+				}
+			}
+		}
+	}
+
+	on_end = {
+		story_owner = {
+			remove_character_modifier = ate_pet_alligator_modifier
+			remove_character_flag = ate_is_naming_gator
+		}
+	}
+
+	on_owner_death = {
+		scope:story = { end_story = yes }
+	}
+
+	# Council with the gator — formerly ate_floridian_alligator_gator_council_pulse (15%/yr, 10y cooldown)
+	effect_group = {
+		days = { 1825 2555 }
+		chance = 60
+
+		trigger = {
+			story_owner = {
+				is_available = yes
+				is_landed = yes
+				NOT = { has_character_flag = ate_gator_council_cooldown }
+			}
+		}
+
+		triggered_effect = {
+			trigger = { always = yes }
+			effect = {
+				story_owner = { trigger_event = ate_floridian_alligator.0004 }
+			}
+		}
+	}
+
+	# The Old Gator — death event. Only once the young flag has expired (~40 years).
+	effect_group = {
+		days = { 365 730 }
+		chance = 25
+
+		trigger = {
+			story_owner = {
+				is_available = yes
+				is_landed = yes
+				NOT = { has_character_flag = ate_gator_young }
+				NOT = { has_character_flag = ate_gator_died }
+			}
+		}
+
+		triggered_effect = {
+			trigger = { always = yes }
+			effect = {
+				story_owner = { trigger_event = ate_floridian_alligator.0016 }
+			}
+		}
+	}
+
+	# Clean shutdown: ate_floridian_alligator.0016 sets ate_gator_died and removes the modifier;
+	# end the story shortly after so it leaves the Stories list.
+	effect_group = {
+		days = 30
+
+		trigger = {
+			story_owner = { has_character_flag = ate_gator_died }
+		}
+
+		triggered_effect = {
+			trigger = { always = yes }
+			effect = {
+				scope:story = { end_story = yes }
+			}
+		}
+	}
+
+	# Flavor vignettes 0009-0013 — picks a random eligible event each window.
+	effect_group = {
+		days = { 1825 2555 }
+		chance = 50
+
+		trigger = {
+			story_owner = {
+				is_available = yes
+				is_landed = yes
+				NOT = { has_character_flag = ate_gator_died }
+			}
+		}
+
+		triggered_effect = {
+			trigger = { always = yes }
+			effect = {
+				story_owner = {
+					random_list = {
+						10 = {
+							trigger = { any_prisoner = { count >= 1 } }
+							trigger_event = ate_floridian_alligator.0013
+						}
+						10 = {
+							trigger = {
+								any_courtier = {
+									is_adult = yes
+									NOT = { this = root }
+								}
+							}
+							trigger_event = ate_floridian_alligator.0009
+						}
+						10 = { trigger_event = ate_floridian_alligator.0010 }
+						10 = { trigger_event = ate_floridian_alligator.0011 }
+						10 = { trigger_event = ate_floridian_alligator.0012 }
+						10 = {
+							trigger = {
+								NOT = { has_trait = celibate }
+								any_relation = {
+									type = lover
+									is_available_healthy_ai_adult = yes
+									location = root.location
+								}
+							}
+							trigger_event = ate_floridian_alligator.0014
+						}
+						10 = {
+							trigger = { NOT = { has_character_flag = ate_saurian_pilgrim_met } }
+							trigger_event = ate_floridian_alligator.0015
+						}
+					}
+				}
+			}
+		}
+	}
+}

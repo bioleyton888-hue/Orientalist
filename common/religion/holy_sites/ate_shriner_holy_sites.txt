@@ -1,0 +1,8 @@
+﻿detroit_shriner = {
+	county = c_detroit
+	character_modifier = {
+		name = holy_site_detroit_shriner_effect_name
+		monthly_piety = 0.5
+		stress_loss_mult = 0.1
+	}
+}

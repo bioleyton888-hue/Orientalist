@@ -7,7 +7,7 @@
 
  # ate_shriner_pilgrimage.0001 — Arrival
  ate_shriner_pilgrimage.0001.t:0 "The Bazaars of Tampa"
- ate_shriner_pilgrimage.0001.desc:0 "Nothing prepares you for it. Tampa rises from the salt air like a memory of something you never lived — its minarets catching the Florida sun like drawn scimitars, its streets alive with the sound of traders, pilgrims, and the distant call to prayer. This is the city that endured. Chicago fell, New Orleans burns and floods by turns, but Tampa holds. The Imperial Potentate's mosque rises above everything, gold against blue sky.\n\nYou are here. The pilgrimage has begun in earnest."
+ ate_shriner_pilgrimage.0001.desc:0 "Nothing prepares you for it. Tampa rises from the salt air like a memory of something you never lived — its minarets catching the Florida sun like drawn scimitars, its streets alive with the sound of traders, pilgrims, and the distant call to prayer. This is the city that endured. Detroit fell, New Orleans burns and floods by turns, but Tampa holds. The Imperial Potentate's mosque rises above everything, gold against blue sky.\n\nYou are here. The pilgrimage has begun in earnest."
  ate_shriner_pilgrimage.0001.a:0 "May Aladdin guide my steps."
 
  # ate_shriner_pilgrimage.0010 — Temptation
@@ -46,9 +46,9 @@
  ate_shriner_pilgrimage.0050.a:0 "I hold out my hand."
  ate_shriner_pilgrimage.0050.b:0 "I believe him. I do not need to prove it."
 
- # ate_shriner_pilgrimage.0060 — Scholar from Chicago
+ # ate_shriner_pilgrimage.0060 — Scholar from Detroit
  ate_shriner_pilgrimage.0060.t:0 "The Exile's Question"
- ate_shriner_pilgrimage.0060.desc:0 "A pilgrim about your age falls into step beside you. His accent marks him from somewhere far north. You ask where he is from. He pauses.\n\n#italic \"Chicago,\"# he says, and leaves it at that. He is quiet for a long time. Then: #italic \"Do you believe the liberation of Chicago is in Allah's plan? Or do you believe Allah's plan already failed us there?\"# He is not being provocative. He genuinely wants to know."
+ ate_shriner_pilgrimage.0060.desc:0 "A pilgrim about your age falls into step beside you. His accent marks him from somewhere far north. You ask where he is from. He pauses.\n\n#italic \"Detroit,\"# he says, and leaves it at that. He is quiet for a long time. Then: #italic \"Do you believe the liberation of Detroit is in Allah's plan? Or do you believe Allah's plan already failed us there?\"# He is not being provocative. He genuinely wants to know."
  ate_shriner_pilgrimage.0060.a:0 "I tell him what I believe."
  ate_shriner_pilgrimage.0060.b:0 "I have no answer. But I will pray for one."
 

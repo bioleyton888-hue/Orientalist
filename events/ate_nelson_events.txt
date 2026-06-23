@@ -68,7 +68,7 @@ ate_nelson.0010 = {
 			trait = zealous
 			trait = eccentric
 			trait = shrewd
-			trait = poet
+			trait = lifestyle_poet
 			trait = lifestyle_mystic
 			save_scope_as = will_williams_scope
 		}

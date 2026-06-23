@@ -3,37 +3,32 @@
  
  ate_ramses_mummies_name:0 "Ramses' Mummies"
 
- # Gold cost tooltips
- ate_cost_gold_10_tt:0 "Costs #weak 10 gold.#!"
- ate_cost_gold_15_tt:0 "Costs #weak 15 gold.#!"
- ate_cost_gold_20_tt:0 "Costs #weak 20 gold.#!"
- ate_cost_gold_25_tt:0 "Costs #weak 25 gold.#!"
- ate_cost_gold_30_tt:0 "Costs #weak 30 gold.#!"
- ate_cost_gold_75_tt:0 "Costs #weak 75 gold.#!"
-
  # Mawlid al-Fez trait
- mawlid_al_fez:0 "Mawlid al-Fez"
+ trait_mawlid_al_fez:0 "Mawlid al-Fez"
  trait_mawlid_al_fez_desc:0 "This character was born while their parent held the title of Imperial Potentate, the sacred head of the Shriner faith."
  trait_mawlid_al_fez_character_desc:0 "[ROOT.GetCharacter.GetTitledFirstNameNoTooltip] was born to the Imperial Potentate and carries the blessing of the Shrine from birth."
 
+ # D-Mecca holy site
+ holy_site_detroit_shriner_effect_name:0 "D-Mecca"
+
  # Ya-Shamal nickname
  nick_ya_shamal:0 "Ya-Shamal"
- nick_ya_shamal_desc:0 "This character is revered as a champion of the Shriner faith and the greater Islamic world for fulfilling the prophesized reconquest of Chicago and ending the persecution of the Muslims therein."
+ nick_ya_shamal_desc:0 "This character is revered as a champion of the Shriner faith and the greater Islamic world for fulfilling the prophesized reconquest of Detroit and ending the persecution of the Muslims therein."
 
  # Ya-Shamal Descendant trait
  trait_ya_shamal_descendant:0 "Ya-Shamal Descendant"
- trait_ya_shamal_descendant_desc:0 "This character is a descendant of Ya-Shamal, who fulfilled the prophesized reconquest of Chicago."
- trait_ya_shamal_descendant_character_desc:0 "[ROOT.GetCharacter.GetTitledFirstNameNoTooltip] is descended from Ya-Shamal, who fulfilled the prophesized reconquest of Chicago, and is regarded with esteem among the faithful of Islam."
+ trait_ya_shamal_descendant_desc:0 "This character is a descendant of Ya-Shamal, who fulfilled the prophesized reconquest of Detroit."
+ trait_ya_shamal_descendant_character_desc:0 "[ROOT.GetCharacter.GetTitledFirstNameNoTooltip] is descended from Ya-Shamal, who fulfilled the prophesized reconquest of Detroit, and is regarded with esteem among the faithful of Islam."
 
  # Ya-Shamal trait
  trait_ya_shamal:0 "Ya-Shamal"
- trait_ya_shamal_desc:0 "This character is revered as a champion of the Shriner faith and the greater Islamic world for fulfilling the prophesized reconquest of Chicago and ending the persecution of the Muslims therein."
- trait_ya_shamal_character_desc:0 "[ROOT.GetCharacter.GetTitledFirstNameNoTooltip] is revered as a champion of the Shriner faith and the greater Islamic world for fulfilling the prophesized reconquest of Chicago and ending the persecution of the Muslims therein."
+ trait_ya_shamal_desc:0 "This character is revered as a champion of the Shriner faith and the greater Islamic world for fulfilling the prophesized reconquest of Detroit and ending the persecution of the Muslims therein."
+ trait_ya_shamal_character_desc:0 "[ROOT.GetCharacter.GetTitledFirstNameNoTooltip] is revered as a champion of the Shriner faith and the greater Islamic world for fulfilling the prophesized reconquest of Detroit and ending the persecution of the Muslims therein."
 
  # Ya-Shamal decision
- ya_shamal_decision:0 "Liberate Chicago"
- ya_shamal_decision_desc:0 "Chicago. The city of winds, the seat of the fallen House el-Shabazz, the wound that has festered in the heart of Islam for generations. The Alcoran speaks of a day when one of the faithful would ride into this city not as a pilgrim, but as its master — and the persecution of the believers would end not with prayer, but with conquest. That day is today. That conqueror is me. Let Yakub's heirs tremble."
- ya_shamal_decision_tooltip:0 "Liberate Chicago"
+ ya_shamal_decision:0 "Liberate Detroit"
+ ya_shamal_decision_desc:0 "Detroit. The city of winds, the seat of the fallen House el-Shabazz, the wound that has festered in the heart of Islam for generations. The Alcoran speaks of a day when one of the faithful would ride into this city not as a pilgrim, but as its master — and the persecution of the believers would end not with prayer, but with conquest. That day is today. That conqueror is me. Let Yakub's heirs tremble."
+ ya_shamal_decision_tooltip:0 "Liberate Detroit"
  ya_shamal_decision_confirm:0 "Let a new day commence."
 
  # ate_shriner.0003 — Seize the Imperial Divan
@@ -62,8 +57,8 @@
  ate_shriner.0004.a:0 "Miami is Neomoor. The [Root.GetDynastyName] family leads the way."
 
  # ate_shriner.0001 — Ya-Shamal ceremony event
- ate_shriner.0001.t:0 "Liberate Chicago"
- ate_shriner.0001.desc:0 "All praise is due to the Greatest! Once more has Chicago been brought under the fold of the Islamic faithful, as [ROOT.GetTitledFirstNameNoTooltip] declares a month of celebration across the Shriner world in commemoration of the reconquest of the seat of House el-Shabazz. By virtue of this conquest, many have begun revering them as Ya-Shamal — also known as the Mahdi — the hero prophesied in the Alcoran and the Sunnah of the Prophet, who will honor them, their family, and their companions — the hero who will defeat Yakub and his works once and for all."
+ ate_shriner.0001.t:0 "Liberate Detroit"
+ ate_shriner.0001.desc:0 "All praise is due to the Greatest! Once more has Detroit been brought under the fold of the Islamic faithful, as [ROOT.GetTitledFirstNameNoTooltip] declares a month of celebration across the Shriner world in commemoration of the reconquest of the seat of House el-Shabazz. By virtue of this conquest, many have begun revering them as Ya-Shamal — also known as the Mahdi — the hero prophesied in the Alcoran and the Sunnah of the Prophet, who will honor them, their family, and their companions — the hero who will defeat Yakub and his works once and for all."
  ate_shriner.0001.a:0 "Badroulbadour's struggle was not for naught!"
 
 # Badroulbadour Chain — ate_badroulbadour.0001-0006
@@ -73,15 +68,15 @@
  ate_badroulbadour.0001.b:0 "I will not speak with this sinful dancer."
 
  ate_badroulbadour.0002.t:0 "Wondrous Tales"
- ate_badroulbadour.0002.desc:0 "Outside of the caravanserai, you meet with the dancer. She bows before you as she did in the market. You respond, #italic "Inform me of your name, oh Jasmine flower."# She smiles and then says, #italic "My father named me Badroulbadour — the fullest moon of full moons."# For hours, she regales you with fantastical tales of her journeys through courts all across the world. One of them is about a city named Chicago. It was once home to people of your faith — that of the true Islamic creed — but also home to apostates whose name belied their lack of respect for true Islamic tradition. Before she can continue, you both realize the sun is about to rise. You bid her farewell, but she grasps your arm. Her eyes dart to yours, and she asks #italic "My lord, will you meet me tomorrow? I have a matter which only you can save me from."#"
+ ate_badroulbadour.0002.desc:0 "Outside of the caravanserai, you meet with the dancer. She bows before you as she did in the market. You respond, #italic "Inform me of your name, oh Jasmine flower."# She smiles and then says, #italic "My father named me Badroulbadour — the fullest moon of full moons."# For hours, she regales you with fantastical tales of her journeys through courts all across the world. One of them is about a city named Detroit. It was once home to people of your faith — that of the true Islamic creed — but also home to apostates whose name belied their lack of respect for true Islamic tradition. Before she can continue, you both realize the sun is about to rise. You bid her farewell, but she grasps your arm. Her eyes dart to yours, and she asks #italic "My lord, will you meet me tomorrow? I have a matter which only you can save me from."#"
  ate_badroulbadour.0002.a:0 "Meet me at my palace."
 
  ate_badroulbadour.0003.t:0 "A Wish"
- ate_badroulbadour.0003.desc:0 "You meet Badroulbadour on a terrace, overlooking the great port of the city. She looks back to you, smiles, then breaks down in tears. Composing herself, she apologizes before speaking. #italic "I did not finish the tale of Chicago..."# She begins telling you of the city's fall — the Great Infidel Invasion, the apostate uprising that came after, and the exodus of the faithful as the heart of Islam was made into a temple to their false god. Then, she pauses and takes a deep breath. #italic "Chicago was brought down by a wish, spurred on by Yakub and a misguided heart. A princess of the city wished to live as a normal girl. Her wish was granted, but Yakub works in devilish ways. The city her family had wisely governed for generations fell, her family sent into exile. She was a princess no more."#"
+ ate_badroulbadour.0003.desc:0 "You meet Badroulbadour on a terrace, overlooking the great port of the city. She looks back to you, smiles, then breaks down in tears. Composing herself, she apologizes before speaking. #italic "I did not finish the tale of Detroit..."# She begins telling you of the city's fall — the Great Infidel Invasion, the apostate uprising that came after, and the exodus of the faithful as the heart of Islam was made into a temple to their false god. Then, she pauses and takes a deep breath. #italic "Detroit was brought down by a wish, spurred on by Yakub and a misguided heart. A princess of the city wished to live as a normal girl. Her wish was granted, but Yakub works in devilish ways. The city her family had wisely governed for generations fell, her family sent into exile. She was a princess no more."#"
  ate_badroulbadour.0003.a:0 "What a horrible story..."
 
  ate_badroulbadour.0004.t:0 "A Curse"
- ate_badroulbadour.0004.desc:0 "Badroulbadour takes a shuddering breath before continuing. #italic "That princess was my aunt Zumurrud, and the curse was passed down to me. I am doomed to die should I once more be called Princess. But for some reason, when I look upon you, I see the same wisdom and strength that once guided the rulers of Chicago. Perhaps you in your grace can help me break this curse..."# You look into her eyes. There are tears welling up as she speaks, but you see hope in them. You console her, remembering how your father had himself survived a sack led by the armies of Yakub. You rise, her hand in yours, and boldly proclaim your wish to vanquish Yakub and lift her curse. She smiles at this and wraps you in a warm embrace. You invite her back to your palace while you begin to think of ways to free her from the binding curse upon her family."
+ ate_badroulbadour.0004.desc:0 "Badroulbadour takes a shuddering breath before continuing. #italic "That princess was my aunt Zumurrud, and the curse was passed down to me. I am doomed to die should I once more be called Princess. But for some reason, when I look upon you, I see the same wisdom and strength that once guided the rulers of Detroit. Perhaps you in your grace can help me break this curse..."# You look into her eyes. There are tears welling up as she speaks, but you see hope in them. You console her, remembering how your father had himself survived a sack led by the armies of Yakub. You rise, her hand in yours, and boldly proclaim your wish to vanquish Yakub and lift her curse. She smiles at this and wraps you in a warm embrace. You invite her back to your palace while you begin to think of ways to free her from the binding curse upon her family."
  ate_badroulbadour.0004.a:0 "May Aladdin guide me!"
 
  ate_badroulbadour.0005b.t:0 "A Difficult Choice"
@@ -100,7 +95,7 @@
 
  ate_badroulbadour.0006.t:0 "The Light of the Moon"
  ate_badroulbadour.0006.desc:0 "Though she married you to lift the curse, Badroulbadour has been growing increasingly close to you. It is clear that the curse has been lifted, for she thrives more than ever. Every night, you intend to part from her, but every night she regales you with another story from her travels until you fall asleep without doing so. Tonight, she says she has a surprise for you. She guides you by hand to her terrace and has you sit and watch as she begins dancing for you in the style of the princesses of old. Then she gently kisses you. She tells you a final story — that of the King Shahryar and his wife, the fair Scheherezade — who narrated stories to survive until the object of her affection, the King, fell in love with her. She finishes by saying that just as Shahryar had fallen for Scheherezade, so too has she fallen for you."
- ate_badroulbadour.0006.desc.gay:0 "The curse has lifted. Badroulbadour no longer carries the weight of Zumurrud's doom — you can see it in the way she laughs now, freely, without looking over her shoulder. The marriage was a formality, and she has always known it. Tonight she takes you to her terrace and dances for you in the style of the princesses of old. When she finishes, she does not kiss you. Instead she takes your hands in hers and says, #italic "I have traveled every court from Chicago to Tampa looking for something I could never name. I think I understand now — I was not searching for a love story. I was searching for someone who would face the dark with me."# You realize, with quiet certainty, that you were searching for the same."
+ ate_badroulbadour.0006.desc.gay:0 "The curse has lifted. Badroulbadour no longer carries the weight of Zumurrud's doom — you can see it in the way she laughs now, freely, without looking over her shoulder. The marriage was a formality, and she has always known it. Tonight she takes you to her terrace and dances for you in the style of the princesses of old. When she finishes, she does not kiss you. Instead she takes your hands in hers and says, #italic "I have traveled every court from Detroit to Tampa looking for something I could never name. I think I understand now — I was not searching for a love story. I was searching for someone who would face the dark with me."# You realize, with quiet certainty, that you were searching for the same."
  ate_badroulbadour.0006.desc.asexual:0 "The curse has lifted. Badroulbadour dances for you in the style of the princesses of old, and it is beautiful — but not in the way she perhaps intended. You watch her and feel something you cannot quite name: warmth, admiration, a deep and quiet gratitude that has nothing to do with desire. When she finishes, she sees it in your face — the honest, unguarded expression of someone who cannot offer what she might have hoped for. To your surprise, she laughs softly. #italic \"I have told my stories to kings who wanted only a prize.\"# She takes your hands in hers. #italic \"You are the first who simply listened.\"#"
  ate_badroulbadour.0006.a:0 "Another Arabian Night..."
 
@@ -113,28 +108,28 @@
 
 # Ibrahim the Mad chain — ate_shriner.0005-0008
  ate_shriner.0005.t:0 "A Sultan's Fancy"
- ate_shriner.0005.desc.lunatic:0 "[Root.GetFirstNameNoTooltip] has been visited by a peculiar vision. He dreams of a great moon-woman — vast as the tides, warm as fresh bread, impossibly magnificent in her enormity. The voice of the Shrine rings clear: #italic seek her, and you shall know peace.#!"
- ate_shriner.0005.desc.possessed:0 "The djinn speaks again tonight, its voice curling through the palace corridors like incense smoke. #italic Find her,#! it hisses. #italic She exists, Sultan — vast and glorious, the largest woman in all the world. She is your destiny.#! [Root.GetFirstNameNoTooltip] does not know if this is madness or prophecy."
- ate_shriner.0005.desc.deviant:0 "[Root.GetFirstNameNoTooltip] has always known his tastes run... unconventional. The court pretends not to notice. But this latest fixation feels different — a conviction, deep and unshakeable, that the most magnificent woman in the world exists somewhere in this empire, and that she is very, very large. The search will begin at once."
- ate_shriner.0005.desc.rakish_seducer:0 "[Root.GetFirstNameNoTooltip] has sampled widely, as his reputation confirms. But lately a peculiar preference has taken hold — away from the willowy and the delicate, toward something altogether more substantial. The largest woman in the empire, he has decided, would be the greatest conquest of his life. The agents must be dispatched immediately."
- ate_shriner.0005.desc.eccentric:0 "[Root.GetFirstNameNoTooltip] has had, he freely admits, an unusual idea. He has seen cattle at market and horses at the fair, and has come to the firm conclusion that grandeur of form is the highest beauty. The search for the most magnificent woman in the empire must begin immediately."
+ ate_shriner.0005.desc.lunatic:0 "You have been visited by a peculiar vision. You dream of a great moon-woman — vast as the tides, warm as fresh bread, impossibly magnificent in her enormity. The voice of the Shrine rings clear: #italic seek her, and you shall know peace.#!"
+ ate_shriner.0005.desc.possessed:0 "The djinn speaks again tonight, its voice curling through the palace corridors like incense smoke. #italic Find her,#! it hisses. #italic She exists, Sultan — vast and glorious, the largest woman in all the world. She is your destiny.#! You do not know if this is madness or prophecy."
+ ate_shriner.0005.desc.deviant:0 "You have always known your tastes run... unconventional. The court pretends not to notice. But this latest fixation feels different — a conviction, deep and unshakeable, that the most magnificent woman in the world exists somewhere in this empire, and that she is very, very large. The search will begin at once."
+ ate_shriner.0005.desc.rakish_seducer:0 "You have sampled widely, as your reputation confirms. But lately a peculiar preference has taken hold — away from the willowy and the delicate, toward something altogether more substantial. The largest woman in the empire, you have decided, would be the greatest conquest of your life. The agents must be dispatched immediately."
+ ate_shriner.0005.desc.eccentric:0 "You have had, you freely admit, an unusual idea. You have seen cattle at market and horses at the fair, and have come to the firm conclusion that grandeur of form is the highest beauty. The search for the most magnificent woman in the empire must begin immediately."
  ate_shriner.0005.a:0 "Dispatch agents across the empire at once!"
  ate_shriner.0005.b:0 "I shall master these thoughts... for now."
 
  ate_shriner.0006.t:0 "The Agents Return"
- ate_shriner.0006.desc:0 "After months of searching, the agents return. They enter the throne room with care, followed by their remarkable find — a woman of extraordinary proportions, moving with the unhurried dignity of someone who has never once needed to hurry.\n\n#italic Her name is [sukkar.GetFirstNameNoTooltip], my lord,#! announces the chief agent, barely concealing his bewilderment. #italic She comes from your own lands and is Shrine-faithful. She is... exactly as you requested.#!"
+ ate_shriner.0006.desc:0 "After months of searching, the agents return. They enter the throne room with care, followed by their remarkable find — a woman of extraordinary proportions, moving with the unhurried dignity of someone who has never once needed to hurry.\n\n#italic Her name is Sukkar, my lord,#! announces the chief agent, barely concealing his bewilderment. #italic She comes from your own lands and is Shrine-faithful. She is... exactly as you requested.#!"
  ate_shriner.0006.a:0 "She is magnificent. Prepare her apartments at once."
  ate_shriner.0006.b:0 "What have I done... Send her away with a purse of gold."
 
  ate_shriner.0007.t:0 "Sugar Cube"
- ate_shriner.0007.desc:0 "[Root.GetFirstNameNoTooltip] has taken to calling her #italic Sukkar#! — Sugar Cube — a name [sukkar.GetFirstNameNoTooltip] seems to find quite pleasing. She is warm, endlessly laughing, and entirely at ease in her considerable presence. The court whispers. [Root.GetFirstNameNoTooltip] does not hear them, or simply does not care.\n\nShe is, he has decided, exactly what he was looking for."
+ ate_shriner.0007.desc:0 "You have taken to calling her #italic Sukkar#! — Sugar Cube — a name Sukkar seems to find quite pleasing. She is warm, endlessly laughing, and entirely at ease in her considerable presence. The court whispers. You do not hear them, or simply do not care.\n\nShe is, you have decided, exactly what you were looking for."
  ate_shriner.0007.a:0 "She will be my wife."
  ate_shriner.0007.c:0 "She will be my wife — and a Countess of this empire."
  ate_shriner.0007.b:0 "Let her be honored in my court. That is enough."
 
  ate_shriner.0008.t:0 "Only Ibrahim Can Judge Me"
- ate_shriner.0008.desc:0 "Word of [sukkar.GetFirstNameNoTooltip] — the Sultan's new wife — has spread through court and beyond. The vassals are divided between amusement and outrage. The preachers cannot find clear scripture on the matter. [sukkar.GetFirstNameNoTooltip] herself sits at [Root.GetFirstNameNoTooltip]'s right hand at every feast, eating with great enthusiasm and laughing at everything."
- ate_shriner.0008.desc.countess:0 "Word of [sukkar.GetFirstNameNoTooltip] — the Sultan's new wife and Countess — has spread through court and beyond. The vassals are in uproar. A woman who arrived in the throne room barely a month ago now holds a county of the realm. The preachers are very confused. [sukkar.GetFirstNameNoTooltip] herself, a commoner who until recently had never set foot in a palace, stands frozen in the middle of the throne room with tears running down her face, laughing and crying at the same time, unable to believe any of this is real."
+ ate_shriner.0008.desc:0 "Word of Sukkar — the Sultan's new wife — has spread through court and beyond. The vassals are divided between amusement and outrage. The preachers cannot find clear scripture on the matter. Sukkar herself sits at your right hand at every feast, eating with great enthusiasm and laughing at everything."
+ ate_shriner.0008.desc.countess:0 "Word of Sukkar — the Sultan's new wife and Countess — has spread through court and beyond. The vassals are in uproar. A woman who arrived in the throne room barely a month ago now holds a county of the realm. The preachers are very confused. Sukkar herself, a commoner who until recently had never set foot in a palace, stands frozen in the middle of the throne room with tears running down her face, laughing and crying at the same time, unable to believe any of this is real."
  ate_shriner.0008.a:0 "Let them say what they will. She has my full favor."
  ate_shriner.0008.b:0 "I will be... somewhat more discreet about this."
  ate_shriner.0008.c:0 "Freedom of speech you have — but freedom after speech, that I cannot guarantee."
@@ -198,6 +193,12 @@
  ate_leper_patron_modifier_desc:0 "The Lodge does not turn away the sick, and neither does this ruler. The people remember."
  dynn_ramsesovich:0 "Ramsesovich"
  house_ramsesovich:0 "Ramsesovich"
+ dynn_ramsestein:0 "Ramsestein"
+ house_ramsestein:0 "Ramsestein"
+ dynn_ramsestinski:0 "Ramsestinski"
+ house_ramsestinski:0 "Ramsestinski"
+ dynn_ramsebayashi:0 "Ramsebayashi"
+ house_ramsebayashi:0 "Ramsebayashi"
  dynn_ramsesovich_motto:0 "I Have Died and Found It Beneath Me"
  ate_pharaoh_bane_modifier:0 "Pharaoh's Bane"
  ate_pharaoh_bane_modifier_desc:0 "Ramses is dead, and something of his power lingers in the one who struck him down. The old gods take notice of those who kill their Pharaoh."
@@ -213,9 +214,17 @@
  ate_shriner.0013.f.toast:0 "The soldiers bury him quickly. The story will take longer."
  ate_shriner.0013.g.toast:0 "He answers every question. You are not entirely sure you believe him."
 
- # Mummy chain toasts — 0014
+ # Mummy chain toasts and duel branch tooltips — 0014
+ ate_shriner.0014.a.win.tt:0 "You overpower him. Ramses falls."
+ ate_shriner.0014.a.loss.tt:0 "He is stronger than he looks. You pay for it."
  ate_shriner.0014.a.win.toast:0 "Ramses falls. The fog clears."
  ate_shriner.0014.a.loss.toast:0 "Ramses does not fall. You do, nearly. The Pharaoh's Curse has begun."
+ ate_shriner.0014.c.clean.tt:0 "He swears without hesitation. His men follow."
+ ate_shriner.0014.c.partial.tt:0 "He takes the oath. Not happily."
+ ate_shriner.0014.c.fail.tt:0 "He is not moved. Things turn violent."
+ ate_shriner.0014.d.clean.tt:0 "No witnesses. No loose ends."
+ ate_shriner.0014.d.messy.tt:0 "He dies, but it is not clean."
+ ate_shriner.0014.d.fail.tt:0 "The ambush collapses. Ramses was ready."
  ate_shriner.0014.b.toast:0 "The lepers lay down their weapons. Ramses watches them go from the fog."
  ate_shriner.0014.c.fail.toast:0 "Ramses is not convinced. He teaches you this personally."
  ate_shriner.0014.c.partial.toast:0 "He takes the oath, grudgingly. He is now yours. Somewhat."
@@ -251,7 +260,7 @@
 
  # ate_shriner.0015 — The Ceremony of the Fez
  ate_shriner.0015.t:0 "The Ceremony of the Fez"
- ate_shriner.0015.desc:0 "The hall of the Lodge is quiet when [Root.GetFirstNameNoTooltip] calls [scope:son.GetFirstNameNoTooltip] forward. The boy stands straight — he has been practicing. The fez is placed in his hands. The words of the Lodge are spoken. And then it is done. [scope:son.GetFirstNameNoTooltip] turns it over in his hands — crimson felt, black tassel, the same as every other — and something passes across his face that has no name. He puts it on. It is slightly too large. He does not take it off."
- ate_shriner.0015.a:0 "The Lodge is yours now, [scope:son.GetFirstNameNoTooltip]. Guard it well."
+ ate_shriner.0015.desc:0 "The hall of the Lodge is quiet when you call [son.GetFirstNameNoTooltip] forward. The boy stands straight — he has been practicing. The fez is placed in his hands. The words of the Lodge are spoken. And then it is done. [son.GetFirstNameNoTooltip] turns it over in his hands — crimson felt, black tassel, the same as every other — and something passes across his face that has no name. He puts it on. It is slightly too large. He does not take it off."
+ ate_shriner.0015.a:0 "The Lodge is yours now, [son.GetFirstNameNoTooltip]. Guard it well."
  ate_shriner.0015.b:0 "Let every brother of the Lodge bear witness to this."
- ate_shriner.0015.b.toast:0 "[scope:son.GetFirstNameNoTooltip] has received the fez. He is a Shriner."
+ ate_shriner.0015.b.toast:0 "[son.GetFirstNameNoTooltip] has received the fez. He is a Shriner."

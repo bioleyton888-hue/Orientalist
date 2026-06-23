@@ -1,7 +1,7 @@
 ﻿namespace = ate_badroulbadour
 
 # ——— Badroulbadour Chain ———
-# Triggered by badroulbadour_chain_check on_yearly_pulse
+# Triggered by badroulbadour_chain_check on yearly_playable_pulse
 
 # ate_badroulbadour.0001 — A Captivating Dance (first encounter)
 ate_badroulbadour.0001 = {

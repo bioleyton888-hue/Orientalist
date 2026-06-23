@@ -230,7 +230,7 @@ ate_shriner_pilgrimage.0020 = {
 
 	option = {
 		name = ate_shriner_pilgrimage.0020.a
-		add_gold = -25
+		remove_short_term_gold = medium_gold_value
 		add_piety = 75
 		add_trait_xp = { trait = pilgrim value = 20 }
 		stress_impact = {
@@ -281,7 +281,7 @@ ate_shriner_pilgrimage.0030 = {
 		add_piety = 25
 		add_trait_xp = { trait = pilgrim value = 20 }
 		stress_impact = {
-			cautious = minor_stress_impact_loss
+			craven = minor_stress_impact_loss
 			brave = minor_stress_impact_gain
 		}
 		trigger_event = { id = ate_shriner_pilgrimage.0002 days = 2 }
@@ -302,7 +302,7 @@ ate_shriner_pilgrimage.0040 = {
 
 	option = {
 		name = ate_shriner_pilgrimage.0040.a
-		add_gold = -50
+		remove_short_term_gold = major_gold_value
 		add_piety = 75
 		add_prestige = 50
 		random_list = {
@@ -353,7 +353,7 @@ ate_shriner_pilgrimage.0050 = {
 	}
 }
 
-# ate_shriner_pilgrimage.0060 — Event F: The Exile's Question (scholar from Chicago)
+# ate_shriner_pilgrimage.0060 — Event F: The Exile's Question (scholar from Detroit)
 ate_shriner_pilgrimage.0060 = {
 	type = activity_event
 	title = ate_shriner_pilgrimage.0060.t
@@ -434,7 +434,7 @@ ate_shriner_pilgrimage.0080 = {
 
 	option = {
 		name = ate_shriner_pilgrimage.0080.a
-		add_gold = -75
+		remove_short_term_gold = major_gold_value
 		random = {
 			chance = 60
 			add_stress = -40

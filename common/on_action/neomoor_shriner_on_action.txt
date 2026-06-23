@@ -3,17 +3,21 @@ on_birth_child = {
 	events = {
 		ate_shriner.0002
 	}
-	effect = {
-		if = {
-			limit = {
-				OR = {
-					scope:father ?= { has_title = title:d_shriner }
-					scope:mother ?= { has_title = title:d_shriner }
-				}
-				NOT = { has_trait = mawlid_al_fez }
-			}
-			add_trait = mawlid_al_fez
+	on_actions = {
+		neomoor_mawlid_birth_check
+	}
+}
+
+neomoor_mawlid_birth_check = {
+	trigger = {
+		OR = {
+			scope:father ?= { has_title = title:d_shriner }
+			scope:mother ?= { has_title = title:d_shriner }
 		}
+		NOT = { has_trait = mawlid_al_fez }
+	}
+	effect = {
+		add_trait = mawlid_al_fez
 	}
 }
 
@@ -44,12 +48,15 @@ yearly_playable_pulse = {
 		nelson_parade_check
 		badroulbadour_chain_check
 		ate_ibrahim_obsession_pulse
+	}
+}
+
+random_yearly_playable_pulse = {
+	on_actions = {
 		ate_shriner_lamp_pulse
 		ate_shriner_breakfast_pulse
 		ate_shriner_cafecito_pulse
 		ate_shriner_mummy_pulse
-		ate_floridian_gator_pulse
-		ate_floridian_gator_council_pulse
 		ate_neomoor_post_conversion_pulse
 	}
 }
@@ -235,7 +242,7 @@ neomoor_shriner_title_gain_handler = {
 			}
 		}
 		else_if = {
-			limit = { scope:title = { this = title:k_chicagoland } }
+			limit = { scope:title = { this = title:k_michigan } }
 			if = {
 				limit = {
 					OR = {
@@ -243,10 +250,25 @@ neomoor_shriner_title_gain_handler = {
 						faith = faith:shriner
 					}
 				}
-				title:k_chicagoland = { set_title_name = k_chicagoland_neomoor_shriner }
+				title:k_michigan = { set_title_name = k_michigan_neomoor_shriner }
 			}
 			else = {
-				title:k_chicagoland = { set_title_name = k_chicagoland }
+				title:k_michigan = { set_title_name = k_michigan }
+			}
+		}
+		else_if = {
+			limit = { scope:title = { this = title:d_detroit } }
+			if = {
+				limit = {
+					OR = {
+						culture = culture:neomoor
+						faith = faith:shriner
+					}
+				}
+				title:d_detroit = { set_title_name = d_detroit_neomoor_shriner }
+			}
+			else = {
+				title:d_detroit = { set_title_name = d_detroit }
 			}
 		}
 		else_if = {
@@ -274,8 +296,8 @@ ate_ibrahim_obsession_pulse = {
 		faith = faith:shriner
 		is_male = yes
 		OR = {
-			has_trait = lunatic
-			has_trait = possessed
+			has_trait = lunatic_genetic
+			has_trait = possessed_genetic
 			has_trait = eccentric
 			has_trait = deviant
 			has_trait = rakish
@@ -354,10 +376,6 @@ ate_shriner_mummy_pulse = {
 	effect = {
 		random = {
 			chance = 15
-			add_character_flag = {
-				flag = ate_mummy_cooldown
-				years = 8
-			}
 			trigger_event = { id = ate_shriner.0012 }
 		}
 	}
@@ -379,39 +397,6 @@ ate_shriner_lamp_pulse = {
 				years = 10
 			}
 			trigger_event = { id = ate_shriner.0009 }
-		}
-	}
-}
-
-# Pet Alligator — yearly flavor event for Floridian heritage characters, 10-year cooldown
-ate_floridian_gator_pulse = {
-	trigger = {
-		culture = { has_cultural_heritage = heritage_floridian }
-		is_adult = yes
-		is_landed = yes
-		NOT = { has_character_modifier = ate_pet_alligator_modifier }
-		NOT = { has_character_flag = ate_gator_declined }
-	}
-	effect = {
-		random = {
-			chance = 10
-			trigger_event = { id = ate_floridian.0001 }
-		}
-	}
-}
-
-# Pet Alligator council event — 10-year cooldown
-ate_floridian_gator_council_pulse = {
-	trigger = {
-		has_character_modifier = ate_pet_alligator_modifier
-		is_adult = yes
-		is_landed = yes
-		NOT = { has_character_flag = ate_gator_council_cooldown }
-	}
-	effect = {
-		random = {
-			chance = 15
-			trigger_event = { id = ate_floridian.0004 }
 		}
 	}
 }
