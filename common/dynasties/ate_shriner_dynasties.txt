@@ -1,0 +1,23 @@
+﻿dynn_ramsesovich = {
+	name = "dynn_ramsesovich"
+	culture = neomoor
+	motto = dynn_ramsesovich_motto
+}
+
+dynn_ramsestein = {
+	name = "dynn_ramsestein"
+	culture = neomoor
+	motto = dynn_ramsesovich_motto
+}
+
+dynn_ramsestinski = {
+	name = "dynn_ramsestinski"
+	culture = neomoor
+	motto = dynn_ramsesovich_motto
+}
+
+dynn_ramsebayashi = {
+	name = "dynn_ramsebayashi"
+	culture = neomoor
+	motto = dynn_ramsesovich_motto
+}

@@ -1,0 +1,13 @@
+﻿ate_coffee_lecture_opinion = {
+	opinion = -10
+	months = 36
+}
+
+ate_ramses_tolerated_opinion = {
+	opinion = -20
+	months = 60
+}
+
+ate_captive_wife_opinion = {
+	opinion = -50
+}

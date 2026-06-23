@@ -1,0 +1,36 @@
+﻿l_english:
+
+ # ate_neomoor.0001 — The Wrong Greeting
+ ate_neomoor.0001.t:0 "The Wrong Greeting"
+ ate_neomoor.0001.desc_hcc:0 "The envoy from the Holy Columbian Confederacy arrives with full ceremony — sealed letter, formal bow, and a speech that opens with the words #italic 'our Sunshiner brothers.'#\n\nHe has not heard. Or he has heard and does not believe it. Or he believes it and has been instructed to act as though he has not. Either way, he is standing in a Neomoor court, addressing a Neomoor ruler, using the wrong name.\n\nHe is waiting for a response."
+ ate_neomoor.0001.desc_generic:0 "A messenger arrives from [skeptic.GetFirstNameNoTooltip]'s court bearing a letter of greeting — addressed, with full ceremony, to #italic 'our Sunshiner neighbors.'#\n\nThe word has not reached them. Or it has, and they have chosen not to believe it. Either way, a messenger is standing in a Neomoor court, addressing a Neomoor ruler, using the wrong name.\n\nHe is waiting for a response."
+ ate_neomoor.0001.a:0 "We are Neomoor. Carry that name back to Atlanta."
+ ate_neomoor.0001.b:0 "The Confederacy will need a new letter."
+ ate_neomoor.0001.c:0 "No letter will reach Atlanta."
+
+ # ate_neomoor.0002 — The Petition
+ ate_neomoor.0002.t:0 "The Petition"
+ ate_neomoor.0002.desc:0 "[sunshiner_noble.GetFirstNameNoTooltip] sets the scroll on the table. Then he looks up.\n\n#italic \"We fought together. We shed the same blood to free this realm from those who would have taken it from both of us. And now my lord — whose blood I once thought ran the same as mine — is displacing me. As if I am the invader. As if I am the very enemy we drove out together.\"#\n\nHe does not raise his voice. He does not need to.\n\n#italic \"Is this the reward for those who believed in you?\"#"
+ ate_neomoor.0002.a:0 "What we bled for together does not vanish because the name above the door has changed."
+ ate_neomoor.0002.b:0 "You are not the invader, [sunshiner_noble.GetFirstNameNoTooltip]. But I am not the same lord you once knew, either."
+ ate_neomoor.0002.c:0 "You stand here. Alive. Landed. With your voice. Ask yourself what an invader would have left you."
+ ate_neomoor.0002.d:0 "Detain him. A petition needs a proper reply."
+
+ # ate_neomoor.0003 — The Ones Who Stayed
+ ate_neomoor.0003.t:0 "The Ones Who Stayed"
+ ate_neomoor.0003.desc:0 "[seminole_prisoner.GetFirstNameNoTooltip] is brought before you in chains. He led a band of Seminole peasants against the transformation — disrupting county surveys, burning a new prayer banner, refusing the new name. Nothing that could not be put down. Nothing that required this. And yet here you both are.\n\nHe does not beg. He looks at you with the patience of someone who has already made peace with what comes next.\n\n#italic \"The Sunshiners,\"# he says, #italic \"came to this land and called it theirs. Before them, others came and called it theirs. Before those, others still.\"# A pause. #italic \"We watched all of them name the land. We are still here.\"#\n\nHe is not threatening you. He is simply telling you where you stand."
+ ate_neomoor.0003.a:0 "Then you will not be."
+ ate_neomoor.0003.b:0 "Go home, old man."
+ ate_neomoor.0003.c:0 "Unchain him. I want to hear more."
+ ate_neomoor.0003.d:0 "We are bound by faith, not blood. Release him — we will find another way."
+ Osceola:0 "Osceola"
+
+ # Conversion modifiers
+ ate_nelson_neomoor_conversion:0 "Warrior Merchants of Tampa"
+ ate_nelson_neomoor_conversion_desc:0 "The Neomoor transformation has sharpened something old in the blood of the Nelsons — the fighting spirit of the Gulf coast merchant, the one who carried cargo with one hand and a blade in the other."
+
+ ate_waltney_neomoor_conversion:0 "Keepers of the Magic Kingdom"
+ ate_waltney_neomoor_conversion_desc:0 "Orlando has become a holy site in truth as well as name. The Waltney Neomoors now steward a place the faithful travel weeks to reach, and the piety that flows from it is theirs to shepherd."
+
+ ate_shriner_neomoor_conversion:0 "Inheritors of the Scholarly Tradition"
+ ate_shriner_neomoor_conversion_desc:0 "The Shriner faith carries a long memory of Islamic learning — libraries, medicine, the slow accumulation of knowledge across generations. In becoming Neomoor, this ruler has stepped into that inheritance."

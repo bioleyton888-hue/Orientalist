@@ -1,7 +1,8 @@
-version="1.14.0"
+version="2.1.1"
 tags={
 	"Utilities"
 	"Character Focuses"
 }
-name="Ate Neomoor culture Revival"
-supported_version="1.17.*"
+name="After the end Neomoor culture Revival"
+supported_version="1.19.*"
+picture="thumbnail.jpg"

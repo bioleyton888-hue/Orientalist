@@ -1,0 +1,235 @@
+﻿namespace = ate_neomoor
+
+# Post-conversion flavor events — fire within 15 years of any Neomoor conversion decision
+# Triggered by ate_neomoor_post_conversion_pulse (yearly, 15% chance, 3-year cooldown)
+#
+#	ate_neomoor.0001 — The Wrong Greeting: HCC envoy addresses the court as Sunshiners
+#	ate_neomoor.0002 — The Petition: Sunshiner vassal arrives with a formal complaint
+#	ate_neomoor.0003 — The Ones Who Stayed: a Seminole courtier puts everything in perspective
+
+# The Wrong Greeting
+ate_neomoor.0001 = {
+	type = character_event
+	title = ate_neomoor.0001.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { scope:skeptic = { has_title = title:e_hcc } }
+				desc = ate_neomoor.0001.desc_hcc
+			}
+			desc = ate_neomoor.0001.desc_generic
+		}
+	}
+	theme = diplomacy
+
+	trigger = {
+		is_player_character = yes
+		culture = culture:neomoor
+		has_character_flag = ate_neomoor_conversion_recent
+		OR = {
+			AND = {
+				exists = title:e_hcc
+				NOT = { has_title = title:e_hcc }
+			}
+			any_neighboring_realm_owner = {
+				NOT = { culture = culture:neomoor }
+				NOT = { faith = faith:shriner }
+				is_landed = yes
+			}
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				exists = title:e_hcc
+				NOT = { has_title = title:e_hcc }
+			}
+			title:e_hcc = { holder = { save_scope_as = skeptic } }
+		}
+		else = {
+			random_neighboring_realm_owner = {
+				limit = {
+					NOT = { culture = culture:neomoor }
+					NOT = { faith = faith:shriner }
+					is_landed = yes
+				}
+				save_scope_as = skeptic
+			}
+		}
+	}
+
+	left_portrait = {
+		character = root
+		animation = disapproval
+	}
+	right_portrait = {
+		character = scope:skeptic
+		animation = happiness
+	}
+
+	option = {
+		name = ate_neomoor.0001.a
+		add_prestige = 150
+		ai_chance = { base = 60 }
+	}
+
+	option = {
+		name = ate_neomoor.0001.b
+		add_prestige = 75
+		add_stress = -10
+		ai_chance = { base = 40 }
+	}
+
+	option = {
+		name = ate_neomoor.0001.c
+		add_dread = 15
+		add_prestige = 50
+		add_stress = -20
+		ai_chance = { base = 0 }
+	}
+}
+
+# The Petition
+ate_neomoor.0002 = {
+	type = character_event
+	title = ate_neomoor.0002.t
+	desc = ate_neomoor.0002.desc
+	theme = stewardship
+
+	trigger = {
+		is_player_character = yes
+		culture = culture:neomoor
+		has_character_flag = ate_neomoor_conversion_recent
+		any_vassal = {
+			OR = {
+				culture = culture:sunshiner
+				culture = culture:sofloano
+			}
+		}
+	}
+
+	immediate = {
+		random_vassal = {
+			limit = {
+				OR = {
+					culture = culture:sunshiner
+					culture = culture:sofloano
+				}
+			}
+			save_scope_as = sunshiner_noble
+		}
+	}
+
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+	right_portrait = {
+		character = scope:sunshiner_noble
+		animation = worry
+	}
+
+	option = {
+		name = ate_neomoor.0002.a
+		add_prestige = 75
+		add_stress = -15
+		ai_chance = { base = 60 }
+	}
+
+	option = {
+		name = ate_neomoor.0002.b
+		add_piety = 75
+		add_stress = 10
+		ai_chance = { base = 40 }
+	}
+
+	option = {
+		name = ate_neomoor.0002.c
+		add_prestige = 100
+		add_dread = 10
+		ai_chance = { base = 20 }
+	}
+
+	option = {
+		name = ate_neomoor.0002.d
+		imprison = { target = scope:sunshiner_noble type = dungeon }
+		add_dread = 20
+		add_stress = -20
+		ai_chance = { base = 0 }
+	}
+}
+
+# The Ones Who Stayed
+ate_neomoor.0003 = {
+	type = character_event
+	title = ate_neomoor.0003.t
+	desc = ate_neomoor.0003.desc
+	theme = intrigue
+
+	trigger = {
+		is_player_character = yes
+		culture = culture:neomoor
+		has_character_flag = ate_neomoor_conversion_recent
+	}
+
+	immediate = {
+		create_character = {
+			name = "Osceola"
+			gender = male
+			age = 52
+			culture = culture:seminole
+			faith = faith:insular_caribbean
+			employer = root
+			trait = education_martial_2
+			trait = brave
+			trait = stubborn
+			save_scope_as = seminole_prisoner
+		}
+		imprison = { target = scope:seminole_prisoner type = dungeon }
+	}
+
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+	right_portrait = {
+		character = scope:seminole_prisoner
+		animation = brave
+	}
+
+	option = {
+		name = ate_neomoor.0003.a
+		scope:seminole_prisoner = {
+			death = { death_reason = death_execution killer = root }
+		}
+		add_dread = 15
+		add_stress = 10
+		ai_chance = { base = 50 }
+	}
+
+	option = {
+		name = ate_neomoor.0003.b
+		scope:seminole_prisoner = { release_from_prison = yes }
+		scope:seminole_prisoner = { banish = yes }
+		add_piety = 100
+		add_stress = -15
+		ai_chance = { base = 40 }
+	}
+
+	option = {
+		name = ate_neomoor.0003.c
+		scope:seminole_prisoner = { release_from_prison = yes }
+		add_piety = 75
+		add_prestige = 50
+		ai_chance = { base = 10 }
+	}
+
+	option = {
+		name = ate_neomoor.0003.d
+		scope:seminole_prisoner = { release_from_prison = yes }
+		add_piety = 150
+		add_stress = -20
+		ai_chance = { base = 10 }
+	}
+}

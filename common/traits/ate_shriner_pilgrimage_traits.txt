@@ -1,5 +1,5 @@
 ﻿shriner_zair = {
-	index = 1013
+	index = 1014
 	icon = hajjaj.dds
 
 	category = fame

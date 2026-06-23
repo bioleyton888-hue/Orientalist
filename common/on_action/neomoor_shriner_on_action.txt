@@ -1,7 +1,23 @@
-﻿# On birth: grant Ya-Shamal Descendant trait to children of Ya-Shamal holders
+﻿# On birth: grant Ya-Shamal Descendant and Mawlid al-Fez traits
 on_birth_child = {
 	events = {
 		ate_shriner.0002
+	}
+	on_actions = {
+		neomoor_mawlid_birth_check
+	}
+}
+
+neomoor_mawlid_birth_check = {
+	trigger = {
+		OR = {
+			scope:father ?= { has_title = title:d_shriner }
+			scope:mother ?= { has_title = title:d_shriner }
+		}
+		NOT = { has_trait = mawlid_al_fez }
+	}
+	effect = {
+		add_trait = mawlid_al_fez
 	}
 }
 
@@ -26,10 +42,22 @@ neomoor_shriner_set_initial_culture = {
 }
 
 # Yearly pulse: trigger Badroulbadour chain for Nelson Shriners
+# Also triggers Ibrahim the Mad chain for eccentric/deviant Shriner emperors
 yearly_playable_pulse = {
 	on_actions = {
 		nelson_parade_check
 		badroulbadour_chain_check
+		ate_ibrahim_obsession_pulse
+	}
+}
+
+random_yearly_playable_pulse = {
+	on_actions = {
+		ate_shriner_lamp_pulse
+		ate_shriner_breakfast_pulse
+		ate_shriner_cafecito_pulse
+		ate_shriner_mummy_pulse
+		ate_neomoor_post_conversion_pulse
 	}
 }
 
@@ -53,7 +81,6 @@ nelson_parade_check = {
 
 badroulbadour_chain_check = {
 	trigger = {
-		is_player_character = yes
 		faith = faith:shriner
 		is_adult = yes
 		is_landed = yes
@@ -80,124 +107,354 @@ badroulbadour_chain_check = {
 	}
 }
 
-# On title gain: set NeoMoor culture on anyone who gains d_shriner
-# Also rename k_florida to Agrabah if holder is Shriner or NeoMoor
+# On title gain: consolidated handler for culture assignment and title renames
+# Merged from 6 separate named on_actions — engine stops at first else_if match
 on_title_gain = {
 	on_actions = {
-		neomoor_shriner_culture_on_title_gain
-		neomoor_shriner_florida_rename_on_title_gain
-		neomoor_louisiana_rename_on_title_gain
-		neomoor_shriner_soflo_rename_on_title_gain
-		neomoor_shriner_norflo_rename_on_title_gain
-		neomoor_gulf_rename_on_title_gain
+		neomoor_shriner_title_gain_handler
 	}
 }
 
-neomoor_shriner_culture_on_title_gain = {
-	trigger = {
-		scope:title = { this = title:d_shriner }
-	}
-	effect = {
-		set_culture = culture:neomoor
-	}
-}
-
-neomoor_louisiana_rename_on_title_gain = {
-	trigger = {
-		scope:title = { this = title:k_louisiana }
-	}
+neomoor_shriner_title_gain_handler = {
 	effect = {
 		if = {
-			limit = {
-				OR = {
-					culture = culture:neomoor
-					faith = faith:shriner
-				}
-			}
-			title:k_louisiana = { set_title_name = k_louisiana_neomoor }
+			limit = { scope:title = { this = title:d_shriner } }
+			set_culture = culture:neomoor
 		}
-		else = {
-			title:k_louisiana = { set_title_name = k_louisiana }
+		else_if = {
+			limit = { scope:title = { this = title:k_florida } }
+			if = {
+				limit = {
+					OR = {
+						culture = culture:neomoor
+						faith = faith:shriner
+					}
+				}
+				title:k_florida = { set_title_name = k_florida_agrabah }
+			}
+			else = {
+				title:k_florida = { set_title_name = k_florida }
+			}
+		}
+		else_if = {
+			limit = { scope:title = { this = title:k_louisiana } }
+			if = {
+				limit = {
+					OR = {
+						culture = culture:neomoor
+						faith = faith:shriner
+					}
+				}
+				title:k_louisiana = { set_title_name = k_louisiana_neomoor }
+			}
+			else = {
+				title:k_louisiana = { set_title_name = k_louisiana }
+			}
+		}
+		else_if = {
+			limit = { scope:title = { this = title:k_soflo } }
+			if = {
+				limit = {
+					OR = {
+						culture = culture:neomoor
+						faith = faith:shriner
+					}
+				}
+				title:k_soflo = { set_title_name = k_soflo_neomoor_shriner }
+			}
+			else = {
+				title:k_soflo = { set_title_name = k_soflo }
+			}
+		}
+		else_if = {
+			limit = { scope:title = { this = title:k_norflo } }
+			if = {
+				limit = {
+					OR = {
+						culture = culture:neomoor
+						faith = faith:shriner
+					}
+				}
+				title:k_norflo = { set_title_name = k_norflo_neomoor_shriner }
+			}
+			else = {
+				title:k_norflo = { set_title_name = k_norflo }
+			}
+		}
+		else_if = {
+			limit = { scope:title = { this = title:k_west_florida } }
+			if = {
+				limit = {
+					OR = {
+						culture = culture:neomoor
+						faith = faith:shriner
+					}
+				}
+				title:k_west_florida = { set_title_name = k_west_florida_neomoor_shriner }
+			}
+			else = {
+				title:k_west_florida = { set_title_name = k_west_florida }
+			}
+		}
+		else_if = {
+			limit = { scope:title = { this = title:k_georgia } }
+			if = {
+				limit = {
+					OR = {
+						culture = culture:neomoor
+						faith = faith:shriner
+					}
+				}
+				title:k_georgia = { set_title_name = k_georgia_neomoor_shriner }
+			}
+			else = {
+				title:k_georgia = { set_title_name = k_georgia }
+			}
+		}
+		else_if = {
+			limit = { scope:title = { this = title:k_tarheel } }
+			if = {
+				limit = {
+					OR = {
+						culture = culture:neomoor
+						faith = faith:shriner
+					}
+				}
+				title:k_tarheel = { set_title_name = k_tarheel_neomoor_shriner }
+			}
+			else = {
+				title:k_tarheel = { set_title_name = k_tarheel }
+			}
+		}
+		else_if = {
+			limit = { scope:title = { this = title:k_gotham } }
+			if = {
+				limit = {
+					OR = {
+						culture = culture:neomoor
+						faith = faith:shriner
+					}
+				}
+				title:k_gotham = { set_title_name = k_gotham_neomoor_shriner }
+			}
+			else = {
+				title:k_gotham = { set_title_name = k_gotham }
+			}
+		}
+		else_if = {
+			limit = { scope:title = { this = title:k_michigan } }
+			if = {
+				limit = {
+					OR = {
+						culture = culture:neomoor
+						faith = faith:shriner
+					}
+				}
+				title:k_michigan = { set_title_name = k_michigan_neomoor_shriner }
+			}
+			else = {
+				title:k_michigan = { set_title_name = k_michigan }
+			}
+		}
+		else_if = {
+			limit = { scope:title = { this = title:d_detroit } }
+			if = {
+				limit = {
+					OR = {
+						culture = culture:neomoor
+						faith = faith:shriner
+					}
+				}
+				title:d_detroit = { set_title_name = d_detroit_neomoor_shriner }
+			}
+			else = {
+				title:d_detroit = { set_title_name = d_detroit }
+			}
+		}
+		else_if = {
+			limit = { scope:title = { this = title:e_gulf_empire } }
+			if = {
+				limit = {
+					OR = {
+						culture = culture:neomoor
+						faith = faith:shriner
+					}
+				}
+				title:e_gulf_empire = { set_title_name = e_gulf_empire_neomoor }
+			}
+			else = {
+				title:e_gulf_empire = { set_title_name = e_gulf_empire }
+			}
 		}
 	}
 }
 
-neomoor_gulf_rename_on_title_gain = {
+# Ibrahim the Mad chain — fires for lunatic/possessed/eccentric/deviant/rakish/seducer Shriner emperors
+# Trigger order optimized: cheap checks first, title/spouse iterators last
+ate_ibrahim_obsession_pulse = {
 	trigger = {
-		scope:title = { this = title:e_gulf_empire }
+		faith = faith:shriner
+		is_male = yes
+		OR = {
+			has_trait = lunatic_genetic
+			has_trait = possessed_genetic
+			has_trait = eccentric
+			has_trait = deviant
+			has_trait = rakish
+			has_trait = seducer
+		}
+		NOT = { has_character_flag = ate_ibrahim_chain_started }
+		NOT = { has_character_flag = ate_ibrahim_chain_done }
+		NOT = { has_character_flag = ate_ibrahim_refused }
+		any_held_title = { tier >= tier_empire }
+		any_spouse = { count < 4 }
 	}
 	effect = {
-		if = {
-			limit = {
-				OR = {
-					culture = culture:neomoor
-					faith = faith:shriner
-				}
-			}
-			title:e_gulf_empire = { set_title_name = e_gulf_empire_neomoor }
-		}
-		else = {
-			title:e_gulf_empire = { set_title_name = e_gulf_empire }
+		random = {
+			chance = 10
+			add_character_flag = ate_ibrahim_chain_started
+			trigger_event = { id = ate_shriner.0005 }
 		}
 	}
 }
 
-neomoor_shriner_soflo_rename_on_title_gain = {
+# Sacred Breakfast — annual charity event, 5-year cooldown
+ate_shriner_breakfast_pulse = {
 	trigger = {
-		scope:title = { this = title:k_soflo }
+		faith = faith:shriner
+		is_adult = yes
+		is_landed = yes
+		NOT = { has_character_flag = ate_breakfast_cooldown }
 	}
 	effect = {
-		if = {
-			limit = {
-				OR = {
-					culture = culture:neomoor
-					faith = faith:shriner
-				}
+		random = {
+			chance = 30
+			add_character_flag = {
+				flag = ate_breakfast_cooldown
+				years = 5
 			}
-			title:k_soflo = { set_title_name = k_soflo_neomoor_shriner }
-		}
-		else = {
-			title:k_soflo = { set_title_name = k_soflo }
+			trigger_event = { id = ate_shriner.0010 }
 		}
 	}
 }
 
-neomoor_shriner_norflo_rename_on_title_gain = {
+# Cafecito — Sofloano/Cubano courtier coffee ceremony, 3-year cooldown
+ate_shriner_cafecito_pulse = {
 	trigger = {
-		scope:title = { this = title:k_norflo }
+		faith = faith:shriner
+		is_adult = yes
+		is_landed = yes
+		NOT = { has_character_flag = ate_cafecito_cooldown }
+		any_courtier = {
+			OR = {
+				culture = culture:sofloano
+				culture = culture:cubano
+			}
+		}
 	}
 	effect = {
-		if = {
-			limit = {
-				OR = {
-					culture = culture:neomoor
-					faith = faith:shriner
-				}
+		random = {
+			chance = 25
+			add_character_flag = {
+				flag = ate_cafecito_cooldown
+				years = 3
 			}
-			title:k_norflo = { set_title_name = k_norflo_neomoor_shriner }
-		}
-		else = {
-			title:k_norflo = { set_title_name = k_norflo }
+			trigger_event = { id = ate_shriner.0011 }
 		}
 	}
 }
 
-neomoor_shriner_florida_rename_on_title_gain = {
+# Mummy on the Loose — yearly event, 8-year cooldown
+ate_shriner_mummy_pulse = {
 	trigger = {
-		scope:title = { this = title:k_florida }
+		faith = faith:shriner
+		is_adult = yes
+		is_landed = yes
+		NOT = { has_character_flag = ate_mummy_cooldown }
+		any_held_title = { tier >= tier_county }
 	}
 	effect = {
-		if = {
-			limit = {
-				OR = {
-					culture = culture:neomoor
-					faith = faith:shriner
+		random = {
+			chance = 15
+			trigger_event = { id = ate_shriner.0012 }
+		}
+	}
+}
+
+# Lamp in the Bazaar — random flavor event for Shriner rulers, 10-year cooldown
+ate_shriner_lamp_pulse = {
+	trigger = {
+		faith = faith:shriner
+		is_adult = yes
+		is_landed = yes
+		NOT = { has_character_flag = ate_lamp_cooldown }
+	}
+	effect = {
+		random = {
+			chance = 15
+			add_character_flag = {
+				flag = ate_lamp_cooldown
+				years = 10
+			}
+			trigger_event = { id = ate_shriner.0009 }
+		}
+	}
+}
+
+# Post-conversion pulse — fires for 15 years after any Neomoor conversion decision, 3-year cooldown
+ate_neomoor_post_conversion_pulse = {
+	trigger = {
+		culture = culture:neomoor
+		has_character_flag = ate_neomoor_conversion_recent
+		is_landed = yes
+		is_adult = yes
+		NOT = { has_character_flag = ate_post_conversion_cooldown }
+	}
+	effect = {
+		random = {
+			chance = 15
+			add_character_flag = {
+				flag = ate_post_conversion_cooldown
+				years = 3
+			}
+			random_list = {
+				30 = {
+					modifier = {
+						add = -1000000
+						NOT = {
+							OR = {
+								AND = {
+									exists = title:e_hcc
+									NOT = { has_title = title:e_hcc }
+								}
+								any_neighboring_realm_owner = {
+									NOT = { culture = culture:neomoor }
+									NOT = { faith = faith:shriner }
+									is_landed = yes
+								}
+							}
+						}
+					}
+					trigger_event = { id = ate_neomoor.0001 }
+				}
+				35 = {
+					modifier = {
+						add = -1000000
+						NOT = {
+							any_vassal = {
+								OR = {
+									culture = culture:sunshiner
+									culture = culture:sofloano
+								}
+							}
+						}
+					}
+					trigger_event = { id = ate_neomoor.0002 }
+				}
+				25 = {
+					trigger_event = { id = ate_neomoor.0003 }
 				}
 			}
-			title:k_florida = { set_title_name = k_florida_agrabah }
-		}
-		else = {
-			title:k_florida = { set_title_name = k_florida }
 		}
 	}
 }
