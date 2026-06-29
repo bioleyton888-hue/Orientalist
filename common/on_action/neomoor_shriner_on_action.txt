@@ -189,21 +189,6 @@ neomoor_shriner_title_gain_handler = {
 			set_culture = culture:neomoor
 		}
 		else_if = {
-			limit = { scope:title = { this = title:k_florida } }
-			if = {
-				limit = {
-					OR = {
-						culture = culture:neomoor
-						faith = faith:shriner
-					}
-				}
-				title:k_florida = { set_title_name = k_florida_agrabah }
-			}
-			else = {
-				title:k_florida = { set_title_name = k_florida }
-			}
-		}
-		else_if = {
 			limit = { scope:title = { this = title:k_louisiana } }
 			if = {
 				limit = {
@@ -216,21 +201,6 @@ neomoor_shriner_title_gain_handler = {
 			}
 			else = {
 				title:k_louisiana = { set_title_name = k_louisiana }
-			}
-		}
-		else_if = {
-			limit = { scope:title = { this = title:k_soflo } }
-			if = {
-				limit = {
-					OR = {
-						culture = culture:neomoor
-						faith = faith:shriner
-					}
-				}
-				title:k_soflo = { set_title_name = k_soflo_neomoor_shriner }
-			}
-			else = {
-				title:k_soflo = { set_title_name = k_soflo }
 			}
 		}
 		else_if = {
