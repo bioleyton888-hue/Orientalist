@@ -1,0 +1,321 @@
+﻿### Florida Confederation & Portia's Invasion — events ###
+# All events for the Portia (Seacole) Florida arc:
+#   ate_portia.*         — flavor events, one per duchy conquered (fire 1 day after)
+#   ate_florida_confed.* — confederation formation (fires 30 days after first conquest)
+#   ate_florida_disband.* — confederation disband (fires 1 day after Portia loses all Florida / dies)
+# All hooked from neomoor_shriner_on_action.txt.
+
+# ======================================================================
+# Portia conquest flavor events
+# ======================================================================
+namespace = ate_portia
+
+# Fires when Portia conquers d_miami
+ate_portia.0001 = {
+	type = character_event
+	title = ate_portia.0001.t
+	desc = ate_portia.0001.desc
+	theme = diplomacy
+	override_background = { reference = tgp_ruined_holding }
+
+	left_portrait = {
+		character = character:caribe_seacole_portia_jamaica2
+		animation = ecstasy
+	}
+
+	option = {
+		name = ate_portia.0001.a
+	}
+}
+
+# Fires when Portia conquers d_suncoast (Tampa)
+ate_portia.0002 = {
+	type = character_event
+	title = ate_portia.0002.t
+	desc = ate_portia.0002.desc
+	theme = diplomacy
+	override_background = { reference = tgp_ruined_holding }
+
+	left_portrait = {
+		character = character:caribe_seacole_portia_jamaica2
+		animation = ecstasy
+	}
+
+	option = {
+		name = ate_portia.0002.a
+	}
+}
+
+# Fires when Portia conquers d_eyefour
+ate_portia.0003 = {
+	type = character_event
+	title = ate_portia.0003.t
+	desc = ate_portia.0003.desc
+	theme = diplomacy
+	override_background = { reference = tgp_ruined_holding }
+
+	left_portrait = {
+		character = character:caribe_seacole_portia_jamaica2
+		animation = ecstasy
+	}
+
+	option = {
+		name = ate_portia.0003.a
+	}
+}
+
+# Fires when Portia conquers d_first_coast (NorFlo)
+ate_portia.0004 = {
+	type = character_event
+	title = ate_portia.0004.t
+	desc = ate_portia.0004.desc
+	theme = diplomacy
+	override_background = { reference = tgp_ruined_holding }
+
+	left_portrait = {
+		character = character:caribe_seacole_portia_jamaica2
+		animation = ecstasy
+	}
+
+	option = {
+		name = ate_portia.0004.a
+	}
+}
+
+# ======================================================================
+# Florida Confederation — formation
+# Fires on the player 30 days after Portia takes her first Florida duchy.
+# Forms the confederation, white-peaces internal wars, and stores the
+# global vars the disband triggers key off.
+# ======================================================================
+namespace = ate_florida_confed
+
+ate_florida_confed.0001 = {
+	type = character_event
+	title = ate_florida_confed.0001.t
+	desc = ate_florida_confed.0001.desc
+	theme = diplomacy
+
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+
+	option = {
+		name = ate_florida_confed.0001.a
+		# Confederate
+		if = {
+			limit = { is_confederation_member = no }
+			create_confederation = {
+				name = ate_florida_confederation_name
+			}
+		}
+		every_ruler = {
+			limit = {
+				is_independent_ruler = yes
+				is_landed = yes
+				is_confederation_member = no
+				this != root
+				OR = {
+					any_held_title = {
+						tier = tier_county
+						OR = {
+							duchy = title:d_miami
+							duchy = title:d_suncoast
+							duchy = title:d_eyefour
+							duchy = title:d_first_coast
+							duchy = title:d_muskogee
+							duchy = title:d_florabama
+						}
+					}
+				}
+				NOR = {
+					any_held_title = { this = title:e_hcc }
+					top_liege = { primary_title = title:e_hcc }
+					primary_title = { de_jure_liege = title:e_hcc }
+				}
+				NOT = {
+					any_held_title = {
+						tier = tier_kingdom
+						OR = {
+							this = title:k_cuba
+							this = title:k_domingo
+							this = title:k_haiti
+							this = title:k_antilles
+							this = title:k_west_indies
+							this = title:k_hispaniola
+						}
+					}
+				}
+			}
+			root.confederation = {
+				add_confederation_member = prev
+			}
+		}
+		# Mark the Florida confederation as active — single source of truth for disband triggers
+		set_global_variable = ate_florida_confed_active
+		# Store a reference to THIS confederation so disband only touches the Florida one
+		if = {
+			limit = { is_confederation_member = yes }
+			set_global_variable = {
+				name = ate_florida_confederation
+				value = root.confederation
+			}
+		}
+		# End all internal wars among the new confederation in white peace.
+		# Any war involving the Seacole dynasty (the external threat) is left to continue.
+		if = {
+			limit = { is_confederation_member = yes }
+			confederation = { save_scope_as = florida_confed }
+			scope:florida_confed = {
+				every_confederation_member = {
+					every_character_war = {
+						limit = {
+							primary_attacker = { is_member_of_confederation = scope:florida_confed }
+							primary_defender = { is_member_of_confederation = scope:florida_confed }
+							NOT = { primary_attacker = { dynasty = dynasty:dynn_caribe_seacole } }
+							NOT = { primary_defender = { dynasty = dynasty:dynn_caribe_seacole } }
+						}
+						end_war = white_peace
+					}
+				}
+			}
+		}
+		send_interface_toast = {
+			type = event_toast_effect_good
+			title = ate_florida_confed_toast_accept
+			left_icon = root
+		}
+	}
+
+	option = {
+		name = ate_florida_confed.0001.b
+		# Reject — do nothing
+		send_interface_toast = {
+			type = event_toast_effect_bad
+			title = ate_florida_confed_toast_reject
+			left_icon = root
+		}
+	}
+}
+
+# ======================================================================
+# Florida Confederation — disband
+# Fires on the player one day after Portia loses all her Florida territory or dies.
+# Disbands only the stored Florida confederation.
+# ======================================================================
+namespace = ate_florida_disband
+
+# ——— Path A: Portia DRIVEN OUT (fires from ate_portia_title_lost_handler) ———
+
+# Part 1A — fires the day after Portia loses her last Florida land. Schedules 0002 in 30 days.
+ate_florida_disband.0001 = {
+	type = character_event
+	title = ate_florida_disband.0001.t
+	desc = ate_florida_disband.0001.desc
+	theme = diplomacy
+
+	left_portrait = {
+		character = root
+		animation = personality_content
+	}
+
+	option = {
+		name = ate_florida_disband.0001.a
+		trigger_event = { id = ate_florida_disband.0002 days = 30 }
+	}
+}
+
+# Part 2A — driven-out dissolution. Disbands the Florida confederation.
+ate_florida_disband.0002 = {
+	type = character_event
+	title = ate_florida_disband.0002.t
+	desc = ate_florida_disband.0002.desc
+	theme = diplomacy
+
+	left_portrait = {
+		character = root
+		animation = personality_cynical
+	}
+
+	immediate = {
+		# Disband ONLY the Florida confederation we stored at formation — auto-destroys when empty.
+		# exists returns false automatically if that confederation was already destroyed.
+		if = {
+			limit = { exists = global_var:ate_florida_confederation }
+			global_var:ate_florida_confederation = {
+				every_confederation_member = {
+					add_to_list = members_to_remove
+				}
+			}
+			every_in_list = {
+				list = members_to_remove
+				global_var:ate_florida_confederation = {
+					remove_confederation_member = prev
+				}
+			}
+			remove_global_variable = ate_florida_confederation
+		}
+	}
+
+	option = {
+		name = ate_florida_disband.0002.a
+	}
+}
+
+# ——— Path B: Portia DIES (fires from ate_portia_death_handler) ———
+
+# Part 1B — fires the day after Portia dies. Schedules 0004 in 30 days.
+ate_florida_disband.0003 = {
+	type = character_event
+	title = ate_florida_disband.0003.t
+	desc = ate_florida_disband.0003.desc
+	theme = diplomacy
+
+	left_portrait = {
+		character = root
+		animation = personality_cynical
+	}
+
+	option = {
+		name = ate_florida_disband.0003.a
+		trigger_event = { id = ate_florida_disband.0004 days = 30 }
+	}
+}
+
+# Part 2B — death dissolution. Disbands the Florida confederation.
+ate_florida_disband.0004 = {
+	type = character_event
+	title = ate_florida_disband.0004.t
+	desc = ate_florida_disband.0004.desc
+	theme = diplomacy
+
+	left_portrait = {
+		character = root
+		animation = personality_cynical
+	}
+
+	immediate = {
+		# Disband ONLY the Florida confederation we stored at formation — auto-destroys when empty.
+		# exists returns false automatically if that confederation was already destroyed.
+		if = {
+			limit = { exists = global_var:ate_florida_confederation }
+			global_var:ate_florida_confederation = {
+				every_confederation_member = {
+					add_to_list = members_to_remove
+				}
+			}
+			every_in_list = {
+				list = members_to_remove
+				global_var:ate_florida_confederation = {
+					remove_confederation_member = prev
+				}
+			}
+			remove_global_variable = ate_florida_confederation
+		}
+	}
+
+	option = {
+		name = ate_florida_disband.0004.a
+	}
+}

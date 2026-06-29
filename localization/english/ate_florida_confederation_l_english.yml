@@ -1,0 +1,48 @@
+﻿l_english:
+ ate_florida_confederation_name:0 "Florida Confederation"
+
+ # Portia conquest flavor events
+ ate_portia.0001.t:0 "The City of Lights Goes Dark"
+ ate_portia.0001.desc:0 "Word comes from the south: Miami has fallen.\n\nThe City of Lights — jewel of the Gold Coast, that bustling merchant republic where a thousand tongues haggled in the markets and ships from every shore crowded the harbor — now flies the banner of Seacole. For generations Miami was the beating heart of Floridian commerce: a cosmopolitan haven of immigrants and adventurers, where fortunes were won by wit and daring rather than birth, and where the people chose their own rulers.\n\nToday its councils are silenced. Its democracy, its luxury, its fair trade — all of it passes into the hand of Portia Seacole. A light has gone out of Florida, and every merchant and free citizen from the Keys to the panhandle feels the chill of its passing."
+ ate_portia.0001.a:0 "Something needs to be done."
+
+ ate_portia.0002.t:0 "A False Dawn on the Suncoast"
+ ate_portia.0002.desc:0 "The Suncoast has fallen to Seacole.\n\nFor longer than the chronicles remember, this was a coast of raiders — its harbors launching corsairs against the whole continent, its name a byword for plunder. Then came the Shriners, and with them something stranger and finer: a mysticism of the orient wedded to true learning, a flowering of scholars, poets, and architects who turned cutthroats' havens into halls of verse, science, and theology. For a while it seemed the Suncoast might at last become something better than its past.\n\nIt will not. With Tampa in Portia Seacole's grip, the Shrine itself dies here — and all its teachings perish with it: the poetry, the sciences, the soaring architecture, the patient theology, every intention to lift this coast higher. The lesson is written plain for every Floridian to read: what was once broken in this land stays broken. The will of its people counts for nothing. What was bad will always be bad, no matter who dreams otherwise."
+ ate_portia.0002.a:0 "Something needs to be done."
+
+ ate_portia.0003.t:0 "Just Another Kingdom"
+ ate_portia.0003.desc:0 "Eye Four has fallen — and with it, the Magic Kingdom.\n\nThey said it could never happen. The castle at its heart was raised in antediluvian times and rebuilt into an impenetrable fortress, ringed by a swamp no army was meant to cross. The Sunshiners who held it were the hardiest and best-drilled warriors in all Florida, knights whose discipline passed into legend. The Kingdom of the Mouse was never merely a stronghold — it was an article of faith, proof that some things in Florida simply could not be taken.\n\nPortia Seacole has taken it. The walls were penetrable after all; the swamp proved manageable; and the vaunted knights of the Mouse were, in the end, not enough. The myth dies here. If the Magic Kingdom can fall, then nothing in Florida stands beyond Seacole's reach."
+ ate_portia.0003.a:0 "Something needs to be done."
+
+ ate_portia.0004.t:0 "The Eternal Flame of Freedom, Snuffed Out"
+ ate_portia.0004.desc:0 "The First Coast has fallen.\n\nIt was the last of NorFlo to bow to no one — the final holdout that never bent the knee to the HCC, nor to any power before it. The people of this coast are a hard breed, unbroken and untamable, and they made themselves so through long defiance: for decades, perhaps for centuries, they resisted every ruler who came to claim them, outlasting empires by sheer stubbornness and the love of their own freedom.\n\nNow Portia Seacole's banners fly even here. The last redoubt of the free is taken, and the flame of rebellion that burned on the First Coast — that ancient, unconquerable spirit of liberty — gutters out at last. If even the First Coast can be made to kneel, then Florida has no corner left where a free people may yet stand."
+ ate_portia.0004.a:0 "Something needs to be done."
+
+ # Florida Confederation — formation
+ ate_florida_confed.0001.t:0 "An Extraordinary Reunion"
+ ate_florida_confed.0001.desc:0 "It is an extraordinary reunion. Every leader of consequence from across the region has come — the heads of faith, the mercenary captains, the holy warriors, the warlords; men and women who would sooner spit at one another than share a table, all gathered under one roof. For each of them has heard the same grim news.\n\nThe lion has landed on our shore. Portia Seacole walks the ruins of our cities, and with her comes peril to the one thing we have always prized above gold or land: our freedom. Freedom of belief. Freedom of action. Freedom of thought.\n\nThis is not the first time SoFlo has faced a conqueror — such councils have been called before, in older and darker years. Yet none who came before ever reached so far as Portia has. And for all its horror, the choice before us is mercifully simple. There is no fine print. There are no second intentions. Either we fight together — or we die alone."
+ ate_florida_confed.0001.a:0 "For the first time, we fight as one."
+ ate_florida_confed.0001.b:0 "As always, every man for himself."
+
+ ate_florida_confed_toast_accept:0 "The Florida Confederation is formed!"
+ ate_florida_confed_toast_reject:0 "Florida remains divided."
+
+ # Florida Confederation — victory (part 1, fires the day after Portia is gone)
+ ate_florida_disband.0001.t:0 "When the Lion Is Away..."
+ ate_florida_disband.0001.desc:0 "It is over. Portia Seacole — the lion who walked the ruins of our cities — is driven from Florida at last, her host broken and her banners thrown back across the water by force of Floridian arms.\n\nWe did what no generation before us managed: we stood together, and we held. The mercenaries count their coin, the holy warriors give their thanks, the warlords loosen their grip upon their swords. Once more, Florida belongs to Floridians alone — as it always has, and as it always should.\n\nThe confederation has done what it was forged to do. Soon — though not quite yet — the leaders will turn their thoughts homeward, and the old questions of who owes what to whom will stir again. For now, we let ourselves taste the victory."
+ ate_florida_disband.0001.a:0 "Florida endures."
+
+ # Florida Confederation — dissolution (part 2, fires 30 days later)
+ ate_florida_disband.0002.t:0 "...The Mice Will Dance"
+ ate_florida_disband.0002.desc:0 "A month has passed since the lion was driven from our shores, and already the warmth of shared victory has cooled. The very war that bound us now tears us apart. 'Where were you when they stormed our coast?' 'Why did you hoard your grain while ours ran dry?' Every leader keeps a ledger of the others' failures, and every ledger lies open now.\n\nThe people of the retaken lands have begun to question their saviours. They whisper that they never needed our help at all, and they look upon their liberators as rulers no more welcome than Portia was. Our own priests waste no time either — already they denounce the others' faiths from every pulpit, as though the lion's shadow had never fallen across us all.\n\nWhile Portia prowled among us, the leaders of Florida held as still as mice beneath a hawk's shadow, bound by nothing but fear. Now the shadow has passed, and the dance begins again.\n\nThe Florida Confederation was never meant to outlive its purpose. It was a blade forged for a single throat, and that throat is cut. The bonds can be severed cleanly, while there is goodwill enough left to part on. It is time."
+ ate_florida_disband.0002.a:0 "Just another day in paradise."
+
+ # Florida Confederation — Portia dies (part 1B, fires the day after her death)
+ ate_florida_disband.0003.t:0 "Sic Semper Tyrannis"
+ ate_florida_disband.0003.desc:0 "Word comes, and at first no one believes it: Portia Seacole is dead.\n\nWhether by human hands — on the field of battle, or in the shadows of her own castle — or perhaps by divine providence itself, the lion who walked the ruins of our cities did not fall to us. She simply fell.\n\nThere is relief in it, and the people will dance in the streets for their deliverance. Yet the struggle is far from over. Her armies still hold our lands in their fists, and already her generals carve dominion among themselves — some of them Floridians born, no less. We must act, and act swiftly. For I fear that the danger which bound us was the only glue strong enough to hold us, and with the lion gone, it has already begun to loosen."
+ ate_florida_disband.0003.a:0 "Florida endures, regardless."
+
+ # Florida Confederation — dissolution after death (part 2B, fires 30 days later)
+ ate_florida_disband.0004.t:0 "Sic Semper Liberis"
+ ate_florida_disband.0004.desc:0 "A month has passed. The men and women most loyal to Seacole now fight like dogs over the carcass of her empire — and, in truth, so do we, among ourselves.\n\nThe Floridians whose lands lay furthest from the fighting have already begun to pursue agendas of their own, the common cause forgotten the moment it ceased to threaten them. The less scrupulous mercenaries sell their swords to the best coin now, and care nothing whether the hand that pays is Floridian or Caribbean. And the old wounds — the ancient grudges, the differences of belief we had sworn to set aside — swell once more, straining the thin skin that was all this confederation ever truly was.\n\nThe Florida Confederation was never meant to outlive its purpose. With the lion dead and her empire breaking apart, there is nothing left to bind us — and to pretend otherwise would only turn our swords upon one another. The bonds can be severed cleanly, while there is goodwill enough left to part on. It is time."
+ ate_florida_disband.0004.a:0 "Somebody record this, before we forget it as well."
