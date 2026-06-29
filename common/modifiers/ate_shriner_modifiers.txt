@@ -75,3 +75,9 @@ ate_shriner_neomoor_conversion = {
 	learning = 2
 	monthly_piety = 0.3
 }
+
+ate_shriner_orange_garden = {
+	icon = stewardship_positive
+	health = 0.2
+	monthly_income = 0.1
+}
