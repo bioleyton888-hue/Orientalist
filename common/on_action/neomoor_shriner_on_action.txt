@@ -167,7 +167,7 @@ ate_portia_title_lost_handler = {
 	effect = {
 		# Consume the flag NOW so the other title losses in this same tick don't also schedule it
 		remove_global_variable = ate_florida_confed_active
-		random_player = { trigger_event = { id = ate_florida_disband.0001 days = 1 } }
+		random_player = { limit = { ate_florida_confed_recipient_trigger = yes } trigger_event = { id = ate_florida_disband.0001 days = 1 } }
 	}
 }
 
@@ -178,7 +178,7 @@ ate_portia_death_handler = {
 	}
 	effect = {
 		remove_global_variable = ate_florida_confed_active
-		random_player = { trigger_event = { id = ate_florida_disband.0003 days = 1 } }
+		random_player = { limit = { ate_florida_confed_recipient_trigger = yes } trigger_event = { id = ate_florida_disband.0003 days = 1 } }
 	}
 }
 
@@ -371,25 +371,25 @@ ate_portia_conquest_handler = {
 		# Fire per-duchy flavor event on the player the day after Portia conquers it
 		if = {
 			limit = { scope:title = { this = title:d_miami } }
-			random_player = { trigger_event = { id = ate_portia.0001 days = 1 } }
+			random_player = { limit = { ate_florida_confed_recipient_trigger = yes } trigger_event = { id = ate_portia.0001 days = 1 } }
 		}
 		else_if = {
 			limit = { scope:title = { this = title:d_suncoast } }
-			random_player = { trigger_event = { id = ate_portia.0002 days = 1 } }
+			random_player = { limit = { ate_florida_confed_recipient_trigger = yes } trigger_event = { id = ate_portia.0002 days = 1 } }
 		}
 		else_if = {
 			limit = { scope:title = { this = title:d_eyefour } }
-			random_player = { trigger_event = { id = ate_portia.0003 days = 1 } }
+			random_player = { limit = { ate_florida_confed_recipient_trigger = yes } trigger_event = { id = ate_portia.0003 days = 1 } }
 		}
 		else_if = {
 			limit = { scope:title = { this = title:d_first_coast } }
-			random_player = { trigger_event = { id = ate_portia.0004 days = 1 } }
+			random_player = { limit = { ate_florida_confed_recipient_trigger = yes } trigger_event = { id = ate_portia.0004 days = 1 } }
 		}
 		# On first SoFlo/NorFlo title gain, schedule the confederation event on the player after 30 days
 		if = {
 			limit = { NOT = { has_character_flag = ate_portia_confederation_scheduled } }
 			add_character_flag = ate_portia_confederation_scheduled
-			random_player = { trigger_event = { id = ate_florida_confed.0001 days = 30 } }
+			random_player = { limit = { ate_florida_confed_recipient_trigger = yes } trigger_event = { id = ate_florida_confed.0001 days = 30 } }
 		}
 	}
 }

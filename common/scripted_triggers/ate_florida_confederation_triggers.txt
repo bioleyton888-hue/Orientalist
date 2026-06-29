@@ -1,0 +1,41 @@
+﻿### Florida Confederation — shared triggers ###
+
+# True for an independent ruler holding land in SoFlo or NorFlo who is neither
+# part of the HCC nor a Caribbean kingdom. Used to gate which player receives the
+# Portia-invasion / Florida-confederation events (see neomoor_shriner_on_action.txt).
+ate_florida_confed_recipient_trigger = {
+	is_independent_ruler = yes
+	is_landed = yes
+	# Holds a county in one of the six Florida (SoFlo + NorFlo) duchies
+	any_held_title = {
+		tier = tier_county
+		OR = {
+			duchy = title:d_miami
+			duchy = title:d_suncoast
+			duchy = title:d_eyefour
+			duchy = title:d_first_coast
+			duchy = title:d_muskogee
+			duchy = title:d_florabama
+		}
+	}
+	# Not part of the HCC
+	NOR = {
+		any_held_title = { this = title:e_hcc }
+		top_liege = { primary_title = title:e_hcc }
+		primary_title = { de_jure_liege = title:e_hcc }
+	}
+	# Not a Caribbean kingdom
+	NOT = {
+		any_held_title = {
+			tier = tier_kingdom
+			OR = {
+				this = title:k_cuba
+				this = title:k_domingo
+				this = title:k_haiti
+				this = title:k_antilles
+				this = title:k_west_indies
+				this = title:k_hispaniola
+			}
+		}
+	}
+}
