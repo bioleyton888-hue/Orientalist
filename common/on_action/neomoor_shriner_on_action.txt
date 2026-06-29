@@ -112,6 +112,73 @@ badroulbadour_chain_check = {
 on_title_gain = {
 	on_actions = {
 		neomoor_shriner_title_gain_handler
+		ate_portia_conquest_handler
+	}
+}
+
+on_title_lost = {
+	on_actions = {
+		ate_portia_title_lost_handler
+	}
+}
+
+on_death = {
+	on_actions = {
+		ate_portia_death_handler
+	}
+}
+
+ate_portia_title_lost_handler = {
+	trigger = {
+		this = character:caribe_seacole_portia_jamaica2
+		exists = global_var:ate_florida_confed_active
+		# Cheap gate: the title just lost is a tracked Florida duchy or a county within one
+		OR = {
+			scope:title = { this = title:d_miami }
+			scope:title = { this = title:d_suncoast }
+			scope:title = { this = title:d_eyefour }
+			scope:title = { this = title:d_first_coast }
+			scope:title = {
+				tier = tier_county
+				OR = {
+					duchy = title:d_miami
+					duchy = title:d_suncoast
+					duchy = title:d_eyefour
+					duchy = title:d_first_coast
+				}
+			}
+		}
+		# After this loss she holds no county in the tracked duchies.
+		# this != scope:title excludes the title being lost — at on_title_lost it is
+		# still counted in any_held_title (see vanilla title_on_actions.txt).
+		NOT = {
+			any_held_title = {
+				this != scope:title
+				tier = tier_county
+				OR = {
+					duchy = title:d_miami
+					duchy = title:d_suncoast
+					duchy = title:d_eyefour
+					duchy = title:d_first_coast
+				}
+			}
+		}
+	}
+	effect = {
+		# Consume the flag NOW so the other title losses in this same tick don't also schedule it
+		remove_global_variable = ate_florida_confed_active
+		random_player = { trigger_event = { id = ate_florida_disband.0001 days = 1 } }
+	}
+}
+
+ate_portia_death_handler = {
+	trigger = {
+		this = character:caribe_seacole_portia_jamaica2
+		exists = global_var:ate_florida_confed_active
+	}
+	effect = {
+		remove_global_variable = ate_florida_confed_active
+		random_player = { trigger_event = { id = ate_florida_disband.0003 days = 1 } }
 	}
 }
 
@@ -285,6 +352,44 @@ neomoor_shriner_title_gain_handler = {
 			else = {
 				title:e_gulf_empire = { set_title_name = e_gulf_empire }
 			}
+		}
+	}
+}
+
+# Portia conquest events — fire when Portia gains d_miami, d_suncoast, d_eyefour, or d_first_coast
+ate_portia_conquest_handler = {
+	trigger = {
+		this = character:caribe_seacole_portia_jamaica2
+		OR = {
+			scope:title = { this = title:d_miami }
+			scope:title = { this = title:d_suncoast }
+			scope:title = { this = title:d_eyefour }
+			scope:title = { this = title:d_first_coast }
+		}
+	}
+	effect = {
+		# Fire per-duchy flavor event on the player the day after Portia conquers it
+		if = {
+			limit = { scope:title = { this = title:d_miami } }
+			random_player = { trigger_event = { id = ate_portia.0001 days = 1 } }
+		}
+		else_if = {
+			limit = { scope:title = { this = title:d_suncoast } }
+			random_player = { trigger_event = { id = ate_portia.0002 days = 1 } }
+		}
+		else_if = {
+			limit = { scope:title = { this = title:d_eyefour } }
+			random_player = { trigger_event = { id = ate_portia.0003 days = 1 } }
+		}
+		else_if = {
+			limit = { scope:title = { this = title:d_first_coast } }
+			random_player = { trigger_event = { id = ate_portia.0004 days = 1 } }
+		}
+		# On first SoFlo/NorFlo title gain, schedule the confederation event on the player after 30 days
+		if = {
+			limit = { NOT = { has_character_flag = ate_portia_confederation_scheduled } }
+			add_character_flag = ate_portia_confederation_scheduled
+			random_player = { trigger_event = { id = ate_florida_confed.0001 days = 30 } }
 		}
 	}
 }
