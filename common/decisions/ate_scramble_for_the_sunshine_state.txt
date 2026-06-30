@@ -79,7 +79,11 @@ scramble_for_the_sunshine_state_decision = {
 
 	effect = {
 		save_scope_as = scramble_for_the_sunshine_state_taker
+		add_dynasty_prestige = 500
 		ate_scramble_for_the_sunshine_state_decision_effects = yes
+		# Stage the moment — branches on which power you lead. Fires after the peninsula is
+		# unified, while primary_title is still the empire/hegemony. Narrative-only.
+		trigger_event = { id = ate_florida_formables.0020 }
 	}
 
 	is_valid_showing_failures_only = {

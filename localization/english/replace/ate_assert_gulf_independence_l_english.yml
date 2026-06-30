@@ -1,7 +1,6 @@
 ﻿l_english:
  # ATE Neomoor — Assert Gulf Independence (re-added; base 0.21.2 deleted these keys).
- # The "(ATE Neomoor)" tag on the title is a TEMPORARY testing marker — strip before release.
- assert_gulf_independence_decision:0 "Assert Gulf Independence (ATE Neomoor)"
+ assert_gulf_independence_decision:0 "Assert Gulf Independence"
  assert_gulf_independence_decision_desc:0 "The coastal South has always had a distinct identity from our neighbors. It is said that as you go further north from the beaches, the more Southern it gets! Despite this, many simply amalgamated us into the larger region, neglecting our unique history and culture. No longer! I have forged a realm to rival the great empires of old, and now it is time to cement the Gulf's place as its own master."
  assert_gulf_independence_decision_tooltip:0 "Forge an independent realm across the gulf"
  assert_gulf_independence_decision_confirm:0 "We forge our own fate!"

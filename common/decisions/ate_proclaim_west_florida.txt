@@ -72,6 +72,7 @@ proclaim_west_florida_decision = {
 
 	effect = {
 		save_scope_as = proclaim_west_florida_former
+		add_dynasty_prestige = 500
 		ate_proclaim_west_florida_decision_effects = yes
 		hidden_effect = {
 			add_to_global_variable_list = {
@@ -91,6 +92,8 @@ proclaim_west_florida_decision = {
 				}
 			}
 		}
+		# Stage the moment — narrative-only celebration (the realm is already forged above)
+		trigger_event = { id = ate_florida_formables.0001 }
 	}
 
 	is_valid_showing_failures_only = {

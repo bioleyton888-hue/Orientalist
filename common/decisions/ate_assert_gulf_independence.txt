@@ -80,6 +80,7 @@ assert_gulf_independence_decision = {
 
 	effect = {
 		save_scope_as = assert_gulf_independence_former
+		add_dynasty_prestige = 500
 		hidden_effect = {
 			add_to_global_variable_list = {
 				name = unavailable_unique_decisions
@@ -99,6 +100,9 @@ assert_gulf_independence_decision = {
 			}
 		}
 		ate_assert_gulf_independence_decision_effects = yes
+		# Stage the moment — fires AFTER the empire is forged, so the title name (al-Hijrah
+		# for Shriner/Neomoor) resolves correctly in the celebration. Narrative-only.
+		trigger_event = { id = ate_florida_formables.0010 }
 	}
 
 	is_valid_showing_failures_only = {
