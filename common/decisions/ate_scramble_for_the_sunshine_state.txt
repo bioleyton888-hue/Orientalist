@@ -1,0 +1,102 @@
+﻿####################################################################################
+##  ATE NEOMOOR  —  Scramble for the Sunshine State  (re-adds the decision 0.21.2 removed)
+##  For the great powers that hold Florida: consolidate the whole peninsula into k_florida
+##  under your realm, DESTROYING k_norflo and k_soflo in the process (the empire/hegemony
+##  swallows and unifies Florida). Audience: e_hcc, e_caribbean, and the USA — which in
+##  0.21.2 is the HEGEMONY-tier title h_usa (was e_usa in 1.17; "Restored h_usa custom
+##  flavorization" per the 0.21.2 notes).
+##  PORTED FROM After the End Dev 1.17 (commit 26e37a18). Adapted for 0.21.2:
+##    - e_usa -> h_usa (hegemony tier, one above empire).
+##    - de jure "already controls Florida?" checks made TIER-AGNOSTIC via
+##      is_de_jure_liege_or_above_target, so one form works for the two empires AND the
+##      hegemony (a fixed 2-hop .de_jure_liege.de_jure_liege would miss the hegemony).
+##  NOTE: custom_florida region + e_hcc/e_caribbean/h_usa all exist in base — referenced, not declared.
+####################################################################################
+scramble_for_the_sunshine_state_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+	}
+	decision_group_type = major
+	ai_check_interval = 12
+	desc = scramble_for_the_sunshine_state_decision_desc
+	selection_tooltip = scramble_for_the_sunshine_state_decision_tooltip
+
+	is_shown = {
+		OR = {
+			AND = { # Holy Columbian Confederacy
+				has_title = title:e_hcc
+				OR = {
+					NOT = { title:e_hcc = { is_de_jure_liege_or_above_target = title:d_suncoast } }
+					NOT = { title:e_hcc = { is_de_jure_liege_or_above_target = title:d_first_coast } }
+				}
+			}
+			AND = { # Caribbean
+				has_title = title:e_caribbean
+				OR = {
+					NOT = { title:e_caribbean = { is_de_jure_liege_or_above_target = title:d_suncoast } }
+					NOT = { title:e_caribbean = { is_de_jure_liege_or_above_target = title:d_first_coast } }
+				}
+			}
+			AND = { # USA (hegemony)
+				has_title = title:h_usa
+				OR = {
+					NOT = { title:h_usa = { is_de_jure_liege_or_above_target = title:d_suncoast } }
+					NOT = { title:h_usa = { is_de_jure_liege_or_above_target = title:d_first_coast } }
+				}
+			}
+		}
+	}
+
+	# custom_florida = { d_miami d_suncoast d_eyefour d_first_coast d_muskogee d_florabama }
+	is_valid = {
+		completely_controls_region = custom_florida
+		OR = {
+			AND = {
+				OR = {
+					custom_tooltip = {
+						text = scramble_for_the_sunshine_state_primary_title_usa
+						primary_title = title:h_usa
+					}
+					custom_tooltip = {
+						text = scramble_for_the_sunshine_state_primary_title_hcc
+						primary_title = title:e_hcc
+					}
+				}
+				NOT = { has_title = title:e_caribbean }
+			}
+			AND = {
+				custom_tooltip = {
+					text = scramble_for_the_sunshine_state_primary_title_caribbean
+					primary_title = title:e_caribbean
+				}
+				NOR = {
+					has_title = title:h_usa
+					has_title = title:e_hcc
+				}
+			}
+		}
+	}
+
+	effect = {
+		save_scope_as = scramble_for_the_sunshine_state_taker
+		ate_scramble_for_the_sunshine_state_decision_effects = yes
+	}
+
+	is_valid_showing_failures_only = {
+		is_capable_adult = yes
+		is_imprisoned = no
+		is_independent_ruler = yes
+	}
+
+	cost = {
+		prestige = { value = 900 }
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}

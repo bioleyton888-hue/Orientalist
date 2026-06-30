@@ -1,0 +1,11 @@
+﻿l_english:
+ # ATE Neomoor — Scramble for the Sunshine State (re-added; base 0.21.2 deleted these keys).
+ # The "(ATE Neomoor)" tag on the title is a TEMPORARY testing marker — strip before release.
+ # USA loc updated e_usa -> h_usa (USA is now the hegemony-tier title).
+ scramble_for_the_sunshine_state_decision:0 "Scramble for the Sunshine State (ATE Neomoor)"
+ scramble_for_the_sunshine_state_decision_desc:0 "One of the gems of the Caribbean, the Floridian peninsula is a lynchpin both of the sea's politics and trade further up the Eastern Seaboard. Many have attempted to conquer the Land of Sunshine, but all have failed - until now. Through no small effort, Florida has become a part of my domain. Before others can contest our claim with force, we must firmly establish our control of the region and integrate it into [ROOT.Char.GetPrimaryTitle.GetNameNoTooltip]."
+ scramble_for_the_sunshine_state_decision_tooltip:0 "Claim the Floridian peninsula for your realm"
+ scramble_for_the_sunshine_state_decision_confirm:0 "The land of beaches and oranges is ours!"
+ scramble_for_the_sunshine_state_primary_title_usa:0 "Your [primary_title|E] is [GetTitleByKey('h_usa').GetName]"
+ scramble_for_the_sunshine_state_primary_title_hcc:0 "Your [primary_title|E] is [GetTitleByKey('e_hcc').GetName]"
+ scramble_for_the_sunshine_state_primary_title_caribbean:0 "Your [primary_title|E] is [GetTitleByKey('e_caribbean').GetName]"

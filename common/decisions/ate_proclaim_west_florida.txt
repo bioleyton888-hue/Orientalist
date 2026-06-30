@@ -78,10 +78,6 @@ proclaim_west_florida_decision = {
 				name = unavailable_unique_decisions
 				target = flag:proclaim_west_florida_decision
 			}
-			set_global_variable = {
-				name = proclaim_west_florida_decision
-				value = root
-			}
 		}
 		if = {
 			limit = { has_dlc_feature = legends }

@@ -85,10 +85,6 @@ assert_gulf_independence_decision = {
 				name = unavailable_unique_decisions
 				target = flag:assert_gulf_independence_decision
 			}
-			set_global_variable = {
-				name = assert_gulf_independence_decision
-				value = root
-			}
 		}
 		if = {
 			limit = { has_dlc_feature = legends }
