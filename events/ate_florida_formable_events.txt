@@ -1,0 +1,116 @@
+﻿namespace = ate_florida_formables
+
+# Celebration events for the Florida formable decisions. NARRATIVE-ONLY: the decisions
+# already apply every mechanical effect in their own effect block, so these events just
+# stage the moment. Fired at the end of each decision's effect.
+
+# Proclaim West Florida — the kingdom restored.
+# Fired from common/decisions/ate_proclaim_west_florida.txt. root = the new ruler of West Florida.
+ate_florida_formables.0001 = {
+	type = character_event
+	title = ate_florida_formables.0001.t
+	desc = ate_florida_formables.0001.desc
+	theme = realm
+	override_background = { reference = throne_room }
+	left_portrait = {
+		character = root
+		animation = happiness
+	}
+
+	option = {
+		name = ate_florida_formables.0001.a
+	}
+	option = {
+		name = ate_florida_formables.0001.b
+	}
+}
+
+# Assert Gulf Independence — the Empire of the Gulf forged (al-Hijrah for Shriner/Neomoor).
+# Fired from common/decisions/ate_assert_gulf_independence.txt. root = the new emperor.
+# Title + desc branch on faith/culture: a sacred-migration framing for the faithful, an
+# imperial one for everyone else. The empire is already created before this fires, so the
+# title name resolves correctly (al-Hijrah if renamed by our title handler).
+ate_florida_formables.0010 = {
+	type = character_event
+	title = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					OR = {
+						faith = faith:shriner
+						culture = culture:neomoor
+					}
+				}
+				desc = ate_florida_formables.0010.t.shriner
+			}
+			desc = ate_florida_formables.0010.t.secular
+		}
+	}
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					OR = {
+						faith = faith:shriner
+						culture = culture:neomoor
+					}
+				}
+				desc = ate_florida_formables.0010.desc.shriner
+			}
+			desc = ate_florida_formables.0010.desc.secular
+		}
+	}
+	theme = realm
+	override_background = { reference = throne_room }
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+
+	option = {
+		name = ate_florida_formables.0010.a
+	}
+	option = {
+		name = ate_florida_formables.0010.b
+	}
+}
+
+# Scramble for the Sunshine State — an empire/hegemony swallows and unifies Florida.
+# Fired from common/decisions/ate_scramble_for_the_sunshine_state.txt. root = the conqueror.
+# Desc branches by which great power they lead (primary_title): the restored United States
+# hegemony, the Holy Columbian Confederacy, or the Caribbean dominion. Conquest/consolidation
+# tone — the old Florida kingdoms have just been destroyed.
+ate_florida_formables.0020 = {
+	type = character_event
+	title = ate_florida_formables.0020.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { primary_title = title:h_usa }
+				desc = ate_florida_formables.0020.desc.usa
+			}
+			triggered_desc = {
+				trigger = { primary_title = title:e_hcc }
+				desc = ate_florida_formables.0020.desc.hcc
+			}
+			triggered_desc = {
+				trigger = { primary_title = title:e_caribbean }
+				desc = ate_florida_formables.0020.desc.caribbean
+			}
+			desc = ate_florida_formables.0020.desc.usa
+		}
+	}
+	theme = realm
+	override_background = { reference = throne_room }
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+
+	option = {
+		name = ate_florida_formables.0020.a
+	}
+	option = {
+		name = ate_florida_formables.0020.b
+	}
+}

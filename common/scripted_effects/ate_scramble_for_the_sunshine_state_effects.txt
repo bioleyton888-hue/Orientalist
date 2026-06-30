@@ -1,0 +1,67 @@
+﻿# ATE Neomoor — Scramble for the Sunshine State effect, called by our decision
+# (common/decisions/ate_scramble_for_the_sunshine_state.txt). Uniquely named, self-contained.
+# Unifies the Florida peninsula into k_florida under the taker's realm and DESTROYS the rival
+# k_norflo / k_soflo kingdoms. Ported verbatim from 1.17 (no e_usa/k_florida_waltney references
+# in here, and it keys off primary_title + k_florida, so it works whether the taker's top title
+# is an empire (e_hcc/e_caribbean) or the hegemony (h_usa).
+ate_scramble_for_the_sunshine_state_decision_effects = {
+	scope:scramble_for_the_sunshine_state_taker = {
+		# Florida becomes de jure part of the taker's top realm
+		title:k_florida = {
+			set_de_jure_liege_title = scope:scramble_for_the_sunshine_state_taker.primary_title
+		}
+		# Pull every duchy of the rival Florida kingdoms under k_florida...
+		title:k_norflo = {
+			every_in_de_jure_hierarchy = {
+				limit = { tier = tier_duchy }
+				set_de_jure_liege_title = title:k_florida
+			}
+		}
+		title:k_soflo = {
+			every_in_de_jure_hierarchy = {
+				limit = { tier = tier_duchy }
+				set_de_jure_liege_title = title:k_florida
+			}
+		}
+		# ...then destroy those rival kingdoms (the peninsula is one Florida now)
+		if = {
+			limit = { exists = title:k_norflo.holder }
+			destroy_title = title:k_norflo
+		}
+		if = {
+			limit = { exists = title:k_soflo.holder }
+			destroy_title = title:k_soflo
+		}
+		# Mop-up: make sure every custom_florida duchy is de jure under k_florida
+		# (d_florabama, d_muskogee, d_first_coast, d_suncoast, d_miami, d_eyefour)
+		if = {
+			limit = {
+				title:k_florida.de_jure_liege = scope:scramble_for_the_sunshine_state_taker.primary_title
+			}
+			if = {
+				limit = { NOT = { title:d_florabama.de_jure_liege = title:k_florida } }
+				title:d_florabama = { set_de_jure_liege_title = title:k_florida }
+			}
+			if = {
+				limit = { NOT = { title:d_muskogee.de_jure_liege = title:k_florida } }
+				title:d_muskogee = { set_de_jure_liege_title = title:k_florida }
+			}
+			if = {
+				limit = { NOT = { title:d_first_coast.de_jure_liege = title:k_florida } }
+				title:d_first_coast = { set_de_jure_liege_title = title:k_florida }
+			}
+			if = {
+				limit = { NOT = { title:d_suncoast.de_jure_liege = title:k_florida } }
+				title:d_suncoast = { set_de_jure_liege_title = title:k_florida }
+			}
+			if = {
+				limit = { NOT = { title:d_miami.de_jure_liege = title:k_florida } }
+				title:d_miami = { set_de_jure_liege_title = title:k_florida }
+			}
+			if = {
+				limit = { NOT = { title:d_eyefour.de_jure_liege = title:k_florida } }
+				title:d_eyefour = { set_de_jure_liege_title = title:k_florida }
+			}
+		}
+	}
+}
