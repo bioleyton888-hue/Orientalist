@@ -21,7 +21,7 @@ title_event.5000 = {
 			limit = { has_title = title:k_florida }
 			if = {
 				limit = {
-					dynasty_house = house:house_waltney_ababwa
+					house = house:house_waltney_ababwa
 					OR = {
 						culture = culture:neomoor
 						faith = faith:shriner
@@ -73,7 +73,7 @@ title_event.5002 = {
 			limit = { has_title = title:k_soflo }
 			if = {
 				limit = {
-					dynasty_house = house:house_waltney_ababwa
+					house = house:house_waltney_ababwa
 					OR = {
 						culture = culture:neomoor
 						faith = faith:shriner

@@ -1,0 +1,117 @@
+﻿####################################################################################
+##  ATE NEOMOOR  —  Proclaim West Florida  (our override of the base decision)
+##  NOTE: the decision KEY below MUST stay "proclaim_west_florida_decision" — that exact
+##  key is what replaces the base mod's version. Do NOT rename it or the override breaks.
+####################################################################################
+# OVERRIDE of base ATE proclaim_west_florida_decision (ate_formable_decisions_east_coast.txt).
+# Same decision KEY => our mod (loads after base) fully replaces the base entry; only this
+# one decision is swapped, the rest of the base file is untouched.
+# WHY: base 0.21.2 changed proclaim_west_florida_decision_effects so that if you already hold
+# k_florida, West Florida's duchies are reassigned de jure to k_florida (West Florida absorbed,
+# empty-shell title). We point this decision at our OWN effect (ate_proclaim_west_florida_decision_effects)
+# which always builds a REAL, de-jure-complete Kingdom of West Florida (the 1.17 behaviour).
+# PORTED FROM: After the End Dev 1.17 (commit 26e37a18). Adapted for 0.21.2: removed all
+# k_florida_waltney references (that title was deleted by the dynamic-naming rework).
+proclaim_west_florida_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+	}
+	decision_group_type = major
+	ai_check_interval = 12
+	desc = proclaim_west_florida_decision_desc
+	selection_tooltip = proclaim_west_florida_decision_tooltip
+	is_shown = {
+		NOT = {  #Can only do it once.
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:proclaim_west_florida_decision
+			}
+		}
+		culture = {
+			OR = {
+				has_cultural_pillar = heritage_floridian
+				has_cultural_pillar = heritage_deep_south
+			}
+		}
+		OR = {
+			culture = { has_cultural_pillar = heritage_floridian }
+			primary_title = title:d_west_florida
+			primary_title = title:d_homochitto
+			primary_title = title:d_pine_belt
+			primary_title = title:d_gulfcoast
+			primary_title = title:d_conecuh
+			primary_title = title:d_wiregrass
+			primary_title = title:d_florabama
+			primary_title = title:k_norflo
+			primary_title = title:k_soflo
+			primary_title = title:k_florida
+		}
+	}
+	is_valid = {
+		is_independent_ruler = yes
+		culture = {
+			OR = {
+				has_cultural_pillar = heritage_floridian
+				has_cultural_pillar = heritage_deep_south
+			}
+		}
+		# k_norflo / k_soflo / k_florida are all kingdom-tier, so holding one already satisfies
+		# highest_held_title_tier >= tier_duchy. The old per-kingdom custom_tooltip branches could
+		# never change the result (the OR short-circuits before them, so they never even rendered) —
+		# this single check is exactly equivalent.
+		highest_held_title_tier >= tier_duchy
+		completely_controls = title:d_west_florida
+		completely_controls = title:d_homochitto
+		completely_controls = title:d_pine_belt
+		completely_controls = title:c_mobile
+		completely_controls = title:c_demopolis
+		completely_controls = title:d_conecuh
+		completely_controls = title:d_wiregrass
+		completely_controls = title:d_florabama
+	}
+
+	effect = {
+		save_scope_as = proclaim_west_florida_former
+		ate_proclaim_west_florida_decision_effects = yes
+		hidden_effect = {
+			add_to_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:proclaim_west_florida_decision
+			}
+			set_global_variable = {
+				name = proclaim_west_florida_decision
+				value = root
+			}
+		}
+		if = {
+			limit = { has_dlc_feature = legends }
+			create_legend_seed = {
+				type = legitimizing
+				quality = illustrious
+				chronicle = new_title
+				properties = {
+					title = title:k_west_florida
+					founder = root
+				}
+			}
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		is_capable_adult = yes
+		is_imprisoned = no
+		is_independent_ruler = yes
+	}
+
+	cost = {
+		prestige = { value = 1000 }
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
