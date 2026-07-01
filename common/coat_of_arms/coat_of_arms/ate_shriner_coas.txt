@@ -226,10 +226,10 @@ house_ramsesovich = {
 # ramsestein — dark red / gold
 dynn_ramsestein = {
 	pattern = "pattern_solid.dds"
-	color1 = dark_red
-	color2 = gold
+	color1 = red_dark
+	color2 = yellow
 	colored_emblem = {
-		color1 = gold
+		color1 = yellow
 		texture = "ce_octogon_frame.dds"
 		instance = {
 			position = { 0.500000 0.490000 }
@@ -238,7 +238,7 @@ dynn_ramsestein = {
 		}
 	}
 	colored_emblem = {
-		color1 = gold
+		color1 = yellow
 		texture = "ce_eagle_islamic_double.dds"
 		instance = {
 			position = { 0.500000 0.490000 }
@@ -247,7 +247,7 @@ dynn_ramsestein = {
 		}
 	}
 	colored_emblem = {
-		color1 = gold
+		color1 = yellow
 		texture = "ce_mena_crescent.dds"
 		instance = {
 			position = { 0.500000 0.150000 }
@@ -259,10 +259,10 @@ dynn_ramsestein = {
 
 house_ramsestein = {
 	pattern = "pattern_solid.dds"
-	color1 = dark_red
-	color2 = gold
+	color1 = red_dark
+	color2 = yellow
 	colored_emblem = {
-		color1 = gold
+		color1 = yellow
 		texture = "ce_octogon_frame.dds"
 		instance = {
 			position = { 0.500000 0.490000 }
@@ -271,7 +271,7 @@ house_ramsestein = {
 		}
 	}
 	colored_emblem = {
-		color1 = gold
+		color1 = yellow
 		texture = "ce_eagle_islamic_double.dds"
 		instance = {
 			position = { 0.500000 0.490000 }
@@ -280,7 +280,7 @@ house_ramsestein = {
 		}
 	}
 	colored_emblem = {
-		color1 = gold
+		color1 = yellow
 		texture = "ce_mena_crescent.dds"
 		instance = {
 			position = { 0.500000 0.150000 }
@@ -293,7 +293,7 @@ house_ramsestein = {
 # Ramsestinski — dark blue / white
 dynn_ramsestinski = {
 	pattern = "pattern_solid.dds"
-	color1 = dark_blue
+	color1 = blue_dark
 	color2 = white
 	colored_emblem = {
 		color1 = white
@@ -326,7 +326,7 @@ dynn_ramsestinski = {
 
 house_ramsestinski = {
 	pattern = "pattern_solid.dds"
-	color1 = dark_blue
+	color1 = blue_dark
 	color2 = white
 	colored_emblem = {
 		color1 = white
@@ -360,10 +360,10 @@ house_ramsestinski = {
 # Ramsebayashi — green / gold
 dynn_ramsebayashi = {
 	pattern = "pattern_solid.dds"
-	color1 = dark_green
-	color2 = gold
+	color1 = green
+	color2 = yellow
 	colored_emblem = {
-		color1 = gold
+		color1 = yellow
 		texture = "ce_octogon_frame.dds"
 		instance = {
 			position = { 0.500000 0.490000 }
@@ -372,7 +372,7 @@ dynn_ramsebayashi = {
 		}
 	}
 	colored_emblem = {
-		color1 = gold
+		color1 = yellow
 		texture = "ce_eagle_islamic_double.dds"
 		instance = {
 			position = { 0.500000 0.490000 }
@@ -381,7 +381,7 @@ dynn_ramsebayashi = {
 		}
 	}
 	colored_emblem = {
-		color1 = gold
+		color1 = yellow
 		texture = "ce_mena_crescent.dds"
 		instance = {
 			position = { 0.500000 0.150000 }
@@ -393,10 +393,10 @@ dynn_ramsebayashi = {
 
 house_ramsebayashi = {
 	pattern = "pattern_solid.dds"
-	color1 = dark_green
-	color2 = gold
+	color1 = green
+	color2 = yellow
 	colored_emblem = {
-		color1 = gold
+		color1 = yellow
 		texture = "ce_octogon_frame.dds"
 		instance = {
 			position = { 0.500000 0.490000 }
@@ -405,7 +405,7 @@ house_ramsebayashi = {
 		}
 	}
 	colored_emblem = {
-		color1 = gold
+		color1 = yellow
 		texture = "ce_eagle_islamic_double.dds"
 		instance = {
 			position = { 0.500000 0.490000 }
@@ -414,7 +414,7 @@ house_ramsebayashi = {
 		}
 	}
 	colored_emblem = {
-		color1 = gold
+		color1 = yellow
 		texture = "ce_mena_crescent.dds"
 		instance = {
 			position = { 0.500000 0.150000 }

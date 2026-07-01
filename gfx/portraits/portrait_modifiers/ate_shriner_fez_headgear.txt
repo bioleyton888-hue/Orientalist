@@ -1,0 +1,61 @@
+﻿# Makes the Shriner fez the DEFAULT everyday headgear for the Shriner faith.
+#
+# Problem it fixes: in the base game the fez (religious_shriner_fez, inside the
+# headgear_base group, priority 1) only gets any weight for zealous / clergy /
+# theocratic-ruler Shriners. Every other Shriner falls through to the straw_hat,
+# which wins because Neomoor descends from Sunshiner and fires the caribbean
+# clothing trigger. Result: nobody wears the fez.
+#
+# Why a NEW group instead of editing the fez in place: portrait-modifier GROUPS
+# do NOT merge across files. Re-declaring headgear_base in our mod would REPLACE
+# the whole group and wipe every hat in the game. So we add our own group. The
+# engine applies all groups; higher priority wins for the same gene slot.
+# headgear_base (straw hat AND the rank crowns) = priority 1, so priority 2 here
+# beats the straw hat.
+#
+# "Keep crowns": the rank crowns (duke/king/emperor) also live in headgear_base
+# at priority 1, so a blind override would steal them too. We stand down (weight
+# 0 -> a zero-weight group applies nothing) whenever one of the game's own crown
+# triggers fires. Those triggers already exclude theocracies, so a theocratic
+# Shriner ruler / the faith head still gets the fez, matching the original intent.
+ate_shriner_fez_headgear = {
+
+	usage = game
+	selection_behavior = max
+	priority = 2
+
+	ate_shriner_fez_default = {
+		dna_modifiers = {
+			# suppress any vanilla headgear so nothing renders under the fez
+			accessory = {
+				mode = add
+				gene = headgear
+				template = no_headgear
+				range = { 0 1 }
+			}
+			# force the fez from the ATE headgear gene
+			accessory = {
+				mode = add
+				gene = ate_headgear
+				template = ate_shriner_fez
+				range = { 0 1 } # For the randomness to work correctly
+			}
+		}
+		weight = {
+			base = 0
+			modifier = {
+				add = 100
+				has_faith = faith:shriner
+				# stand down only when a real crown would render. Kings and
+				# emperors get proper crowns, so we yield to them. Dukes do NOT
+				# get a crown in Neomoor's culture (they fell through to the
+				# straw hat), so we DON'T yield at duchy tier -> dukes wear the fez.
+				NOR = {
+					portrait_regular_royalty_crowns_trigger = yes
+					portrait_regular_imperial_crowns_trigger = yes
+				}
+			}
+		}
+	}
+
+}
