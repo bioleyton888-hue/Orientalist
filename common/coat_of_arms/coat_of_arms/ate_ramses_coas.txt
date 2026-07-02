@@ -1,0 +1,420 @@
+﻿dynn_ramsesovich = {
+	pattern = "pattern_solid.dds"
+	color1 = black
+	color2 = yellow
+	colored_emblem = {
+		color1 = yellow
+		texture = "ce_octogon_frame.dds"
+		instance = {
+			position = { 0.500000 0.490000 }
+			scale = { 0.730000 0.730000 }
+			depth = 1.0
+		}
+	}
+	colored_emblem = {
+		color1 = yellow
+		texture = "ce_eagle_islamic_double.dds"
+		instance = {
+			position = { 0.500000 0.490000 }
+			scale = { 0.500000 0.500000 }
+			depth = 2.0
+		}
+	}
+	colored_emblem = {
+		color1 = yellow
+		texture = "ce_mena_crescent.dds"
+		instance = {
+			position = { 0.500000 0.150000 }
+			scale = { 0.280000 0.280000 }
+			depth = 3.0
+		}
+	}
+}
+
+# ramsestein — dark red / gold
+dynn_ramsestein = {
+	pattern = "pattern_solid.dds"
+	color1 = red_dark
+	color2 = yellow
+	colored_emblem = {
+		color1 = yellow
+		texture = "ce_octogon_frame.dds"
+		instance = {
+			position = { 0.500000 0.490000 }
+			scale = { 0.730000 0.730000 }
+			depth = 1.0
+		}
+	}
+	colored_emblem = {
+		color1 = yellow
+		texture = "ce_eagle_islamic_double.dds"
+		instance = {
+			position = { 0.500000 0.490000 }
+			scale = { 0.500000 0.500000 }
+			depth = 2.0
+		}
+	}
+	colored_emblem = {
+		color1 = yellow
+		texture = "ce_mena_crescent.dds"
+		instance = {
+			position = { 0.500000 0.150000 }
+			scale = { 0.280000 0.280000 }
+			depth = 3.0
+		}
+	}
+}
+
+# Ramsestilsky — dark blue / white
+dynn_ramsestilsky = {
+	pattern = "pattern_solid.dds"
+	color1 = blue_dark
+	color2 = white
+	colored_emblem = {
+		color1 = white
+		texture = "ce_octogon_frame.dds"
+		instance = {
+			position = { 0.500000 0.490000 }
+			scale = { 0.730000 0.730000 }
+			depth = 1.0
+		}
+	}
+	colored_emblem = {
+		color1 = white
+		texture = "ce_eagle_islamic_double.dds"
+		instance = {
+			position = { 0.500000 0.490000 }
+			scale = { 0.500000 0.500000 }
+			depth = 2.0
+		}
+	}
+	colored_emblem = {
+		color1 = white
+		texture = "ce_mena_crescent.dds"
+		instance = {
+			position = { 0.500000 0.150000 }
+			scale = { 0.280000 0.280000 }
+			depth = 3.0
+		}
+	}
+}
+
+# Ramsebayashi — green / gold
+dynn_ramsebayashi = {
+	pattern = "pattern_solid.dds"
+	color1 = green
+	color2 = yellow
+	colored_emblem = {
+		color1 = yellow
+		texture = "ce_octogon_frame.dds"
+		instance = {
+			position = { 0.500000 0.490000 }
+			scale = { 0.730000 0.730000 }
+			depth = 1.0
+		}
+	}
+	colored_emblem = {
+		color1 = yellow
+		texture = "ce_eagle_islamic_double.dds"
+		instance = {
+			position = { 0.500000 0.490000 }
+			scale = { 0.500000 0.500000 }
+			depth = 2.0
+		}
+	}
+	colored_emblem = {
+		color1 = yellow
+		texture = "ce_mena_crescent.dds"
+		instance = {
+			position = { 0.500000 0.150000 }
+			scale = { 0.280000 0.280000 }
+			depth = 3.0
+		}
+	}
+}
+
+# ramsesberg — white / black
+dynn_ramsesberg = {
+	pattern = "pattern_solid.dds"
+	color1 = white
+	color2 = black
+	colored_emblem = {
+		color1 = black
+		texture = "ce_octogon_frame.dds"
+		instance = {
+			position = { 0.500000 0.490000 }
+			scale = { 0.730000 0.730000 }
+			depth = 1.0
+		}
+	}
+	colored_emblem = {
+		color1 = black
+		texture = "ce_eagle_islamic_double.dds"
+		instance = {
+			position = { 0.500000 0.490000 }
+			scale = { 0.500000 0.500000 }
+			depth = 2.0
+		}
+	}
+	colored_emblem = {
+		color1 = black
+		texture = "ce_mena_crescent.dds"
+		instance = {
+			position = { 0.500000 0.150000 }
+			scale = { 0.280000 0.280000 }
+			depth = 3.0
+		}
+	}
+}
+
+# ramsesson — blue / yellow
+dynn_ramsesson = {
+	pattern = "pattern_solid.dds"
+	color1 = blue
+	color2 = yellow
+	colored_emblem = {
+		color1 = yellow
+		texture = "ce_octogon_frame.dds"
+		instance = {
+			position = { 0.500000 0.490000 }
+			scale = { 0.730000 0.730000 }
+			depth = 1.0
+		}
+	}
+	colored_emblem = {
+		color1 = yellow
+		texture = "ce_eagle_islamic_double.dds"
+		instance = {
+			position = { 0.500000 0.490000 }
+			scale = { 0.500000 0.500000 }
+			depth = 2.0
+		}
+	}
+	colored_emblem = {
+		color1 = yellow
+		texture = "ce_mena_crescent.dds"
+		instance = {
+			position = { 0.500000 0.150000 }
+			scale = { 0.280000 0.280000 }
+			depth = 3.0
+		}
+	}
+}
+
+# ramsesini — red / white
+dynn_ramsesini = {
+	pattern = "pattern_solid.dds"
+	color1 = red
+	color2 = white
+	colored_emblem = {
+		color1 = white
+		texture = "ce_octogon_frame.dds"
+		instance = {
+			position = { 0.500000 0.490000 }
+			scale = { 0.730000 0.730000 }
+			depth = 1.0
+		}
+	}
+	colored_emblem = {
+		color1 = white
+		texture = "ce_eagle_islamic_double.dds"
+		instance = {
+			position = { 0.500000 0.490000 }
+			scale = { 0.500000 0.500000 }
+			depth = 2.0
+		}
+	}
+	colored_emblem = {
+		color1 = white
+		texture = "ce_mena_crescent.dds"
+		instance = {
+			position = { 0.500000 0.150000 }
+			scale = { 0.280000 0.280000 }
+			depth = 3.0
+		}
+	}
+}
+
+# oramses — light green / black
+dynn_oramses = {
+	pattern = "pattern_solid.dds"
+	color1 = green_light
+	color2 = black
+	colored_emblem = {
+		color1 = black
+		texture = "ce_octogon_frame.dds"
+		instance = {
+			position = { 0.500000 0.490000 }
+			scale = { 0.730000 0.730000 }
+			depth = 1.0
+		}
+	}
+	colored_emblem = {
+		color1 = black
+		texture = "ce_eagle_islamic_double.dds"
+		instance = {
+			position = { 0.500000 0.490000 }
+			scale = { 0.500000 0.500000 }
+			depth = 2.0
+		}
+	}
+	colored_emblem = {
+		color1 = black
+		texture = "ce_mena_crescent.dds"
+		instance = {
+			position = { 0.500000 0.150000 }
+			scale = { 0.280000 0.280000 }
+			depth = 3.0
+		}
+	}
+}
+
+# ramsesopoulos — white / blue
+dynn_ramsesopoulos = {
+	pattern = "pattern_solid.dds"
+	color1 = white
+	color2 = blue
+	colored_emblem = {
+		color1 = blue
+		texture = "ce_octogon_frame.dds"
+		instance = {
+			position = { 0.500000 0.490000 }
+			scale = { 0.730000 0.730000 }
+			depth = 1.0
+		}
+	}
+	colored_emblem = {
+		color1 = blue
+		texture = "ce_eagle_islamic_double.dds"
+		instance = {
+			position = { 0.500000 0.490000 }
+			scale = { 0.500000 0.500000 }
+			depth = 2.0
+		}
+	}
+	colored_emblem = {
+		color1 = blue
+		texture = "ce_mena_crescent.dds"
+		instance = {
+			position = { 0.500000 0.150000 }
+			scale = { 0.280000 0.280000 }
+			depth = 3.0
+		}
+	}
+}
+
+# ramsewitz — purple / yellow
+dynn_ramsewitz = {
+	pattern = "pattern_solid.dds"
+	color1 = purple
+	color2 = yellow
+	colored_emblem = {
+		color1 = yellow
+		texture = "ce_octogon_frame.dds"
+		instance = {
+			position = { 0.500000 0.490000 }
+			scale = { 0.730000 0.730000 }
+			depth = 1.0
+		}
+	}
+	colored_emblem = {
+		color1 = yellow
+		texture = "ce_eagle_islamic_double.dds"
+		instance = {
+			position = { 0.500000 0.490000 }
+			scale = { 0.500000 0.500000 }
+			depth = 2.0
+		}
+	}
+	colored_emblem = {
+		color1 = yellow
+		texture = "ce_mena_crescent.dds"
+		instance = {
+			position = { 0.500000 0.150000 }
+			scale = { 0.280000 0.280000 }
+			depth = 3.0
+		}
+	}
+}
+
+# ben_ramses — blue / white
+dynn_ben_ramses = {
+	pattern = "pattern_solid.dds"
+	color1 = blue
+	color2 = white
+	colored_emblem = {
+		color1 = white
+		texture = "ce_octogon_frame.dds"
+		instance = {
+			position = { 0.500000 0.490000 }
+			scale = { 0.730000 0.730000 }
+			depth = 1.0
+		}
+	}
+	colored_emblem = {
+		color1 = white
+		texture = "ce_eagle_islamic_double.dds"
+		instance = {
+			position = { 0.500000 0.490000 }
+			scale = { 0.500000 0.500000 }
+			depth = 2.0
+		}
+	}
+	colored_emblem = {
+		color1 = white
+		texture = "ce_mena_crescent.dds"
+		instance = {
+			position = { 0.500000 0.150000 }
+			scale = { 0.280000 0.280000 }
+			depth = 3.0
+		}
+	}
+}
+
+# ibn_ramses — yellow / black
+dynn_ibn_ramses = {
+	pattern = "pattern_solid.dds"
+	color1 = yellow
+	color2 = black
+	colored_emblem = {
+		color1 = black
+		texture = "ce_octogon_frame.dds"
+		instance = {
+			position = { 0.500000 0.490000 }
+			scale = { 0.730000 0.730000 }
+			depth = 1.0
+		}
+	}
+	colored_emblem = {
+		color1 = black
+		texture = "ce_eagle_islamic_double.dds"
+		instance = {
+			position = { 0.500000 0.490000 }
+			scale = { 0.500000 0.500000 }
+			depth = 2.0
+		}
+	}
+	colored_emblem = {
+		color1 = black
+		texture = "ce_mena_crescent.dds"
+		instance = {
+			position = { 0.500000 0.150000 }
+			scale = { 0.280000 0.280000 }
+			depth = 3.0
+		}
+	}
+}
+
+# House CoAs — alias to the matching dynasty CoA (one-line reference, same DB)
+house_ramsesovich = dynn_ramsesovich
+house_ramsestein = dynn_ramsestein
+house_ramsestilsky = dynn_ramsestilsky
+house_ramsebayashi = dynn_ramsebayashi
+house_ramsesberg = dynn_ramsesberg
+house_ramsesson = dynn_ramsesson
+house_ramsesini = dynn_ramsesini
+house_oramses = dynn_oramses
+house_ramsesopoulos = dynn_ramsesopoulos
+house_ramsewitz = dynn_ramsewitz
+house_ben_ramses = dynn_ben_ramses
+house_ibn_ramses = dynn_ibn_ramses

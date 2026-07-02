@@ -10,14 +10,62 @@ dynn_ramsestein = {
 	motto = dynn_ramsesovich_motto
 }
 
-dynn_ramsestinski = {
-	name = "dynn_ramsestinski"
+dynn_ramsestilsky = {
+	name = "dynn_ramsestilsky"
 	culture = neomoor
 	motto = dynn_ramsesovich_motto
 }
 
 dynn_ramsebayashi = {
 	name = "dynn_ramsebayashi"
+	culture = neomoor
+	motto = dynn_ramsesovich_motto
+}
+
+dynn_ramsesberg = {
+	name = "dynn_ramsesberg"
+	culture = neomoor
+	motto = dynn_ramsesovich_motto
+}
+
+dynn_ramsesson = {
+	name = "dynn_ramsesson"
+	culture = neomoor
+	motto = dynn_ramsesovich_motto
+}
+
+dynn_ramsesini = {
+	name = "dynn_ramsesini"
+	culture = neomoor
+	motto = dynn_ramsesovich_motto
+}
+
+dynn_oramses = {
+	name = "dynn_oramses"
+	culture = neomoor
+	motto = dynn_ramsesovich_motto
+}
+
+dynn_ramsesopoulos = {
+	name = "dynn_ramsesopoulos"
+	culture = neomoor
+	motto = dynn_ramsesovich_motto
+}
+
+dynn_ramsewitz = {
+	name = "dynn_ramsewitz"
+	culture = neomoor
+	motto = dynn_ramsesovich_motto
+}
+
+dynn_ben_ramses = {
+	name = "dynn_ben_ramses"
+	culture = neomoor
+	motto = dynn_ramsesovich_motto
+}
+
+dynn_ibn_ramses = {
+	name = "dynn_ibn_ramses"
 	culture = neomoor
 	motto = dynn_ramsesovich_motto
 }

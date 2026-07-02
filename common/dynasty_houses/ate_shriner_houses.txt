@@ -1,19 +1,71 @@
 ﻿house_ramsesovich = {
 	name = "house_ramsesovich"
 	dynasty = dynn_ramsesovich
+	motto = dynn_ramsesovich_motto
 }
 
 house_ramsestein = {
 	name = "house_ramsestein"
 	dynasty = dynn_ramsestein
+	motto = dynn_ramsesovich_motto
 }
 
-house_ramsestinski = {
-	name = "house_ramsestinski"
-	dynasty = dynn_ramsestinski
+house_ramsestilsky = {
+	name = "house_ramsestilsky"
+	dynasty = dynn_ramsestilsky
+	motto = dynn_ramsesovich_motto
 }
 
 house_ramsebayashi = {
 	name = "house_ramsebayashi"
 	dynasty = dynn_ramsebayashi
+	motto = dynn_ramsesovich_motto
+}
+
+house_ramsesberg = {
+	name = "house_ramsesberg"
+	dynasty = dynn_ramsesberg
+	motto = dynn_ramsesovich_motto
+}
+
+house_ramsesson = {
+	name = "house_ramsesson"
+	dynasty = dynn_ramsesson
+	motto = dynn_ramsesovich_motto
+}
+
+house_ramsesini = {
+	name = "house_ramsesini"
+	dynasty = dynn_ramsesini
+	motto = dynn_ramsesovich_motto
+}
+
+house_oramses = {
+	name = "house_oramses"
+	dynasty = dynn_oramses
+	motto = dynn_ramsesovich_motto
+}
+
+house_ramsesopoulos = {
+	name = "house_ramsesopoulos"
+	dynasty = dynn_ramsesopoulos
+	motto = dynn_ramsesovich_motto
+}
+
+house_ramsewitz = {
+	name = "house_ramsewitz"
+	dynasty = dynn_ramsewitz
+	motto = dynn_ramsesovich_motto
+}
+
+house_ben_ramses = {
+	name = "house_ben_ramses"
+	dynasty = dynn_ben_ramses
+	motto = dynn_ramsesovich_motto
+}
+
+house_ibn_ramses = {
+	name = "house_ibn_ramses"
+	dynasty = dynn_ibn_ramses
+	motto = dynn_ramsesovich_motto
 }
