@@ -16,6 +16,9 @@ ate_waltney.0001 = {
 	# Culture + counties already applied by the decision
 	option = {
 		name = ate_waltney.0001.a
+		# Stays House Waltney -> titles re-confirm as Magic Kingdom / Epcot
+		trigger_event = title_event.5000
+		trigger_event = title_event.5002
 	}
 
 	# Found House Ababwa — break from the Waltney house
@@ -25,5 +28,8 @@ ate_waltney.0001 = {
 		every_child = {
 			set_house = house:house_waltney_ababwa
 		}
+		# Now House Ababwa + Neomoor -> titles flip to Agrabah / al-Yaman immediately
+		trigger_event = title_event.5000
+		trigger_event = title_event.5002
 	}
 }
