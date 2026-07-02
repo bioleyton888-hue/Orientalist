@@ -16,9 +16,9 @@ house_ramsestilsky = {
 	motto = dynn_ramsesovich_motto
 }
 
-house_ramsebayashi = {
-	name = "house_ramsebayashi"
-	dynasty = dynn_ramsebayashi
+house_uramusezu = {
+	name = "house_uramusezu"
+	dynasty = dynn_uramusezu
 	motto = dynn_ramsesovich_motto
 }
 
@@ -67,5 +67,11 @@ house_ben_ramses = {
 house_ibn_ramses = {
 	name = "house_ibn_ramses"
 	dynasty = dynn_ibn_ramses
+	motto = dynn_ramsesovich_motto
+}
+
+house_do_ramses = {
+	name = "house_do_ramses"
+	dynasty = dynn_do_ramses
 	motto = dynn_ramsesovich_motto
 }

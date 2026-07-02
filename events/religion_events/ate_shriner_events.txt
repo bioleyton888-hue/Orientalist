@@ -853,7 +853,7 @@ ate_shriner.0014 = {
 			10 = { scope:ramses = { set_house = house:house_ramsesovich } }
 			10 = { scope:ramses = { set_house = house:house_ramsestein } }
 			10 = { scope:ramses = { set_house = house:house_ramsestilsky } }
-			10 = { scope:ramses = { set_house = house:house_ramsebayashi } }
+			10 = { scope:ramses = { set_house = house:house_uramusezu } }
 			10 = { scope:ramses = { set_house = house:house_ramsesberg } }
 			10 = { scope:ramses = { set_house = house:house_ramsesson } }
 			10 = { scope:ramses = { set_house = house:house_ramsesini } }
@@ -862,6 +862,7 @@ ate_shriner.0014 = {
 			10 = { scope:ramses = { set_house = house:house_ramsewitz } }
 			10 = { scope:ramses = { set_house = house:house_ben_ramses } }
 			10 = { scope:ramses = { set_house = house:house_ibn_ramses } }
+			10 = { scope:ramses = { set_house = house:house_do_ramses } }
 		}
 		scope:ramses = {
 			add_character_flag = ate_pharaoh_crown

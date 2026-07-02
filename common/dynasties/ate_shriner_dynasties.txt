@@ -16,8 +16,8 @@ dynn_ramsestilsky = {
 	motto = dynn_ramsesovich_motto
 }
 
-dynn_ramsebayashi = {
-	name = "dynn_ramsebayashi"
+dynn_uramusezu = {
+	name = "dynn_uramusezu"
 	culture = neomoor
 	motto = dynn_ramsesovich_motto
 }
@@ -66,6 +66,12 @@ dynn_ben_ramses = {
 
 dynn_ibn_ramses = {
 	name = "dynn_ibn_ramses"
+	culture = neomoor
+	motto = dynn_ramsesovich_motto
+}
+
+dynn_do_ramses = {
+	name = "dynn_do_ramses"
 	culture = neomoor
 	motto = dynn_ramsesovich_motto
 }
