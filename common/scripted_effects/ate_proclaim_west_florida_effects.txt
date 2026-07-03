@@ -5,25 +5,12 @@
 # no else-branch dumping them into k_florida, so West Florida is never absorbed.
 ate_proclaim_west_florida_decision_effects = {
 	scope:proclaim_west_florida_former = {
-		# Slot the new kingdom under the de jure EMPIRE of the player's primary title, if any.
-		# The empire sits one level up for a kingdom-tier primary, two levels up for a duchy-tier
-		# primary — so we test each level and only set it when that level is actually an empire.
-		# Guarding with exists/tier avoids feeding set_de_jure_liege_title a null source (the old
-		# unconditional two-level chain errored "source title was null" for kingdom-primary holders).
-		if = {
-			limit = {
-				exists = primary_title.de_jure_liege
-				primary_title.de_jure_liege = { tier = tier_empire }
-			}
-			title:k_west_florida = { set_de_jure_liege_title = scope:proclaim_west_florida_former.primary_title.de_jure_liege }
-		}
-		else_if = {
-			limit = {
-				exists = primary_title.de_jure_liege.de_jure_liege
-				primary_title.de_jure_liege.de_jure_liege = { tier = tier_empire }
-			}
-			title:k_west_florida = { set_de_jure_liege_title = scope:proclaim_west_florida_former.primary_title.de_jure_liege.de_jure_liege }
-		}
+		# The new kingdom starts de jure under the Caribbean — Florida is "a gem of the Caribbean"
+		# and k_soflo already sits in the Caribbean's de jure sphere. Deterministic (same result no
+		# matter who forms it) and it replaces the old founder-chain navigation that either errored
+		# (1.17: null source for kingdom-primary holders) or silently left the kingdom floating.
+		# Assert Gulf Independence re-parents it under e_gulf_empire when the Gulf breaks free.
+		title:k_west_florida = { set_de_jure_liege_title = title:e_caribbean }
 		create_title_and_vassal_change = {
 			type = created
 			save_scope_as = title_change

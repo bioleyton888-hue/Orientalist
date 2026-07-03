@@ -1,0 +1,8 @@
+﻿# Florida Confederation payoff — granted at disband (events/ate_florida_confederation_events.txt
+# ate_florida_disband.0002 / .0004). Path A (Portia driven out) gets the full 10-year modifier +
+# ate_defender_of_florida trait; Path B (Portia died) gets a shorter 5-year version only.
+ate_florida_liberator_modifier = {
+	icon = prestige_positive
+	monthly_prestige = 0.5
+	same_culture_opinion = 5
+}

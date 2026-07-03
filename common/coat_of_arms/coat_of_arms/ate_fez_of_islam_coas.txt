@@ -1,0 +1,19 @@
+﻿# The Fez of Islam — the one Shriner holy order. Fez-red field, the crescent of the faith,
+# and the star of Solomon above it: the fez they set aside for battle, rendered in heraldry.
+# Applied to the order's title at game start via set_coa (ate_fez_of_islam_on_action.txt).
+ho_fez_of_islam = {
+	pattern = "pattern_solid.dds"
+	color1 = "red"
+	color2 = "yellow"
+
+	colored_emblem = {
+		texture = "ce_mena_crescent.dds"
+		color1 = "yellow"
+		instance = { position = { 0.5 0.58 } scale = { 0.85 0.85 } depth = 1.0 }
+	}
+	colored_emblem = {
+		texture = "ce_solomon_star_06.dds"
+		color1 = "yellow"
+		instance = { position = { 0.5 0.38 } scale = { 0.35 0.35 } depth = 2.0 }
+	}
+}

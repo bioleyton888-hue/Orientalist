@@ -1,0 +1,129 @@
+﻿####################################################################################
+##  ATE NEOMOOR  —  Annex West Florida  (mirror of Assert Gulf Independence)
+##  Proclaim West Florida always seeds the new kingdom de jure under e_caribbean (see
+##  ate_proclaim_west_florida_effects.txt). This decision is for the empire that already
+##  holds it through a vassal to formally absorb it — take the crown directly instead of
+##  settling for a de jure claim — OR, for the Mississippi, to undo the theft outright and
+##  hand every duchy back to the kingdoms it was carved from.
+##  Mutually exclusive with Assert Gulf Independence: whichever fires first locks the other
+##  out via unavailable_unique_decisions (the flag-as-requirement idiom — see
+##  scripts/ck3_dejure_overlap_problem.md for why inline if-has-flag checks are the wrong way).
+####################################################################################
+annex_west_florida_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_dynasty_house.dds"
+	}
+	decision_group_type = major
+	ai_check_interval = 12
+	desc = annex_west_florida_decision_desc
+	selection_tooltip = annex_west_florida_decision_tooltip
+	is_shown = {
+		NOT = {  #Can only do it once.
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:annex_west_florida_decision
+			}
+		}
+		# Locked out once the Gulf has broken away with Assert Gulf Independence — EXCEPT for the
+		# Gulf Empire itself, which only exists because Assert fired: its branch is the empire
+		# re-taking the very kingdom it was born from (had it, lost it, taking it back).
+		OR = {
+			has_title = title:e_gulf_empire
+			NOT = {
+				is_target_in_global_variable_list = {
+					name = unavailable_unique_decisions
+					target = flag:assert_gulf_independence_decision
+				}
+			}
+		}
+		OR = {
+			has_title = title:e_caribbean
+			has_title = title:e_hcc
+			has_title = title:e_the_mississippi
+			has_title = title:e_gulf_empire
+		}
+	}
+	is_valid = {
+		is_independent_ruler = yes
+		# West Florida must actually be the real, de-jure-complete kingdom our Proclaim builds —
+		# not just the titular base-game shell.
+		custom_tooltip = {
+			text = annex_west_florida_requires_real_kingdom
+			title:d_west_florida.de_jure_liege = title:k_west_florida
+		}
+		# Someone else holds it — a vassal within your realm. Nothing to annex if you already have it.
+		custom_tooltip = {
+			text = annex_west_florida_requires_vassal_held
+			AND = {
+				exists = title:k_west_florida.holder
+				NOT = { has_title = title:k_west_florida }
+				title:k_west_florida.holder = { top_liege = root }
+			}
+		}
+		OR = {
+			custom_tooltip = {
+				text = annex_west_florida_primary_title_caribbean
+				primary_title = title:e_caribbean
+			}
+			custom_tooltip = {
+				text = annex_west_florida_primary_title_hcc
+				primary_title = title:e_hcc
+			}
+			custom_tooltip = {
+				text = annex_west_florida_primary_title_mississippi
+				primary_title = title:e_the_mississippi
+			}
+			custom_tooltip = {
+				text = annex_west_florida_primary_title_gulf
+				primary_title = title:e_gulf_empire
+			}
+		}
+	}
+
+	effect = {
+		save_scope_as = annex_west_florida_taker
+		add_dynasty_prestige = 500
+		hidden_effect = {
+			add_to_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:annex_west_florida_decision
+			}
+		}
+		if = {
+			limit = { primary_title = title:e_caribbean }
+			ate_annex_west_florida_caribbean_effects = yes
+		}
+		else_if = {
+			limit = { primary_title = title:e_hcc }
+			ate_annex_west_florida_hcc_effects = yes
+		}
+		else_if = {
+			limit = { primary_title = title:e_gulf_empire }
+			ate_annex_west_florida_gulf_effects = yes
+		}
+		else = {
+			ate_annex_west_florida_mississippi_effects = yes
+		}
+		# Stage the moment — branches on primary_title, fires after the annex/reclamation resolves.
+		trigger_event = { id = ate_florida_formables.0030 }
+	}
+
+	is_valid_showing_failures_only = {
+		is_capable_adult = yes
+		is_imprisoned = no
+		is_independent_ruler = yes
+	}
+
+	cost = {
+		prestige = { value = 600 }
+		gold = { value = 300 }
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
