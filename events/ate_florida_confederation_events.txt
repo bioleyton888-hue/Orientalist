@@ -256,6 +256,18 @@ ate_florida_disband.0002 = {
 			}
 			remove_global_variable = ate_florida_confederation
 		}
+		# Payoff — driven out is the stronger ending: permanent trait + 10-year modifier + bounty
+		add_trait = ate_defender_of_florida
+		add_character_modifier = {
+			modifier = ate_florida_liberator_modifier
+			years = 10
+		}
+		add_prestige = 500
+		send_interface_toast = {
+			type = event_toast_effect_good
+			title = ate_defender_of_florida_toast
+			left_icon = root
+		}
 	}
 
 	option = {
@@ -312,6 +324,17 @@ ate_florida_disband.0004 = {
 				}
 			}
 			remove_global_variable = ate_florida_confederation
+		}
+		# Payoff — fate did the work here, so no trait, just the shorter 5-year modifier + a smaller bounty
+		add_character_modifier = {
+			modifier = ate_florida_liberator_modifier
+			years = 5
+		}
+		add_prestige = 200
+		send_interface_toast = {
+			type = event_toast_effect_good
+			title = ate_florida_liberator_toast
+			left_icon = root
 		}
 	}
 

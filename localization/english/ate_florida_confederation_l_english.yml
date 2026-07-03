@@ -46,3 +46,10 @@
  ate_florida_disband.0004.t:0 "Sic Semper Liberis"
  ate_florida_disband.0004.desc:0 "A month has passed. The men and women most loyal to Seacole now fight like dogs over the carcass of her empire — and, in truth, so do we, among ourselves.\n\nThe Floridians whose lands lay furthest from the fighting have already begun to pursue agendas of their own, the common cause forgotten the moment it ceased to threaten them. The less scrupulous mercenaries sell their swords to the best coin now, and care nothing whether the hand that pays is Floridian or Caribbean. And the old wounds — the ancient grudges, the differences of belief we had sworn to set aside — swell once more, straining the thin skin that was all this confederation ever truly was.\n\nThe Florida Confederation was never meant to outlive its purpose. With the lion dead and her empire breaking apart, there is nothing left to bind us — and to pretend otherwise would only turn our swords upon one another. The bonds can be severed cleanly, while there is goodwill enough left to part on. It is time."
  ate_florida_disband.0004.a:0 "Somebody record this, before we forget it as well."
+
+ # Confederation payoff — trait, modifier, and toasts
+ trait_ate_defender_of_florida:0 "Defender of Florida"
+ trait_ate_defender_of_florida_desc:0 "This character led the Florida Confederation to victory, driving Portia Seacole and her host from the peninsula by force of arms."
+ trait_ate_defender_of_florida_character_desc:0 "[ROOT.GetCharacter.GetTitledFirstNameNoTooltip] led the Florida Confederation to victory, driving Portia Seacole and her host from the peninsula by force of arms."
+ ate_defender_of_florida_toast:0 "Defender of Florida!"
+ ate_florida_liberator_toast:0 "Florida remembers."

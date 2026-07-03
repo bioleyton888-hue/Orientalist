@@ -114,3 +114,57 @@ ate_florida_formables.0020 = {
 		name = ate_florida_formables.0020.b
 	}
 }
+
+# Annex West Florida — mirror of Assert Gulf Independence, for the powers that pull West
+# Florida back in instead of letting it break away. Fired from
+# common/decisions/ate_annex_west_florida.txt. root = the annexer.
+# Desc branches by primary_title: Caribbean (the island throne collecting what was always its
+# own), HCC (the grudge, an "unfinished sermon" finally closed), Mississippi (a true
+# homecoming — the land was carved from Mississippi's own kingdoms), or the Gulf Empire itself
+# (re-taking its own cradle: had it, lost it, taking it back — hence the title).
+ate_florida_formables.0030 = {
+	type = character_event
+	title = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { primary_title = title:e_gulf_empire }
+				desc = ate_florida_formables.0030.t.gulf
+			}
+			desc = ate_florida_formables.0030.t
+		}
+	}
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { primary_title = title:e_caribbean }
+				desc = ate_florida_formables.0030.desc.caribbean
+			}
+			triggered_desc = {
+				trigger = { primary_title = title:e_hcc }
+				desc = ate_florida_formables.0030.desc.hcc
+			}
+			triggered_desc = {
+				trigger = { primary_title = title:e_the_mississippi }
+				desc = ate_florida_formables.0030.desc.mississippi
+			}
+			triggered_desc = {
+				trigger = { primary_title = title:e_gulf_empire }
+				desc = ate_florida_formables.0030.desc.gulf
+			}
+			desc = ate_florida_formables.0030.desc.caribbean
+		}
+	}
+	theme = realm
+	override_background = { reference = throne_room }
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+
+	option = {
+		name = ate_florida_formables.0030.a
+	}
+	option = {
+		name = ate_florida_formables.0030.b
+	}
+}
