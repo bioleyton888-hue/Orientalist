@@ -5,9 +5,10 @@
 ##  holds it through a vassal to formally absorb it — take the crown directly instead of
 ##  settling for a de jure claim — OR, for the Mississippi, to undo the theft outright and
 ##  hand every duchy back to the kingdoms it was carved from.
-##  Mutually exclusive with Assert Gulf Independence: whichever fires first locks the other
-##  out via unavailable_unique_decisions (the flag-as-requirement idiom — see
-##  scripts/ck3_dejure_overlap_problem.md for why inline if-has-flag checks are the wrong way).
+##  REPEATABLE (10-year cooldown): West Florida is the Stalingrad railway station of the Gulf
+##  coast — it can change hands as many times as the wars allow. No lockout against Assert
+##  Gulf Independence in either direction; the tug-of-war is the point. The only natural
+##  terminus is the Mississippi branch, which destroys the kingdom outright.
 ####################################################################################
 annex_west_florida_decision = {
 	picture = {
@@ -15,27 +16,10 @@ annex_west_florida_decision = {
 	}
 	decision_group_type = major
 	ai_check_interval = 12
+	cooldown = { years = 10 }
 	desc = annex_west_florida_decision_desc
 	selection_tooltip = annex_west_florida_decision_tooltip
 	is_shown = {
-		NOT = {  #Can only do it once.
-			is_target_in_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:annex_west_florida_decision
-			}
-		}
-		# Locked out once the Gulf has broken away with Assert Gulf Independence — EXCEPT for the
-		# Gulf Empire itself, which only exists because Assert fired: its branch is the empire
-		# re-taking the very kingdom it was born from (had it, lost it, taking it back).
-		OR = {
-			has_title = title:e_gulf_empire
-			NOT = {
-				is_target_in_global_variable_list = {
-					name = unavailable_unique_decisions
-					target = flag:assert_gulf_independence_decision
-				}
-			}
-		}
 		OR = {
 			has_title = title:e_caribbean
 			has_title = title:e_hcc
@@ -83,29 +67,27 @@ annex_west_florida_decision = {
 	effect = {
 		save_scope_as = annex_west_florida_taker
 		add_dynasty_prestige = 500
-		hidden_effect = {
-			add_to_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:annex_west_florida_decision
-			}
-		}
 		if = {
 			limit = { primary_title = title:e_caribbean }
 			ate_annex_west_florida_caribbean_effects = yes
+			trigger_event = { id = ate_florida_formables.0030 }
 		}
 		else_if = {
 			limit = { primary_title = title:e_hcc }
 			ate_annex_west_florida_hcc_effects = yes
+			trigger_event = { id = ate_florida_formables.0030 }
 		}
 		else_if = {
 			limit = { primary_title = title:e_gulf_empire }
 			ate_annex_west_florida_gulf_effects = yes
+			trigger_event = { id = ate_florida_formables.0030 }
 		}
 		else = {
-			ate_annex_west_florida_mississippi_effects = yes
+			# The Mississippi chooses its ending in a follow-up event: RECLAIM (restore the old
+			# de jure map, destroy the kingdom — permanent) or ANNEX (keep the crown whole, like
+			# the other empires). Effects apply in the event options; 0030 fires after the choice.
+			trigger_event = { id = ate_florida_formables.0031 }
 		}
-		# Stage the moment — branches on primary_title, fires after the annex/reclamation resolves.
-		trigger_event = { id = ate_florida_formables.0030 }
 	}
 
 	is_valid_showing_failures_only = {

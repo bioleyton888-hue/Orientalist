@@ -23,14 +23,6 @@ assert_gulf_independence_decision = {
 				target = flag:assert_gulf_independence_decision
 			}
 		}
-		# Locked out once West Florida has been annexed back by a Caribbean/HCC/Mississippi power —
-		# nothing left to break away with.
-		NOT = {
-			is_target_in_global_variable_list = {
-				name = unavailable_unique_decisions
-				target = flag:annex_west_florida_decision
-			}
-		}
 		OR = {
 			culture = culture:gulfard
 			culture = {
