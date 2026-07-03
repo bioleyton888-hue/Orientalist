@@ -1,0 +1,25 @@
+﻿ate_defender_of_florida = {
+	index = 1015
+	icon = unyielding_defender.dds
+	category = fame
+
+	shown_in_ruler_designer = no
+
+	inherit_chance = 0
+	birth = 0
+	random_creation = 0
+
+	monthly_prestige = 0.3
+	diplomacy = 1
+	vassal_opinion = 10
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_ate_defender_of_florida_desc
+			}
+			desc = trait_ate_defender_of_florida_character_desc
+		}
+	}
+}
