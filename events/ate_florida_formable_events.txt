@@ -144,6 +144,12 @@ ate_florida_formables.0030 = {
 				desc = ate_florida_formables.0030.desc.hcc
 			}
 			triggered_desc = {
+				# Mississippi ANNEX choice (flag set in 0031) — checked BEFORE the primary_title
+				# branch so it pre-empts the reclamation/homecoming text.
+				trigger = { has_character_flag = ate_wf_mississippi_annexed }
+				desc = ate_florida_formables.0030.desc.mississippi_annex
+			}
+			triggered_desc = {
 				trigger = { primary_title = title:e_the_mississippi }
 				desc = ate_florida_formables.0030.desc.mississippi
 			}
@@ -166,5 +172,45 @@ ate_florida_formables.0030 = {
 	}
 	option = {
 		name = ate_florida_formables.0030.b
+	}
+}
+
+# The Mississippi's Question — choice event fired from the annex decision when the taker is
+# the Mississippi. The cost is already paid; here the emperor picks the ending:
+#   a) RECLAIM — restore every duchy/county to its pre-Proclaim de jure kingdom and destroy
+#      the empty k_west_florida shell (the permanent ending; heals the de jure drift).
+#   b) ANNEX — keep the crown whole and take it for the Mississippi, like the other empires.
+# Effects live here (not in the decision) because the choice is the point; both options act,
+# there is no receive-nothing branch. Each option fires 0030 for its celebration text — the
+# annex option sets a short-lived flag that 0030's desc reads to pick the right branch.
+ate_florida_formables.0031 = {
+	type = character_event
+	title = ate_florida_formables.0031.t
+	desc = ate_florida_formables.0031.desc
+	theme = realm
+	override_background = { reference = throne_room }
+	left_portrait = {
+		character = root
+		animation = thinking
+	}
+
+	option = {
+		name = ate_florida_formables.0031.a
+		# RECLAIM — the elders win: the old map is restored, the borrowed crown destroyed
+		ate_annex_west_florida_mississippi_effects = yes
+		trigger_event = { id = ate_florida_formables.0030 }
+		ai_chance = {
+			base = 60
+		}
+	}
+	option = {
+		name = ate_florida_formables.0031.b
+		# ANNEX — the treasurers win: a crown in hand is worth more than an old grievance
+		add_character_flag = { flag = ate_wf_mississippi_annexed days = 30 }
+		ate_annex_west_florida_mississippi_annex_effects = yes
+		trigger_event = { id = ate_florida_formables.0030 }
+		ai_chance = {
+			base = 40
+		}
 	}
 }
