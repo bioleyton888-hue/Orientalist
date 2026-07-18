@@ -142,7 +142,7 @@ ate_shriner.0005 = {
 		}
 	}
 	theme = feast_activity
-	trigger = { is_player_character = yes }
+	trigger = { is_ai = no }
 	left_portrait = {
 		character = root
 		animation = joy
@@ -415,7 +415,7 @@ ate_shriner.0009 = {
 	desc = ate_shriner.0009.desc
 	theme = faith
 
-	trigger = { is_player_character = yes }
+	trigger = { is_ai = no }
 
 	left_portrait = {
 		character = root
@@ -460,7 +460,7 @@ ate_shriner.0010 = {
 	desc = ate_shriner.0010.desc
 	theme = feast_activity
 
-	trigger = { is_player_character = yes }
+	trigger = { is_ai = no }
 
 	left_portrait = {
 		character = root
@@ -571,7 +571,7 @@ ate_shriner.0012 = {
 	desc = ate_shriner.0012.desc
 	theme = diplomacy
 
-	trigger = { is_player_character = yes }
+	trigger = { is_ai = no }
 
 	immediate = {
 		add_character_flag = {
@@ -629,7 +629,7 @@ ate_shriner.0013 = {
 	desc = ate_shriner.0013.desc
 	theme = travel
 
-	trigger = { is_player_character = yes }
+	trigger = { is_ai = no }
 
 	immediate = {
 		create_character = {
@@ -823,7 +823,7 @@ ate_shriner.0014 = {
 	desc = ate_shriner.0014.desc
 	theme = witchcraft
 
-	trigger = { is_player_character = yes }
+	trigger = { is_ai = no }
 
 	immediate = {
 		create_character = {
@@ -1279,7 +1279,7 @@ ate_shriner.0011 = {
 	theme = feast_activity
 
 	trigger = {
-		is_player_character = yes
+		is_ai = no
 		any_courtier = {
 			OR = {
 				culture = culture:sofloano

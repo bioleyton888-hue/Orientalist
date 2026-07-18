@@ -48,6 +48,7 @@ yearly_playable_pulse = {
 		nelson_parade_check
 		badroulbadour_chain_check
 		ate_ibrahim_obsession_pulse
+		ate_portia_florida_lost_check
 	}
 }
 
@@ -58,6 +59,7 @@ random_yearly_playable_pulse = {
 		ate_shriner_cafecito_pulse
 		ate_shriner_mummy_pulse
 		ate_neomoor_post_conversion_pulse
+		ate_neomoor_traveler_pulse
 	}
 }
 
@@ -148,13 +150,19 @@ ate_portia_title_lost_handler = {
 				}
 			}
 		}
-		# After this loss she holds no county in the tracked duchies.
-		# this != scope:title excludes the title being lost — at on_title_lost it is
-		# still counted in any_held_title (see vanilla title_on_actions.txt).
+		# A grant or internal reshuffle is NOT a real loss — if the new holder is one of
+		# Portia's vassals the land stays in her realm and the arc stays alive
 		NOT = {
-			any_held_title = {
+			scope:new_holder ?= {
+				target_is_liege_or_above = character:caribe_seacole_portia_jamaica2
+			}
+		}
+		# After this loss her REALM (vassal-held counties included) has no county left in
+		# the tracked duchies. this != scope:title excludes the title being lost — at
+		# on_title_lost it is still counted (see vanilla title_on_actions.txt).
+		NOT = {
+			any_realm_county = {
 				this != scope:title
-				tier = tier_county
 				OR = {
 					duchy = title:d_miami
 					duchy = title:d_suncoast
@@ -166,6 +174,31 @@ ate_portia_title_lost_handler = {
 	}
 	effect = {
 		# Consume the flag NOW so the other title losses in this same tick don't also schedule it
+		remove_global_variable = ate_florida_confed_active
+		random_player = { limit = { ate_florida_confed_recipient_trigger = yes } trigger_event = { id = ate_florida_disband.0001 days = 1 } }
+	}
+}
+
+# Yearly fallback for the disband arc: Portia's own on_title_lost can never see a VASSAL
+# losing tracked land (on_title_lost fires on the vassal, not her). Once the confederation
+# is active, check once a year whether her realm still holds any county in the four
+# duchies; if not, fire the driven-out ending (up to a year late, cheap the rest of the game).
+ate_portia_florida_lost_check = {
+	trigger = {
+		this = character:caribe_seacole_portia_jamaica2
+		exists = global_var:ate_florida_confed_active
+		NOT = {
+			any_realm_county = {
+				OR = {
+					duchy = title:d_miami
+					duchy = title:d_suncoast
+					duchy = title:d_eyefour
+					duchy = title:d_first_coast
+				}
+			}
+		}
+	}
+	effect = {
 		remove_global_variable = ate_florida_confed_active
 		random_player = { limit = { ate_florida_confed_recipient_trigger = yes } trigger_event = { id = ate_florida_disband.0001 days = 1 } }
 	}
@@ -326,7 +359,10 @@ neomoor_shriner_title_gain_handler = {
 	}
 }
 
-# Portia conquest events — fire when Portia gains d_miami, d_suncoast, d_eyefour, or d_first_coast
+# Portia conquest events — fire when Portia gains d_miami, d_suncoast, d_eyefour, or d_first_coast,
+# OR when a county gain leaves her realm in complete control of one of those duchies without the
+# duchy title itself (the AI may conquer county-by-county and never create/usurp the duchy).
+# Per-duchy took-flags keep the county path and a later title creation from double-firing.
 ate_portia_conquest_handler = {
 	trigger = {
 		this = character:caribe_seacole_portia_jamaica2
@@ -335,29 +371,88 @@ ate_portia_conquest_handler = {
 			scope:title = { this = title:d_suncoast }
 			scope:title = { this = title:d_eyefour }
 			scope:title = { this = title:d_first_coast }
+			scope:title = {
+				tier = tier_county
+				OR = {
+					duchy = title:d_miami
+					duchy = title:d_suncoast
+					duchy = title:d_eyefour
+					duchy = title:d_first_coast
+				}
+			}
 		}
 	}
 	effect = {
-		# Fire per-duchy flavor event on the player the day after Portia conquers it
+		# Fire per-duchy flavor event on the player the day after Portia takes the duchy —
+		# either the title itself, or full de jure control of it via a county gain
 		if = {
-			limit = { scope:title = { this = title:d_miami } }
+			limit = {
+				NOT = { has_character_flag = ate_portia_took_miami }
+				OR = {
+					scope:title = { this = title:d_miami }
+					AND = {
+						scope:title = { tier = tier_county duchy = title:d_miami }
+						completely_controls = title:d_miami
+					}
+				}
+			}
+			add_character_flag = ate_portia_took_miami
 			random_player = { limit = { ate_florida_confed_recipient_trigger = yes } trigger_event = { id = ate_portia.0001 days = 1 } }
 		}
 		else_if = {
-			limit = { scope:title = { this = title:d_suncoast } }
+			limit = {
+				NOT = { has_character_flag = ate_portia_took_suncoast }
+				OR = {
+					scope:title = { this = title:d_suncoast }
+					AND = {
+						scope:title = { tier = tier_county duchy = title:d_suncoast }
+						completely_controls = title:d_suncoast
+					}
+				}
+			}
+			add_character_flag = ate_portia_took_suncoast
 			random_player = { limit = { ate_florida_confed_recipient_trigger = yes } trigger_event = { id = ate_portia.0002 days = 1 } }
 		}
 		else_if = {
-			limit = { scope:title = { this = title:d_eyefour } }
+			limit = {
+				NOT = { has_character_flag = ate_portia_took_eyefour }
+				OR = {
+					scope:title = { this = title:d_eyefour }
+					AND = {
+						scope:title = { tier = tier_county duchy = title:d_eyefour }
+						completely_controls = title:d_eyefour
+					}
+				}
+			}
+			add_character_flag = ate_portia_took_eyefour
 			random_player = { limit = { ate_florida_confed_recipient_trigger = yes } trigger_event = { id = ate_portia.0003 days = 1 } }
 		}
 		else_if = {
-			limit = { scope:title = { this = title:d_first_coast } }
+			limit = {
+				NOT = { has_character_flag = ate_portia_took_first_coast }
+				OR = {
+					scope:title = { this = title:d_first_coast }
+					AND = {
+						scope:title = { tier = tier_county duchy = title:d_first_coast }
+						completely_controls = title:d_first_coast
+					}
+				}
+			}
+			add_character_flag = ate_portia_took_first_coast
 			random_player = { limit = { ate_florida_confed_recipient_trigger = yes } trigger_event = { id = ate_portia.0004 days = 1 } }
 		}
-		# On first SoFlo/NorFlo title gain, schedule the confederation event on the player after 30 days
+		# On the first duchy taken (by title or by full county control), schedule the
+		# confederation event on the player after 30 days
 		if = {
-			limit = { NOT = { has_character_flag = ate_portia_confederation_scheduled } }
+			limit = {
+				NOT = { has_character_flag = ate_portia_confederation_scheduled }
+				OR = {
+					has_character_flag = ate_portia_took_miami
+					has_character_flag = ate_portia_took_suncoast
+					has_character_flag = ate_portia_took_eyefour
+					has_character_flag = ate_portia_took_first_coast
+				}
+			}
 			add_character_flag = ate_portia_confederation_scheduled
 			random_player = { limit = { ate_florida_confed_recipient_trigger = yes } trigger_event = { id = ate_florida_confed.0001 days = 30 } }
 		}
@@ -530,6 +625,31 @@ ate_neomoor_post_conversion_pulse = {
 					trigger_event = { id = ate_neomoor.0003 }
 				}
 			}
+		}
+	}
+}
+
+# Traveling Hakim — a Shriner physician seeks refuge at NON-Neomoor/Shriner player courts, 20-year cooldown
+ate_neomoor_traveler_pulse = {
+	trigger = {
+		is_ai = no
+		is_adult = yes
+		is_landed = yes
+		NOR = {
+			culture = culture:neomoor
+			faith = faith:shriner
+		}
+		exists = capital_province
+		NOT = { has_character_flag = ate_neomoor_traveler_cooldown }
+	}
+	effect = {
+		random = {
+			chance = 10
+			add_character_flag = {
+				flag = ate_neomoor_traveler_cooldown
+				years = 20
+			}
+			trigger_event = { id = ate_neomoor_traveler.0001 }
 		}
 	}
 }

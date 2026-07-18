@@ -35,8 +35,8 @@ ate_floridian_alligator.0001 = {
 	override_background = { reference = forest }
 
 	trigger = {
-		is_player_character = yes
-		culture = { has_cultural_heritage = heritage_floridian }
+		is_ai = no
+		culture = { has_cultural_pillar = heritage_floridian }
 		NOT = { has_character_modifier = ate_pet_alligator_modifier }
 		NOT = { has_character_flag = ate_gator_declined }
 		is_available_healthy_adult = yes
@@ -48,10 +48,7 @@ ate_floridian_alligator.0001 = {
 
 	option = {
 		name = ate_floridian_alligator.0001.a
-		create_story = {
-			type = ate_story_cycle_pet_alligator
-			story_owner = root
-		}
+		create_story = ate_story_cycle_pet_alligator
 		stress_impact = {
 			compassionate = minor_stress_impact_loss
 			eccentric = minor_stress_impact_loss
@@ -98,10 +95,7 @@ ate_floridian_alligator.0001 = {
 		trigger = {
 			has_trait = cannibal
 		}
-		create_story = {
-			type = ate_story_cycle_pet_alligator
-			story_owner = root
-		}
+		create_story = ate_story_cycle_pet_alligator
 		stress_impact = {
 			cannibal = major_stress_impact_loss
 		}
@@ -268,7 +262,7 @@ ate_floridian_alligator.0016 = {
 	override_background = { reference = courtyard }
 
 	trigger = {
-		is_player_character = yes
+		is_ai = no
 		has_character_modifier = ate_pet_alligator_modifier
 		NOT = { has_character_flag = ate_gator_young }
 		NOT = { has_character_flag = ate_gator_died }
@@ -324,7 +318,7 @@ ate_floridian_alligator.0004 = {
 	override_background = { reference = council_chamber }
 
 	trigger = {
-		is_player_character = yes
+		is_ai = no
 		has_character_modifier = ate_pet_alligator_modifier
 		is_landed = yes
 		NOT = { has_character_flag = ate_gator_council_cooldown }
@@ -1177,7 +1171,7 @@ ate_floridian_alligator.0013 = {
 					scope:uncovered_secret = { reveal_to = root }
 				}
 				add_hook = {
-					type = strong_hook
+					type = life_threat_hook
 					target = scope:prisoner
 				}
 				add_dread = 10
