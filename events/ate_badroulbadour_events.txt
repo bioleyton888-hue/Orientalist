@@ -9,7 +9,7 @@ ate_badroulbadour.0001 = {
 	title = ate_badroulbadour.0001.t
 	desc = ate_badroulbadour.0001.desc
 	theme = party
-	trigger = { is_player_character = yes }
+	trigger = { is_ai = no }
 
 	immediate = {
 		create_character = {
@@ -395,7 +395,7 @@ ate_badroulbadour.0006 = {
 		add_character_flag = badroulbadour_done
 		remove_variable = badroulbadour
 		add_prestige = 100
-		add_dynasty_prestige = 100
+		dynasty = { add_dynasty_prestige = 100 }
 		scope:badroulbadour_scope = { add_trait = loyal }
 		scope:badroulbadour_scope = { set_house = house:house_ElShabaz }
 		if = {

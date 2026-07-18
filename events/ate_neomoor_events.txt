@@ -23,7 +23,7 @@ ate_neomoor.0001 = {
 	theme = diplomacy
 
 	trigger = {
-		is_player_character = yes
+		is_ai = no
 		culture = culture:neomoor
 		has_character_flag = ate_neomoor_conversion_recent
 		OR = {
@@ -98,7 +98,7 @@ ate_neomoor.0002 = {
 	theme = stewardship
 
 	trigger = {
-		is_player_character = yes
+		is_ai = no
 		culture = culture:neomoor
 		has_character_flag = ate_neomoor_conversion_recent
 		any_vassal = {
@@ -168,7 +168,7 @@ ate_neomoor.0003 = {
 	theme = intrigue
 
 	trigger = {
-		is_player_character = yes
+		is_ai = no
 		culture = culture:neomoor
 		has_character_flag = ate_neomoor_conversion_recent
 	}
