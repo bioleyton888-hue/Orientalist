@@ -31,7 +31,6 @@ ate_pharaoh_headgear = {
 				gene = ate_headgear
 				template = ate_los_angeles_crown
 				accessory = male_headgear_bronze_age_egyptian_nemes
-				value = 1
 			}
 			# clear any additive crown so nothing stacks on top
 			accessory = {

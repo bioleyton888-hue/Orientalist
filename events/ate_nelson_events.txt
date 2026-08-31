@@ -28,6 +28,8 @@ ate_nelson.0009 = {
 	desc = ate_nelson.0009.desc
 	theme = intrigue
 
+	trigger = { is_ai = no }
+
 	immediate = {
 		add_character_flag = nelson_parade_started
 		set_global_variable = { name = nelson_parade_performed value = yes }

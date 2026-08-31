@@ -32,7 +32,7 @@ ate_floridian_alligator.0001 = {
 		character = root
 		animation = shock
 	}
-	override_background = { reference = forest }
+	override_background = { reference = wilderness_forest }
 
 	trigger = {
 		is_ai = no
@@ -113,7 +113,7 @@ ate_floridian_alligator.0002 = {
 		character = root
 		animation = happiness
 	}
-	override_background = { reference = forest }
+	override_background = { reference = wilderness_forest }
 
 	immediate = {
 		add_character_flag = ate_gator_default_wally

@@ -65,6 +65,7 @@ random_yearly_playable_pulse = {
 
 nelson_parade_check = {
 	trigger = {
+		is_ai = no
 		dynasty = dynasty:dynn_caribe_nelson
 		faith = faith:shriner
 		is_adult = yes
@@ -537,6 +538,7 @@ ate_shriner_cafecito_pulse = {
 # Mummy on the Loose — yearly event, 8-year cooldown
 ate_shriner_mummy_pulse = {
 	trigger = {
+		is_ai = no
 		faith = faith:shriner
 		is_adult = yes
 		is_landed = yes
@@ -546,6 +548,10 @@ ate_shriner_mummy_pulse = {
 	effect = {
 		random = {
 			chance = 15
+			add_character_flag = {
+				flag = ate_mummy_cooldown
+				years = 8
+			}
 			trigger_event = { id = ate_shriner.0012 }
 		}
 	}
