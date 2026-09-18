@@ -26,6 +26,7 @@ ate_badroulbadour.0001 = {
 		}
 		set_variable = { name = badroulbadour value = scope:badroulbadour_scope }
 		add_character_flag = badroulbadour_started
+		set_global_variable = { name = badroulbadour_performed value = yes }
 		scope:badroulbadour_scope = { set_house = house:house_ElShabaz }
 	}
 

@@ -84,6 +84,9 @@ nelson_parade_check = {
 
 badroulbadour_chain_check = {
 	trigger = {
+		is_ai = no
+		# Once per game: set in ate_badroulbadour.0001 as soon as she is created
+		NOT = { exists = global_var:badroulbadour_performed }
 		faith = faith:shriner
 		is_adult = yes
 		is_landed = yes
@@ -94,7 +97,11 @@ badroulbadour_chain_check = {
 		OR = {
 			AND = {
 				dynasty = dynasty:dynn_caribe_nelson
-				has_character_flag = nelson_parade_done
+				# Global var survives the parade-doer's death; the flag covers saves from before it existed
+				OR = {
+					exists = global_var:nelson_parade_completed
+					has_character_flag = nelson_parade_done
+				}
 			}
 			AND = {
 				NOT = { dynasty = dynasty:dynn_caribe_nelson }
@@ -103,6 +110,14 @@ badroulbadour_chain_check = {
 		}
 	}
 	effect = {
+		# Save migration: parades finished before nelson_parade_completed existed only left the character flag
+		if = {
+			limit = {
+				has_character_flag = nelson_parade_done
+				NOT = { exists = global_var:nelson_parade_completed }
+			}
+			set_global_variable = { name = nelson_parade_completed value = yes }
+		}
 		random = {
 			chance = 20
 			trigger_event = { id = ate_badroulbadour.0001 }
