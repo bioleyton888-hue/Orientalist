@@ -1,0 +1,25 @@
+﻿# Neomoor culture description, shown by the AteCultureDescription mod
+# (Workshop 3809203832) in the culture tooltip and the culture window.
+# Soft dependency: without that mod nothing reads this variable or the loc key
+# ate_cd_neomoor_desc, and nothing breaks.
+# Convention (see its README, "For other mods"): the culture variable
+# ate_cd_culture_key = flag:X makes the interface show the loc key "X_desc".
+# Removing ate_cd_key_is_base_generic tells AteCultureDescription this is a
+# real text, not a regional generic it may replace.
+ate_neomoor_set_culture_description_effect = {
+	culture:neomoor = {
+		set_variable = {
+			name = ate_cd_culture_key
+			value = flag:ate_cd_neomoor
+		}
+		if = {
+			limit = { has_variable = ate_cd_key_is_base_generic }
+			remove_variable = ate_cd_key_is_base_generic
+		}
+		# Empty check that only "uses" the flag: the interface reads it, but CK3
+		# only counts script uses and would warn "flag set but never used"
+		if = {
+			limit = { var:ate_cd_culture_key = flag:ate_cd_neomoor }
+		}
+	}
+}
