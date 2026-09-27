@@ -16,6 +16,8 @@ ate_neomoor_set_culture_description_effect = {
 			limit = { has_variable = ate_cd_key_is_base_generic }
 			remove_variable = ate_cd_key_is_base_generic
 		}
+		# A written description: hides the "write a better one" invitation
+		set_variable = ate_cd_has_written_text
 		# Empty check that only "uses" the flag: the interface reads it, but CK3
 		# only counts script uses and would warn "flag set but never used"
 		if = {
