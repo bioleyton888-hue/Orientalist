@@ -3,63 +3,33 @@
 # On-action managing possible Pilgrimage journey events
 pilgrimage_journey_events = {
 	trigger = {
-		exists = involved_activity
-		involved_activity = {
-			has_activity_type = activity_pilgrimage
-			NOT = {
-				has_activity_option = {
-					category = special_type
-					option = pilgrimage_type_hajj
-				}
-			}
-		}
 		#We should only get pilgrimage events on our way TO the pilgrimage destination
 		is_on_a_pilgrimage_trigger = yes
-		NOR = { 
+		NOR = {
 			has_character_flag = in_pilgrimage_event_chain
 			has_character_flag = pilgrimage_dealing_with_invalidation
-		} 
-		#Barons don't need pilgrimage events - to avoid them bloating their court when getting add_courtier events
-		highest_held_title_tier >= tier_county
+		}
 	}
 
-	random_on_action = {
-		10 = pilgrimage_generic_travel_events
-		5 = pilgrimage_temptation_travel_events
-		5 = pilgrimage_religious_travel_events
-		8 = pilgrimage_intent_travel_events
-		#triggered if paying for a master pilgrim - 2x as frequent religious events
-		5 = pilgrimage_master_pilgrim_religious_travel_events
-		8 = pilgrimage_master_pilgrim_intent_travel_events
+	on_actions = {
+		pilgrimage_travel_events
 	}
 }
 
 # On-action managing possible Hajj journey events
 #hajj_journey_events = {
 #	trigger = {
-#		exists = involved_activity
-#		involved_activity = { 
-#			has_activity_type = activity_pilgrimage
-#			has_activity_option = {
-#				category = special_type
-#				option = pilgrimage_type_hajj
-#			}
-#		}
 #		#We should only get pilgrimage events on our way TO the pilgrimage destination
 #		is_on_a_hajj_trigger = yes
 #		NOT = { has_character_flag = in_pilgrimage_event_chain }
-#		#Barons don't need pilgrimage events - to avoid them bloating their court when getting add_courtier events
-#		highest_held_title_tier >= tier_county
 #	}
-#
-#	random_on_action = {
-#		10 = pilgrimage_generic_travel_events
-#		5 = pilgrimage_temptation_travel_events
-#		7 = pilgrimage_intent_travel_events
+#	
+#	on_actions = {
+#		pilgrimage_travel_events
 #	}
 #}
 
-pilgrimage_generic_travel_events = {
+pilgrimage_travel_events = {
 	random_events = {
 		chance_of_no_event = {
 			value = 50
@@ -73,10 +43,8 @@ pilgrimage_generic_travel_events = {
 		100 = pilgrimage.2002 # Heathen-hating adherent challenges you
 		100 = pilgrimage.2003 # Companions are running low
 		100 = pilgrimage.2004 # Run into a potential friend
-		100 = pilgrimage.2005 # A peasant inadvertedly insults you
+		10 = pilgrimage.2005 # A peasant inadvertedly insults you
 		100 = pilgrimage.2006 # You have gotten lost
-		25 = pilgrimage.2008 # Fall ill
-		100 = pilgrimage.2009 # Develop pneumonia
 		25 = pilgrimage.2010 # Meet a Mystic (chain)
 		50 = pilgrimage.2020 # Pilgrimage thieves
 		# Sea Generic Pilgrimage Events Events
@@ -86,135 +54,70 @@ pilgrimage_generic_travel_events = {
 		50 = pilgrimage.2050 # Shipwrecked pilgrims
 		# BP1 Events 
 		50 = pilgrimage.6001 #Sneaking off to a tavern with your pal
-	}
-}
-
-pilgrimage_temptation_travel_events = {
-	random_events = {
-		chance_of_no_event = {
-			value = 50
-		}
-		100 = 0
+		
+		#Intent Events
+		50 = pilgrimage_intent.1110 #Sea: Sea legs
+		#Altruism
+		50 = tour_travel.1004 # You decide to wash the feet of locals
+		50 = devaraja.0001	  # Mandala equivalent of royal touch
+		50 = tour_travel.1005 # Locals beg for your royal touch
+		50 = tour_travel.1006 # Distribute alms in front of a temple
+		#Zealot
+		50 = pilgrimage_intent.1000 # Console a local
+		50 = pilgrimage_intent.1001 # Convert a child
+		50 = pilgrimage_intent.1010 # Local courtier is passing by, convert them and bring them on your pilgrimage!
+		50 = pilgrimage_intent.1020 # Fellow pilgrims of a different faith are on your path
+		100 = pilgrimage_intent.9000 # A local heathen is smitten with one of your entourage members and asks to marry them
+		#Reflection
+		50 = pilgrimage_intent.1030 # You see a particularly calm clearing along your way and stop to meditate
+		50 = pilgrimage_intent.1040 # You spot an animal, follow it for an omen?
+		50 = pilgrimage_intent.1050 # You contemplate the brevity of life
+		50 = pilgrimage_intent.1060 # You contemplate old empires
+		100 = pilgrimage_intent.1100 # Personal reflections
+		
 		# 'Temptation' Events
 		50 = pilgrimage.2101 # Rakish or Lustful character considers making a pit stop, or perhaps, a detour to the local brothels
 		50 = pilgrimage.2501 # Persistent Beggar
 		50 = pilgrimage.2511 # Cocky Lordling
-	}
-}
-
-pilgrimage_religious_travel_events = {
-	random_events = {
-		chance_of_no_event = {
-			value = 50
-		}
-		100 = 0
+		
 		# Christian-specific Pilgrimage Events
-		50 = pilgrimage.3001 # Zealous priest giving sermon in freezing rains
+		100 = pilgrimage.3001 # Zealous priest giving sermon in freezing rains
 		5 = pilgrimage.3002  # Naked preacher claims to have recovered Adam & Eve's innocence
-		50 = pilgrimage.3004 # Doomsayer promises the end is nigh!
+		100 = pilgrimage.3004 # Doomsayer promises the end is nigh!
 
 		# Muslim-specific Pilgrimage Events
-		50 = pilgrimage.3102 # Ziyarat - Why am I taking this pilgrimage?
+		100 = pilgrimage.3102 # Ziyarat - Why am I taking this pilgrimage?
 
 		# Hindu-specific Pilgrimage Events
-		50 = pilgrimage.3201 # Ritual purification in a river
-		50 = pilgrimage.3202 # Contemplating the universe
+		100 = pilgrimage.3201 # Ritual purification in a river
+		100 = pilgrimage.3202 # Contemplating the universe
 
 		# Buddhist-specific Pilgrimage Events
-		50 = pilgrimage.3301 # Critical Wanderer
-	}
-}
+		100 = pilgrimage.3301 # Critical Wanderer
+		100 = pilgrimage.3302 # The Wisdom of Goats
+		100 = pilgrimage.3303 # Kalama Sutta
 
-#same as pilgrimage_religious_travel_events
-pilgrimage_master_pilgrim_religious_travel_events = {
-
-	trigger = {
-		current_travel_plan ?= {
-				has_travel_option = theocratic_see_pilgrim_option
-		}
-	}
-	random_events = {
-		chance_of_no_event = {
-			value = 50
-		}
-		100 = 0
-		# Christian-specific Pilgrimage Events
-		50 = pilgrimage.3001 # Zealous priest giving sermon in freezing rains
-		5 = pilgrimage.3002  # Naked preacher claims to have recovered Adam & Eve's innocence
-		50 = pilgrimage.3004 # Doomsayer promises the end is nigh!
-
-		# Muslim-specific Pilgrimage Events
-		50 = pilgrimage.3102 # Ziyarat - Why am I taking this pilgrimage?
-
-		# Hindu-specific Pilgrimage Events
-		50 = pilgrimage.3201 # Ritual purification in a river
-		50 = pilgrimage.3202 # Contemplating the universe
-
-		# Buddhist-specific Pilgrimage Events
-		50 = pilgrimage.3301 # Critical Wanderer
-	}
-}
-
-pilgrimage_intent_travel_events = {
-	random_events = {
-		chance_of_no_event = {
-			value = 50
-		}
-		100 = 0
-		#Intent Events
-		50 = pilgrimage_intent.1110 #Sea: Sea legs
-		#Altruism
-		50 = tour_travel.1004 # You decide to wash the feet of locals
-		50 = tour_travel.1005 # Locals beg for your royal touch
-		50 = tour_travel.1006 # Distribute alms in front of a temple
-		#Zealot
-		50 = pilgrimage_intent.1000 # Console a local
-		50 = pilgrimage_intent.1001 # Convert a child
-		50 = pilgrimage_intent.1010 # Local courtier is passing by, convert them and bring them on your pilgrimage!
-		50 = pilgrimage_intent.1020 # Fellow pilgrims of a different faith are on your path
-		100 = pilgrimage_intent.9000 # A local heathen is smitten with one of your entourage members and asks to marry them
-		#Reflection
-		50 = pilgrimage_intent.1030 # You see a particularly calm clearing along your way and stop to meditate
-		50 = pilgrimage_intent.1040 # You spot an animal, follow it for an omen?
-		50 = pilgrimage_intent.1050 # You contemplate the brevity of life
-		50 = pilgrimage_intent.1060 # You contemplate old empires
-		100 = pilgrimage_intent.1100 # Personal reflections
-		# 10000 = archaeology.1 # test event - you find a cool rock!
-	}
-}
-
-#same as pilgrimage_intent_travel_events
-pilgrimage_master_pilgrim_intent_travel_events = {
-	trigger = {
-		current_travel_plan ?= {
-				has_travel_option = theocratic_see_pilgrim_option
-		}
-	}
-	
-	random_events = {
-		chance_of_no_event = {
-			value = 50
-		}
-		100 = 0
-		#Intent Events
-		50 = pilgrimage_intent.1110 #Sea: Sea legs
-		#Altruism
-		50 = tour_travel.1004 # You decide to wash the feet of locals
-		50 = tour_travel.1005 # Locals beg for your royal touch
-		50 = tour_travel.1006 # Distribute alms in front of a temple
-		#Zealot
-		50 = pilgrimage_intent.1000 # Console a local
-		50 = pilgrimage_intent.1001 # Convert a child
-		50 = pilgrimage_intent.1010 # Local courtier is passing by, convert them and bring them on your pilgrimage!
-		50 = pilgrimage_intent.1020 # Fellow pilgrims of a different faith are on your path
-		100 = pilgrimage_intent.9000 # A local heathen is smitten with one of your entourage members and asks to marry them
-		#Reflection
-		50 = pilgrimage_intent.1030 # You see a particularly calm clearing along your way and stop to meditate
-		50 = pilgrimage_intent.1040 # You spot an animal, follow it for an omen?
-		50 = pilgrimage_intent.1050 # You contemplate the brevity of life
-		50 = pilgrimage_intent.1060 # You contemplate old empires
-		100 = pilgrimage_intent.1100 # Personal reflections
-		# 10000 = archaeology.1 # test event - you find a cool rock!
+		#Dharmic-specific Pilgrimage Events
+		100 = pilgrimage.3401 # Brahmacharya Challenged
+		
+		# South-East Asia
+		# Ocean Events
+		100 = pilgrimage_seasia.100 # The Pearl Diver
+		100 = pilgrimage_seasia.200 # Mangrove Spirits
+		600 = pilgrimage_seasia.300 # Good Omen - Calm Oceans
+		100 = pilgrimage_seasia.400 # Floating Shrine
+		100 = pilgrimage_seasia.500 # The Great Raja!
+		100 = pilgrimage_seasia.600 # An Offering of Rice
+		100 = pilgrimage_seasia.700 # The Naga's Victim
+		100 = pilgrimage_seasia.800 # Shadows in the Water
+		100 = pilgrimage_seasia.900 # Sampan Pirates
+		#100 = pilgrimage_seasia.1000 # Traders of Tanah Makkah
+		# Land Events
+		100 = pilgrimage_seasia.1100 # Rattan Snare
+		#100 = pilgrimage_seasia.1200 # A Wanderer from Nalanda
+		100 = pilgrimage_seasia.1300 # The Croaking Pool
+		100 = pilgrimage_seasia.1400 # Face of a God
+		100 = pilgrimage_seasia.1500 # The Pawang
 	}
 }
 
@@ -222,7 +125,13 @@ pilgrimage_master_pilgrim_intent_travel_events = {
 pilgrimage_arrival_events = {
 	first_valid_on_action = {
 		burial_arrival_events
+		# ATE Neomoor — must precede pilgrimage_generic_arrival_events (always matches)
 		shriner_tampa_arrival_events
+		#AtE Specific
+		# Commented out: ATE lists it but its definition is commented out (#americanist_pilgrimage_events below)
+		#americanist_pilgrimage_events
+
+		#Vanilla
 		#hajj_arrival_events
 		#christian_arrival_events
 		#jewish_arrival_events
@@ -233,8 +142,9 @@ pilgrimage_arrival_events = {
 		#zoroastrian_arrival_events
 		#norse_arrival_events
 		#tengri_arrival_events
-		pagan_arrival_events
+		#pagan_arrival_events
 		pilgrimage_generic_arrival_events
+		
 	}
 	effect = {
 		if = {
@@ -260,32 +170,6 @@ pilgrimage_arrival_events = {
 				}
 			}
 		}
-		if = {
-			limit = {
-				has_variable_list = holy_site_dreams
-				is_target_in_variable_list = {
-					name = holy_site_dreams
-					target = root.location
-				}
-			}
-			send_interface_message = {
-				type = send_interface_message_good
-				title = travel_events_bp3.95.t
-				left_icon = root
-
-				if = {
-					limit = {
-						has_lifestyle = wanderer_lifestyle
-					}
-					add_wanderer_lifestyle_xp = 500
-				}
-				stress_impact = { 
-					base = major_stress_impact_loss 
-					zealous = medium_stress_impact_loss
-				}
-				add_piety = major_piety_gain
-			}
-		}
 	}
 }
 
@@ -295,6 +179,15 @@ burial_arrival_events = {
 		100 = pilgrimage.4020
 	}
 }
+
+#americanist_pilgrimage_events = {
+#	trigger = {
+#		religion_tag = americanist_religion
+#	}
+#	random_events = {
+#		100 = ate_pilgrimage.10 #Arrive in Washington DC - choose a specific monument to visit
+#	}
+#}
 
 #hajj_arrival_events = {
 #	trigger = {
@@ -421,20 +314,42 @@ burial_arrival_events = {
 #	}
 #
 #	random_events = {
+#		100 = pilgrimage.5301 # Varanasi
+#		100 = pilgrimage.5311 # Ayodhya
+#		100 = pilgrimage.5321 # Mathura
+#		100 = pilgrimage.5331 # Haridwar
+#		100 = pilgrimage.5341 # Kanchipuram
+#		100 = pilgrimage.5351 # Ujjayini
+#		100 = pilgrimage.5361 # Dwarka
+#		100 = pilgrimage.4002 # Meet the Mystic again
+#	}
+#}
+
+#buddhist_arrival_events = {
+#	trigger = {
+#		religion = religion:buddhism_religion
+#		involved_activity.activity_location = {
+#			OR = {
+#				county = title:c_gaya # Bodh Gaya
+#				county = title:c_kusinagara # Kusinagara
+#				county = title:c_varanasi # Sarnath
+#			}
+#		}
+#	}
+#
+#	random_events = {
 #		100 = pilgrimage.5401 # Bodh Gaya
 #		100 = pilgrimage.5411 # Kusinagara
 #		100 = pilgrimage.5421 # Sarnath
 #		100 = pilgrimage.4002 # Meet the Mystic again
 #	}
 #}
-
+#
 #jain_arrival_events = {
 #	trigger = {
 #		religion = religion:jainism_religion
 #		involved_activity.activity_location = {
-#			OR = {
-#				county = title:c_radha # Shikharj
-#			}
+#			county = title:c_radha # Shikharj
 #		}
 #	}
 #
@@ -443,14 +358,12 @@ burial_arrival_events = {
 #		100 = pilgrimage.4002 # Meet the Mystic again
 #	}
 #}
-
+#
 #zoroastrian_arrival_events = {
 #	trigger = {
 #		religion = religion:zoroastrianism_religion
 #		involved_activity.activity_location = {
-#			OR = {
-#				county = title:c_baduspan # Ushi-darena
-#			}
+#			county = title:c_baduspan # Ushi-darena
 #		}
 #	}
 #
@@ -459,14 +372,12 @@ burial_arrival_events = {
 #		100 = pilgrimage.4002 # Meet the Mystic again
 #	}
 #}
-
+#
 #norse_arrival_events = {
 #	trigger = {
 #		religion = religion:germanic_religion
 #		involved_activity.activity_location = {
-#			OR = {
-#				county = title:c_brunswick # Paderborn
-#			}
+#			county = title:c_paderborn # Paderborn
 #		}
 #	}
 #
@@ -475,19 +386,30 @@ burial_arrival_events = {
 #		100 = pilgrimage.4002 # Meet the Mystic again
 #	}
 #}
-
-pagan_arrival_events = {
-	trigger = {
-		faith = {
-			has_doctrine = tenet_sanctity_of_nature
-		}
-	}
-
-	random_events = {
-		100 = pilgrimage.5921 # Sacred Grove
-		100 = pilgrimage.4002 # Meet the Mystic again
-	}
-}
+#
+#tengri_arrival_events = {
+#	trigger = {
+#		religion = religion:tengrism_religion
+#	}
+#
+#	random_events = {
+#		100 = pilgrimage.5911 # Blue Open Skies
+#		100 = pilgrimage.4002 # Meet the Mystic again
+#	}
+#}
+#
+#pagan_arrival_events = {
+#	trigger = {
+#		faith = {
+#			has_doctrine = tenet_sanctity_of_nature
+#		}
+#	}
+#
+#	random_events = {
+#		100 = pilgrimage.5921 # Sacred Grove
+#		100 = pilgrimage.4002 # Meet the Mystic again
+#	}
+#}
 
 pilgrimage_generic_arrival_events = {
 	random_events = {
@@ -501,6 +423,7 @@ pilgrimage_destination_events = {
 	trigger = {
 		location = scope:activity.activity_location
 	}
+	
 	random_events = {
 		100 = 0
 		120 = pilgrimage.6500 #Appreciation
@@ -521,6 +444,9 @@ pilgrimage_destination_events = {
 		#10000 = archaeology.2 # test event - you find an artifact!
 		10000 = archaeology.10 # you decide to do some archaeology
 		10000 = atomic_blessing.01 #you get the atomic blessing!
+		100 = pilgrimage.6850 #A Master Thief
+		#100 = pilgrimage.5445 #Dharmic Parikrama (circumambulation)
+
 	}
 }
 
