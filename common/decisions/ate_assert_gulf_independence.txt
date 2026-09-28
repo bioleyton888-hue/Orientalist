@@ -80,7 +80,7 @@ assert_gulf_independence_decision = {
 
 	effect = {
 		save_scope_as = assert_gulf_independence_former
-		add_dynasty_prestige = 500
+		dynasty ?= { add_dynasty_prestige = 500 }
 		hidden_effect = {
 			add_to_global_variable_list = {
 				name = unavailable_unique_decisions
