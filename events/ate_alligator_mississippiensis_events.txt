@@ -325,6 +325,8 @@ ate_floridian_alligator.0004 = {
 	}
 
 	immediate = {
+		# Tooltips inside random_list branches can't resolve ROOT; the .tt loc uses this saved scope.
+		save_scope_as = gator_owner
 		add_character_flag = {
 			flag = ate_gator_council_cooldown
 			years = 10
