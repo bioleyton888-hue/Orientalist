@@ -12,7 +12,7 @@ ate_shriner_pilgrimage.0001 = {
 	theme = faith
 
 	trigger = {
-		is_player_character = yes
+		is_ai = no
 	}
 
 	left_portrait = {
@@ -820,8 +820,9 @@ ate_shriner_pilgrimage.0100 = {
 	theme = faith
 
 	immediate = {
-		faith:shriner = {
-			head_of_faith = { save_scope_as = imperial_potentate }
+		if = {
+			limit = { exists = faith:shriner.religious_head }
+			faith:shriner.religious_head = { save_scope_as = imperial_potentate }
 		}
 	}
 

@@ -1,0 +1,3 @@
+﻿# Nicknames for the Fez of Islam. Even Florenz refers to Hasim as "the Captain",
+# in a tone of voice he does not use for anyone else.
+nick_ate_the_captain = {}

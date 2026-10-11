@@ -1,0 +1,17 @@
+﻿# Neomoor culture description for AteCultureDescription (see
+# common/scripted_effects/ate_neomoor_culture_description_effects.txt).
+# Same timing as AteCultureDescription: new games, and every Jan 1st so saved
+# games pick it up (CK3 has no on-load hook). Idempotent.
+on_game_start = {
+	on_actions = { ate_neomoor_culture_description }
+}
+
+yearly_global_pulse = {
+	on_actions = { ate_neomoor_culture_description }
+}
+
+ate_neomoor_culture_description = {
+	effect = {
+		ate_neomoor_set_culture_description_effect = yes
+	}
+}

@@ -1,0 +1,27 @@
+﻿# The Lamp of Agrabah — legend seed (PROTOTYPE, lorem ipsum text)
+# DB seed for easy testing: shows in the Legends window for any Shriner/Neomoor ruler.
+# NOTE: the once-guard global var is never set by ATE's mark_historical_legend_as_done
+# (our property combo isn't in its chain) — final version will switch to a runtime
+# create_legend_seed grant from ate_shriner.0009 / the Badroulbadour finale.
+
+ate_lamp_of_agrabah_seed = {
+	type = legitimizing
+	quality = famed
+	is_shown = {
+		has_dlc_feature = legends
+		NOT = { has_global_variable = ate_lamp_of_agrabah_legend }
+		OR = {
+			faith = faith:shriner
+			culture = culture:neomoor
+		}
+	}
+	is_valid = {
+		is_playable_character = yes
+		prestige_level >= medium_prestige_level
+	}
+
+	chronicle = ate_lamp_of_agrabah
+	chronicle_properties = {
+		title = title:k_florida
+	}
+}

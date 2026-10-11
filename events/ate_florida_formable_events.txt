@@ -1,0 +1,216 @@
+﻿namespace = ate_florida_formables
+
+# Celebration events for the Florida formable decisions. NARRATIVE-ONLY: the decisions
+# already apply every mechanical effect in their own effect block, so these events just
+# stage the moment. Fired at the end of each decision's effect.
+
+# Proclaim West Florida — the kingdom restored.
+# Fired from common/decisions/ate_proclaim_west_florida.txt. root = the new ruler of West Florida.
+ate_florida_formables.0001 = {
+	type = character_event
+	title = ate_florida_formables.0001.t
+	desc = ate_florida_formables.0001.desc
+	theme = realm
+	override_background = { reference = throne_room }
+	left_portrait = {
+		character = root
+		animation = happiness
+	}
+
+	option = {
+		name = ate_florida_formables.0001.a
+	}
+	option = {
+		name = ate_florida_formables.0001.b
+	}
+}
+
+# Assert Gulf Independence — the Empire of the Gulf forged (al-Hijrah for Shriner/Neomoor).
+# Fired from common/decisions/ate_assert_gulf_independence.txt. root = the new emperor.
+# Title + desc branch on faith/culture: a sacred-migration framing for the faithful, an
+# imperial one for everyone else. The empire is already created before this fires, so the
+# title name resolves correctly (al-Hijrah if renamed by our title handler).
+ate_florida_formables.0010 = {
+	type = character_event
+	title = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					OR = {
+						faith = faith:shriner
+						culture = culture:neomoor
+					}
+				}
+				desc = ate_florida_formables.0010.t.shriner
+			}
+			desc = ate_florida_formables.0010.t.secular
+		}
+	}
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					OR = {
+						faith = faith:shriner
+						culture = culture:neomoor
+					}
+				}
+				desc = ate_florida_formables.0010.desc.shriner
+			}
+			desc = ate_florida_formables.0010.desc.secular
+		}
+	}
+	theme = realm
+	override_background = { reference = throne_room }
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+
+	option = {
+		name = ate_florida_formables.0010.a
+	}
+	option = {
+		name = ate_florida_formables.0010.b
+	}
+}
+
+# Scramble for the Sunshine State — an empire/hegemony swallows and unifies Florida.
+# Fired from common/decisions/ate_scramble_for_the_sunshine_state.txt. root = the conqueror.
+# Desc branches by which great power they lead (primary_title): the restored United States
+# hegemony, the Holy Columbian Confederacy, or the Caribbean dominion. Conquest/consolidation
+# tone — the old Florida kingdoms have just been destroyed.
+ate_florida_formables.0020 = {
+	type = character_event
+	title = ate_florida_formables.0020.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { primary_title = title:h_usa }
+				desc = ate_florida_formables.0020.desc.usa
+			}
+			triggered_desc = {
+				trigger = { primary_title = title:e_hcc }
+				desc = ate_florida_formables.0020.desc.hcc
+			}
+			triggered_desc = {
+				trigger = { primary_title = title:e_caribbean }
+				desc = ate_florida_formables.0020.desc.caribbean
+			}
+			desc = ate_florida_formables.0020.desc.usa
+		}
+	}
+	theme = realm
+	override_background = { reference = throne_room }
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+
+	option = {
+		name = ate_florida_formables.0020.a
+	}
+	option = {
+		name = ate_florida_formables.0020.b
+	}
+}
+
+# Annex West Florida — mirror of Assert Gulf Independence, for the powers that pull West
+# Florida back in instead of letting it break away. Fired from
+# common/decisions/ate_annex_west_florida.txt. root = the annexer.
+# Desc branches by primary_title: Caribbean (the island throne collecting what was always its
+# own), HCC (the grudge, an "unfinished sermon" finally closed), Mississippi (a true
+# homecoming — the land was carved from Mississippi's own kingdoms), or the Gulf Empire itself
+# (re-taking its own cradle: had it, lost it, taking it back — hence the title).
+ate_florida_formables.0030 = {
+	type = character_event
+	title = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { primary_title = title:e_gulf_empire }
+				desc = ate_florida_formables.0030.t.gulf
+			}
+			desc = ate_florida_formables.0030.t
+		}
+	}
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { primary_title = title:e_caribbean }
+				desc = ate_florida_formables.0030.desc.caribbean
+			}
+			triggered_desc = {
+				trigger = { primary_title = title:e_hcc }
+				desc = ate_florida_formables.0030.desc.hcc
+			}
+			triggered_desc = {
+				# Mississippi ANNEX choice (flag set in 0031) — checked BEFORE the primary_title
+				# branch so it pre-empts the reclamation/homecoming text.
+				trigger = { has_character_flag = ate_wf_mississippi_annexed }
+				desc = ate_florida_formables.0030.desc.mississippi_annex
+			}
+			triggered_desc = {
+				trigger = { primary_title = title:e_the_mississippi }
+				desc = ate_florida_formables.0030.desc.mississippi
+			}
+			triggered_desc = {
+				trigger = { primary_title = title:e_gulf_empire }
+				desc = ate_florida_formables.0030.desc.gulf
+			}
+			desc = ate_florida_formables.0030.desc.caribbean
+		}
+	}
+	theme = realm
+	override_background = { reference = throne_room }
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+
+	option = {
+		name = ate_florida_formables.0030.a
+	}
+	option = {
+		name = ate_florida_formables.0030.b
+	}
+}
+
+# The Mississippi's Question — choice event fired from the annex decision when the taker is
+# the Mississippi. The cost is already paid; here the emperor picks the ending:
+#   a) RECLAIM — restore every duchy/county to its pre-Proclaim de jure kingdom and destroy
+#      the empty k_west_florida shell (the permanent ending; heals the de jure drift).
+#   b) ANNEX — keep the crown whole and take it for the Mississippi, like the other empires.
+# Effects live here (not in the decision) because the choice is the point; both options act,
+# there is no receive-nothing branch. Each option fires 0030 for its celebration text — the
+# annex option sets a short-lived flag that 0030's desc reads to pick the right branch.
+ate_florida_formables.0031 = {
+	type = character_event
+	title = ate_florida_formables.0031.t
+	desc = ate_florida_formables.0031.desc
+	theme = realm
+	override_background = { reference = throne_room }
+	left_portrait = {
+		character = root
+		animation = thinking
+	}
+
+	option = {
+		name = ate_florida_formables.0031.a
+		# RECLAIM — the elders win: the old map is restored, the borrowed crown destroyed
+		ate_annex_west_florida_mississippi_effects = yes
+		trigger_event = { id = ate_florida_formables.0030 }
+		ai_chance = {
+			base = 60
+		}
+	}
+	option = {
+		name = ate_florida_formables.0031.b
+		# ANNEX — the treasurers win: a crown in hand is worth more than an old grievance
+		add_character_flag = { flag = ate_wf_mississippi_annexed days = 30 }
+		ate_annex_west_florida_mississippi_annex_effects = yes
+		trigger_event = { id = ate_florida_formables.0030 }
+		ai_chance = {
+			base = 40
+		}
+	}
+}

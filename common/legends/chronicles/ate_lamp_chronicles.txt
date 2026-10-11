@@ -1,0 +1,19 @@
+﻿# The Lamp of Agrabah — custom chronicle (PROTOTYPE, lorem ipsum text)
+# New key in a new file = additive; never redefine ATE's 00_chronicles.txt entries.
+# Name/desc use the default keys: legend_chronicle_ate_lamp_of_agrabah / _desc
+
+ate_lamp_of_agrabah = {
+	portrait_animation = personality_content
+
+	properties = {
+		title = landed_title
+	}
+
+	chapters = {
+		rubble_bazaar = legend_chapter_ate_lamp_rubble_bazaar
+		vault_of_wonders = legend_chapter_ate_lamp_vault_of_wonders
+		hand_of_badroulbadour = legend_chapter_ate_lamp_hand_of_badroulbadour
+		new_lamps_for_old = legend_chapter_ate_lamp_new_lamps_for_old
+		reclamation = legend_chapter_ate_lamp_reclamation
+	}
+}

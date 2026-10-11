@@ -1,0 +1,8 @@
+﻿l_english:
+ ate_neomoor_traveler.0001.t:0 "The Traveling Hakim"
+ ate_neomoor_traveler.0001.desc:0 "A traveler arrives at your gates as the sun crests the walls, road-worn yet carrying [traveler.GetHerselfHimself] with an unmistakable dignity. Upon [traveler.GetHerHis] head sits a crimson fez, its golden tassel swaying with every bow.\n\n[traveler.GetFirstNameNoTooltip] names [traveler.GetHerselfHimself] a hakim — a healer of the Shriner faith, trained in the great hospital-temples of the distant Oasis, where the physicians of the fez mend broken children without asking a single coin. For years [traveler.GetSheHe] has wandered far from the Shriner lands, tending to the sick wherever the road has carried [traveler.GetHerHim]. Now, weary of wandering, [traveler.GetSheHe] asks leave to hang [traveler.GetHerHis] lamp in your halls — [traveler.GetHerHis] healing arts, in exchange for nothing more than a roof and a hearth.\n\nThe fez is outlandish. The credentials, however, are difficult to dismiss."
+ ate_neomoor_traveler.0001.a:0 "Your skills are welcome here, hakim."
+ ate_neomoor_traveler.0001.b:0 "You may stay — once you set aside that fez."
+ ate_neomoor_traveler.0001.c:0 "We have no need of foreign quacks."
+ ate_neomoor_traveler_add_courtier.tt:0 "[new_courtier.GetFirstNameNoTooltip] joins your court as an experienced physician"
+ ate_neomoor_traveler_turned_away.tt:0 "The road will carry [traveler.GetFirstNameNoTooltip] elsewhere"

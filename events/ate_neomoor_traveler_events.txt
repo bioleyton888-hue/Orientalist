@@ -1,0 +1,115 @@
+﻿namespace = ate_neomoor_traveler
+
+# The Traveling Hakim — a travelerd Shriner physician arrives at a foreign court
+# Fired from ate_shriner_traveler_pulse (10% yearly, 20-year cooldown) for landed
+# player rulers who are neither Neomoor culture nor Shriner faith
+ate_neomoor_traveler.0001 = {
+	type = character_event
+	title = ate_neomoor_traveler.0001.t
+	desc = ate_neomoor_traveler.0001.desc
+	theme = medicine
+	left_portrait = {
+		character = scope:traveler
+		animation = beg
+	}
+
+	trigger = {
+		exists = capital_province
+		is_landed = yes
+	}
+
+	immediate = {
+		hidden_effect = {
+			create_character = {
+				location = root.capital_province
+				template = pool_repopulate_learning
+				culture = culture:neomoor
+				faith = faith:shriner
+				save_scope_as = traveler
+			}
+			scope:traveler = {
+				add_trait = lifestyle_physician
+				add_trait_xp = {
+					trait = lifestyle_physician
+					value = 75
+				}
+			}
+		}
+	}
+
+	# Welcome the healer, fez and all
+	option = {
+		name = ate_neomoor_traveler.0001.a
+		scope:traveler = {
+			save_scope_as = new_courtier
+			hidden_effect = { root = { add_courtier = scope:new_courtier } }
+			custom_tooltip = ate_neomoor_traveler_add_courtier.tt
+			add_opinion = {
+				target = root
+				modifier = grateful_opinion
+				opinion = 30
+			}
+		}
+		if = {
+			limit = {
+				can_add_hook = {
+					target = scope:traveler
+					type = favor_hook
+				}
+			}
+			add_hook = {
+				target = scope:traveler
+				type = favor_hook
+			}
+		}
+		hidden_effect = {
+			if = {
+				limit = { can_set_relation_potential_friend_trigger = { CHARACTER = scope:traveler } }
+				set_relation_potential_friend = scope:traveler
+			}
+		}
+		stress_impact = {
+			paranoid = medium_stress_impact_gain
+			zealous = minor_stress_impact_gain
+		}
+		ai_chance = {
+			base = 100
+		}
+	}
+
+	# They may stay — if they renounce the fez
+	option = {
+		name = ate_neomoor_traveler.0001.b
+		scope:traveler = {
+			save_scope_as = new_courtier
+			hidden_effect = { root = { add_courtier = scope:new_courtier } }
+			custom_tooltip = ate_neomoor_traveler_add_courtier.tt
+			set_character_faith = root.faith
+			add_opinion = {
+				target = root
+				modifier = grateful_opinion
+				opinion = 10
+			}
+		}
+		stress_impact = {
+			compassionate = minor_stress_impact_gain
+		}
+		ai_chance = {
+			base = 50
+		}
+	}
+
+	# Turn them away
+	option = {
+		name = ate_neomoor_traveler.0001.c
+		custom_tooltip = ate_neomoor_traveler_turned_away.tt
+		stress_impact = {
+			compassionate = medium_stress_impact_gain
+			generous = minor_stress_impact_gain
+			callous = minor_stress_impact_loss
+		}
+		ai_chance = {
+			base = 20
+		}
+	}
+}

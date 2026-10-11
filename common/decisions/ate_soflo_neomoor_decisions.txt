@@ -78,6 +78,9 @@ ate_nelson_soflo_neomoor = {
 		title:c_tampa = { set_county_culture = culture:neomoor }
 		title:c_st_petersburg = { set_county_culture = culture:neomoor }
 		trigger_event = { id = ate_nelson.0001 }
+		# Refresh dynamic title names now — culture just changed, no title changed hands
+		trigger_event = title_event.5000
+		trigger_event = title_event.5002
 	}
 
 	ai_potential = {
@@ -171,6 +174,9 @@ ate_shriner_soflo_neomoor = {
 		title:c_miami_dade = { set_county_culture = culture:neomoor }
 		title:c_broward = { set_county_culture = culture:neomoor }
 		trigger_event = { id = ate_shriner.0004 }
+		# Refresh dynamic title names now — culture just changed, no title changed hands
+		trigger_event = title_event.5000
+		trigger_event = title_event.5002
 	}
 
 	ai_potential = {
@@ -214,9 +220,9 @@ ate_waltney_soflo_neomoor = {
 				}
 			}
 			AND = {
-				has_title = title:k_florida_waltney
+				has_title = title:k_florida
 				NOT = {
-					title:k_florida_waltney = {
+					title:k_florida = {
 						any_de_jure_county = {
 							NOT = { holder.top_liege = root }
 						}

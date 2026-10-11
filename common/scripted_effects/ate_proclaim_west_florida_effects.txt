@@ -1,0 +1,37 @@
+﻿# Our own Proclaim West Florida effect — called by our override decision
+# (common/decisions/ate_proclaim_west_florida.txt). Uniquely named so we don't depend on
+# overriding the base effect key. This is the 1.17 logic: ALWAYS build a real, de-jure-complete
+# Kingdom of West Florida. Every West Florida duchy is set de jure under k_west_florida —
+# no else-branch dumping them into k_florida, so West Florida is never absorbed.
+ate_proclaim_west_florida_decision_effects = {
+	scope:proclaim_west_florida_former = {
+		# The new kingdom starts de jure under the Caribbean — Florida is "a gem of the Caribbean"
+		# and k_soflo already sits in the Caribbean's de jure sphere. Deterministic (same result no
+		# matter who forms it) and it replaces the old founder-chain navigation that either errored
+		# (1.17: null source for kingdom-primary holders) or silently left the kingdom floating.
+		# Assert Gulf Independence re-parents it under e_gulf_empire when the Gulf breaks free.
+		title:k_west_florida = { set_de_jure_liege_title = title:e_caribbean }
+		create_title_and_vassal_change = {
+			type = created
+			save_scope_as = title_change
+			add_claim_on_loss = no
+		}
+		title:k_west_florida = {
+			change_title_holder = {
+				holder = scope:proclaim_west_florida_former
+				change = scope:title_change
+			}
+		}
+		resolve_title_and_vassal_change = scope:title_change
+
+		# All West Florida land becomes de jure West Florida — the real kingdom, no absorption
+		title:d_west_florida = { set_de_jure_liege_title = title:k_west_florida }
+		title:d_homochitto = { set_de_jure_liege_title = title:k_west_florida }
+		title:d_pine_belt = { set_de_jure_liege_title = title:k_west_florida }
+		title:d_conecuh = { set_de_jure_liege_title = title:k_west_florida }
+		title:d_wiregrass = { set_de_jure_liege_title = title:k_west_florida }
+		title:c_mobile.de_jure_liege = { set_de_jure_liege_title = title:k_west_florida }
+		title:c_demopolis = { set_de_jure_liege_title = title:c_butler.de_jure_liege }
+		title:d_florabama = { set_de_jure_liege_title = title:k_west_florida }
+	}
+}

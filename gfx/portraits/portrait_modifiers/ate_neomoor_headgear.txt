@@ -23,6 +23,7 @@ ate_pharaoh_headgear = {
 				mode = add
 				gene = headgear
 				template = no_headgear
+				value = 1
 			}
 			# force the nemes from the ATE headgear gene
 			accessory = {

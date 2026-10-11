@@ -1,0 +1,32 @@
+﻿# Captain Hasim — leader of the Fez of Islam, the one Shriner holy order.
+# A blue-eyed, blonde-haired Sunshiner convert so pale he borders on albinism — and the most
+# ferociously devoted Neomoor alive. These two facts coexist in him without friction.
+# The order is spawned pre-formed at game start with him at its head
+# (common/on_action/ate_fez_of_islam_on_action.txt). Appearance forced via dna_ate_fez_hasim.
+# He has fought djinn. This is not a metaphor.
+ate_fez_hasim_1 = {
+	name = "Hasim"
+	culture = neomoor
+	religion = shriner
+	female = no
+	dna = dna_ate_fez_hasim
+	disallow_random_traits = yes
+
+	trait = education_martial_4
+	trait = zealous
+	trait = brave
+	trait = stubborn
+	trait = scarred
+
+	martial = 17
+	prowess = 18
+	learning = 10
+	diplomacy = 6
+
+	2624.11.9 = {
+		birth = yes
+	}
+	2652.1.1 = {
+		give_nickname = nick_ate_the_captain
+	}
+}

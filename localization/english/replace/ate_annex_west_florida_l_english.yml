@@ -1,0 +1,12 @@
+﻿l_english:
+ # ATE Neomoor — Annex West Florida (mirror of Assert Gulf Independence).
+ annex_west_florida_decision:0 "Annex West Florida"
+ annex_west_florida_decision_desc:0 "West Florida flies its lone star again, but a crown that answers to no one is a crown that answers wrong. It is time to remind that little kingdom exactly whose sphere it was born into — and to bring it home in truth, not just in name."
+ annex_west_florida_decision_tooltip:0 "Absorb West Florida directly into your realm"
+ annex_west_florida_decision_confirm:0 "It was always ours."
+ annex_west_florida_requires_real_kingdom:0 "[GetTitleByKey('k_west_florida').GetNameNoTier] must be a real, de-jure-complete kingdom (built by the Proclaim West Florida decision)"
+ annex_west_florida_requires_vassal_held:0 "[GetTitleByKey('k_west_florida').GetNameNoTier] must be held by a vassal within your realm"
+ annex_west_florida_primary_title_caribbean:0 "Your [primary_title|E] is [GetTitleByKey('e_caribbean').GetName]"
+ annex_west_florida_primary_title_hcc:0 "Your [primary_title|E] is [GetTitleByKey('e_hcc').GetName]"
+ annex_west_florida_primary_title_mississippi:0 "Your [primary_title|E] is [GetTitleByKey('e_the_mississippi').GetName]"
+ annex_west_florida_primary_title_gulf:0 "Your [primary_title|E] is [GetTitleByKey('e_gulf_empire').GetName]"

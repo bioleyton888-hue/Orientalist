@@ -142,7 +142,7 @@ ate_shriner.0005 = {
 		}
 	}
 	theme = feast_activity
-	trigger = { is_player_character = yes }
+	trigger = { is_ai = no }
 	left_portrait = {
 		character = root
 		animation = joy
@@ -415,7 +415,7 @@ ate_shriner.0009 = {
 	desc = ate_shriner.0009.desc
 	theme = faith
 
-	trigger = { is_player_character = yes }
+	trigger = { is_ai = no }
 
 	left_portrait = {
 		character = root
@@ -460,7 +460,7 @@ ate_shriner.0010 = {
 	desc = ate_shriner.0010.desc
 	theme = feast_activity
 
-	trigger = { is_player_character = yes }
+	trigger = { is_ai = no }
 
 	left_portrait = {
 		character = root
@@ -571,14 +571,7 @@ ate_shriner.0012 = {
 	desc = ate_shriner.0012.desc
 	theme = diplomacy
 
-	trigger = { is_player_character = yes }
-
-	immediate = {
-		add_character_flag = {
-			flag = ate_mummy_cooldown
-			years = 8
-		}
-	}
+	trigger = { is_ai = no }
 
 	left_portrait = {
 		character = root
@@ -629,7 +622,7 @@ ate_shriner.0013 = {
 	desc = ate_shriner.0013.desc
 	theme = travel
 
-	trigger = { is_player_character = yes }
+	trigger = { is_ai = no }
 
 	immediate = {
 		create_character = {
@@ -823,7 +816,7 @@ ate_shriner.0014 = {
 	desc = ate_shriner.0014.desc
 	theme = witchcraft
 
-	trigger = { is_player_character = yes }
+	trigger = { is_ai = no }
 
 	immediate = {
 		create_character = {
@@ -850,10 +843,19 @@ ate_shriner.0014 = {
 			save_scope_as = ramses
 		}
 		random_list = {
-			25 = { scope:ramses = { set_house = house:house_ramsesovich } }
-			25 = { scope:ramses = { set_house = house:house_ramsestein } }
-			25 = { scope:ramses = { set_house = house:house_ramsestinski } }
-			25 = { scope:ramses = { set_house = house:house_ramsebayashi } }
+			10 = { scope:ramses = { set_house = house:house_ramsesovich } }
+			10 = { scope:ramses = { set_house = house:house_ramsestein } }
+			10 = { scope:ramses = { set_house = house:house_ramsestilsky } }
+			10 = { scope:ramses = { set_house = house:house_uramusezu } }
+			10 = { scope:ramses = { set_house = house:house_ramsesberg } }
+			10 = { scope:ramses = { set_house = house:house_ramsesson } }
+			10 = { scope:ramses = { set_house = house:house_ramsesini } }
+			10 = { scope:ramses = { set_house = house:house_oramses } }
+			10 = { scope:ramses = { set_house = house:house_ramsesopoulos } }
+			10 = { scope:ramses = { set_house = house:house_ramsewitz } }
+			10 = { scope:ramses = { set_house = house:house_ben_ramses } }
+			10 = { scope:ramses = { set_house = house:house_ibn_ramses } }
+			10 = { scope:ramses = { set_house = house:house_do_ramses } }
 		}
 		scope:ramses = {
 			add_character_flag = ate_pharaoh_crown
@@ -1270,7 +1272,7 @@ ate_shriner.0011 = {
 	theme = feast_activity
 
 	trigger = {
-		is_player_character = yes
+		is_ai = no
 		any_courtier = {
 			OR = {
 				culture = culture:sofloano

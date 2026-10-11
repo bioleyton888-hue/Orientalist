@@ -1,0 +1,113 @@
+﻿namespace = title_event
+
+# OVERRIDE of base ATE title_event.5000 / 5002 (events/title_events.txt).
+# Base only checked dynn_caribe_waltney; this adds the Shriner/Neomoor tiers.
+# Priority per title (first match wins):
+#   1. House Ababwa AND (neomoor OR shriner) -> Agrabah / al-Yaman
+#        (carve-out: Ababwa is a cadet of dynn_caribe_waltney, so this MUST be
+#         checked first or the dynasty branch below would grab it = Magic Kingdom)
+#   2. dynasty dynn_caribe_waltney  -> Magic Kingdom / Epcot  (beats culture & faith)
+#   3. culture neomoor OR faith shriner -> Agrabah / al-Yaman  (non-Waltney converts)
+#   4. else -> reset to Florida / Soflo
+# Fired by base on_title_gain / _inheritance / _usurpation (title_on_actions.txt),
+# so no extra pulse is needed. The k_florida/k_soflo branches were removed from
+# neomoor_shriner_title_gain_handler so nothing races these events.
+
+# Kingdom of Florida
+title_event.5000 = {
+	hidden = yes
+	immediate = {
+		if = {
+			limit = { has_title = title:k_florida }
+			if = {
+				limit = {
+					house = house:house_waltney_ababwa
+					OR = {
+						culture = culture:neomoor
+						faith = faith:shriner
+					}
+				}
+				title:k_florida = {
+					set_title_name = k_florida_agrabah
+					set_title_color = { 0 163 71 }
+					set_definitive_form = no
+				}
+			}
+			else_if = {
+				limit = { dynasty = dynasty:dynn_caribe_waltney }
+				title:k_florida = {
+					set_title_name = k_florida_waltney
+					set_title_color = { 1 163 71 }
+					set_definitive_form = yes
+				}
+			}
+			else_if = {
+				limit = {
+					OR = {
+						culture = culture:neomoor
+						faith = faith:shriner
+					}
+				}
+				title:k_florida = {
+					set_title_name = k_florida_agrabah
+					set_title_color = { 0 163 71 }
+					set_definitive_form = no
+				}
+			}
+			else = {
+				title:k_florida = {
+					reset_title_name = yes
+					set_title_color = { 0 163 71 }
+					set_definitive_form = no
+				}
+			}
+		}
+	}
+}
+
+# Kingdom of Soflo
+title_event.5002 = {
+	hidden = yes
+	immediate = {
+		if = {
+			limit = { has_title = title:k_soflo }
+			if = {
+				limit = {
+					house = house:house_waltney_ababwa
+					OR = {
+						culture = culture:neomoor
+						faith = faith:shriner
+					}
+				}
+				title:k_soflo = {
+					set_title_name = k_soflo_neomoor_shriner
+					set_title_color = { 237 207 18 }
+				}
+			}
+			else_if = {
+				limit = { dynasty = dynasty:dynn_caribe_waltney }
+				title:k_soflo = {
+					set_title_name = k_soflo_imaginerian
+				}
+			}
+			else_if = {
+				limit = {
+					OR = {
+						culture = culture:neomoor
+						faith = faith:shriner
+					}
+				}
+				title:k_soflo = {
+					set_title_name = k_soflo_neomoor_shriner
+					set_title_color = { 237 207 18 }
+				}
+			}
+			else = {
+				title:k_soflo = {
+					reset_title_name = yes
+					set_title_color = { 237 207 18 }
+				}
+			}
+		}
+	}
+}

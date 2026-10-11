@@ -1,0 +1,72 @@
+﻿# The Fez of Islam — spawn the Shriner holy order pre-formed at game start, with Captain Hasim
+# (history/characters/ate_fez_of_islam_characters.txt) at its head. Mirrors vanilla's 1178
+# Templars/Hospitallers setup in game_start.txt: history character as leader +
+# create_holy_order_neutral_effect + a barony as leased seat.
+# Seat: Sarasota (b_us_fl_sarasota) — Shriner-faith city in c_tampa, the faith's heartland,
+# but NOT the Potentate's own capital barony (the order is independent of the Divan).
+# on_action blocks merge across files, so hooking on_game_start here is safe.
+on_game_start = {
+	on_actions = {
+		ate_fez_of_islam_setup
+	}
+}
+
+ate_fez_of_islam_setup = {
+	effect = {
+		if = {
+			limit = {
+				# The stored title var doubles as the once-guard
+				NOT = { exists = global_var:ate_fez_of_islam_title }
+				exists = character:ate_fez_hasim_1
+				character:ate_fez_hasim_1 = { is_alive = yes }
+				exists = title:b_us_fl_sarasota.holder
+				exists = title:c_tampa.holder
+			}
+			character:ate_fez_hasim_1 = { save_scope_as = fez_leader }
+			title:b_us_fl_sarasota = { save_scope_as = fez_barony }
+			# The Count of Tampa (Ali Nelson at start) hosts the order's seat and stands as
+			# founder — the founder only matters for struggle catalysts (none in ATE).
+			title:c_tampa.holder = { save_scope_as = fez_founder }
+			# Sarasota is a city: its generated mayor holds it as his ONLY title, and
+			# create_holy_order refuses that lease ("title holder must be above baron" /
+			# "cannot lease out their only held title"). Hand the barony to the count first —
+			# the same pre-transfer the vanilla create_holy_order_decision does — and the
+			# order then leases it from him.
+			if = {
+				limit = {
+					scope:fez_barony.holder = {
+						NOT = { this = scope:fez_founder }
+					}
+				}
+				create_title_and_vassal_change = {
+					type = leased_out
+					save_scope_as = fez_change
+					add_claim_on_loss = no
+				}
+				scope:fez_barony = {
+					change_title_holder_include_vassals = {
+						holder = scope:fez_founder
+						change = scope:fez_change
+					}
+				}
+				resolve_title_and_vassal_change = scope:fez_change
+			}
+			create_holy_order_neutral_effect = {
+				LEADER = scope:fez_leader
+				CAPITAL = scope:fez_barony
+				NEW_HO_SCOPE = fez_order
+				FOUNDER = scope:fez_founder
+			}
+			# The order's title IS the leader's primary title after creation (the Jomsvikings
+			# idiom) — force our name and heraldry over the faith's generated pick.
+			scope:fez_leader.primary_title = {
+				set_title_name = ate_fez_of_islam
+				set_coa = ho_fez_of_islam
+			}
+			set_global_variable = {
+				name = ate_fez_of_islam_title
+				value = scope:fez_leader.primary_title
+			}
+		}
+	}
+}

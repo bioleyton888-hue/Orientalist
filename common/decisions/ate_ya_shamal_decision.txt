@@ -32,7 +32,7 @@ ya_shamal_decision = {
 	effect = {
 		set_global_variable = { name = ya_shamal_performed value = yes }
 		give_nickname = nick_ya_shamal
-		add_dynasty_prestige = 750
+		dynasty = { add_dynasty_prestige = 750 }
 		add_prestige = 1000
 		add_piety = 1000
 		add_trait = ya_shamal

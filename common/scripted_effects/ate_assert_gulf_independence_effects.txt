@@ -1,0 +1,33 @@
+﻿# ATE Neomoor — Assert Gulf Independence effect, called by our decision
+# (common/decisions/ate_assert_gulf_independence.txt). Uniquely named so it's self-contained.
+# Creates the Empire of the Gulf (e_gulf_empire) for the player and folds the Gulf-coast
+# kingdoms under it as de jure. Ported from 1.17; the k_florida_waltney line was removed
+# (that title no longer exists in 0.21.2). No null-chain risk here — set_de_jure_liege_title
+# targets the concrete title:e_gulf_empire, not a navigated chain.
+ate_assert_gulf_independence_decision_effects = {
+	scope:assert_gulf_independence_former = {
+		create_title_and_vassal_change = {
+			type = created
+			save_scope_as = title_change
+			add_claim_on_loss = no
+		}
+		title:e_gulf_empire = {
+			change_title_holder = {
+				holder = scope:assert_gulf_independence_former
+				change = scope:title_change
+			}
+		}
+		resolve_title_and_vassal_change = scope:title_change
+
+		title:k_west_florida = { set_de_jure_liege_title = title:e_gulf_empire }
+		title:k_florida = { set_de_jure_liege_title = title:e_gulf_empire }
+
+		# Stretch goal: annex Louisiana into the Empire of the Gulf if fully controlled
+		if = {
+			limit = {
+				completely_controls = title:k_louisiana
+			}
+			title:k_louisiana = { set_de_jure_liege_title = title:e_gulf_empire }
+		}
+	}
+}
