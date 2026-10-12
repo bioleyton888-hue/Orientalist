@@ -14,8 +14,12 @@
  activity_ate_fez_ceremony_predicted_cost:0 "The cost of the Feast of the Fez depends on its scale."
 
  # Phases
+ ate_fez_phase_procession:0 "The Procession"
+ ate_fez_phase_procession_desc:0 "The boys walk into the Lodge hall before the whole family."
  ate_fez_phase_presentation:0 "The Presentation"
  ate_fez_phase_presentation_desc:0 "Each boy is called forward, the fez is placed upon his head, and the oaths of the Lodge are spoken."
+ ate_fez_phase_banquet:0 "The Banquet"
+ ate_fez_phase_banquet_desc:0 "The fez is given. Now the feast."
 
  # Options
  ate_fez_party_scale:0 "Scale"
@@ -52,3 +56,29 @@
  ate_fez_presented_great_feast_modifier:0 "Presented at the Great Feast"
  ate_fez_presented_great_feast_modifier_desc:0 "This character received the fez at an Extravagant Feast of the Fez, paraded through the city before the whole Lodge."
  ate_fez_presented_by_father_opinion:0 "Gave Me the Fez"
+
+ # Events — ate_fez_ceremony.0001 The Procession
+ ate_fez_ceremony.0001.t:0 "The Procession"
+ ate_fez_ceremony.0001.desc.modest:0 "The doors of the Lodge hall open. The boys come in one after another, scrubbed and combed, in their best clothes, trying very hard to walk like men. The family is already seated. Nobody says anything. Nobody needs to."
+ ate_fez_ceremony.0001.desc.grand:0 "The whole court has come. Vassals, cousins, and the brothers of the Lodge in their crimson fezzes all rise as the boys enter the hall in a line, the youngest at the back, every one of them trying very hard to walk like a man."
+ ate_fez_ceremony.0001.desc.extravagant:0 "The parade starts at the city gate. Drums, banners, horns, and the brothers of the Lodge in crimson marching ahead of the boys, while the whole city leans out of its windows to watch. By the time the procession reaches the Lodge hall, half the city is following it."
+ ate_fez_ceremony.0001.desc.elephant:0 "\n\nAt its head, swaying under a gilded howdah, walks the parade elephant. The boys cannot stop looking at it. Neither can anyone else."
+ ate_fez_ceremony.0001.a:0 "Let them come in."
+
+ # Events — ate_fez_ceremony.0002 The Presentation
+ ate_fez_ceremony.0002.t:0 "The Presentation"
+ ate_fez_ceremony.0002.desc.none:0 "The fezzes wait on their cushions, crimson felt and black tassels, one for each boy. But the boys are not here. The hall waits, and the brothers of the Lodge look at one another, and then at you."
+ ate_fez_ceremony.0002.desc.one:0 "The hall falls quiet when you call [ate_fez_boy_1.GetFirstNameNoTooltip] forward. He stands straight; he has been practicing. The fez is placed in his hands. The words of the Lodge are spoken. He puts it on. It is slightly too large. He does not take it off."
+ ate_fez_ceremony.0002.desc.several:0 "One by one, you call them forward: [ate_fez_boy_1.GetFirstNameNoTooltip], [ate_fez_boy_2.GetFirstNameNoTooltip], and the others after them. Each one stands as straight as he can. Each one receives the fez, crimson felt and black tassel, the same as every other, and hears the words of the Lodge spoken over him.\n\nEvery fez is slightly too large. Not one of them comes off."
+ ate_fez_ceremony.0002.desc.many:0 "There are so many of them that the brothers of the Lodge have to bring a second table for the fezzes. [ate_fez_boy_1.GetFirstNameNoTooltip] first, then [ate_fez_boy_2.GetFirstNameNoTooltip], then the rest of the line, all the way to the back of the hall. The words of the Lodge are spoken so many times that the guests start saying them along.\n\nEvery fez is slightly too large. Not one of them comes off."
+ ate_fez_ceremony.0002.a:0 "These are the oaths of the Lodge. Mean every word."
+ ate_fez_ceremony.0002.b:0 "Look at them. The finest boys in the land."
+ ate_fez_ceremony.0002.c:0 "Don't worry. You'll grow into it."
+ ate_fez_every_present_boy_tt:0 "Every boy who received the fez"
+
+ # Events — ate_fez_ceremony.0003 The Banquet
+ ate_fez_ceremony.0003.t:0 "The Banquet"
+ ate_fez_ceremony.0003.desc.none:0 "The tables are full and the cooks have outdone themselves, but the seats kept for the boys stand empty. The feast goes on anyway. It always does. When the cups are raised, the toast is to the fezzes that wait for another day."
+ ate_fez_ceremony.0003.desc.one:0 "The tables are full, the cups are full, and at the head of the hall sits [ate_fez_boy_1.GetFirstNameNoTooltip], the fez still on his head, a little crooked by now. When you rise with your cup, the whole hall rises with you."
+ ate_fez_ceremony.0003.desc.several:0 "The tables are full, the cups are full, and at the head of the hall sit the boys: [ate_fez_boy_1.GetFirstNameNoTooltip], [ate_fez_boy_2.GetFirstNameNoTooltip], and the others, every fez a little crooked by now. When you rise with your cup, the whole hall rises with you."
+ ate_fez_ceremony.0003.a:0 "To the new brothers of the Lodge!"

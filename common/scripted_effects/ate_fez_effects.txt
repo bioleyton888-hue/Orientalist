@@ -164,3 +164,82 @@ ate_fez_intent_reward_effect = {
 		}
 	}
 }
+
+# Saves up to five ATTENDING boys as scope:ate_fez_boy_1..5 (for event portraits and names), and
+# scope:ate_fez_many_boys when more than five are present. Used by the phase events.
+# Needs scope:activity. Each pick is guarded so an unset previous scope is never compared.
+ate_fez_save_present_boys_effect = {
+	scope:activity = {
+		every_in_list = {
+			variable = ate_fez_honorees
+			limit = {
+				is_alive = yes
+				is_participant_in_activity = scope:activity
+			}
+			add_to_temporary_list = ate_fez_present_boys
+		}
+	}
+	random_in_list = {
+		list = ate_fez_present_boys
+		save_scope_as = ate_fez_boy_1
+	}
+	if = {
+		limit = { exists = scope:ate_fez_boy_1 }
+		random_in_list = {
+			list = ate_fez_present_boys
+			limit = { NOT = { this = scope:ate_fez_boy_1 } }
+			save_scope_as = ate_fez_boy_2
+		}
+	}
+	if = {
+		limit = { exists = scope:ate_fez_boy_2 }
+		random_in_list = {
+			list = ate_fez_present_boys
+			limit = {
+				NOR = {
+					this = scope:ate_fez_boy_1
+					this = scope:ate_fez_boy_2
+				}
+			}
+			save_scope_as = ate_fez_boy_3
+		}
+	}
+	if = {
+		limit = { exists = scope:ate_fez_boy_3 }
+		random_in_list = {
+			list = ate_fez_present_boys
+			limit = {
+				NOR = {
+					this = scope:ate_fez_boy_1
+					this = scope:ate_fez_boy_2
+					this = scope:ate_fez_boy_3
+				}
+			}
+			save_scope_as = ate_fez_boy_4
+		}
+	}
+	if = {
+		limit = { exists = scope:ate_fez_boy_4 }
+		random_in_list = {
+			list = ate_fez_present_boys
+			limit = {
+				NOR = {
+					this = scope:ate_fez_boy_1
+					this = scope:ate_fez_boy_2
+					this = scope:ate_fez_boy_3
+					this = scope:ate_fez_boy_4
+				}
+			}
+			save_scope_as = ate_fez_boy_5
+		}
+	}
+	if = {
+		limit = {
+			any_in_list = {
+				list = ate_fez_present_boys
+				count > 5
+			}
+		}
+		save_scope_value_as = { name = ate_fez_many_boys value = yes }
+	}
+}

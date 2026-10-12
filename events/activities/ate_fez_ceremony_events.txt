@@ -1,0 +1,210 @@
+﻿namespace = ate_fez_ceremony
+
+# The Feast of the Fez — host events, fired from the phases of activity_ate_fez_ceremony.
+# Scopes available (set by the activity): scope:activity, scope:host. Root = the host.
+# The boys' modifiers are NOT given here: they are paid at the conclusion (ate_fez_host_payout_effect).
+
+########################################
+# ate_fez_ceremony.0001 — The Procession
+# Fired on_phase_active of ate_fez_phase_procession, host only.
+########################################
+ate_fez_ceremony.0001 = {
+	type = activity_event
+	title = ate_fez_ceremony.0001.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { ate_fez_scale_trigger = { SCALE = extravagant } }
+				desc = ate_fez_ceremony.0001.desc.extravagant
+			}
+			triggered_desc = {
+				trigger = { ate_fez_scale_trigger = { SCALE = grand } }
+				desc = ate_fez_ceremony.0001.desc.grand
+			}
+			desc = ate_fez_ceremony.0001.desc.modest
+		}
+		triggered_desc = {
+			trigger = {
+				ate_fez_scale_trigger = { SCALE = extravagant }
+				has_character_modifier = ate_nelson_parade_elephant
+			}
+			desc = ate_fez_ceremony.0001.desc.elephant
+		}
+	}
+	theme = feast_activity
+	override_background = { reference = ate_fez_lodge_hall }
+
+	left_portrait = {
+		character = root
+		animation = personality_honorable
+	}
+	right_portrait = {
+		character = scope:ate_fez_boy_1
+		animation = happiness
+	}
+
+	trigger = {
+		exists = scope:activity
+	}
+
+	immediate = {
+		ate_fez_save_present_boys_effect = yes
+	}
+
+	option = {
+		name = ate_fez_ceremony.0001.a
+	}
+}
+
+########################################
+# ate_fez_ceremony.0002 — The Presentation
+# Fired on_phase_active of ate_fez_phase_presentation, host only.
+# ONE event for every boy: host left, up to five boys in the other portrait slots.
+########################################
+ate_fez_ceremony.0002 = {
+	type = activity_event
+	title = ate_fez_ceremony.0002.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = scope:ate_fez_boy_1 } }
+				desc = ate_fez_ceremony.0002.desc.none
+			}
+			triggered_desc = {
+				trigger = { NOT = { exists = scope:ate_fez_boy_2 } }
+				desc = ate_fez_ceremony.0002.desc.one
+			}
+			triggered_desc = {
+				trigger = { exists = scope:ate_fez_many_boys }
+				desc = ate_fez_ceremony.0002.desc.many
+			}
+			desc = ate_fez_ceremony.0002.desc.several
+		}
+	}
+	theme = feast_activity
+	override_background = { reference = ate_fez_lodge_hall }
+
+	left_portrait = {
+		character = root
+		animation = personality_honorable
+	}
+	right_portrait = {
+		character = scope:ate_fez_boy_1
+		animation = happiness
+	}
+	center_portrait = {
+		character = scope:ate_fez_boy_2
+		animation = happiness
+	}
+	lower_left_portrait = scope:ate_fez_boy_3
+	lower_center_portrait = scope:ate_fez_boy_4
+	lower_right_portrait = scope:ate_fez_boy_5
+
+	trigger = {
+		exists = scope:activity
+	}
+
+	immediate = {
+		ate_fez_save_present_boys_effect = yes
+	}
+
+	# Solemn — the oaths matter more than the feast
+	option = {
+		name = ate_fez_ceremony.0002.a
+		add_piety = 25
+		stress_impact = {
+			zealous = minor_stress_impact_loss
+			cynical = minor_stress_impact_gain
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+
+	# Proud — let the whole hall look at them
+	option = {
+		name = ate_fez_ceremony.0002.b
+		add_prestige = 25
+		stress_impact = {
+			arrogant = minor_stress_impact_loss
+			humble = minor_stress_impact_gain
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+
+	# Joking — the fez fits nobody at first
+	option = {
+		name = ate_fez_ceremony.0002.c
+		add_stress = minor_stress_loss
+		scope:activity = {
+			every_in_list = {
+				variable = ate_fez_honorees
+				limit = {
+					is_alive = yes
+					is_participant_in_activity = scope:activity
+				}
+				custom = ate_fez_every_present_boy_tt
+				add_opinion = {
+					target = scope:host
+					modifier = pleased_opinion
+					opinion = 10
+				}
+			}
+		}
+		stress_impact = {
+			gregarious = minor_stress_impact_loss
+			shy = minor_stress_impact_gain
+		}
+		ai_chance = {
+			base = 10
+		}
+	}
+}
+
+########################################
+# ate_fez_ceremony.0003 — The Banquet
+# Fired on_phase_active of ate_fez_phase_banquet, host only. A closing toast; no reward
+# (the boys' modifiers and the scale rewards are paid at the conclusion).
+########################################
+ate_fez_ceremony.0003 = {
+	type = activity_event
+	title = ate_fez_ceremony.0003.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = scope:ate_fez_boy_1 } }
+				desc = ate_fez_ceremony.0003.desc.none
+			}
+			triggered_desc = {
+				trigger = { NOT = { exists = scope:ate_fez_boy_2 } }
+				desc = ate_fez_ceremony.0003.desc.one
+			}
+			desc = ate_fez_ceremony.0003.desc.several
+		}
+	}
+	theme = feast_activity
+	override_background = { reference = ate_fez_lodge_hall }
+
+	left_portrait = {
+		character = root
+		animation = toast
+	}
+	right_portrait = {
+		character = scope:ate_fez_boy_1
+		animation = happiness
+	}
+
+	trigger = {
+		exists = scope:activity
+	}
+
+	immediate = {
+		ate_fez_save_present_boys_effect = yes
+	}
+
+	option = {
+		name = ate_fez_ceremony.0003.a
+	}
+}

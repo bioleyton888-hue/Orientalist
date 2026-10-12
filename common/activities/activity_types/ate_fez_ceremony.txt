@@ -1,7 +1,7 @@
 ﻿# The Feast of the Fez — a Shriner father presents the fez to ALL his eligible sons and wards at once.
 # Replaces (eventually) the one-son-at-a-time ate_shriner_fez_initiation decision + ate_shriner.0015.
 # Plan: scripts/plans/08-10-2026/fez_presentation_party.md
-# Build step 1 (skeleton): one phase, payout to every honoree. Build step 2: Modest / Grand / Extravagant scales.
+# Build steps: 1 skeleton + payout, 2 Modest/Grand/Extravagant scales, 3 three phases + Procession/Presentation events.
 # Player only: the AI never hosts it (is_ai = no in is_shown, ai_will_do = 0).
 # Art: vanilla feast art copied under this activity's keys (gfx/interface/icons/activities/, etc.).
 
@@ -135,8 +135,11 @@ activity_ate_fez_ceremony = {
 	# PHASES
 	###################
 
+	# Plan section 4.4. Pacing copied from the vanilla feast toast phase: on_enter_phase = 1 day to go active,
+	# on_phase_active = the host's event + how long the phase lasts. Only the host gets events (player-only party).
 	phases = {
-		ate_fez_phase_presentation = {
+		# 1. The boys walk into the Lodge hall (Extravagant: a street parade)
+		ate_fez_phase_procession = {
 			order = 1
 			is_predefined = yes
 
@@ -145,7 +148,6 @@ activity_ate_fez_ceremony = {
 			on_enter_phase = {
 				if = {
 					limit = { this = scope:host }
-					# No passive state, go straight in
 					scope:activity = { progress_activity_phase_after = { days = 1 } }
 				}
 			}
@@ -153,7 +155,54 @@ activity_ate_fez_ceremony = {
 			on_phase_active = {
 				if = {
 					limit = { this = scope:host }
-					scope:activity = { progress_activity_phase_after = { days = 5 } }
+					trigger_event = ate_fez_ceremony.0001
+					scope:activity = { progress_activity_phase_after = { days = 3 } }
+				}
+			}
+		}
+
+		# 2. One event, every boy: the fez is placed on each head
+		ate_fez_phase_presentation = {
+			order = 2
+			is_predefined = yes
+
+			is_shown = { always = yes }
+
+			on_enter_phase = {
+				if = {
+					limit = { this = scope:host }
+					scope:activity = { progress_activity_phase_after = { days = 1 } }
+				}
+			}
+
+			on_phase_active = {
+				if = {
+					limit = { this = scope:host }
+					trigger_event = ate_fez_ceremony.0002
+					scope:activity = { progress_activity_phase_after = { days = 3 } }
+				}
+			}
+		}
+
+		# 3. The feast itself: a closing toast now, guest events in build step 4.
+		ate_fez_phase_banquet = {
+			order = 3
+			is_predefined = yes
+
+			is_shown = { always = yes }
+
+			on_enter_phase = {
+				if = {
+					limit = { this = scope:host }
+					scope:activity = { progress_activity_phase_after = { days = 1 } }
+				}
+			}
+
+			on_phase_active = {
+				if = {
+					limit = { this = scope:host }
+					trigger_event = ate_fez_ceremony.0003
+					scope:activity = { progress_activity_phase_after = { weeks = 1 } }
 				}
 			}
 		}
