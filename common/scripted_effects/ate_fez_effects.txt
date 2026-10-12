@@ -27,7 +27,11 @@ ate_fez_collect_honorees_effect = {
 }
 
 # Host payout at the end of the party, shown in the conclusion screen.
-# Modest scale = the old ate_shriner.0015.a rewards, now given to every honoree at once.
+# Per scale (plan section 4.3):
+#   Modest       = old ate_shriner.0015.a: boys initiated; host +50 prestige, -10 stress
+#   Grand        = old ate_shriner.0015.b: + boys' opinion of the host; host +150 prestige, +50 piety
+#   Extravagant  = + boys get Presented at the Great Feast (20 y); host +350 prestige, dynasty prestige,
+#                  Talk of the Lodge (5 y)
 # Called from on_complete for the host. Needs scope:host and scope:activity.
 ate_fez_host_payout_effect = {
 	scope:activity = {
@@ -51,11 +55,41 @@ ate_fez_host_payout_effect = {
 						modifier = ate_shriner_initiated_modifier
 						years = 6
 					}
+					if = {
+						limit = { NOT = { ate_fez_scale_trigger = { SCALE = modest } } }
+						add_opinion = {
+							modifier = ate_fez_presented_by_father_opinion
+							target = scope:host
+						}
+					}
+					if = {
+						limit = { ate_fez_scale_trigger = { SCALE = extravagant } }
+						add_character_modifier = {
+							modifier = ate_fez_presented_great_feast_modifier
+							years = 20
+						}
+					}
 				}
 			}
 			scope:host = {
-				add_prestige = 50
-				add_stress = -10
+				if = {
+					limit = { ate_fez_scale_trigger = { SCALE = extravagant } }
+					add_prestige = major_prestige_gain
+					dynasty ?= { add_dynasty_prestige = minor_dynasty_prestige_gain }
+					add_character_modifier = {
+						modifier = ate_fez_talk_of_the_lodge_modifier
+						years = 5
+					}
+				}
+				else_if = {
+					limit = { ate_fez_scale_trigger = { SCALE = grand } }
+					add_prestige = medium_prestige_gain
+					add_piety = minor_piety_gain
+				}
+				else = {
+					add_prestige = 50
+					add_stress = -10
+				}
 			}
 		}
 	}
@@ -84,18 +118,49 @@ ate_fez_intent_payout_effect = {
 	}
 }
 
-# The rewards themselves. Modest scale = minor amounts; the Grand/Extravagant step raises them.
+# The rewards themselves, growing with the scale: Modest = minor, Grand = medium, Extravagant = major.
+# Needs scope:activity.
 ate_fez_intent_reward_effect = {
 	if = {
 		limit = { has_activity_intent = ate_fez_party_intent }
-		add_stress = minor_stress_loss
+		if = {
+			limit = { ate_fez_scale_trigger = { SCALE = extravagant } }
+			add_stress = major_stress_loss
+		}
+		else_if = {
+			limit = { ate_fez_scale_trigger = { SCALE = grand } }
+			add_stress = medium_stress_loss
+		}
+		else = {
+			add_stress = minor_stress_loss
+		}
 	}
 	else_if = {
 		limit = { has_activity_intent = ate_fez_important_intent }
-		add_piety = minor_piety_gain
+		if = {
+			limit = { ate_fez_scale_trigger = { SCALE = extravagant } }
+			add_piety = major_piety_gain
+		}
+		else_if = {
+			limit = { ate_fez_scale_trigger = { SCALE = grand } }
+			add_piety = medium_piety_gain
+		}
+		else = {
+			add_piety = minor_piety_gain
+		}
 	}
 	else_if = {
 		limit = { has_activity_intent = ate_fez_look_intent }
-		add_prestige = minor_prestige_gain
+		if = {
+			limit = { ate_fez_scale_trigger = { SCALE = extravagant } }
+			add_prestige = major_prestige_gain
+		}
+		else_if = {
+			limit = { ate_fez_scale_trigger = { SCALE = grand } }
+			add_prestige = medium_prestige_gain
+		}
+		else = {
+			add_prestige = minor_prestige_gain
+		}
 	}
 }

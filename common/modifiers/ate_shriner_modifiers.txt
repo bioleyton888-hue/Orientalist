@@ -81,3 +81,17 @@ ate_shriner_orange_garden = {
 	health = 0.2
 	monthly_income = 0.1
 }
+
+# Feast of the Fez — Extravagant scale (host, 5 years)
+ate_fez_talk_of_the_lodge_modifier = {
+	icon = prestige_positive
+	monthly_prestige = 1
+	same_faith_opinion = 5
+}
+
+# Feast of the Fez — Extravagant scale (each boy, 20 years)
+ate_fez_presented_great_feast_modifier = {
+	icon = prestige_positive
+	monthly_prestige = 0.1
+	same_faith_opinion = 5
+}

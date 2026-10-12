@@ -20,15 +20,20 @@
  # Options
  ate_fez_party_scale:0 "Scale"
  ate_fez_scale_modest:0 "Modest"
- ate_fez_scale_modest_desc:0 "$EFFECT_LIST_BULLET$ A private ceremony in the Lodge hall, for the family alone.\n\n#weak It is not a long ceremony. It does not need to be.#!"
+ ate_fez_scale_modest_desc:0 "$EFFECT_LIST_BULLET$ A private ceremony in the Lodge hall, for the family alone.\n$EFFECT_LIST_BULLET$ Up to #V 12#! guests\n$EFFECT_LIST_BULLET$ You gain [prestige_i] [prestige|E] and lose [stress|E]\n\n#weak It is not a long ceremony. It does not need to be.#!"
+ ate_fez_scale_grand:0 "Grand"
+ ate_fez_scale_grand_desc:0 "$EFFECT_LIST_BULLET$ The whole court is called to witness, and every brother of the Lodge.\n$EFFECT_LIST_BULLET$ Up to #V 25#! guests\n$EFFECT_LIST_BULLET$ You gain more [prestige_i] [prestige|E] and [piety_i] [piety|E]\n$EFFECT_LIST_BULLET$ The boys gain [opinion|E] of you\n$EFFECT_LIST_BULLET$ Bigger intent rewards\n\n#weak Let every brother of the Lodge bear witness to this.#!"
+ ate_fez_scale_extravagant:0 "Extravagant"
+ ate_fez_scale_extravagant_desc:0 "$EFFECT_LIST_BULLET$ A parade through the city: drums, banners, and every boy in crimson. The [gold|E] cost grows with every boy honored.\n$EFFECT_LIST_BULLET$ Up to #V 40#! guests\n$EFFECT_LIST_BULLET$ You gain much more [prestige_i] [prestige|E], [dynasty_prestige_i] [dynasty_prestige|E] and [GetModifier('ate_fez_talk_of_the_lodge_modifier').GetNameWithTooltip]\n$EFFECT_LIST_BULLET$ The boys gain [opinion|E] of you and [GetModifier('ate_fez_presented_great_feast_modifier').GetNameWithTooltip]\n$EFFECT_LIST_BULLET$ The biggest intent rewards\n\n#weak If the city is not talking about it for a year, it was not big enough.#!"
+ ate_fez_cost_per_boy:0 "Per boy honored"
 
  # Intents
  ate_fez_party_intent:0 "An Excuse to Party"
- ate_fez_party_intent_desc:0 "The boys get their fez, and I get a feast. Everybody wins.\n\n$EFFECT_LIST_BULLET$ [stress_loss_i] [stress|E] Loss at the end of the party"
+ ate_fez_party_intent_desc:0 "The boys get their fez, and I get a feast. Everybody wins.\n\n$EFFECT_LIST_BULLET$ [stress_loss_i] [stress|E] Loss at the end of the party, more the bigger the party"
  ate_fez_important_intent:0 "This Is Important"
- ate_fez_important_intent_desc:0 "This is a rite of the Lodge, not a banquet. I will treat it as one.\n\n$EFFECT_LIST_BULLET$ [piety_i] [piety|E] at the end of the party"
+ ate_fez_important_intent_desc:0 "This is a rite of the Lodge, not a banquet. I will treat it as one.\n\n$EFFECT_LIST_BULLET$ [piety_i] [piety|E] at the end of the party, more the bigger the party"
  ate_fez_look_intent:0 "Everybody Look"
- ate_fez_look_intent_desc:0 "The whole court is here. Let them see.\n\n$EFFECT_LIST_BULLET$ [prestige_i] [prestige|E] at the end of the party"
+ ate_fez_look_intent_desc:0 "The whole court is here. Let them see.\n\n$EFFECT_LIST_BULLET$ [prestige_i] [prestige|E] at the end of the party, more the bigger the party"
 
  # Invite rule
  activity_invite_rule_ate_fez_honorees:0 "The Boys"
@@ -40,3 +45,10 @@
  ate_fez_every_honoree_tt:0 "Every attending son and ward"
  ate_fez_intent_reward_log_title:0 "$final_reward_tt$"
  ate_fez_intent_reward_log:0 "[CHARACTER.GetShortUIName|U] got what [CHARACTER.GetSheHe] came for"
+
+ # Modifiers
+ ate_fez_talk_of_the_lodge_modifier:0 "Talk of the Lodge"
+ ate_fez_talk_of_the_lodge_modifier_desc:0 "This character threw an Extravagant Feast of the Fez, and every Lodge in the land is still talking about it."
+ ate_fez_presented_great_feast_modifier:0 "Presented at the Great Feast"
+ ate_fez_presented_great_feast_modifier_desc:0 "This character received the fez at an Extravagant Feast of the Fez, paraded through the city before the whole Lodge."
+ ate_fez_presented_by_father_opinion:0 "Gave Me the Fez"

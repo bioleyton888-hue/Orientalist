@@ -1,0 +1,19 @@
+﻿# The Feast of the Fez — script values.
+
+# How many boys the party would honor: eligible sons + eligible wards who aren't also sons.
+# root = the host (used in the Extravagant option's per-boy cost, where root = character planning).
+ate_fez_honoree_count_value = {
+	value = 0
+	every_child = {
+		limit = { ate_fez_eligible_son_trigger = { HOST = root } }
+		add = 1
+	}
+	every_relation = {
+		type = ward
+		limit = {
+			NOT = { is_child_of = root }
+			ate_fez_eligible_son_trigger = { HOST = root }
+		}
+		add = 1
+	}
+}

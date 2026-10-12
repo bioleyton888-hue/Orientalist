@@ -1,7 +1,7 @@
 ﻿# The Feast of the Fez — a Shriner father presents the fez to ALL his eligible sons and wards at once.
 # Replaces (eventually) the one-son-at-a-time ate_shriner_fez_initiation decision + ate_shriner.0015.
 # Plan: scripts/plans/08-10-2026/fez_presentation_party.md
-# SKELETON (build step 1): one phase, Modest scale only, payout = the old 0015.a rewards to every honoree.
+# Build step 1 (skeleton): one phase, payout to every honoree. Build step 2: Modest / Grand / Extravagant scales.
 # Player only: the AI never hosts it (is_ai = no in is_shown, ai_will_do = 0).
 # Art: vanilla feast art copied under this activity's keys (gfx/interface/icons/activities/, etc.).
 
@@ -90,12 +90,40 @@ activity_ate_fez_ceremony = {
 	###################
 
 	options = {
-		# The scale of the party. Skeleton: Modest only (Grand/Extravagant come in build step 2).
+		# The scale of the party. Read back with ate_fez_scale_trigger = { SCALE = modest/grand/extravagant }.
+		# Rewards per scale live in ate_fez_effects.txt.
 		ate_fez_party_scale = {
+			# Private lodge ceremony = the old ate_shriner.0015.a
 			ate_fez_scale_modest = {
 				default = yes
 				cost = {
 					gold = { value = activity_minor_gold_value }
+					piety = { value = 25 }
+				}
+				ai_will_do = { value = 0 }
+			}
+			# The whole court = the old ate_shriner.0015.b
+			ate_fez_scale_grand = {
+				cost = {
+					gold = { value = activity_medium_gold_value }
+					piety = { value = 25 }
+				}
+				ai_will_do = { value = 0 }
+			}
+			# A parade through the city; the gold grows with every boy honored
+			ate_fez_scale_extravagant = {
+				cost = {
+					gold = {
+						add = {
+							value = major_gold_value
+							desc = ate_fez_scale_extravagant
+						}
+						add = {
+							value = minor_gold_value
+							multiply = ate_fez_honoree_count_value
+							desc = ate_fez_cost_per_boy
+						}
+					}
 					piety = { value = 25 }
 				}
 				ai_will_do = { value = 0 }
@@ -131,7 +159,9 @@ activity_ate_fez_ceremony = {
 		}
 	}
 
-	max_guest_arrival_delay_time = { days = 25 }
+	# How long the party waits for far-away guests (e.g. a landed son in his own realm). Vanilla feast/funeral/
+	# coronation/playdate all use 5 months; 25 days (copied from ATE's day_of_the_dead) left landed sons behind.
+	max_guest_arrival_delay_time = { months = 5 }
 
 	# The cost lives on the scale option (ate_fez_scale_modest).
 	ui_predicted_cost = {
@@ -155,7 +185,18 @@ activity_ate_fez_ceremony = {
 	# GUEST HANDLING
 	###################
 
-	max_guests = 20
+	# The boys count toward the limit. Flags may be unset while planning, hence ?=.
+	max_guests = {
+		value = 12
+		if = {
+			limit = { scope:ate_fez_party_scale ?= flag:ate_fez_scale_grand }
+			value = 25
+		}
+		else_if = {
+			limit = { scope:ate_fez_party_scale ?= flag:ate_fez_scale_extravagant }
+			value = 40
+		}
+	}
 
 	guest_invite_rules = {
 		rules = {

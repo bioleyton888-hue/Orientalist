@@ -17,3 +17,14 @@ ate_fez_eligible_son_trigger = {
 		}
 	}
 }
+
+# Is the Feast of the Fez being held at this scale? $SCALE$ = modest / grand / extravagant.
+# Needs scope:activity (available in on_complete and everything it calls).
+ate_fez_scale_trigger = {
+	scope:activity = {
+		has_activity_option = {
+			category = ate_fez_party_scale
+			option = ate_fez_scale_$SCALE$
+		}
+	}
+}

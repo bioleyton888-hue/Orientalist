@@ -11,3 +11,9 @@ ate_ramses_tolerated_opinion = {
 ate_captive_wife_opinion = {
 	opinion = -50
 }
+
+# Feast of the Fez — Grand and Extravagant scales: the boy's opinion of the man who gave him the fez
+ate_fez_presented_by_father_opinion = {
+	opinion = 15
+	years = 10
+}
