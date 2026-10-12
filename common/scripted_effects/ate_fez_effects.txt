@@ -1,0 +1,101 @@
+﻿# The Feast of the Fez — effects used by activity_ate_fez_ceremony.
+
+# Stores every eligible son and ward of the host in the activity's ate_fez_honorees list.
+# Called from on_start. Scope: the activity. Needs scope:host and scope:activity.
+# The list is the record of who the party was thrown for; the payout only pays those who attended.
+ate_fez_collect_honorees_effect = {
+	scope:host = {
+		every_child = {
+			limit = { ate_fez_eligible_son_trigger = { HOST = scope:host } }
+			save_temporary_scope_as = ate_fez_boy
+			scope:activity = {
+				add_to_variable_list = { name = ate_fez_honorees target = scope:ate_fez_boy }
+			}
+		}
+		every_relation = {
+			type = ward
+			limit = {
+				NOT = { is_child_of = scope:host } # a son who is also a ward is already in the list
+				ate_fez_eligible_son_trigger = { HOST = scope:host }
+			}
+			save_temporary_scope_as = ate_fez_boy
+			scope:activity = {
+				add_to_variable_list = { name = ate_fez_honorees target = scope:ate_fez_boy }
+			}
+		}
+	}
+}
+
+# Host payout at the end of the party, shown in the conclusion screen.
+# Modest scale = the old ate_shriner.0015.a rewards, now given to every honoree at once.
+# Called from on_complete for the host. Needs scope:host and scope:activity.
+ate_fez_host_payout_effect = {
+	scope:activity = {
+		add_activity_log_entry = {
+			key = ate_fez_honorees_log
+			tags = { completed }
+			show_in_conclusion = yes
+			character = scope:host
+			score = 100
+
+			scope:activity = {
+				every_in_list = {
+					variable = ate_fez_honorees
+					limit = {
+						is_alive = yes
+						is_participant_in_activity = scope:activity
+						NOT = { has_character_modifier = ate_shriner_initiated_modifier }
+					}
+					custom = ate_fez_every_honoree_tt
+					add_character_modifier = {
+						modifier = ate_shriner_initiated_modifier
+						years = 6
+					}
+				}
+			}
+			scope:host = {
+				add_prestige = 50
+				add_stress = -10
+			}
+		}
+	}
+}
+
+# Pays the intent the character picked. Players see it in the conclusion screen; AI just gets it.
+# Called from on_complete for every participant. Needs scope:activity.
+ate_fez_intent_payout_effect = {
+	if = {
+		limit = { is_ai = no }
+		save_scope_as = ate_fez_intent_owner
+		scope:activity = {
+			add_activity_log_entry = {
+				key = ate_fez_intent_reward_log
+				tags = { completed }
+				show_in_conclusion = yes
+				character = scope:ate_fez_intent_owner
+				score = 50
+
+				scope:ate_fez_intent_owner = { ate_fez_intent_reward_effect = yes }
+			}
+		}
+	}
+	else = {
+		ate_fez_intent_reward_effect = yes
+	}
+}
+
+# The rewards themselves. Modest scale = minor amounts; the Grand/Extravagant step raises them.
+ate_fez_intent_reward_effect = {
+	if = {
+		limit = { has_activity_intent = ate_fez_party_intent }
+		add_stress = minor_stress_loss
+	}
+	else_if = {
+		limit = { has_activity_intent = ate_fez_important_intent }
+		add_piety = minor_piety_gain
+	}
+	else_if = {
+		limit = { has_activity_intent = ate_fez_look_intent }
+		add_prestige = minor_prestige_gain
+	}
+}

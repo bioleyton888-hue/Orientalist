@@ -1,0 +1,19 @@
+﻿# The Feast of the Fez — the boys the party is for. On by default (listed under defaults).
+# root = the host. Shape copied from vanilla activity_invite_rule_vassals_children.
+# NOT locked: `locked = yes` does not exist in CK3 1.19 (Unexpected token); it was added in a later version.
+activity_invite_rule_ate_fez_honorees = {
+	effect = {
+		every_child = {
+			limit = { ate_fez_eligible_son_trigger = { HOST = root } }
+			add_to_list = characters
+		}
+		every_relation = {
+			type = ward
+			limit = {
+				NOT = { is_child_of = root }
+				ate_fez_eligible_son_trigger = { HOST = root }
+			}
+			add_to_list = characters
+		}
+	}
+}

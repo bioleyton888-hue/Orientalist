@@ -1,0 +1,42 @@
+﻿l_english:
+
+ # The Feast of the Fez — activity_ate_fez_ceremony
+ activity_ate_fez_ceremony:0 "Feast of the Fez"
+ activity_ate_fez_ceremony_name:0 "[ACTIVITY.GetHost.GetNamePossessiveOrMy|U] Feast of the Fez"
+ activity_ate_fez_ceremony_desc:0 "A boy does not become a Shriner on his own. Call every son and ward of age before the Lodge at once, place the crimson fez upon each head, and let the oaths be spoken aloud before the whole family."
+ activity_ate_fez_ceremony_selection_tooltip:0 "Present the fez to every eligible son and ward at once.\n\nAnticipated Rewards:\n$BULLET_WITH_TAB$Every attending son and ward gains [GetModifier('ate_shriner_initiated_modifier').GetNameWithTooltip]\n$BULLET_WITH_TAB$[prestige_i] [prestige|E]\n$BULLET_WITH_TAB$[stress_loss_i] [stress|E] Loss"
+ activity_ate_fez_ceremony_host_desc:0 "$BULLET_WITH_TAB$Every attending son and ward is initiated into the Lodge\n$BULLET_WITH_TAB$May gain [prestige_i|E] [prestige|E]\n$BULLET_WITH_TAB$May have [stress_loss_i] [stress|E] Loss"
+ activity_ate_fez_ceremony_guest_desc:0 "As a guest at the Feast of the Fez, I will watch the host's boys receive the fez and swear the oaths of the Lodge. It is a family affair, warm and loud, and the food is good."
+ activity_ate_fez_ceremony_guest_help_text:0 "$activity_ate_fez_ceremony$"
+ activity_ate_fez_ceremony_conclusion_desc:0 "The [GetActivityType( 'activity_ate_fez_ceremony' ).GetName] is over. The boys who walked into the Lodge hall are not the same ones who walked out."
+ activity_ate_fez_ceremony_province_desc:0 "Your Lodge Hall"
+ activity_ate_fez_ceremony_destination_selection:0 "The fez is presented in the Lodge hall at your [capital|E]."
+ activity_ate_fez_ceremony_predicted_cost:0 "The cost of the Feast of the Fez depends on its scale."
+
+ # Phases
+ ate_fez_phase_presentation:0 "The Presentation"
+ ate_fez_phase_presentation_desc:0 "Each boy is called forward, the fez is placed upon his head, and the oaths of the Lodge are spoken."
+
+ # Options
+ ate_fez_party_scale:0 "Scale"
+ ate_fez_scale_modest:0 "Modest"
+ ate_fez_scale_modest_desc:0 "$EFFECT_LIST_BULLET$ A private ceremony in the Lodge hall, for the family alone.\n\n#weak It is not a long ceremony. It does not need to be.#!"
+
+ # Intents
+ ate_fez_party_intent:0 "An Excuse to Party"
+ ate_fez_party_intent_desc:0 "The boys get their fez, and I get a feast. Everybody wins.\n\n$EFFECT_LIST_BULLET$ [stress_loss_i] [stress|E] Loss at the end of the party"
+ ate_fez_important_intent:0 "This Is Important"
+ ate_fez_important_intent_desc:0 "This is a rite of the Lodge, not a banquet. I will treat it as one.\n\n$EFFECT_LIST_BULLET$ [piety_i] [piety|E] at the end of the party"
+ ate_fez_look_intent:0 "Everybody Look"
+ ate_fez_look_intent_desc:0 "The whole court is here. Let them see.\n\n$EFFECT_LIST_BULLET$ [prestige_i] [prestige|E] at the end of the party"
+
+ # Invite rule
+ activity_invite_rule_ate_fez_honorees:0 "The Boys"
+ activity_invite_rule_ate_fez_honorees_desc:0 "Every son and ward who will receive the fez. They cannot be left out of their own ceremony."
+
+ # Conclusion log entries
+ ate_fez_honorees_log_title:0 "The Fez Is Given"
+ ate_fez_honorees_log:0 "[CHARACTER.GetShortUIName|U] presented the fez to the boys of the family"
+ ate_fez_every_honoree_tt:0 "Every attending son and ward"
+ ate_fez_intent_reward_log_title:0 "$final_reward_tt$"
+ ate_fez_intent_reward_log:0 "[CHARACTER.GetShortUIName|U] got what [CHARACTER.GetSheHe] came for"

@@ -1,0 +1,282 @@
+﻿# The Feast of the Fez — a Shriner father presents the fez to ALL his eligible sons and wards at once.
+# Replaces (eventually) the one-son-at-a-time ate_shriner_fez_initiation decision + ate_shriner.0015.
+# Plan: scripts/plans/08-10-2026/fez_presentation_party.md
+# SKELETON (build step 1): one phase, Modest scale only, payout = the old 0015.a rewards to every honoree.
+# Player only: the AI never hosts it (is_ai = no in is_shown, ai_will_do = 0).
+# Art: vanilla feast art copied under this activity's keys (gfx/interface/icons/activities/, etc.).
+
+activity_ate_fez_ceremony = {
+	is_shown = {
+		is_ai = no
+		faith = faith:shriner
+		is_male = yes
+		is_adult = yes
+		is_landed = yes
+		OR = {
+			any_child = { ate_fez_eligible_son_trigger = { HOST = root } }
+			any_relation = {
+				type = ward
+				ate_fez_eligible_son_trigger = { HOST = root }
+			}
+		}
+	}
+
+	can_start_showing_failures_only = {
+		NOT = { is_activity_type_on_cooldown = activity_ate_fez_ceremony }
+		is_available_adult = yes
+	}
+
+	is_valid = {
+		NOT = { has_variable = activity_invalidated }
+		scope:host = {
+			is_landed = yes
+			is_incapable = no
+		}
+		# If no one shows up
+		trigger_if = {
+			limit = { is_current_phase_active = yes }
+			has_attending_activity_guests = yes
+		}
+	}
+
+	on_invalidated = {
+		scope:activity = {
+			activity_type = { save_scope_as = activity_type }
+		}
+		if = { # Host became unlanded
+			limit = {
+				scope:host = { is_landed = no }
+			}
+			every_attending_character = {
+				trigger_event = activity_system.0320
+			}
+		}
+		else_if = { # Host became incapable
+			limit = {
+				scope:host = { is_incapable = yes }
+			}
+			scope:host = {
+				trigger_event = activity_system.0330
+			}
+			every_attending_character = {
+				limit = { NOT = { this = scope:host } }
+				trigger_event = activity_system.0331
+			}
+		}
+		else_if = { # No one showed up
+			limit = {
+				has_attending_activity_guests = no
+			}
+			scope:activity = {
+				activity_location = { save_scope_as = location }
+			}
+			scope:host = { trigger_event = activity_system.0100 }
+		}
+	}
+
+	on_host_death = {
+		scope:activity = {
+			set_variable = { name = activity_invalidated }
+		}
+	}
+
+	# Held at the host's court/lodge.
+	province_filter = capital
+	ai_province_filter = capital
+	max_province_icons = 1
+
+	###################
+	# OPTIONS
+	###################
+
+	options = {
+		# The scale of the party. Skeleton: Modest only (Grand/Extravagant come in build step 2).
+		ate_fez_party_scale = {
+			ate_fez_scale_modest = {
+				default = yes
+				cost = {
+					gold = { value = activity_minor_gold_value }
+					piety = { value = 25 }
+				}
+				ai_will_do = { value = 0 }
+			}
+		}
+	}
+
+	###################
+	# PHASES
+	###################
+
+	phases = {
+		ate_fez_phase_presentation = {
+			order = 1
+			is_predefined = yes
+
+			is_shown = { always = yes }
+
+			on_enter_phase = {
+				if = {
+					limit = { this = scope:host }
+					# No passive state, go straight in
+					scope:activity = { progress_activity_phase_after = { days = 1 } }
+				}
+			}
+
+			on_phase_active = {
+				if = {
+					limit = { this = scope:host }
+					scope:activity = { progress_activity_phase_after = { days = 5 } }
+				}
+			}
+		}
+	}
+
+	max_guest_arrival_delay_time = { days = 25 }
+
+	# The cost lives on the scale option (ate_fez_scale_modest).
+	ui_predicted_cost = {
+		gold = { value = activity_minor_gold_value }
+		piety = { value = 25 }
+	}
+
+	cooldown = { years = 2 }
+
+	ai_will_do = {
+		value = 0
+	}
+
+	ai_check_interval = 120
+
+	ai_will_select_province = {
+		value = 10
+	}
+
+	###################
+	# GUEST HANDLING
+	###################
+
+	max_guests = 20
+
+	guest_invite_rules = {
+		rules = {
+			3 = activity_invite_rule_extended_family
+			3 = activity_invite_rule_friends
+		}
+		defaults = {
+			1 = activity_invite_rule_ate_fez_honorees
+			1 = activity_invite_rule_close_family
+			1 = activity_invite_spouses
+		}
+	}
+
+	# Funeral precedent: teens (12+) are real guests, so the 12-15 honorees can attend.
+	# Younger children only if they are the host's own (the daughters), via the playdate's child trigger.
+	can_be_activity_guest = {
+		is_healthy = yes
+		in_diplomatic_range = scope:host
+		OR = {
+			age >= 12
+			AND = {
+				is_child_of = scope:host
+				is_available_for_child_activity_trigger = yes
+			}
+		}
+	}
+
+	host_intents = {
+		intents = { ate_fez_party_intent ate_fez_important_intent ate_fez_look_intent }
+		default = ate_fez_party_intent
+	}
+
+	guest_intents = {
+		intents = { ate_fez_party_intent ate_fez_important_intent ate_fez_look_intent }
+		default = ate_fez_party_intent
+	}
+
+	guest_join_chance = {
+		base = 10
+		base_activity_modifier = yes
+
+		# Scripted Modifiers
+		activity_guest_shared_ai_accept_modifier = yes
+
+		# A boy does not skip his own fez.
+		modifier = {
+			ate_fez_eligible_son_trigger = { HOST = scope:host }
+			add = 100
+		}
+	}
+
+	on_start = {
+		ate_fez_collect_honorees_effect = yes
+	}
+
+	on_complete = {
+		if = {
+			limit = { this = scope:host }
+			ate_fez_host_payout_effect = yes
+		}
+		ate_fez_intent_payout_effect = yes
+	}
+
+	###################
+	# GRAPHICS
+	###################
+
+	# Shriner lodge = the vanilla MENA feast hall.
+	background = {
+		texture = "gfx/interface/illustrations/event_scenes/ep2_feast_mena.dds"
+		environment = "environment_mena_feast"
+		ambience = "event:/SFX/Events/Backgrounds/feasthall"
+	}
+
+	window_characters = {
+		guest = {
+			camera = camera_body
+
+			effect = {
+				every_attending_character = {
+					limit = {
+						scope:host.location = scope:activity.activity_location
+						NOT = { this = scope:host }
+					}
+					add_to_list = characters
+				}
+			}
+
+			scripted_animation = {
+				animation = happiness
+			}
+		}
+
+		host = {
+			camera = camera_body
+
+			effect = {
+				scope:host = { add_to_list = characters }
+			}
+
+			scripted_animation = {
+				animation = personality_honorable
+			}
+		}
+
+		guest = {
+			camera = camera_body
+
+			effect = {
+				every_attending_character = {
+					limit = {
+						scope:host.location = scope:activity.activity_location
+						NOT = { this = scope:host }
+					}
+					add_to_list = characters
+				}
+			}
+
+			scripted_animation = {
+				animation = personality_zealous
+			}
+		}
+	}
+}

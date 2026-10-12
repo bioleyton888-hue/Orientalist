@@ -1,0 +1,19 @@
+﻿# The Feast of the Fez — who receives the fez at the party.
+# One shared rule, so the activity, its locked invite rule and its payout all agree.
+# Honorees = the host's sons AND wards: male, Shriner, aged 12-15, not yet initiated.
+# Hostages (warden_hostage) are a different relation and are deliberately NOT included.
+# $HOST$ = the Shriner father/guardian presenting the fez.
+ate_fez_eligible_son_trigger = {
+	is_male = yes
+	age >= 12
+	age < 16
+	faith = faith:shriner
+	NOT = { has_character_modifier = ate_shriner_initiated_modifier }
+	OR = {
+		is_child_of = $HOST$
+		any_relation = {
+			type = guardian
+			this = $HOST$
+		}
+	}
+}
