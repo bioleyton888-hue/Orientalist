@@ -1,0 +1,46 @@
+﻿# TESTING ONLY — Feast of the Fez test kids. Used by the ate_fez_debug_spawn_test_kids decision.
+# !!! Remove (or disable the decision) before any public release !!!
+
+# Creates ONE child of root, aged 13, in root's court, with two personality traits and a childhood trait.
+# root = the (male) decision taker = the father. Mother = a random female spouse of root, if any.
+# Pattern from vanilla 00_game_rule_effects.txt (father / mother / dynasty = inherit) + employer = root.
+# NO location: create_character refuses both location and employer ("Cannot specify both location and employer").
+# $GENDER$ = male / female; $TRAIT_A$ $TRAIT_B$ = personality traits; $CHILDHOOD$ = childhood trait.
+ate_fez_debug_spawn_test_kid_effect = {
+	if = {
+		limit = {
+			any_spouse = { is_female = yes }
+		}
+		random_spouse = {
+			limit = { is_female = yes }
+			save_temporary_scope_as = ate_fez_debug_kid_mother
+		}
+		create_character = {
+			gender = $GENDER$
+			age = 13
+			father = root
+			mother = scope:ate_fez_debug_kid_mother
+			dynasty = inherit
+			employer = root
+			culture = root.culture
+			faith = root.faith
+			trait = $TRAIT_A$
+			trait = $TRAIT_B$
+			trait = $CHILDHOOD$
+		}
+	}
+	else = {
+		create_character = {
+			gender = $GENDER$
+			age = 13
+			father = root
+			dynasty = inherit
+			employer = root
+			culture = root.culture
+			faith = root.faith
+			trait = $TRAIT_A$
+			trait = $TRAIT_B$
+			trait = $CHILDHOOD$
+		}
+	}
+}

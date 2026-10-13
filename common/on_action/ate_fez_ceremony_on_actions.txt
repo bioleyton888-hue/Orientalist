@@ -1,0 +1,48 @@
+﻿# The Feast of the Fez — guest event pools (build step 4). Fired from the phases' on_weekly_pulse, host only.
+# Every event filters itself through its own trigger (scale, who is attending, once per party).
+# `100 = 0` = "nothing happens this week" (vanilla feast pool pattern).
+# Weights are DEBUG-friendly for testing (events far likelier than nothing): tune before release.
+# DEBUG 2026-10-12 — ONE EVENT AT A TIME: every pool line is commented out except the event under test, and the
+# 'nothing' line too, so that event fires at 100% on the first weekly pulse it is valid. To test the next event,
+# move the active line. Pools must never be left empty: a pool with no event under test keeps only `100 = 0`.
+# RESTORE ALL LINES BEFORE RELEASE.
+
+# Between the boys walking in and the fez being given
+ate_fez_procession_pulse = {
+	trigger = {
+		NOT = { has_character_flag = ate_fez_busy_in_event }
+	}
+	random_events = {
+		#25 = 0
+		#100 = ate_fez_ceremony.1001	# #1  The Fez That Was Too Large   (tested OK 2026-10-12)
+		#100 = ate_fez_ceremony.1007	# #7  The Little Cars (Extravagant)   (tested OK 2026-10-12)
+		#100 = ate_fez_ceremony.1008	# #8  Florida Man Arrives (Extravagant)   (tested OK 2026-10-12)
+		#100 = ate_fez_ceremony.1009	# #9  The Storm (Extravagant)   (tested OK 2026-10-12)
+		#100 = ate_fez_ceremony.1010	# #10 The Gator Attends (host owns the gator)   (SKIPPED 2026-10-12: user has no gator; untested)
+		#100 = ate_fez_ceremony.1016	# #16 I Want to Be an Adult Too   (fires OK 2026-10-12; option e = BUG 2, parked)
+		#100 = ate_fez_ceremony.1017	# #17 Heavy Is the Fez   (tested OK 2026-10-12)
+		#100 = ate_fez_ceremony.1018	# #18 When in al-Rome... (non-Shriner ward)   (tested OK 2026-10-12)
+		#100 = ate_fez_ceremony.1020	# #20 The Odd One Out (Modest/Grand)   (tested OK 2026-10-12)
+		100 = ate_fez_ceremony.1021	# #21 Your Loved Black Sheep   <-- DEBUG: the event under test
+	}
+}
+
+# After the fez is given, during the feast
+ate_fez_banquet_pulse = {
+	trigger = {
+		NOT = { has_character_flag = ate_fez_busy_in_event }
+	}
+	random_events = {
+		#100 = ate_fez_ceremony.1002	# #2  The Elder Brother (Grand/Extravagant)   (tested OK 2026-10-12)
+		#100 = ate_fez_ceremony.1003	# #3  The Potentate's Envoy (Extravagant)   (tested OK 2026-10-12)
+		#100 = ate_fez_ceremony.1004	# #4  A Knight of the Fez of Islam   (tested OK 2026-10-12)
+		#100 = ate_fez_ceremony.1005	# #5  A Match Proposed   (tested OK 2026-10-12)
+		#100 = ate_fez_ceremony.1011	# #11 Not My Father's Fez (ward)   (tested OK 2026-10-12)
+		#100 = ate_fez_ceremony.1012	# #12 The Ward's Gift (ward)   (tested OK 2026-10-12)
+		#100 = ate_fez_ceremony.1013	# #13 Why Not Me?   (tested OK 2026-10-12)
+		#100 = ate_fez_ceremony.1014	# #14 A Suitor's Eye   (tested OK 2026-10-12)
+		#100 = ate_fez_ceremony.1015	# #15 The Sister Who Stole the Show   (tested OK 2026-10-12)
+		100 = 0	# DEBUG: nothing (no Banquet event under test)
+		#100 = ate_fez_ceremony.1019	# #19 Like the First Time   (tested OK 2026-10-12)
+	}
+}

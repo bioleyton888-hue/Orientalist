@@ -49,6 +49,10 @@ ate_fez_ceremony.0001 = {
 
 	immediate = {
 		ate_fez_save_present_boys_effect = yes
+		add_character_flag = {
+			flag = ate_fez_busy_in_event
+			days = 2
+		}
 	}
 
 	option = {
@@ -106,6 +110,18 @@ ate_fez_ceremony.0002 = {
 
 	immediate = {
 		ate_fez_save_present_boys_effect = yes
+		add_character_flag = {
+			flag = ate_fez_busy_in_event
+			days = 2
+		}
+		# The fez is placed on their heads: from now on their portraits show it (children need this flag)
+		scope:activity = {
+			every_in_list = {
+				variable = ate_fez_honorees
+				limit = { ate_fez_attending_honoree_trigger = yes }
+				add_character_flag = ate_fez_received
+			}
+		}
 	}
 
 	# Solemn — the oaths matter more than the feast
@@ -202,9 +218,2083 @@ ate_fez_ceremony.0003 = {
 
 	immediate = {
 		ate_fez_save_present_boys_effect = yes
+		add_character_flag = {
+			flag = ate_fez_busy_in_event
+			days = 2
+		}
 	}
 
 	option = {
 		name = ate_fez_ceremony.0003.a
+	}
+}
+
+#############################################################################
+# BUILD STEP 4 — guest events (first batch). IDs = 1000 + number in events_list.md.
+# Fired by the weekly pools in common/on_action/ate_fez_ceremony_on_actions.txt, host only.
+# Every pool event: once per party (activity var ate_fez_done_N) + busy flag (no stacking).
+# Text is DEBUG placeholder (2026-10-12); the user writes the real text.
+#############################################################################
+
+########################################
+# ate_fez_ceremony.1001 — #1 The Fez That Was Too Large (Procession pool, any scale)
+########################################
+ate_fez_ceremony.1001 = {
+	type = activity_event
+	title = ate_fez_ceremony.1001.t
+	desc = ate_fez_ceremony.1001.desc
+	theme = feast_activity
+	override_background = { reference = ate_fez_lodge_hall }
+
+	left_portrait = {
+		character = root
+		animation = personality_honorable
+	}
+	right_portrait = {
+		character = scope:ate_fez_target_boy
+		animation = shock
+	}
+
+	trigger = {
+		exists = scope:activity
+		scope:activity = { NOT = { has_variable = ate_fez_done_1 } }
+		ate_fez_has_attending_honoree_trigger = yes
+	}
+
+	immediate = {
+		ate_fez_mark_pool_event_effect = { EVENT = 1 }
+		ate_fez_pick_attending_honoree_effect = yes
+	}
+
+	# a: laugh it off
+	option = {
+		name = ate_fez_ceremony.1001.a
+		add_stress = minor_stress_loss
+		scope:ate_fez_target_boy = {
+			add_opinion = {
+				target = root
+				modifier = pleased_opinion
+				opinion = 10
+			}
+		}
+	}
+
+	# b: scold him
+	option = {
+		name = ate_fez_ceremony.1001.b
+		add_prestige = miniscule_prestige_value
+		scope:ate_fez_target_boy = {
+			add_opinion = {
+				target = root
+				modifier = disappointed_opinion
+				opinion = -10
+			}
+		}
+	}
+
+	# c: have it re-fitted on the spot
+	option = {
+		name = ate_fez_ceremony.1001.c
+		remove_short_term_gold = tiny_gold_value
+		add_prestige = miniscule_prestige_value
+	}
+}
+
+########################################
+# ate_fez_ceremony.1007 — #7 The Little Cars (Procession pool, Extravagant only)
+########################################
+ate_fez_ceremony.1007 = {
+	type = activity_event
+	title = ate_fez_ceremony.1007.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:ate_fez_cars_victim }
+				desc = ate_fez_ceremony.1007.desc
+			}
+			desc = ate_fez_ceremony.1007.desc.no_cars_victim
+		}
+	}
+	theme = feast_activity
+	override_background = { reference = ate_fez_lodge_hall }
+
+	left_portrait = {
+		character = root
+		animation = happiness
+	}
+	right_portrait = {
+		character = scope:ate_fez_cars_victim
+		animation = worry
+	}
+
+	trigger = {
+		exists = scope:activity
+		scope:activity = { NOT = { has_variable = ate_fez_done_7 } }
+		ate_fez_scale_trigger = { SCALE = extravagant }
+	}
+
+	immediate = {
+		ate_fez_mark_pool_event_effect = { EVENT = 7 }
+		ate_fez_pick_cars_victim_effect = yes
+	}
+
+	# a: let the cars roll (70% prestige / 30% accident: a guest is wounded, if there is one)
+	option = {
+		name = ate_fez_ceremony.1007.a
+		random_list = {
+			70 = {
+				desc = ate_fez_ceremony.1007.a.success.tt
+				send_interface_toast = {
+					type = event_toast_effect_good
+					title = ate_fez_ceremony.1007.a.success.toast
+					left_icon = root
+					add_prestige = minor_prestige_gain
+				}
+			}
+			30 = {
+				desc = ate_fez_ceremony.1007.a.accident.tt
+				send_interface_toast = {
+					type = event_toast_effect_bad
+					title = ate_fez_ceremony.1007.a.accident.toast
+					left_icon = root
+					add_prestige = -25
+					if = {
+						limit = { exists = scope:ate_fez_cars_victim }
+						scope:ate_fez_cars_victim = { add_trait = wounded_1 }
+					}
+				}
+			}
+		}
+	}
+
+	# b: cancel the cars
+	option = {
+		name = ate_fez_ceremony.1007.b
+		add_prestige = -10
+	}
+
+	# c: bet on the race (user idea 2026-10-12). Greedy or profligate host only. 50/50, a toast per outcome.
+	option = {
+		name = ate_fez_ceremony.1007.c
+		trigger = {
+			OR = {
+				has_trait = greedy
+				has_trait = profligate
+			}
+		}
+		random_list = {
+			50 = {
+				desc = ate_fez_ceremony.1007.c.win.tt
+				send_interface_toast = {
+					type = event_toast_effect_good
+					title = ate_fez_ceremony.1007.c.win.toast
+					left_icon = root
+					add_gold = medium_gold_value
+				}
+			}
+			50 = {
+				desc = ate_fez_ceremony.1007.c.lose.tt
+				send_interface_toast = {
+					type = event_toast_effect_bad
+					title = ate_fez_ceremony.1007.c.lose.toast
+					left_icon = root
+					remove_short_term_gold = medium_gold_value
+				}
+			}
+		}
+	}
+}
+
+########################################
+# ate_fez_ceremony.1016 — #16 I Want to Be an Adult Too (Procession pool, any scale; user's idea)
+########################################
+ate_fez_ceremony.1016 = {
+	type = activity_event
+	title = ate_fez_ceremony.1016.t
+	desc = ate_fez_ceremony.1016.desc
+	theme = feast_activity
+	override_background = { reference = ate_fez_lodge_hall }
+
+	left_portrait = {
+		character = root
+		animation = personality_honorable
+	}
+	right_portrait = {
+		character = scope:ate_fez_little_brother
+		animation = anger
+	}
+
+	trigger = {
+		exists = scope:activity
+		scope:activity = {
+			NOT = { has_variable = ate_fez_done_16 }
+			any_attending_character = { ate_fez_little_brother_candidate_trigger = yes }
+		}
+	}
+
+	immediate = {
+		ate_fez_mark_pool_event_effect = { EVENT = 16 }
+		ate_fez_pick_little_brother_effect = yes
+	}
+
+	# a: talk him down (diplomacy duel, difficulty 10)
+	option = {
+		name = ate_fez_ceremony.1016.a
+		duel = {
+			skill = diplomacy
+			value = 10
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				desc = ate_fez_ceremony.1016.a.success.tt
+				send_interface_toast = {
+					type = event_toast_effect_good
+					title = ate_fez_ceremony.1016.a.success.toast
+					left_icon = scope:ate_fez_little_brother
+					scope:ate_fez_little_brother = {
+						add_opinion = {
+							target = root
+							modifier = pleased_opinion
+							opinion = 5
+						}
+					}
+				}
+			}
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				desc = ate_fez_ceremony.1016.a.failure.tt
+				send_interface_toast = {
+					type = event_toast_effect_bad
+					title = ate_fez_ceremony.1016.a.failure.toast
+					left_icon = scope:ate_fez_little_brother
+					scope:ate_fez_little_brother = {
+						add_opinion = {
+							target = root
+							modifier = disappointed_opinion
+							opinion = -10
+						}
+					}
+				}
+			}
+		}
+	}
+
+	# b: indulge him (toy fez)
+	option = {
+		name = ate_fez_ceremony.1016.b
+		remove_short_term_gold = tiny_gold_value
+		scope:ate_fez_little_brother = {
+			add_opinion = {
+				target = root
+				modifier = pleased_opinion
+				opinion = 15
+			}
+		}
+	}
+
+	# c: ignore him
+	option = {
+		name = ate_fez_ceremony.1016.c
+		scope:ate_fez_little_brother = {
+			add_opinion = {
+				target = root
+				modifier = disappointed_opinion
+				opinion = -10
+			}
+		}
+	}
+
+	# d: whoop his ass
+	option = {
+		name = ate_fez_ceremony.1016.d
+		scope:ate_fez_little_brother = {
+			add_opinion = {
+				target = root
+				modifier = angry_opinion
+				opinion = -20
+			}
+		}
+		stress_impact = {
+			compassionate = minor_stress_impact_gain
+			sadistic = minor_stress_impact_loss
+		}
+	}
+
+	# e: let him take the fez for real, with the grown-ups (joins the honoree list)
+	option = {
+		name = ate_fez_ceremony.1016.e
+		send_interface_toast = {
+			type = event_toast_effect_good
+			title = ate_fez_ceremony.1016.e.toast
+			left_icon = scope:ate_fez_little_brother
+			ate_fez_add_honoree_effect = { BOY = scope:ate_fez_little_brother }
+			scope:ate_fez_little_brother = {
+				add_opinion = {
+					target = root
+					modifier = pleased_opinion
+					opinion = 25
+				}
+			}
+		}
+	}
+}
+
+########################################
+# ate_fez_ceremony.1020 — #20 The Odd One Out (Procession pool, Modest or Grand; user's idea)
+########################################
+ate_fez_ceremony.1020 = {
+	type = activity_event
+	title = ate_fez_ceremony.1020.t
+	desc = ate_fez_ceremony.1020.desc
+	theme = feast_activity
+	override_background = { reference = ate_fez_lodge_hall }
+
+	left_portrait = {
+		character = root
+		animation = anger
+	}
+	right_portrait = {
+		character = scope:ate_fez_target_boy
+		animation = eyeroll
+	}
+
+	trigger = {
+		exists = scope:activity
+		scope:activity = { NOT = { has_variable = ate_fez_done_20 } }
+		OR = {
+			ate_fez_scale_trigger = { SCALE = modest }
+			ate_fez_scale_trigger = { SCALE = grand }
+		}
+		ate_fez_has_attending_honoree_trigger = yes
+	}
+
+	immediate = {
+		ate_fez_mark_pool_event_effect = { EVENT = 20 }
+		ate_fez_pick_rowdy_honoree_effect = yes
+	}
+
+	# a: scold him, he behaves (keeps the fez)
+	option = {
+		name = ate_fez_ceremony.1020.a
+		scope:ate_fez_target_boy = {
+			add_opinion = {
+				target = root
+				modifier = disappointed_opinion
+				opinion = -5
+			}
+		}
+	}
+
+	# b: beat him (keeps the fez)
+	option = {
+		name = ate_fez_ceremony.1020.b
+		scope:ate_fez_target_boy = {
+			add_opinion = {
+				target = root
+				modifier = angry_opinion
+				opinion = -20
+			}
+		}
+		stress_impact = {
+			compassionate = minor_stress_impact_gain
+			sadistic = minor_stress_impact_loss
+		}
+	}
+
+	# c: he does NOT get the fez (off the honoree list; eligible for a later party)
+	option = {
+		name = ate_fez_ceremony.1020.c
+		send_interface_toast = {
+			type = event_toast_effect_bad
+			title = ate_fez_ceremony.1020.c.toast
+			left_icon = scope:ate_fez_target_boy
+			ate_fez_remove_honoree_effect = { BOY = scope:ate_fez_target_boy }
+			scope:ate_fez_target_boy = {
+				add_opinion = {
+					target = root
+					modifier = humiliated_opinion
+					opinion = -25
+				}
+			}
+		}
+	}
+}
+
+########################################
+# ate_fez_ceremony.1013 — #13 Why Not Me? (Banquet pool, any scale; needs an attending under-age daughter)
+########################################
+ate_fez_ceremony.1013 = {
+	type = activity_event
+	title = ate_fez_ceremony.1013.t
+	desc = ate_fez_ceremony.1013.desc
+	theme = feast_activity
+	override_background = { reference = ate_fez_lodge_hall }
+
+	left_portrait = {
+		character = root
+		animation = personality_honorable
+	}
+	right_portrait = {
+		character = scope:ate_fez_daughter
+		animation = sadness
+	}
+
+	trigger = {
+		exists = scope:activity
+		scope:activity = {
+			NOT = { has_variable = ate_fez_done_13 }
+			any_attending_character = { ate_fez_daughter_candidate_trigger = yes }
+		}
+	}
+
+	immediate = {
+		ate_fez_mark_pool_event_effect = { EVENT = 13 }
+		ate_fez_pick_daughter_effect = yes
+	}
+
+	# a: indulge her with a token (a crimson ribbon)
+	option = {
+		name = ate_fez_ceremony.1013.a
+		remove_short_term_gold = tiny_gold_value
+		scope:ate_fez_daughter = {
+			add_opinion = {
+				target = root
+				modifier = pleased_opinion
+				opinion = 15
+			}
+		}
+	}
+
+	# b: explain the Lodge's law (diplomacy duel, difficulty 10)
+	option = {
+		name = ate_fez_ceremony.1013.b
+		duel = {
+			skill = diplomacy
+			value = 10
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				desc = ate_fez_ceremony.1013.b.success.tt
+				send_interface_toast = {
+					type = event_toast_effect_good
+					title = ate_fez_ceremony.1013.b.success.toast
+					left_icon = scope:ate_fez_daughter
+					scope:ate_fez_daughter = {
+						add_opinion = {
+							target = root
+							modifier = pleased_opinion
+							opinion = 10
+						}
+					}
+				}
+			}
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				desc = ate_fez_ceremony.1013.b.failure.tt
+				send_interface_toast = {
+					type = event_toast_effect_bad
+					title = ate_fez_ceremony.1013.b.failure.toast
+					left_icon = scope:ate_fez_daughter
+					scope:ate_fez_daughter = {
+						add_opinion = {
+							target = root
+							modifier = disappointed_opinion
+							opinion = -15
+						}
+					}
+				}
+			}
+		}
+	}
+
+	# c: laugh it off
+	option = {
+		name = ate_fez_ceremony.1013.c
+		scope:ate_fez_daughter = {
+			add_opinion = {
+				target = root
+				modifier = humiliated_opinion
+				opinion = -20
+			}
+		}
+		stress_impact = {
+			callous = minor_stress_impact_loss
+			compassionate = minor_stress_impact_gain
+		}
+	}
+	# d: give her a fez (user idea 2026-10-12). Only for a female / eccentric / just / excommunicated host.
+	#    She joins the honoree list (paid at the conclusion like the boys). Penalty: host 5 y, her forever.
+	option = {
+		name = ate_fez_ceremony.1013.d
+		trigger = {
+			OR = {
+				is_female = yes
+				has_trait = eccentric
+				has_trait = just
+				has_trait = excommunicated
+			}
+		}
+		send_interface_toast = {
+			type = event_toast_effect_neutral
+			title = ate_fez_ceremony.1013.d.toast
+			left_icon = scope:ate_fez_daughter
+			ate_fez_add_honoree_effect = { BOY = scope:ate_fez_daughter }
+			add_character_modifier = {
+				modifier = ate_fez_broke_lodge_law_modifier
+				years = 5
+			}
+			# you instantly become friends (unless you already are)
+			if = {
+				limit = {
+					NOT = { has_relation_friend = scope:ate_fez_daughter }
+				}
+				set_relation_friend = {
+					target = scope:ate_fez_daughter
+					reason = ate_fez_friend_gave_her_fez
+				}
+			}
+			scope:ate_fez_daughter = {
+				add_character_flag = ate_fez_received # portraits: she wears the fez from now on
+				add_character_modifier = {
+					modifier = ate_fez_broke_lodge_law_modifier
+				}
+				add_opinion = {
+					target = root
+					modifier = pleased_opinion
+					opinion = 25
+				}
+			}
+		}
+	}
+}
+
+#############################################################################
+# BUILD STEP 4 — guest events, second batch (2026-10-12). Same rules as the first batch.
+# Text is DEBUG placeholder; the user writes the real text.
+#############################################################################
+
+########################################
+# ate_fez_ceremony.1002 — #2 The Elder Brother (Banquet pool, Grand or Extravagant)
+########################################
+ate_fez_ceremony.1002 = {
+	type = activity_event
+	title = ate_fez_ceremony.1002.t
+	desc = ate_fez_ceremony.1002.desc
+	theme = feast_activity
+	override_background = { reference = ate_fez_lodge_hall }
+
+	left_portrait = {
+		character = root
+		animation = personality_honorable
+	}
+	right_portrait = {
+		character = scope:ate_fez_elder_brother
+		animation = anger
+	}
+	lower_right_portrait = scope:ate_fez_target_boy
+
+	trigger = {
+		exists = scope:activity
+		scope:activity = {
+			NOT = { has_variable = ate_fez_done_2 }
+			any_attending_character = { ate_fez_elder_brother_candidate_trigger = yes }
+		}
+		OR = {
+			ate_fez_scale_trigger = { SCALE = grand }
+			ate_fez_scale_trigger = { SCALE = extravagant }
+		}
+		ate_fez_has_attending_honoree_trigger = yes
+	}
+
+	immediate = {
+		ate_fez_mark_pool_event_effect = { EVENT = 2 }
+		ate_fez_pick_elder_brother_effect = yes
+		ate_fez_pick_attending_honoree_effect = yes
+	}
+
+	# a: seat of honor
+	option = {
+		name = ate_fez_ceremony.1002.a
+		scope:ate_fez_elder_brother = {
+			add_opinion = {
+				target = root
+				modifier = pleased_opinion
+				opinion = 15
+			}
+		}
+	}
+
+	# b: dismiss his jealousy (30%: he becomes the rival of one of the new fez-bearers)
+	option = {
+		name = ate_fez_ceremony.1002.b
+		scope:ate_fez_elder_brother = {
+			add_opinion = {
+				target = root
+				modifier = disappointed_opinion
+				opinion = -15
+			}
+		}
+		random_list = {
+			70 = {
+				desc = ate_fez_ceremony.1002.b.calm.tt
+				send_interface_toast = {
+					type = event_toast_effect_neutral
+					title = ate_fez_ceremony.1002.b.calm.toast
+					left_icon = scope:ate_fez_elder_brother
+				}
+			}
+			30 = {
+				desc = ate_fez_ceremony.1002.b.rival.tt
+				send_interface_toast = {
+					type = event_toast_effect_bad
+					title = ate_fez_ceremony.1002.b.rival.toast
+					left_icon = scope:ate_fez_elder_brother
+					right_icon = scope:ate_fez_target_boy
+					if = {
+						limit = {
+							exists = scope:ate_fez_target_boy
+							scope:ate_fez_elder_brother = {
+								NOT = { has_relation_rival = scope:ate_fez_target_boy }
+							}
+						}
+						scope:ate_fez_elder_brother = {
+							set_relation_rival = {
+								target = scope:ate_fez_target_boy
+								reason = ate_fez_rival_brothers_fez
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	# c: a jeweled tassel for him
+	option = {
+		name = ate_fez_ceremony.1002.c
+		remove_short_term_gold = tiny_gold_value
+		scope:ate_fez_elder_brother = {
+			add_opinion = {
+				target = root
+				modifier = pleased_opinion
+				opinion = 20
+			}
+		}
+	}
+}
+
+########################################
+# ate_fez_ceremony.1003 — #3 The Potentate's Envoy (Banquet pool, Extravagant only)
+# Seed of the Imperial Divan capstone (corruption of the Potentate).
+########################################
+ate_fez_ceremony.1003 = {
+	type = activity_event
+	title = ate_fez_ceremony.1003.t
+	desc = ate_fez_ceremony.1003.desc
+	theme = feast_activity
+	override_background = { reference = ate_fez_lodge_hall }
+
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+	right_portrait = {
+		character = scope:ate_fez_potentate
+		animation = personality_greedy
+	}
+
+	trigger = {
+		exists = scope:activity
+		scope:activity = { NOT = { has_variable = ate_fez_done_3 } }
+		ate_fez_scale_trigger = { SCALE = extravagant }
+		ate_fez_has_potentate_trigger = yes
+	}
+
+	immediate = {
+		ate_fez_mark_pool_event_effect = { EVENT = 3 }
+		ate_fez_pick_potentate_effect = yes
+	}
+
+	# a: pay the "donation"
+	option = {
+		name = ate_fez_ceremony.1003.a
+		remove_short_term_gold = medium_gold_value
+		add_piety = minor_piety_gain
+		scope:ate_fez_potentate = {
+			add_opinion = {
+				target = root
+				modifier = pleased_opinion
+				opinion = 20
+			}
+		}
+	}
+
+	# b: refuse
+	option = {
+		name = ate_fez_ceremony.1003.b
+		add_prestige = miniscule_prestige_value
+		scope:ate_fez_potentate = {
+			add_opinion = {
+				target = root
+				modifier = angry_opinion
+				opinion = -20
+			}
+		}
+	}
+
+	# c: pay him in flattery (diplomacy duel, difficulty 12)
+	option = {
+		name = ate_fez_ceremony.1003.c
+		duel = {
+			skill = diplomacy
+			value = 12
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				desc = ate_fez_ceremony.1003.c.success.tt
+				send_interface_toast = {
+					type = event_toast_effect_good
+					title = ate_fez_ceremony.1003.c.success.toast
+					left_icon = scope:ate_fez_potentate
+					scope:ate_fez_potentate = {
+						add_opinion = {
+							target = root
+							modifier = pleased_opinion
+							opinion = 5
+						}
+					}
+				}
+			}
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				desc = ate_fez_ceremony.1003.c.failure.tt
+				send_interface_toast = {
+					type = event_toast_effect_bad
+					title = ate_fez_ceremony.1003.c.failure.toast
+					left_icon = scope:ate_fez_potentate
+					scope:ate_fez_potentate = {
+						add_opinion = {
+							target = root
+							modifier = disappointed_opinion
+							opinion = -15
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+########################################
+# ate_fez_ceremony.1004 — #4 A Knight of the Fez of Islam (Banquet pool, any scale)
+########################################
+ate_fez_ceremony.1004 = {
+	type = activity_event
+	title = ate_fez_ceremony.1004.t
+	desc = ate_fez_ceremony.1004.desc
+	theme = feast_activity
+	override_background = { reference = ate_fez_lodge_hall }
+
+	left_portrait = {
+		character = root
+		animation = personality_honorable
+	}
+	right_portrait = {
+		character = scope:ate_fez_knight
+		animation = personality_bold
+	}
+	lower_right_portrait = scope:ate_fez_target_boy
+
+	trigger = {
+		exists = scope:activity
+		scope:activity = { NOT = { has_variable = ate_fez_done_4 } }
+		ate_fez_has_fez_knight_trigger = yes
+		ate_fez_has_attending_honoree_trigger = yes
+	}
+
+	immediate = {
+		ate_fez_mark_pool_event_effect = { EVENT = 4 }
+		ate_fez_pick_fez_knight_effect = yes
+	}
+
+	# a: accept, the boy trains with the order
+	option = {
+		name = ate_fez_ceremony.1004.a
+		send_interface_toast = {
+			type = event_toast_effect_good
+			title = ate_fez_ceremony.1004.a.toast
+			left_icon = scope:ate_fez_target_boy
+			right_icon = scope:ate_fez_knight
+			scope:ate_fez_target_boy = {
+				add_martial_skill = 2
+				add_opinion = {
+					target = root
+					modifier = pleased_opinion
+					opinion = 10
+				}
+			}
+			scope:ate_fez_knight = {
+				add_opinion = {
+					target = root
+					modifier = pleased_opinion
+					opinion = 15
+				}
+			}
+		}
+	}
+
+	# b: decline
+	option = {
+		name = ate_fez_ceremony.1004.b
+		scope:ate_fez_knight = {
+			add_opinion = {
+				target = root
+				modifier = disappointed_opinion
+				opinion = -10
+			}
+		}
+	}
+
+	# c: offer him to the order (user idea 2026-10-12). He becomes a Holy Order Member: can never marry or inherit.
+	#    He stays at your court (moving him mid-party could pull him out of the activity before his fez).
+	option = {
+		name = ate_fez_ceremony.1004.c
+		trigger = {
+			scope:ate_fez_target_boy = {
+				NOT = { has_trait = order_member }
+			}
+		}
+		send_interface_toast = {
+			type = event_toast_effect_good
+			title = ate_fez_ceremony.1004.c.toast
+			left_icon = scope:ate_fez_target_boy
+			right_icon = scope:ate_fez_knight
+			scope:ate_fez_target_boy = {
+				if = {
+					limit = { is_betrothed = yes }
+					break_betrothal = betrothed
+				}
+				add_trait = order_member
+			}
+			add_piety = major_piety_gain
+			add_prestige = major_prestige_gain
+			scope:ate_fez_knight = {
+				add_opinion = {
+					target = root
+					modifier = pleased_opinion
+					opinion = 25
+				}
+			}
+		}
+	}
+}
+
+########################################
+# ate_fez_ceremony.1005 — #5 A Match Proposed (Banquet pool, any scale)
+########################################
+ate_fez_ceremony.1005 = {
+	type = activity_event
+	title = ate_fez_ceremony.1005.t
+	desc = ate_fez_ceremony.1005.desc
+	theme = feast_activity
+	override_background = { reference = ate_fez_lodge_hall }
+
+	left_portrait = {
+		character = root
+		animation = thinking
+	}
+	right_portrait = {
+		character = scope:ate_fez_suitor_family
+		animation = happiness
+	}
+	lower_left_portrait = scope:ate_fez_target_boy
+	lower_right_portrait = scope:ate_fez_match
+
+	trigger = {
+		exists = scope:activity
+		scope:activity = { NOT = { has_variable = ate_fez_done_5 } }
+		ate_fez_has_boy_match_trigger = yes
+	}
+
+	immediate = {
+		ate_fez_mark_pool_event_effect = { EVENT = 5 }
+		ate_fez_pick_boy_match_effect = yes
+	}
+
+	# a: accept the betrothal
+	option = {
+		name = ate_fez_ceremony.1005.a
+		trigger = { exists = scope:ate_fez_match }
+		send_interface_toast = {
+			type = event_toast_effect_good
+			title = ate_fez_ceremony.1005.a.toast
+			left_icon = scope:ate_fez_target_boy
+			right_icon = scope:ate_fez_match
+			ate_fez_betroth_effect = { PARTNER = scope:ate_fez_target_boy }
+			scope:ate_fez_suitor_family = {
+				add_opinion = {
+					target = root
+					modifier = pleased_opinion
+					opinion = 20
+				}
+			}
+		}
+	}
+
+	# b: decline politely
+	option = {
+		name = ate_fez_ceremony.1005.b
+		scope:ate_fez_suitor_family ?= {
+			add_opinion = {
+				target = root
+				modifier = disappointed_opinion
+				opinion = -10
+			}
+		}
+	}
+}
+
+########################################
+# ate_fez_ceremony.1008 — #8 Florida Man Arrives (Procession pool, Extravagant only)
+########################################
+ate_fez_ceremony.1008 = {
+	type = activity_event
+	title = ate_fez_ceremony.1008.t
+	desc = ate_fez_ceremony.1008.desc
+	theme = feast_activity
+	override_background = { reference = ate_fez_lodge_hall }
+
+	left_portrait = {
+		character = root
+		animation = shock
+	}
+	right_portrait = {
+		character = scope:ate_fez_florida_man
+		animation = drink
+	}
+
+	trigger = {
+		exists = scope:activity
+		scope:activity = { NOT = { has_variable = ate_fez_done_8 } }
+		ate_fez_scale_trigger = { SCALE = extravagant }
+	}
+
+	# 2026-10-12 (user): the Florida Man is a stranger spawned for the event, never one of the guests
+	# (a guest pick chose the host's own wife). Lowborn Sunshiner drunkard at the host's capital.
+	immediate = {
+		ate_fez_mark_pool_event_effect = { EVENT = 8 }
+		create_character = {
+			gender = male
+			age = { 25 50 }
+			dynasty = none
+			location = root.location
+			culture = culture:sunshiner
+			faith = root.location.faith
+			trait = drunkard
+			save_scope_as = ate_fez_florida_man
+		}
+	}
+
+	# a: laugh it off
+	option = {
+		name = ate_fez_ceremony.1008.a
+		add_stress = minor_stress_loss
+		add_prestige = -10
+	}
+
+	# b: throw him out
+	option = {
+		name = ate_fez_ceremony.1008.b
+		add_prestige = miniscule_prestige_value
+		scope:ate_fez_florida_man = {
+			add_opinion = {
+				target = root
+				modifier = angry_opinion
+				opinion = -25
+			}
+		}
+	}
+
+	# c: join him (drunkard or gregarious host)
+	option = {
+		name = ate_fez_ceremony.1008.c
+		trigger = {
+			OR = {
+				has_trait = drunkard
+				has_trait = gregarious
+			}
+		}
+		add_stress = medium_stress_loss
+		add_prestige = -25
+		scope:ate_fez_florida_man = {
+			add_opinion = {
+				target = root
+				modifier = pleased_opinion
+				opinion = 20
+			}
+		}
+	}
+}
+
+########################################
+# ate_fez_ceremony.1009 — #9 The Storm (Procession pool, Extravagant only: the open-air parade)
+########################################
+ate_fez_ceremony.1009 = {
+	type = activity_event
+	title = ate_fez_ceremony.1009.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:ate_fez_guest }
+				desc = ate_fez_ceremony.1009.desc
+			}
+			desc = ate_fez_ceremony.1009.desc.no_guest
+		}
+	}
+	theme = feast_activity
+	override_background = { reference = ate_fez_lodge_hall }
+
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+	right_portrait = {
+		character = scope:ate_fez_guest
+		animation = worry
+	}
+
+	trigger = {
+		exists = scope:activity
+		scope:activity = { NOT = { has_variable = ate_fez_done_9 } }
+		ate_fez_scale_trigger = { SCALE = extravagant }
+	}
+
+	immediate = {
+		ate_fez_mark_pool_event_effect = { EVENT = 9 }
+		ate_fez_pick_any_guest_effect = yes
+	}
+
+	# a: march on through the rain (60% prestige / 40% a guest falls ill)
+	option = {
+		name = ate_fez_ceremony.1009.a
+		random_list = {
+			60 = {
+				desc = ate_fez_ceremony.1009.a.success.tt
+				send_interface_toast = {
+					type = event_toast_effect_good
+					title = ate_fez_ceremony.1009.a.success.toast
+					left_icon = root
+					add_prestige = minor_prestige_gain
+				}
+			}
+			40 = {
+				desc = ate_fez_ceremony.1009.a.ill.tt
+				send_interface_toast = {
+					type = event_toast_effect_bad
+					title = ate_fez_ceremony.1009.a.ill.toast
+					left_icon = root
+					add_prestige = -10
+					if = {
+						limit = { exists = scope:ate_fez_guest }
+						scope:ate_fez_guest = { add_trait = ill }
+					}
+				}
+			}
+		}
+	}
+
+	# b: move it indoors
+	option = {
+		name = ate_fez_ceremony.1009.b
+		add_prestige = -10
+	}
+
+	# c: pray for the storm to pass (learning duel, difficulty 10)
+	option = {
+		name = ate_fez_ceremony.1009.c
+		duel = {
+			skill = learning
+			value = 10
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				desc = ate_fez_ceremony.1009.c.success.tt
+				send_interface_toast = {
+					type = event_toast_effect_good
+					title = ate_fez_ceremony.1009.c.success.toast
+					left_icon = root
+					add_piety = minor_piety_gain
+				}
+			}
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				desc = ate_fez_ceremony.1009.c.failure.tt
+				send_interface_toast = {
+					type = event_toast_effect_bad
+					title = ate_fez_ceremony.1009.c.failure.toast
+					left_icon = root
+					add_stress = minor_stress_gain
+				}
+			}
+		}
+	}
+}
+
+########################################
+# ate_fez_ceremony.1010 — #10 The Gator Attends (Procession pool, any scale; host owns the pet-alligator story)
+########################################
+ate_fez_ceremony.1010 = {
+	type = activity_event
+	title = ate_fez_ceremony.1010.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:ate_fez_guest }
+				desc = ate_fez_ceremony.1010.desc
+			}
+			desc = ate_fez_ceremony.1010.desc.no_guest
+		}
+	}
+	theme = feast_activity
+	override_background = { reference = ate_fez_lodge_hall }
+
+	left_portrait = {
+		character = root
+		animation = happiness
+	}
+	right_portrait = {
+		character = scope:ate_fez_guest
+		animation = fear
+	}
+
+	trigger = {
+		exists = scope:activity
+		scope:activity = { NOT = { has_variable = ate_fez_done_10 } }
+		ate_fez_host_has_gator_trigger = yes
+	}
+
+	immediate = {
+		ate_fez_mark_pool_event_effect = { EVENT = 10 }
+		ate_fez_pick_any_guest_effect = yes
+	}
+
+	# a: parade the gator (75% prestige / 25% it bites a guest)
+	option = {
+		name = ate_fez_ceremony.1010.a
+		random_list = {
+			75 = {
+				desc = ate_fez_ceremony.1010.a.success.tt
+				send_interface_toast = {
+					type = event_toast_effect_good
+					title = ate_fez_ceremony.1010.a.success.toast
+					left_icon = root
+					add_prestige = minor_prestige_gain
+				}
+			}
+			25 = {
+				desc = ate_fez_ceremony.1010.a.bite.tt
+				send_interface_toast = {
+					type = event_toast_effect_bad
+					title = ate_fez_ceremony.1010.a.bite.toast
+					left_icon = root
+					add_prestige = -25
+					if = {
+						limit = { exists = scope:ate_fez_guest }
+						scope:ate_fez_guest = { add_trait = wounded_1 }
+					}
+				}
+			}
+		}
+	}
+
+	# b: keep it in its pen
+	option = {
+		name = ate_fez_ceremony.1010.b
+	}
+}
+
+########################################
+# ate_fez_ceremony.1011 — #11 Not My Father's Fez (Banquet pool, any scale; a ward honoree)
+########################################
+ate_fez_ceremony.1011 = {
+	type = activity_event
+	title = ate_fez_ceremony.1011.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:ate_fez_ward_father }
+				desc = ate_fez_ceremony.1011.desc
+			}
+			desc = ate_fez_ceremony.1011.desc.no_ward_father
+		}
+	}
+	theme = feast_activity
+	override_background = { reference = ate_fez_lodge_hall }
+
+	left_portrait = {
+		character = root
+		animation = personality_honorable
+	}
+	right_portrait = {
+		character = scope:ate_fez_ward
+		animation = sadness
+	}
+	lower_right_portrait = scope:ate_fez_ward_father
+
+	trigger = {
+		exists = scope:activity
+		scope:activity = {
+			NOT = { has_variable = ate_fez_done_11 }
+			any_in_list = {
+				variable = ate_fez_honorees
+				ate_fez_ward_honoree_trigger = yes
+			}
+		}
+	}
+
+	immediate = {
+		ate_fez_mark_pool_event_effect = { EVENT = 11 }
+		ate_fez_pick_ward_effect = yes
+	}
+
+	# a: "I am your father now"
+	option = {
+		name = ate_fez_ceremony.1011.a
+		scope:ate_fez_ward = {
+			add_opinion = {
+				target = root
+				modifier = pleased_opinion
+				opinion = 30
+			}
+		}
+		scope:ate_fez_ward_father ?= {
+			add_opinion = {
+				target = root
+				modifier = angry_opinion
+				opinion = -20
+			}
+		}
+	}
+
+	# b: "Your father would be proud"
+	option = {
+		name = ate_fez_ceremony.1011.b
+		scope:ate_fez_ward = {
+			add_opinion = {
+				target = root
+				modifier = pleased_opinion
+				opinion = 10
+			}
+		}
+		scope:ate_fez_ward_father ?= {
+			add_opinion = {
+				target = root
+				modifier = pleased_opinion
+				opinion = 10
+			}
+		}
+	}
+
+	# c: say nothing
+	option = {
+		name = ate_fez_ceremony.1011.c
+		scope:ate_fez_ward = {
+			add_opinion = {
+				target = root
+				modifier = disappointed_opinion
+				opinion = -10
+			}
+		}
+	}
+}
+
+########################################
+# ate_fez_ceremony.1012 — #12 The Ward's Gift (Banquet pool, any scale; a ward honoree with a living parent)
+########################################
+ate_fez_ceremony.1012 = {
+	type = activity_event
+	title = ate_fez_ceremony.1012.t
+	desc = ate_fez_ceremony.1012.desc
+	theme = feast_activity
+	override_background = { reference = ate_fez_lodge_hall }
+
+	left_portrait = {
+		character = root
+		animation = happiness
+	}
+	right_portrait = {
+		character = scope:ate_fez_ward_family
+		animation = personality_honorable
+	}
+	lower_right_portrait = scope:ate_fez_ward
+
+	trigger = {
+		exists = scope:activity
+		scope:activity = {
+			NOT = { has_variable = ate_fez_done_12 }
+			any_in_list = {
+				variable = ate_fez_honorees
+				ate_fez_ward_with_family_trigger = yes
+			}
+		}
+	}
+
+	immediate = {
+		ate_fez_mark_pool_event_effect = { EVENT = 12 }
+		ate_fez_pick_ward_with_family_effect = yes
+	}
+
+	# a: accept the gift
+	option = {
+		name = ate_fez_ceremony.1012.a
+		add_gold = minor_gold_value
+		scope:ate_fez_ward_family = {
+			add_opinion = {
+				target = root
+				modifier = pleased_opinion
+				opinion = 10
+			}
+		}
+	}
+
+	# b: refuse it graciously
+	option = {
+		name = ate_fez_ceremony.1012.b
+		add_prestige = minor_prestige_gain
+		scope:ate_fez_ward_family = {
+			add_opinion = {
+				target = root
+				modifier = pleased_opinion
+				opinion = 5
+			}
+		}
+	}
+
+	# c: ask for a favor instead
+	option = {
+		name = ate_fez_ceremony.1012.c
+		send_interface_toast = {
+			type = event_toast_effect_good
+			title = ate_fez_ceremony.1012.c.toast
+			left_icon = scope:ate_fez_ward_family
+			add_hook = {
+				type = favor_hook
+				target = scope:ate_fez_ward_family
+			}
+			scope:ate_fez_ward_family = {
+				add_opinion = {
+					target = root
+					modifier = disappointed_opinion
+					opinion = -10
+				}
+			}
+		}
+	}
+}
+
+########################################
+# ate_fez_ceremony.1014 — #14 A Suitor's Eye (Banquet pool, any scale; daughter version of #5)
+########################################
+ate_fez_ceremony.1014 = {
+	type = activity_event
+	title = ate_fez_ceremony.1014.t
+	desc = ate_fez_ceremony.1014.desc
+	theme = feast_activity
+	override_background = { reference = ate_fez_lodge_hall }
+
+	left_portrait = {
+		character = root
+		animation = thinking
+	}
+	right_portrait = {
+		character = scope:ate_fez_suitor_family
+		animation = happiness
+	}
+	lower_left_portrait = scope:ate_fez_daughter
+	lower_right_portrait = scope:ate_fez_match
+
+	trigger = {
+		exists = scope:activity
+		scope:activity = { NOT = { has_variable = ate_fez_done_14 } }
+		ate_fez_has_daughter_match_trigger = yes
+	}
+
+	immediate = {
+		ate_fez_mark_pool_event_effect = { EVENT = 14 }
+		ate_fez_pick_daughter_match_effect = yes
+	}
+
+	# a: accept the betrothal
+	option = {
+		name = ate_fez_ceremony.1014.a
+		trigger = { exists = scope:ate_fez_match }
+		send_interface_toast = {
+			type = event_toast_effect_good
+			title = ate_fez_ceremony.1014.a.toast
+			left_icon = scope:ate_fez_daughter
+			right_icon = scope:ate_fez_match
+			ate_fez_betroth_effect = { PARTNER = scope:ate_fez_daughter }
+			scope:ate_fez_suitor_family = {
+				add_opinion = {
+					target = root
+					modifier = pleased_opinion
+					opinion = 20
+				}
+			}
+		}
+	}
+
+	# b: decline politely
+	option = {
+		name = ate_fez_ceremony.1014.b
+		scope:ate_fez_suitor_family ?= {
+			add_opinion = {
+				target = root
+				modifier = disappointed_opinion
+				opinion = -10
+			}
+		}
+	}
+}
+
+########################################
+# ate_fez_ceremony.1015 — #15 The Sister Who Stole the Show (Banquet pool, any scale)
+########################################
+ate_fez_ceremony.1015 = {
+	type = activity_event
+	title = ate_fez_ceremony.1015.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:ate_fez_target_boy }
+				desc = ate_fez_ceremony.1015.desc
+			}
+			desc = ate_fez_ceremony.1015.desc.no_target_boy
+		}
+	}
+	theme = feast_activity
+	override_background = { reference = ate_fez_lodge_hall }
+
+	left_portrait = {
+		character = root
+		animation = happiness
+	}
+	right_portrait = {
+		character = scope:ate_fez_daughter
+		animation = personality_bold
+	}
+	lower_right_portrait = scope:ate_fez_target_boy
+
+	trigger = {
+		exists = scope:activity
+		scope:activity = {
+			NOT = { has_variable = ate_fez_done_15 }
+			any_attending_character = { ate_fez_daughter_candidate_trigger = yes }
+		}
+	}
+
+	immediate = {
+		ate_fez_mark_pool_event_effect = { EVENT = 15 }
+		ate_fez_pick_daughter_effect = yes
+		ate_fez_pick_attending_honoree_effect = yes
+	}
+
+	# a: praise her (the brothers resent it)
+	option = {
+		name = ate_fez_ceremony.1015.a
+		send_interface_toast = {
+			type = event_toast_effect_good
+			title = ate_fez_ceremony.1015.a.toast
+			left_icon = scope:ate_fez_daughter
+			add_prestige = minor_prestige_gain
+			scope:ate_fez_daughter = {
+				add_opinion = {
+					target = root
+					modifier = pleased_opinion
+					opinion = 15
+				}
+			}
+			scope:activity = {
+				every_in_list = {
+					variable = ate_fez_honorees
+					limit = {
+						ate_fez_attending_honoree_trigger = yes
+						NOT = { this = scope:ate_fez_daughter }
+					}
+					custom = ate_fez_every_present_boy_tt
+					add_opinion = {
+						target = root
+						modifier = disappointed_opinion
+						opinion = -5
+					}
+				}
+			}
+		}
+	}
+
+	# b: hush her, it is the boys' day
+	option = {
+		name = ate_fez_ceremony.1015.b
+		send_interface_toast = {
+			type = event_toast_effect_bad
+			title = ate_fez_ceremony.1015.b.toast
+			left_icon = scope:ate_fez_daughter
+			scope:ate_fez_daughter = {
+				add_opinion = {
+					target = root
+					modifier = disappointed_opinion
+					opinion = -10
+				}
+			}
+		}
+	}
+}
+
+########################################
+# ate_fez_ceremony.1017 — #17 Heavy Is the Fez (Procession pool, any scale; user's idea)
+########################################
+ate_fez_ceremony.1017 = {
+	type = activity_event
+	title = ate_fez_ceremony.1017.t
+	desc = ate_fez_ceremony.1017.desc
+	theme = feast_activity
+	override_background = { reference = ate_fez_lodge_hall }
+
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+	right_portrait = {
+		character = scope:ate_fez_target_boy
+		animation = sadness
+	}
+
+	trigger = {
+		exists = scope:activity
+		scope:activity = {
+			NOT = { has_variable = ate_fez_done_17 }
+			any_in_list = {
+				variable = ate_fez_honorees
+				ate_fez_reluctant_boy_trigger = yes
+			}
+		}
+	}
+
+	immediate = {
+		ate_fez_mark_pool_event_effect = { EVENT = 17 }
+		ate_fez_pick_reluctant_boy_effect = yes
+		ate_fez_pick_host_vice_effect = yes
+	}
+
+	# a: convince him (diplomacy duel, difficulty 10). Failure: he skips the rite.
+	option = {
+		name = ate_fez_ceremony.1017.a
+		duel = {
+			skill = diplomacy
+			value = 10
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 3.5
+					min = -49
+				}
+				desc = ate_fez_ceremony.1017.a.success.tt
+				send_interface_toast = {
+					type = event_toast_effect_good
+					title = ate_fez_ceremony.1017.a.success.toast
+					left_icon = scope:ate_fez_target_boy
+					scope:ate_fez_target_boy = {
+						add_opinion = {
+							target = root
+							modifier = pleased_opinion
+							opinion = 10
+						}
+					}
+				}
+			}
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				desc = ate_fez_ceremony.1017.a.failure.tt
+				send_interface_toast = {
+					type = event_toast_effect_bad
+					title = ate_fez_ceremony.1017.a.failure.toast
+					left_icon = scope:ate_fez_target_boy
+					ate_fez_remove_honoree_effect = { BOY = scope:ate_fez_target_boy }
+					scope:ate_fez_target_boy = {
+						add_opinion = {
+							target = root
+							modifier = disappointed_opinion
+							opinion = -10
+						}
+					}
+				}
+			}
+		}
+	}
+
+	# b: force him
+	option = {
+		name = ate_fez_ceremony.1017.b
+		scope:ate_fez_target_boy = {
+			add_opinion = {
+				target = root
+				modifier = disappointed_opinion
+				opinion = -20
+			}
+		}
+		stress_impact = {
+			compassionate = minor_stress_impact_gain
+		}
+	}
+
+	# c: beat him
+	option = {
+		name = ate_fez_ceremony.1017.c
+		scope:ate_fez_target_boy = {
+			add_opinion = {
+				target = root
+				modifier = angry_opinion
+				opinion = -30
+			}
+		}
+		stress_impact = {
+			compassionate = minor_stress_impact_gain
+			sadistic = minor_stress_impact_loss
+		}
+	}
+
+	# d: show him the joys of being an adult (user idea 2026-10-12): replaces the old drunkard / greedy / gluttonous
+	#    options. Shows if the host has a vice; ONE of them was picked in the immediate. 30%: he catches it.
+	option = {
+		name = {
+			trigger = { scope:ate_fez_vice = flag:drunkard }
+			text = ate_fez_ceremony.1017.d.drunkard
+		}
+		name = {
+			trigger = { scope:ate_fez_vice = flag:hashishiyah }
+			text = ate_fez_ceremony.1017.d.hashishiyah
+		}
+		name = {
+			trigger = { scope:ate_fez_vice = flag:comfort_eater }
+			text = ate_fez_ceremony.1017.d.comfort_eater
+		}
+		name = {
+			trigger = { scope:ate_fez_vice = flag:gluttonous }
+			text = ate_fez_ceremony.1017.d.gluttonous
+		}
+		name = {
+			trigger = { scope:ate_fez_vice = flag:profligate }
+			text = ate_fez_ceremony.1017.d.profligate
+		}
+		name = {
+			trigger = { scope:ate_fez_vice = flag:greedy }
+			text = ate_fez_ceremony.1017.d.greedy
+		}
+		name = {
+			trigger = { scope:ate_fez_vice = flag:lifestyle_reveler }
+			text = ate_fez_ceremony.1017.d.lifestyle_reveler
+		}
+		trigger = { exists = scope:ate_fez_vice }
+		random_list = {
+			30 = {
+				trigger = { exists = scope:ate_fez_vice_catchable }
+				desc = ate_fez_ceremony.1017.d.caught.tt
+				send_interface_toast = {
+					type = event_toast_effect_neutral
+					title = ate_fez_ceremony.1017.d.caught.toast
+					left_icon = scope:ate_fez_target_boy
+					scope:ate_fez_target_boy = {
+						ate_fez_catch_vice_effect = yes
+						add_opinion = {
+							target = root
+							modifier = pleased_opinion
+							opinion = 10
+						}
+					}
+				}
+			}
+			70 = {
+				desc = ate_fez_ceremony.1017.d.enjoyed.tt
+				send_interface_toast = {
+					type = event_toast_effect_good
+					title = ate_fez_ceremony.1017.d.enjoyed.toast
+					left_icon = scope:ate_fez_target_boy
+					scope:ate_fez_target_boy = {
+						add_opinion = {
+							target = root
+							modifier = pleased_opinion
+							opinion = 10
+						}
+					}
+				}
+			}
+		}
+	}
+
+	# e: let him skip the rite
+	option = {
+		name = ate_fez_ceremony.1017.e
+		send_interface_toast = {
+			type = event_toast_effect_neutral
+			title = ate_fez_ceremony.1017.e.toast
+			left_icon = scope:ate_fez_target_boy
+			ate_fez_remove_honoree_effect = { BOY = scope:ate_fez_target_boy }
+			scope:ate_fez_target_boy = {
+				add_opinion = {
+					target = root
+					modifier = pleased_opinion
+					opinion = 5
+				}
+			}
+		}
+	}
+
+	# f: cannibal host only (user idea 2026-10-12): the joke option, the toast yells at the player.
+	#    Deviant deliberately NOT included: the boy is 12-15 (sexual content with a minor).
+	option = {
+		name = ate_fez_ceremony.1017.f
+		trait = cannibal
+		trigger = { has_trait = cannibal }
+		send_interface_toast = {
+			type = event_toast_effect_bad
+			title = ate_fez_ceremony.1017.f.toast
+			left_icon = scope:ate_fez_target_boy
+			scope:ate_fez_target_boy = {
+				add_opinion = {
+					target = root
+					modifier = angry_opinion
+					opinion = -30
+				}
+			}
+		}
+	}
+}
+
+########################################
+# ate_fez_ceremony.1018 — #18 When in al-Rome... (Procession pool, any scale; a non-Shriner ward; user's idea)
+########################################
+ate_fez_ceremony.1018 = {
+	type = activity_event
+	title = ate_fez_ceremony.1018.t
+	desc = ate_fez_ceremony.1018.desc
+	theme = feast_activity
+	override_background = { reference = ate_fez_lodge_hall }
+
+	left_portrait = {
+		character = root
+		animation = personality_honorable
+	}
+	right_portrait = {
+		character = scope:ate_fez_foreign_ward
+		animation = thinking
+	}
+
+	trigger = {
+		exists = scope:activity
+		scope:activity = {
+			NOT = { has_variable = ate_fez_done_18 }
+			any_attending_character = { ate_fez_foreign_ward_candidate_trigger = yes }
+		}
+	}
+
+	immediate = {
+		ate_fez_mark_pool_event_effect = { EVENT = 18 }
+		ate_fez_pick_foreign_ward_effect = yes
+	}
+
+	# a: convert him and give him the fez (joins the honoree list)
+	option = {
+		name = ate_fez_ceremony.1018.a
+		send_interface_toast = {
+			type = event_toast_effect_good
+			title = ate_fez_ceremony.1018.a.toast
+			left_icon = scope:ate_fez_foreign_ward
+			scope:ate_fez_foreign_ward = {
+				set_character_faith = faith:shriner
+				add_opinion = {
+					target = root
+					modifier = pleased_opinion
+					opinion = 15
+				}
+			}
+			ate_fez_add_honoree_effect = { BOY = scope:ate_fez_foreign_ward }
+		}
+	}
+
+	# b: not today
+	option = {
+		name = ate_fez_ceremony.1018.b
+		scope:ate_fez_foreign_ward = {
+			add_opinion = {
+				target = root
+				modifier = disappointed_opinion
+				opinion = -10
+			}
+		}
+	}
+}
+
+########################################
+# ate_fez_ceremony.1019 — #19 Like the First Time (Banquet pool, any scale; user's idea)
+# Reincarnation = vanilla bp2_yearly.8090 pattern: variable reincarnation_of + trait reincarnation.
+########################################
+ate_fez_ceremony.1019 = {
+	type = activity_event
+	title = ate_fez_ceremony.1019.t
+	desc = ate_fez_ceremony.1019.desc
+	theme = feast_activity
+	override_background = { reference = ate_fez_lodge_hall }
+
+	left_portrait = {
+		character = root
+		animation = shock
+	}
+	right_portrait = {
+		character = scope:ate_fez_target_boy
+		animation = personality_honorable
+	}
+
+	trigger = {
+		exists = scope:activity
+		scope:activity = {
+			NOT = { has_variable = ate_fez_done_19 }
+			any_in_list = {
+				variable = ate_fez_honorees
+				ate_fez_reincarnated_boy_trigger = yes
+			}
+		}
+	}
+
+	immediate = {
+		ate_fez_mark_pool_event_effect = { EVENT = 19 }
+		ate_fez_pick_reincarnated_boy_effect = yes
+	}
+
+	# a: believe him
+	option = {
+		name = ate_fez_ceremony.1019.a
+		trigger = { exists = scope:ate_fez_ancestor }
+		send_interface_toast = {
+			type = event_toast_effect_good
+			title = ate_fez_ceremony.1019.a.toast
+			left_icon = scope:ate_fez_target_boy
+			scope:ate_fez_target_boy = {
+				set_variable = {
+					name = reincarnation_of
+					value = scope:ate_fez_ancestor
+				}
+				add_trait = reincarnation
+			}
+		}
+	}
+
+	# b: don't believe him
+	option = {
+		name = ate_fez_ceremony.1019.b
+		send_interface_toast = {
+			type = event_toast_effect_bad
+			title = ate_fez_ceremony.1019.b.toast
+			left_icon = scope:ate_fez_target_boy
+			scope:ate_fez_target_boy = { add_trait = lunatic_1 }
+		}
+	}
+}
+
+########################################
+# ate_fez_ceremony.1021 — #21 Your Loved Black Sheep (Procession pool, any scale; user's idea)
+########################################
+ate_fez_ceremony.1021 = {
+	type = activity_event
+	title = ate_fez_ceremony.1021.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:ate_fez_mocker_2 }
+				desc = ate_fez_ceremony.1021.desc
+			}
+			triggered_desc = {
+				trigger = { exists = scope:ate_fez_mocker_1 }
+				desc = ate_fez_ceremony.1021.desc.one_mocker
+			}
+			desc = ate_fez_ceremony.1021.desc.no_mocker
+		}
+	}
+	theme = feast_activity
+	override_background = { reference = ate_fez_lodge_hall }
+
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+	right_portrait = {
+		character = scope:ate_fez_target_boy
+		animation = sadness
+	}
+	lower_left_portrait = scope:ate_fez_mocker_1
+	lower_right_portrait = scope:ate_fez_mocker_2
+
+	trigger = {
+		exists = scope:activity
+		scope:activity = {
+			NOT = { has_variable = ate_fez_done_21 }
+			any_in_list = {
+				variable = ate_fez_honorees
+				ate_fez_black_sheep_trigger = yes
+			}
+		}
+	}
+
+	immediate = {
+		ate_fez_mark_pool_event_effect = { EVENT = 21 }
+		ate_fez_pick_black_sheep_effect = yes
+		ate_fez_pick_mockers_effect = yes
+	}
+
+	# a: console him, he attends
+	option = {
+		name = ate_fez_ceremony.1021.a
+		scope:ate_fez_target_boy = {
+			add_opinion = {
+				target = root
+				modifier = pleased_opinion
+				opinion = 15
+			}
+		}
+	}
+
+	# b: let him skip the rite (off the honoree list; eligible later)
+	option = {
+		name = ate_fez_ceremony.1021.b
+		send_interface_toast = {
+			type = event_toast_effect_neutral
+			title = ate_fez_ceremony.1021.b.toast
+			left_icon = scope:ate_fez_target_boy
+			ate_fez_remove_honoree_effect = { BOY = scope:ate_fez_target_boy }
+			scope:ate_fez_target_boy = {
+				add_opinion = {
+					target = root
+					modifier = pleased_opinion
+					opinion = 5
+				}
+			}
+		}
+	}
+
+	# c: give him the fez in private: off the list (not in the Presentation, no scale extras),
+	#    but initiated right now
+	option = {
+		name = ate_fez_ceremony.1021.c
+		send_interface_toast = {
+			type = event_toast_effect_good
+			title = ate_fez_ceremony.1021.c.toast
+			left_icon = scope:ate_fez_target_boy
+			ate_fez_remove_honoree_effect = { BOY = scope:ate_fez_target_boy }
+			scope:ate_fez_target_boy = {
+				add_character_flag = ate_fez_received
+				add_character_modifier = {
+					modifier = ate_shriner_initiated_modifier
+					years = 6
+				}
+				add_opinion = {
+					target = root
+					modifier = pleased_opinion
+					opinion = 20
+				}
+			}
+		}
+	}
+
+	# d: mock him too (he becomes your rival)
+	option = {
+		name = ate_fez_ceremony.1021.d
+		send_interface_toast = {
+			type = event_toast_effect_bad
+			title = ate_fez_ceremony.1021.d.toast
+			left_icon = scope:ate_fez_target_boy
+			scope:ate_fez_target_boy = {
+				if = {
+					limit = {
+						NOT = { has_relation_rival = root }
+					}
+					set_relation_rival = {
+						target = root
+						reason = ate_fez_rival_mocked_his_looks
+					}
+				}
+			}
+		}
+		stress_impact = {
+			callous = minor_stress_impact_loss
+			compassionate = medium_stress_impact_gain
+		}
+	}
+
+	# e: kill those who mocked him (1-2 guests murdered | dread, tyranny)
+	option = {
+		name = ate_fez_ceremony.1021.e
+		trigger = { exists = scope:ate_fez_mocker_1 }
+		send_interface_toast = {
+			type = event_toast_effect_bad
+			title = ate_fez_ceremony.1021.e.toast
+			left_icon = scope:ate_fez_target_boy
+			scope:ate_fez_mocker_1 = {
+				death = {
+					death_reason = death_murder
+					killer = root
+				}
+			}
+			scope:ate_fez_mocker_2 ?= {
+				death = {
+					death_reason = death_murder
+					killer = root
+				}
+			}
+			add_dread = medium_dread_gain
+			add_tyranny = medium_tyranny_gain
+			scope:ate_fez_target_boy = {
+				add_opinion = {
+					target = root
+					modifier = pleased_opinion
+					opinion = 30
+				}
+			}
+		}
+		stress_impact = {
+			sadistic = minor_stress_impact_loss
+			wrathful = minor_stress_impact_loss
+			compassionate = major_stress_impact_gain
+		}
 	}
 }

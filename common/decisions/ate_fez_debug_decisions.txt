@@ -1,0 +1,51 @@
+﻿# TESTING ONLY — spawns 15 of your children, all aged 13, each with a different personality pair, to test the
+# Feast of the Fez events (11 boys = honorees, 4 girls = daughter events).
+# !!! Always visible to player-controlled characters (user's choice): remove this file and
+# !!! common/scripted_effects/ate_fez_debug_effects.txt (or set is_shown = { always = no }) before any public release.
+ate_fez_debug_spawn_test_kids = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
+	}
+	decision_group_type = major
+
+	ai_check_interval = 120
+
+	desc = ate_fez_debug_spawn_test_kids_desc
+	selection_tooltip = ate_fez_debug_spawn_test_kids_tooltip
+
+	is_shown = {
+		is_ai = no
+	}
+
+	is_valid = {
+		is_male = yes
+	}
+
+	effect = {
+		# Boys (honorees). Pairs cover the traits our events check.
+		ate_fez_debug_spawn_test_kid_effect = { GENDER = male TRAIT_A = zealous TRAIT_B = gregarious CHILDHOOD = rowdy }
+		ate_fez_debug_spawn_test_kid_effect = { GENDER = male TRAIT_A = cynical TRAIT_B = shy CHILDHOOD = pensive }
+		ate_fez_debug_spawn_test_kid_effect = { GENDER = male TRAIT_A = arrogant TRAIT_B = brave CHILDHOOD = bossy }
+		ate_fez_debug_spawn_test_kid_effect = { GENDER = male TRAIT_A = humble TRAIT_B = craven CHILDHOOD = curious }
+		ate_fez_debug_spawn_test_kid_effect = { GENDER = male TRAIT_A = greedy TRAIT_B = ambitious CHILDHOOD = charming }
+		ate_fez_debug_spawn_test_kid_effect = { GENDER = male TRAIT_A = generous TRAIT_B = content CHILDHOOD = rowdy }
+		ate_fez_debug_spawn_test_kid_effect = { GENDER = male TRAIT_A = wrathful TRAIT_B = honest CHILDHOOD = bossy }
+		ate_fez_debug_spawn_test_kid_effect = { GENDER = male TRAIT_A = calm TRAIT_B = deceitful CHILDHOOD = charming }
+		ate_fez_debug_spawn_test_kid_effect = { GENDER = male TRAIT_A = gluttonous TRAIT_B = lazy CHILDHOOD = rowdy }
+		ate_fez_debug_spawn_test_kid_effect = { GENDER = male TRAIT_A = temperate TRAIT_B = diligent CHILDHOOD = curious }
+		ate_fez_debug_spawn_test_kid_effect = { GENDER = male TRAIT_A = just TRAIT_B = stubborn CHILDHOOD = pensive }
+		# Girls (daughter events)
+		ate_fez_debug_spawn_test_kid_effect = { GENDER = female TRAIT_A = compassionate TRAIT_B = gregarious CHILDHOOD = charming }
+		ate_fez_debug_spawn_test_kid_effect = { GENDER = female TRAIT_A = ambitious TRAIT_B = arrogant CHILDHOOD = bossy }
+		ate_fez_debug_spawn_test_kid_effect = { GENDER = female TRAIT_A = shy TRAIT_B = chaste CHILDHOOD = pensive }
+		ate_fez_debug_spawn_test_kid_effect = { GENDER = female TRAIT_A = lustful TRAIT_B = fickle CHILDHOOD = curious }
+	}
+
+	ai_potential = {
+		always = no
+	}
+
+	ai_will_do = {
+		base = 0
+	}
+}

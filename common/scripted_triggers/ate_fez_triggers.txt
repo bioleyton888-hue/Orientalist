@@ -28,3 +28,332 @@ ate_fez_scale_trigger = {
 		}
 	}
 }
+
+#############################################
+# Build step 4 — guest event targets.
+# Each "is there one?" trigger below has a matching ate_fez_pick_* effect in ate_fez_effects.txt that uses
+# the SAME conditions, so an event's trigger and its immediate always agree. All need scope:activity + scope:host.
+#############################################
+
+# An honoree (still on the list) who is at the party. Scope: character.
+ate_fez_attending_honoree_trigger = {
+	is_alive = yes
+	is_participant_in_activity = scope:activity
+}
+
+# Is any honoree at the party? (#1, #20)
+ate_fez_has_attending_honoree_trigger = {
+	scope:activity = {
+		any_in_list = {
+			variable = ate_fez_honorees
+			ate_fez_attending_honoree_trigger = yes
+		}
+	}
+}
+
+# #7 Little Cars accident victim: an attending adult who is not the host. Scope: character.
+ate_fez_cars_victim_candidate_trigger = {
+	NOT = { this = scope:host }
+	is_adult = yes
+	is_alive = yes
+}
+
+# #13 Why Not Me?: an attending under-age daughter of the host. Scope: character.
+ate_fez_daughter_candidate_trigger = {
+	is_female = yes
+	is_adult = no
+	is_child_of = scope:host
+}
+
+# #16 Adult Too: an attending son of the host under 12, bossy/ambitious/stubborn, not already an honoree.
+# Scope: character.
+ate_fez_little_brother_candidate_trigger = {
+	is_male = yes
+	age < 12
+	is_child_of = scope:host
+	OR = {
+		has_trait = bossy
+		has_trait = ambitious
+		has_trait = stubborn
+	}
+	NOT = {
+		scope:activity = {
+			is_target_in_variable_list = {
+				name = ate_fez_honorees
+				target = prev
+			}
+		}
+	}
+}
+
+#############################################
+# Build step 4, second batch — guest event targets (2026-10-12). Same rule as above: every trigger here has a
+# matching ate_fez_pick_* effect with the SAME conditions. All need scope:activity + scope:host.
+#############################################
+
+# Is this character on the honoree list? Scope: character.
+ate_fez_is_honoree_trigger = {
+	scope:activity = {
+		is_target_in_variable_list = {
+			name = ate_fez_honorees
+			target = prev
+		}
+	}
+}
+
+# #2 The Elder Brother: an attending son of the host who got his fez BEFORE this party. Scope: character.
+ate_fez_elder_brother_candidate_trigger = {
+	is_male = yes
+	age >= 12
+	is_child_of = scope:host
+	faith = faith:shriner
+	NOT = { ate_fez_is_honoree_trigger = yes }
+	OR = {
+		has_character_flag = ate_fez_received
+		has_character_modifier = ate_shriner_initiated_modifier
+		is_adult = yes
+	}
+}
+
+# #3 The Potentate's Envoy: the Shriner head of faith exists and is not the host. Scope: any.
+ate_fez_has_potentate_trigger = {
+	exists = faith:shriner.religious_head
+	faith:shriner.religious_head = {
+		is_alive = yes
+		NOT = { this = scope:host }
+	}
+}
+
+# #4 A Knight of the Fez of Islam: the holy order exists and its leader is not the host. Scope: any.
+ate_fez_has_fez_knight_trigger = {
+	exists = global_var:ate_fez_of_islam_title
+	exists = global_var:ate_fez_of_islam_title.holder
+	global_var:ate_fez_of_islam_title.holder = {
+		is_alive = yes
+		NOT = { this = scope:host }
+	}
+}
+
+# #5 / #14 — betrothals. The young one to be matched ($PARTNER$) must be free; the guest of rank must have a
+# free child who could marry them (vanilla could_marry_character_trigger: sex, faith, consanguinity).
+ate_fez_free_to_match_trigger = {
+	is_alive = yes
+	is_married = no
+	is_betrothed = no
+	is_concubine = no
+}
+
+# Scope: a guest's child. $PARTNER$ = the host's boy/daughter.
+ate_fez_match_candidate_trigger = {
+	ate_fez_free_to_match_trigger = yes
+	age >= 6
+	age <= 20
+	NOT = { is_close_family_of = $PARTNER$ }
+	could_marry_character_trigger = { CHARACTER = $PARTNER$ }
+}
+
+# Scope: an attending guest. A landed, AI guest (count or higher) with a child for $PARTNER$.
+ate_fez_suitor_family_trigger = {
+	NOT = { this = scope:host }
+	is_ai = yes
+	is_adult = yes
+	highest_held_title_tier >= tier_county
+	any_child = { ate_fez_match_candidate_trigger = { PARTNER = $PARTNER$ } }
+}
+
+# #5 A Match Proposed: an attending honoree free to marry. Scope: character.
+ate_fez_match_boy_trigger = {
+	ate_fez_attending_honoree_trigger = yes
+	ate_fez_free_to_match_trigger = yes
+}
+
+# #5: is there an attending honoree AND a guest with a match for him? Scope: the host.
+ate_fez_has_boy_match_trigger = {
+	scope:activity = {
+		any_in_list = {
+			variable = ate_fez_honorees
+			ate_fez_match_boy_trigger = yes
+			save_temporary_scope_as = ate_fez_match_check
+			scope:activity = {
+				any_attending_character = { ate_fez_suitor_family_trigger = { PARTNER = scope:ate_fez_match_check } }
+			}
+		}
+	}
+}
+
+# #14 A Suitor's Eye: an attending under-age daughter free to marry AND a guest with a match for her. Scope: the host.
+ate_fez_has_daughter_match_trigger = {
+	scope:activity = {
+		any_attending_character = {
+			ate_fez_daughter_candidate_trigger = yes
+			ate_fez_free_to_match_trigger = yes
+			save_temporary_scope_as = ate_fez_match_check
+			scope:activity = {
+				any_attending_character = { ate_fez_suitor_family_trigger = { PARTNER = scope:ate_fez_match_check } }
+			}
+		}
+	}
+}
+
+# #9 storm victim / #10 gator victim: an attending AI adult who is NOT the host's family (user, 2026-10-12:
+# a guest pick had chosen the host's wife). Excludes the host, wives/concubines, close + extended family. Scope: character.
+ate_fez_outsider_guest_trigger = {
+	NOT = { this = scope:host }
+	is_ai = yes
+	is_adult = yes
+	is_alive = yes
+	NOT = { is_consort_of = scope:host }
+	NOT = { is_close_or_extended_family_of = scope:host }
+}
+
+# #10 The Gator Attends: the host owns the pet-alligator story. Scope: the host.
+ate_fez_host_has_gator_trigger = {
+	any_owned_story = { story_type = ate_story_cycle_pet_alligator }
+}
+
+# #11 / #12 — a ward honoree: on the list, attending, ward of the host, not his child. Scope: character.
+ate_fez_ward_honoree_trigger = {
+	ate_fez_attending_honoree_trigger = yes
+	ate_fez_is_honoree_trigger = yes
+	NOT = { is_child_of = scope:host }
+	any_relation = {
+		type = guardian
+		this = scope:host
+	}
+}
+
+# #12 The Ward's Gift: a ward honoree whose father or mother is alive and is not the host. Scope: character.
+ate_fez_ward_with_family_trigger = {
+	ate_fez_ward_honoree_trigger = yes
+	OR = {
+		father ?= {
+			is_alive = yes
+			NOT = { this = scope:host }
+		}
+		mother ?= {
+			is_alive = yes
+			NOT = { this = scope:host }
+		}
+	}
+}
+
+# #17 Heavy Is the Fez: an attending honoree who is craven or lazy. Scope: character.
+ate_fez_reluctant_boy_trigger = {
+	ate_fez_attending_honoree_trigger = yes
+	ate_fez_is_honoree_trigger = yes
+	OR = {
+		has_trait = craven
+		has_trait = lazy
+	}
+}
+
+# #18 When in al-Rome: a non-Shriner boy, 12-15, ward of $HOST$. Also used by the invite rule. Scope: character.
+ate_fez_foreign_ward_trigger = {
+	is_male = yes
+	age >= 12
+	age < 16
+	NOT = { faith = faith:shriner }
+	any_relation = {
+		type = guardian
+		this = $HOST$
+	}
+}
+
+# #18: such a ward who is at the party and not yet an honoree. Scope: character.
+ate_fez_foreign_ward_candidate_trigger = {
+	ate_fez_foreign_ward_trigger = { HOST = scope:host }
+	NOT = { ate_fez_is_honoree_trigger = yes }
+}
+
+# #19 Like the First Time: an attending honoree, not already a reincarnation, with a dead ancestor of the host's
+# dynasty. Scope: character.
+ate_fez_reincarnated_boy_trigger = {
+	ate_fez_attending_honoree_trigger = yes
+	ate_fez_is_honoree_trigger = yes
+	NOT = { has_trait = reincarnation }
+	exists = scope:host.dynasty
+	any_ancestor = {
+		even_if_dead = yes
+		is_alive = no
+		dynasty ?= scope:host.dynasty
+	}
+}
+
+# #21 Your Loved Black Sheep: an attending honoree with a deformity. Scope: character.
+ate_fez_black_sheep_trigger = {
+	ate_fez_attending_honoree_trigger = yes
+	ate_fez_is_honoree_trigger = yes
+	OR = {
+		has_trait = disfigured
+		has_trait = beauty_bad_1
+		has_trait = beauty_bad_2
+		has_trait = beauty_bad_3
+		has_trait = scaly
+		has_trait = dwarf
+		has_trait = one_eyed
+	}
+}
+
+# #21 option e: a guest who mocked him — an attending AI adult, not the host, not the host's spouse or close
+# family, not an honoree. Scope: character.
+ate_fez_mocker_candidate_trigger = {
+	NOT = { this = scope:host }
+	is_ai = yes
+	is_adult = yes
+	is_alive = yes
+	NOT = { is_spouse_of = scope:host }
+	NOT = { is_close_family_of = scope:host }
+	NOT = { ate_fez_is_honoree_trigger = yes }
+}
+
+# #17 option d "Show him the joys of being an adult" (user idea 2026-10-12): the host has one of the vices.
+# Rakish / Lustful deliberately NOT included: the boy is 12-15. Scope: the host.
+ate_fez_host_has_vice_trigger = {
+	OR = {
+		has_trait = drunkard
+		has_trait = hashishiyah
+		has_trait = comfort_eater
+		has_trait = gluttonous
+		has_trait = profligate
+		has_trait = greedy
+		has_trait = lifestyle_reveler
+	}
+}
+
+# #17 d: can the boy catch scope:ate_fez_vice? Not already his, no opposite trait, a free personality slot for
+# Greedy. A Gluttonous father passes on Comfort Eater. Scope: the boy.
+ate_fez_boy_can_catch_vice_trigger = {
+	OR = {
+		AND = {
+			scope:ate_fez_vice = flag:drunkard
+			NOT = { has_trait = drunkard }
+		}
+		AND = {
+			scope:ate_fez_vice = flag:hashishiyah
+			NOT = { has_trait = hashishiyah }
+		}
+		AND = {
+			OR = {
+				scope:ate_fez_vice = flag:comfort_eater
+				scope:ate_fez_vice = flag:gluttonous
+			}
+			NOT = { has_trait = comfort_eater }
+			NOT = { has_trait = inappetetic }
+		}
+		AND = {
+			scope:ate_fez_vice = flag:profligate
+			NOT = { has_trait = profligate }
+			NOT = { has_trait = improvident }
+		}
+		AND = {
+			scope:ate_fez_vice = flag:greedy
+			NOT = { has_trait = greedy }
+			NOT = { has_trait = generous }
+			number_of_personality_traits < 3
+		}
+		AND = {
+			scope:ate_fez_vice = flag:lifestyle_reveler
+			NOT = { has_trait = lifestyle_reveler }
+		}
+	}
+}

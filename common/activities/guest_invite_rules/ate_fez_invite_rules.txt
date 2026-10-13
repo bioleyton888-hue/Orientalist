@@ -15,5 +15,11 @@ activity_invite_rule_ate_fez_honorees = {
 			}
 			add_to_list = characters
 		}
+		# Non-Shriner wards 12-15 come too: not honorees, but #18 "When in al-Rome..." can convert them
+		every_relation = {
+			type = ward
+			limit = { ate_fez_foreign_ward_trigger = { HOST = root } }
+			add_to_list = characters
+		}
 	}
 }

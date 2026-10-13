@@ -1,4 +1,4 @@
-﻿# The Feast of the Fez — a Shriner father presents the fez to ALL his eligible sons and wards at once.
+﻿# The Feast of the Fez — a Shriner parent presents the fez to ALL their eligible sons and wards at once.
 # Replaces (eventually) the one-son-at-a-time ate_shriner_fez_initiation decision + ate_shriner.0015.
 # Plan: scripts/plans/08-10-2026/fez_presentation_party.md
 # Build steps: 1 skeleton + payout, 2 Modest/Grand/Extravagant scales, 3 three phases + Procession/Presentation events.
@@ -9,7 +9,7 @@ activity_ate_fez_ceremony = {
 	is_shown = {
 		is_ai = no
 		faith = faith:shriner
-		is_male = yes
+		# No gender rule (2026-10-12): a Shriner mother/guardian can host too.
 		is_adult = yes
 		is_landed = yes
 		OR = {
@@ -138,7 +138,7 @@ activity_ate_fez_ceremony = {
 	# Plan section 4.4. Pacing copied from the vanilla feast toast phase: on_enter_phase = 1 day to go active,
 	# on_phase_active = the host's event + how long the phase lasts. Only the host gets events (player-only party).
 	phases = {
-		# 1. The boys walk into the Lodge hall (Extravagant: a street parade)
+		# 1. The boys walk into the Lodge hall (Extravagant: a street parade). ~2 weeks, weekly guest-event pool.
 		ate_fez_phase_procession = {
 			order = 1
 			is_predefined = yes
@@ -156,7 +156,15 @@ activity_ate_fez_ceremony = {
 				if = {
 					limit = { this = scope:host }
 					trigger_event = ate_fez_ceremony.0001
-					scope:activity = { progress_activity_phase_after = { days = 3 } }
+					scope:activity = { progress_activity_phase_after = { weeks = 2 } }
+				}
+			}
+
+			# Step 4: guest events between the procession and the presentation
+			on_weekly_pulse = {
+				if = {
+					limit = { this = scope:host }
+					trigger_event = { on_action = ate_fez_procession_pulse }
 				}
 			}
 		}
@@ -184,7 +192,7 @@ activity_ate_fez_ceremony = {
 			}
 		}
 
-		# 3. The feast itself: a closing toast now, guest events in build step 4.
+		# 3. The feast itself: a closing toast + ~2 weeks of weekly guest-event pool.
 		ate_fez_phase_banquet = {
 			order = 3
 			is_predefined = yes
@@ -202,7 +210,15 @@ activity_ate_fez_ceremony = {
 				if = {
 					limit = { this = scope:host }
 					trigger_event = ate_fez_ceremony.0003
-					scope:activity = { progress_activity_phase_after = { weeks = 1 } }
+					scope:activity = { progress_activity_phase_after = { weeks = 2 } }
+				}
+			}
+
+			# Step 4: guest events during the feast
+			on_weekly_pulse = {
+				if = {
+					limit = { this = scope:host }
+					trigger_event = { on_action = ate_fez_banquet_pulse }
 				}
 			}
 		}
@@ -251,6 +267,8 @@ activity_ate_fez_ceremony = {
 		rules = {
 			3 = activity_invite_rule_extended_family
 			3 = activity_invite_rule_friends
+			# Vassals (vanilla rule, optional; the vanilla feast has it on by default). Added 2026-10-12 for #5 / #14.
+			4 = activity_invite_rule_vassals
 		}
 		defaults = {
 			1 = activity_invite_rule_ate_fez_honorees
@@ -293,6 +311,11 @@ activity_ate_fez_ceremony = {
 		# A boy does not skip his own fez.
 		modifier = {
 			ate_fez_eligible_son_trigger = { HOST = scope:host }
+			add = 100
+		}
+		# Nor does a non-Shriner ward skip his guardian's feast (#18).
+		modifier = {
+			ate_fez_foreign_ward_trigger = { HOST = scope:host }
 			add = 100
 		}
 	}
