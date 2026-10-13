@@ -18,6 +18,10 @@
 # 0 -> a zero-weight group applies nothing) whenever one of the game's own crown
 # triggers fires. Those triggers already exclude theocracies, so a theocratic
 # Shriner ruler / the faith head still gets the fez, matching the original intent.
+#
+# Who (2026-10-13): Shriners only. Every MALE Shriner aged 12+, OR any Shriner with
+# the permanent flag ate_fez_received (the "special case": girls given the fez,
+# boys under 12, etc.). Women and children without the flag do not wear it.
 ate_shriner_fez_headgear = {
 
 	usage = game
@@ -45,7 +49,18 @@ ate_shriner_fez_headgear = {
 			base = 0
 			modifier = {
 				add = 100
+				# shriner AND ((male AND 12+) OR the special case: anyone the fez
+				# was GIVEN to (flag ate_fez_received: Feast of the Fez, #13 d,
+				# #16 e, ate_shriner.0015), whatever their sex or age).
+				# Leaving the faith takes the fez off; coming back puts it on again.
 				has_faith = faith:shriner
+				OR = {
+					AND = {
+						is_male = yes
+						age >= 12
+					}
+					has_character_flag = ate_fez_received
+				}
 				# stand down only when a real crown would render. Kings and
 				# emperors get proper crowns, so we yield to them. Dukes do NOT
 				# get a crown in Neomoor's culture (they fell through to the
