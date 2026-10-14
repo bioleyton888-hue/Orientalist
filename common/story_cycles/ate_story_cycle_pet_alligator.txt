@@ -20,12 +20,11 @@
 ate_story_cycle_pet_alligator = {
 	visible = yes
 
-	# The "photo" shown in the Stories list. PLACEHOLDER until ate_pet_alligator.dds exists.
-	# Target spec: 240x240, uncompressed 32-bit BGRA, with alpha.
-	# Final asset: gfx/interface/icons/pets/ate_pet_alligator.dds
+	# The "photo" shown in the Stories list. 240x240 uncompressed 32-bit BGRA with alpha, like the vanilla pets.
+	# Drawn in Python/Pillow: neomoor development/neomoor images/alligator/draw_gator_icon.py (--dds to rebuild).
 	icon = {
 		trigger = { always = yes }
-		reference = "gfx/interface/icons/pets/artifact_dog_folded_ears_fox_colored.dds"
+		reference = "gfx/interface/icons/pets/ate_pet_alligator.dds"
 	}
 
 	background = {
