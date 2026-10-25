@@ -14,7 +14,7 @@ ate_fez_procession_pulse = {
 	}
 	random_events = {
 		#25 = 0
-		#100 = ate_fez_ceremony.1001	# #1  The Fez That Was Too Large   (tested OK 2026-10-12)
+		# #1 moved out of this pool 2026-10-25: now chained from ate_fez_ceremony.0002 (the Presentation)
 		#100 = ate_fez_ceremony.1007	# #7  The Little Cars (Extravagant)   (tested OK 2026-10-12)
 		#100 = ate_fez_ceremony.1008	# #8  Florida Man Arrives (Extravagant)   (tested OK 2026-10-12)
 		#100 = ate_fez_ceremony.1009	# #9  The Storm (Extravagant)   (tested OK 2026-10-12)

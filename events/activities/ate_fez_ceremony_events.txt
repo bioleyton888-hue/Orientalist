@@ -177,6 +177,18 @@ ate_fez_ceremony.0002 = {
 			base = 10
 		}
 	}
+
+	# 2026-10-25 (user): #1 "Zub-dah Fingers" happens during the ceremony, not the parade. The Presentation lasts
+	# 3 days and has no weekly pool, so #1 is chained from here; its own trigger still filters it.
+	after = {
+		random = {
+			chance = 100    # DEBUG: release value 30
+			trigger_event = {
+				id = ate_fez_ceremony.1001
+				days = 1
+			}
+		}
+	}
 }
 
 ########################################
@@ -237,7 +249,7 @@ ate_fez_ceremony.0003 = {
 #############################################################################
 
 ########################################
-# ate_fez_ceremony.1001 — #1 The Fez That Was Too Large (Procession pool, any scale)
+# ate_fez_ceremony.1001 — #1 Zub-dah Fingers (chained from 0002 The Presentation since 2026-10-25, any scale)
 ########################################
 ate_fez_ceremony.1001 = {
 	type = activity_event
@@ -266,22 +278,48 @@ ate_fez_ceremony.1001 = {
 		ate_fez_pick_attending_honoree_effect = yes
 	}
 
-	# a: laugh it off
+	# a: laugh it off (2026-10-25 user: + a step toward friendship, zealous Shriner guests frown)
 	option = {
 		name = ate_fez_ceremony.1001.a
 		add_stress = minor_stress_loss
-		scope:ate_fez_target_boy = {
-			add_opinion = {
-				target = root
-				modifier = pleased_opinion
-				opinion = 10
+		send_interface_toast = {
+			type = event_toast_effect_good
+			title = ate_fez_ceremony.1001.a.toast
+			left_icon = scope:ate_fez_target_boy
+			scope:ate_fez_target_boy = {
+				add_opinion = {
+					target = root
+					modifier = pleased_opinion
+					opinion = 10
+				}
+			}
+			progress_towards_friend_effect = {
+				REASON = ate_fez_friend_laughed_off_fez
+				CHARACTER = scope:ate_fez_target_boy
+				OPINION = 0
+			}
+		}
+		scope:activity = {
+			every_attending_character = {
+				limit = {
+					NOT = { this = root }
+					has_faith = faith:shriner
+					has_trait = zealous
+				}
+				custom = ate_fez_every_zealous_shriner_guest_tt
+				add_opinion = {
+					target = root
+					modifier = disappointed_opinion
+					opinion = -5
+				}
 			}
 		}
 	}
 
-	# b: scold him
+	# b: scold him (he wears the broken fez)
 	option = {
 		name = ate_fez_ceremony.1001.b
+		custom_tooltip = ate_fez_ceremony.1001.b.tt
 		add_prestige = miniscule_prestige_value
 		scope:ate_fez_target_boy = {
 			add_opinion = {
@@ -297,6 +335,26 @@ ate_fez_ceremony.1001 = {
 		name = ate_fez_ceremony.1001.c
 		remove_short_term_gold = tiny_gold_value
 		add_prestige = miniscule_prestige_value
+	}
+
+	# d: fix it with your own hands (2026-10-25 user: high learning or stewardship; "high" = 12, the mod's usual bar)
+	option = {
+		name = ate_fez_ceremony.1001.d
+		trigger = {
+			OR = {
+				learning >= 12
+				stewardship >= 12
+			}
+		}
+		add_prestige = miniscule_prestige_value
+		add_piety = miniscule_piety_value
+		scope:ate_fez_target_boy = {
+			add_opinion = {
+				target = root
+				modifier = pleased_opinion
+				opinion = 5
+			}
+		}
 	}
 }
 
@@ -1216,11 +1274,16 @@ ate_fez_ceremony.1008 = {
 		}
 	}
 
-	# a: laugh it off
+	# a: send him to the nearest Lodge
 	option = {
 		name = ate_fez_ceremony.1008.a
-		add_stress = minor_stress_loss
-		add_prestige = -10
+		send_interface_toast = {
+			type = event_toast_effect_neutral
+			title = ate_fez_ceremony.1008.a.toast
+			left_icon = scope:ate_fez_florida_man
+			add_stress = minor_stress_loss
+			add_prestige = -10
+		}
 	}
 
 	# b: throw him out
@@ -1236,12 +1299,12 @@ ate_fez_ceremony.1008 = {
 		}
 	}
 
-	# c: join him (drunkard or gregarious host)
+	# c: join him (2026-10-25 user: generous or gregarious host; drunkards now get e)
 	option = {
 		name = ate_fez_ceremony.1008.c
 		trigger = {
 			OR = {
-				has_trait = drunkard
+				has_trait = generous
 				has_trait = gregarious
 			}
 		}
@@ -1252,6 +1315,84 @@ ate_fez_ceremony.1008 = {
 				target = root
 				modifier = pleased_opinion
 				opinion = 20
+			}
+		}
+	}
+
+	# d: slit his throat (2026-10-25 user: sadistic or wrathful host; the boys saw it)
+	option = {
+		name = ate_fez_ceremony.1008.d
+		trigger = {
+			OR = {
+				has_trait = sadistic
+				has_trait = wrathful
+			}
+		}
+		send_interface_toast = {
+			type = event_toast_effect_bad
+			title = ate_fez_ceremony.1008.d.toast
+			left_icon = root
+			scope:ate_fez_florida_man = {
+				death = {
+					death_reason = death_murder
+					killer = root
+				}
+			}
+			add_stress = major_stress_loss
+			add_dread = medium_dread_gain
+			add_piety = minor_piety_loss
+			scope:activity = {
+				every_in_list = {
+					variable = ate_fez_honorees
+					limit = { ate_fez_attending_honoree_trigger = yes }
+					custom = ate_fez_every_present_boy_tt
+					add_opinion = {
+						target = root
+						modifier = disappointed_opinion
+						opinion = -10
+					}
+				}
+			}
+		}
+	}
+
+	# e: MEDIC! (2026-10-25 user: eccentric, lunatic or drunkard host; now it's everyone's problem)
+	option = {
+		name = ate_fez_ceremony.1008.e
+		trigger = {
+			OR = {
+				has_trait = eccentric
+				has_trait = lunatic_1
+				has_trait = lunatic_genetic
+				has_trait = drunkard
+			}
+		}
+		send_interface_toast = {
+			type = event_toast_effect_bad
+			title = ate_fez_ceremony.1008.e.toast
+			left_icon = scope:ate_fez_florida_man
+			add_stress = major_stress_loss
+			add_prestige = major_prestige_loss
+			scope:ate_fez_florida_man = {
+				add_opinion = {
+					target = root
+					modifier = pleased_opinion
+					opinion = 20
+				}
+			}
+			scope:activity = {
+				every_attending_character = {
+					limit = {
+						NOT = { this = root }
+						is_alive = yes
+					}
+					custom = ate_fez_every_other_guest_tt
+					add_opinion = {
+						target = root
+						modifier = disappointed_opinion
+						opinion = -20
+					}
+				}
 			}
 		}
 	}
@@ -1407,6 +1548,7 @@ ate_fez_ceremony.1010 = {
 	}
 
 	# a: parade the gator (75% prestige / 25% it bites a guest)
+	# 2026-10-25 (user asked for opinions per outcome; values Claude's call): amazed outsiders +5, the bitten guest -20
 	option = {
 		name = ate_fez_ceremony.1010.a
 		random_list = {
@@ -1417,6 +1559,17 @@ ate_fez_ceremony.1010 = {
 					title = ate_fez_ceremony.1010.a.success.toast
 					left_icon = root
 					add_prestige = minor_prestige_gain
+					scope:activity = {
+						every_attending_character = {
+							limit = { ate_fez_outsider_guest_trigger = yes }
+							custom = ate_fez_every_outsider_guest_tt
+							add_opinion = {
+								target = root
+								modifier = pleased_opinion
+								opinion = 5
+							}
+						}
+					}
 				}
 			}
 			25 = {
@@ -1428,7 +1581,14 @@ ate_fez_ceremony.1010 = {
 					add_prestige = -25
 					if = {
 						limit = { exists = scope:ate_fez_guest }
-						scope:ate_fez_guest = { add_trait = wounded_1 }
+						scope:ate_fez_guest = {
+							add_trait = wounded_1
+							add_opinion = {
+								target = root
+								modifier = angry_opinion
+								opinion = -20
+							}
+						}
 					}
 				}
 			}
@@ -1438,6 +1598,58 @@ ate_fez_ceremony.1010 = {
 	# b: keep it in its pen
 	option = {
 		name = ate_fez_ceremony.1010.b
+		send_interface_toast = {
+			type = event_toast_effect_neutral
+			title = ate_fez_ceremony.1010.b.toast
+			left_icon = root
+		}
+	}
+
+	# c: the gator gets his fez too (2026-10-25 user: eccentric, lunatic or compassionate host;
+	# Claude's call: outsiders -20, attending family +10)
+	option = {
+		name = ate_fez_ceremony.1010.c
+		trigger = {
+			OR = {
+				has_trait = eccentric
+				has_trait = lunatic_1
+				has_trait = lunatic_genetic
+				has_trait = compassionate
+			}
+		}
+		send_interface_toast = {
+			type = event_toast_effect_neutral
+			title = ate_fez_ceremony.1010.c.toast
+			left_icon = root
+			add_prestige = 25
+			scope:activity = {
+				every_attending_character = {
+					limit = { ate_fez_outsider_guest_trigger = yes }
+					custom = ate_fez_every_outsider_guest_tt
+					add_opinion = {
+						target = root
+						modifier = disappointed_opinion
+						opinion = -20
+					}
+				}
+				every_attending_character = {
+					limit = {
+						NOT = { this = root }
+						is_alive = yes
+						OR = {
+							is_consort_of = root
+							is_close_or_extended_family_of = root
+						}
+					}
+					custom = ate_fez_every_family_guest_tt
+					add_opinion = {
+						target = root
+						modifier = pleased_opinion
+						opinion = 10
+					}
+				}
+			}
+		}
 	}
 }
 
