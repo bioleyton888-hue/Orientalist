@@ -19,7 +19,7 @@ ate_fez_procession_pulse = {
 		#100 = ate_fez_ceremony.1008	# #8  Florida Man Arrives (Extravagant)   (tested OK 2026-10-12)
 		#100 = ate_fez_ceremony.1009	# #9  The Storm (Extravagant)   (tested OK 2026-10-12)
 		#100 = ate_fez_ceremony.1010	# #10 The Gator Attends (host owns the gator)   (SKIPPED 2026-10-12: user has no gator; untested)
-		#100 = ate_fez_ceremony.1017	# #17 Heavy Is the Fez   (tested OK 2026-10-12)
+		# #17 moved to ate_fez_presentation_pulse 2026-11-16 (user: it is a ceremony event)
 		#100 = ate_fez_ceremony.1018	# #18 When in al-Rome... (non-Shriner ward)   (tested OK 2026-10-12)
 		# #16, #20, #21 moved to ate_fez_presentation_pulse 2026-11-16 (user: they happen during the ceremony)
 		100 = 0	# DEBUG: nothing (no Procession event under test)
@@ -32,7 +32,8 @@ ate_fez_procession_pulse = {
 # ate_fez_ceremony.0004 is the hidden "nothing happens" entry; it is always valid, so the pool never comes up empty.
 ate_fez_presentation_pulse = {
 	random_events = {
-		100 = ate_fez_ceremony.1016	# #16 I Want to Be an Adult Too   (fires OK 2026-10-12; option e = BUG 2, parked)
+		100 = ate_fez_ceremony.1016	# #16 I Want to Be an Adult Too   (fires OK 2026-10-12; option e = BUG 2, fixed 2026-11-16, untested)
+		100 = ate_fez_ceremony.1017	# #17 Heavy Is the Fez   (tested OK 2026-10-12 in the Procession; moved here 2026-11-16)
 		# #20 moved out 2026-11-16: it happens AFTER the fez (user's text), chained from ate_fez_ceremony.0002
 		100 = ate_fez_ceremony.1021	# #21 Your Loved Black Sheep   (tested OK 2026-10-12)
 		25 = ate_fez_ceremony.0004	# nothing happens: straight to the Presentation (tune before release)

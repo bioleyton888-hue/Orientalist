@@ -36,9 +36,15 @@ ate_fez_scale_trigger = {
 #############################################
 
 # An honoree (still on the list) who is at the party. Scope: character.
+# BUG 2 fix (2026-11-16): a boy (or girl) added to the honorees mid-party (#16 e, #18 a, #13 d/e) also counts,
+# through the ate_fez_added_honoree flag set by ate_fez_add_honoree_effect. A child under 12 added by #16 e was
+# never paid: the engine stopped counting him as a participant (cause unproven; the flag does not depend on it).
 ate_fez_attending_honoree_trigger = {
 	is_alive = yes
-	is_participant_in_activity = scope:activity
+	OR = {
+		is_participant_in_activity = scope:activity
+		has_character_flag = ate_fez_added_honoree
+	}
 }
 
 # Is any honoree at the party? (#1, #20)

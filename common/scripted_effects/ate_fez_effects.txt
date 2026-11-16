@@ -46,8 +46,7 @@ ate_fez_host_payout_effect = {
 				every_in_list = {
 					variable = ate_fez_honorees
 					limit = {
-						is_alive = yes
-						is_participant_in_activity = scope:activity
+						ate_fez_attending_honoree_trigger = yes	# BUG 2: includes the honorees added mid-party
 						NOT = { has_character_modifier = ate_shriner_initiated_modifier }
 					}
 					custom = ate_fez_every_honoree_tt
@@ -173,10 +172,7 @@ ate_fez_save_present_boys_effect = {
 	scope:activity = {
 		every_in_list = {
 			variable = ate_fez_honorees
-			limit = {
-				is_alive = yes
-				is_participant_in_activity = scope:activity
-			}
+			limit = { ate_fez_attending_honoree_trigger = yes }
 			add_to_temporary_list = ate_fez_present_boys
 		}
 	}
@@ -265,6 +261,14 @@ ate_fez_add_honoree_effect = {
 		add_to_variable_list = {
 			name = ate_fez_honorees
 			target = $BOY$
+		}
+	}
+	# BUG 2 fix (2026-11-16): keeps him counted as attending until the payout (see ate_fez_attending_honoree_trigger).
+	# 90 days outlasts the rest of any party (Presentation + Banquet are a few weeks).
+	$BOY$ = {
+		add_character_flag = {
+			flag = ate_fez_added_honoree
+			days = 90
 		}
 	}
 }

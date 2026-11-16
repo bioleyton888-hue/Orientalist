@@ -164,10 +164,7 @@ ate_fez_ceremony.0002 = {
 		scope:activity = {
 			every_in_list = {
 				variable = ate_fez_honorees
-				limit = {
-					is_alive = yes
-					is_participant_in_activity = scope:activity
-				}
+				limit = { ate_fez_attending_honoree_trigger = yes }
 				custom = ate_fez_every_present_boy_tt
 				add_opinion = {
 					target = scope:host
@@ -2140,7 +2137,7 @@ ate_fez_ceremony.1015 = {
 }
 
 ########################################
-# ate_fez_ceremony.1017 — #17 Heavy Is the Fez (Procession pool, any scale; user's idea)
+# ate_fez_ceremony.1017 — #17 Heavy Is the Fez (Presentation pool since 2026-11-16, any scale; user's idea)
 ########################################
 ate_fez_ceremony.1017 = {
 	type = activity_event
@@ -2366,6 +2363,13 @@ ate_fez_ceremony.1017 = {
 					opinion = -30
 				}
 			}
+		}
+	}
+	# 2026-11-16: ceremony pool event (before the fez is given): the Presentation follows it
+	after = {
+		trigger_event = {
+			id = ate_fez_ceremony.0002
+			days = 1
 		}
 	}
 }
