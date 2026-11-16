@@ -1455,13 +1455,18 @@ ate_fez_ceremony.1008 = {
 				has_trait = gregarious
 			}
 		}
-		add_stress = medium_stress_loss
-		add_prestige = -25
-		scope:ate_fez_florida_man = {
-			add_opinion = {
-				target = root
-				modifier = pleased_opinion
-				opinion = 20
+		send_interface_toast = {	# 2026-11-16: toast added (toast rule)
+			type = event_toast_effect_neutral
+			title = ate_fez_ceremony.1008.c.toast
+			left_icon = scope:ate_fez_florida_man
+			add_stress = medium_stress_loss
+			add_prestige = -25
+			scope:ate_fez_florida_man = {
+				add_opinion = {
+					target = root
+					modifier = pleased_opinion
+					opinion = 20
+				}
 			}
 		}
 	}
