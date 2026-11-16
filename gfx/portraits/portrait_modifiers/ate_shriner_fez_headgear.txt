@@ -51,7 +51,7 @@ ate_shriner_fez_headgear = {
 				add = 100
 				# shriner AND ((male AND 12+) OR the special case: anyone the fez
 				# was GIVEN to (flag ate_fez_received: Feast of the Fez, #13 d,
-				# #16 e, ate_shriner.0015), whatever their sex or age).
+				# #16 e), whatever their sex or age).
 				# Leaving the faith takes the fez off; coming back puts it on again.
 				has_faith = faith:shriner
 				OR = {

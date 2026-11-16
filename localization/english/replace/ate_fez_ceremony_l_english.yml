@@ -1,17 +1,17 @@
 ﻿l_english:
 
- # The Feast of the Fez — activity_ate_fez_ceremony
- activity_ate_fez_ceremony:0 "Feast of the Fez"
- activity_ate_fez_ceremony_name:0 "[ACTIVITY.GetHost.GetNamePossessiveOrMy|U] Feast of the Fez"
+ # The Handover of the Fez — activity_ate_fez_ceremony
+ activity_ate_fez_ceremony:0 "Handover of the Fez"
+ activity_ate_fez_ceremony_name:0 "[ACTIVITY.GetHost.GetNamePossessiveOrMy|U] Handover of the Fez"
  activity_ate_fez_ceremony_desc:0 "A boy does not become a Shriner on his own. Call every son and ward of age before the Lodge at once, place the crimson fez upon each head, and let the oaths be spoken aloud before the whole family."
  activity_ate_fez_ceremony_selection_tooltip:0 "Present the fez to every eligible son and ward at once.\n\nAnticipated Rewards:\n$BULLET_WITH_TAB$Every attending son and ward gains [GetModifier('ate_shriner_initiated_modifier').GetNameWithTooltip]\n$BULLET_WITH_TAB$[prestige_i] [prestige|E]\n$BULLET_WITH_TAB$[stress_loss_i] [stress|E] Loss"
  activity_ate_fez_ceremony_host_desc:0 "$BULLET_WITH_TAB$Every attending son and ward is initiated into the Lodge\n$BULLET_WITH_TAB$May gain [prestige_i|E] [prestige|E]\n$BULLET_WITH_TAB$May have [stress_loss_i] [stress|E] Loss"
- activity_ate_fez_ceremony_guest_desc:0 "As a guest at the Feast of the Fez, I will watch the host's boys receive the fez and swear the oaths of the Lodge. It is a family affair, warm and loud, and the food is good."
+ activity_ate_fez_ceremony_guest_desc:0 "As a guest at the Handover of the Fez, I will watch the host's boys receive the fez and swear the oaths of the Lodge. It is a family affair, warm and loud, and the food is good."
  activity_ate_fez_ceremony_guest_help_text:0 "$activity_ate_fez_ceremony$"
  activity_ate_fez_ceremony_conclusion_desc:0 "The [GetActivityType( 'activity_ate_fez_ceremony' ).GetName] is over. The boys who walked into the Lodge hall are not the same ones who walked out."
  activity_ate_fez_ceremony_province_desc:0 "Your Lodge Hall"
  activity_ate_fez_ceremony_destination_selection:0 "The fez is presented in the Lodge hall at your [capital|E]."
- activity_ate_fez_ceremony_predicted_cost:0 "The cost of the Feast of the Fez depends on its scale."
+ activity_ate_fez_ceremony_predicted_cost:0 "The cost of the Handover of the Fez depends on its scale."
 
  # Phases
  ate_fez_phase_procession:0 "The Procession"
@@ -52,9 +52,9 @@
 
  # Modifiers
  ate_fez_talk_of_the_lodge_modifier:0 "Talk of the Lodge"
- ate_fez_talk_of_the_lodge_modifier_desc:0 "This character threw an Extravagant Feast of the Fez, and every Lodge in the land is still talking about it."
+ ate_fez_talk_of_the_lodge_modifier_desc:0 "This character held an Extravagant Handover of the Fez, and every Lodge in the land is still talking about it."
  ate_fez_presented_great_feast_modifier:0 "Presented at the Great Feast"
- ate_fez_presented_great_feast_modifier_desc:0 "This character received the fez at an Extravagant Feast of the Fez, paraded through the city before the whole Lodge."
+ ate_fez_presented_great_feast_modifier_desc:0 "This character received the fez at an Extravagant Handover of the Fez, paraded through the city before the whole Lodge."
  ate_fez_presented_by_father_opinion:0 "Gave Me the Fez"
 
  # Events — ate_fez_ceremony.0001 The Procession
@@ -85,7 +85,7 @@
 
  # TESTING ONLY — debug decision (remove before release)
  ate_fez_debug_spawn_test_kids:0 "TEST: Spawn Fez Test Children"
- ate_fez_debug_spawn_test_kids_desc:0 "TESTING ONLY. Adds 15 of your children to your court, all aged 13: 11 boys and 4 girls, each with a different pair of personality traits, to test the Feast of the Fez events. They take your faith and culture."
+ ate_fez_debug_spawn_test_kids_desc:0 "TESTING ONLY. Adds 15 of your children to your court, all aged 13: 11 boys and 4 girls, each with a different pair of personality traits, to test the Handover of the Fez events. They take your faith and culture."
  ate_fez_debug_spawn_test_kids_tooltip:0 "TESTING ONLY: spawn 15 children aged 13 with different traits"
  ate_fez_debug_spawn_test_kids_confirm:0 "Spawn the children"
 

@@ -1,5 +1,5 @@
 ﻿# The Feast of the Fez — a Shriner parent presents the fez to ALL their eligible sons and wards at once.
-# Replaces (eventually) the one-son-at-a-time ate_shriner_fez_initiation decision + ate_shriner.0015.
+# Replaced the one-son-at-a-time ate_shriner_fez_initiation decision + ate_shriner.0015 (both deleted 2026-11-16).
 # Plan: scripts/plans/08-10-2026/fez_presentation_party.md
 # Build steps: 1 skeleton + payout, 2 Modest/Grand/Extravagant scales, 3 three phases + Procession/Presentation events.
 # Player only: the AI never hosts it (is_ai = no in is_shown, ai_will_do = 0).
