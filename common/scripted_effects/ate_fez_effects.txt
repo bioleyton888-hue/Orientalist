@@ -361,8 +361,14 @@ ate_fez_pick_potentate_effect = {
 }
 
 # -> scope:ate_fez_knight (#4) + scope:ate_fez_target_boy
-ate_fez_pick_fez_knight_effect = {
-	global_var:ate_fez_of_islam_title.holder = { save_scope_as = ate_fez_knight }
+# 2026-11-16 (user): the leader of a random holy order of the host's faith (the Fez of Islam or any other).
+ate_fez_pick_order_knight_effect = {
+	scope:host.faith = {
+		random_faith_holy_order = {
+			limit = { ate_fez_order_knight_candidate_trigger = yes }
+			leader = { save_scope_as = ate_fez_knight }
+		}
+	}
 	ate_fez_pick_attending_honoree_effect = yes
 }
 

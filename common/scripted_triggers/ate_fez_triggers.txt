@@ -65,6 +65,13 @@ ate_fez_daughter_candidate_trigger = {
 	is_child_of = scope:host
 }
 
+# #13 option e (2026-11-16): an attending daughter of the host aged 12-15 who has no fez yet. Scope: character.
+ate_fez_daughter_of_fez_age_trigger = {
+	ate_fez_daughter_candidate_trigger = yes
+	age >= 12
+	NOT = { has_character_flag = ate_fez_received }
+}
+
 # #16 Adult Too: an attending son of the host under 12, bossy/ambitious/stubborn, not already an honoree.
 # Scope: character.
 ate_fez_little_brother_candidate_trigger = {
@@ -124,11 +131,20 @@ ate_fez_has_potentate_trigger = {
 	}
 }
 
-# #4 A Knight of the Fez of Islam: the holy order exists and its leader is not the host. Scope: any.
-ate_fez_has_fez_knight_trigger = {
-	exists = global_var:ate_fez_of_islam_title
-	exists = global_var:ate_fez_of_islam_title.holder
-	global_var:ate_fez_of_islam_title.holder = {
+# #4 A Knight of a Holy Order: the host's faith has a holy order whose leader is alive and not the host.
+# 2026-11-16 (user): ANY holy order of the faith, not only the Fez of Islam (it is still one of them). Scope: any.
+ate_fez_has_order_knight_trigger = {
+	scope:host.faith = {
+		any_faith_holy_order = {
+			ate_fez_order_knight_candidate_trigger = yes
+		}
+	}
+}
+
+# Scope: a holy order. Its leader can be the knight of #4.
+ate_fez_order_knight_candidate_trigger = {
+	exists = leader
+	leader = {
 		is_alive = yes
 		NOT = { this = scope:host }
 	}

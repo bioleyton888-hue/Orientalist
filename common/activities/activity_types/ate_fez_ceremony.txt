@@ -169,7 +169,11 @@ activity_ate_fez_ceremony = {
 			}
 		}
 
-		# 2. One event, every boy: the fez is placed on each head
+		# 2. One event, every boy: the fez is placed on each head.
+		# 2026-11-16 (user): the ceremony gets its own guest-event pool (#16, #20, #21), rolled ONCE when the phase
+		# goes active, BEFORE the fez is given (those events add or remove boys from the honoree list). The pool
+		# event's `after` (or the "nothing happens" event 0004) then fires 0002, and 0002 schedules the phase end,
+		# so the Banquet can never start before the fez is given.
 		ate_fez_phase_presentation = {
 			order = 2
 			is_predefined = yes
@@ -186,8 +190,7 @@ activity_ate_fez_ceremony = {
 			on_phase_active = {
 				if = {
 					limit = { this = scope:host }
-					trigger_event = ate_fez_ceremony.0002
-					scope:activity = { progress_activity_phase_after = { days = 3 } }
+					trigger_event = { on_action = ate_fez_presentation_pulse }
 				}
 			}
 		}

@@ -102,3 +102,10 @@ ate_fez_broke_lodge_law_modifier = {
 	monthly_piety = -0.5
 	same_faith_opinion = -10
 }
+
+# Feast of the Fez #13 option e (2026-11-16) — every daughter aged 12-15 was given the fez. Host only, 5 years.
+ate_fez_wiped_lodge_law_modifier = {
+	icon = piety_negative
+	monthly_piety = -0.8
+	same_faith_opinion = -15
+}

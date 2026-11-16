@@ -62,7 +62,8 @@ ate_fez_ceremony.0001 = {
 
 ########################################
 # ate_fez_ceremony.0002 — The Presentation
-# Fired on_phase_active of ate_fez_phase_presentation, host only.
+# Fired by the Presentation pool (ate_fez_presentation_pulse): from the `after` of #16 / #20 / #21, or from the
+# hidden 0004 when no ceremony event happens. Host only. It schedules the end of the phase itself (2026-11-16).
 # ONE event for every boy: host left, up to five boys in the other portrait slots.
 ########################################
 ate_fez_ceremony.0002 = {
@@ -106,9 +107,15 @@ ate_fez_ceremony.0002 = {
 
 	trigger = {
 		exists = scope:activity
+		scope:activity = { NOT = { has_variable = ate_fez_presented } }	# once per party
 	}
 
 	immediate = {
+		scope:activity = {
+			set_variable = { name = ate_fez_presented }
+			# The Banquet starts 3 days after the fez is given (was: 3 days after the phase started)
+			progress_activity_phase_after = { days = 3 }
+		}
 		ate_fez_save_present_boys_effect = yes
 		add_character_flag = {
 			flag = ate_fez_busy_in_event
@@ -179,7 +186,7 @@ ate_fez_ceremony.0002 = {
 	}
 
 	# 2026-10-25 (user): #1 "Zub-dah Fingers" happens during the ceremony, not the parade. The Presentation lasts
-	# 3 days and has no weekly pool, so #1 is chained from here; its own trigger still filters it.
+	# 3 days; its pool (#16 / #20 / #21) runs BEFORE the fez, so #1 is chained from here; its own trigger still filters it.
 	after = {
 		random = {
 			chance = 100    # DEBUG: release value 30
@@ -188,6 +195,33 @@ ate_fez_ceremony.0002 = {
 				days = 1
 			}
 		}
+		# 2026-11-16 (user's text): #20 "The Odd One Out" starts a brawl AFTER he got his fez, so it is chained
+		# from here too (was in the ceremony pool). Its own trigger still filters it (Modest/Grand, once per party).
+		random = {
+			chance = 100    # DEBUG: release value 30
+			trigger_event = {
+				id = ate_fez_ceremony.1020
+				days = 2
+			}
+		}
+	}
+}
+
+########################################
+# ate_fez_ceremony.0004 — hidden: no ceremony event this time, go straight to the Presentation
+# The "nothing happens" entry of ate_fez_presentation_pulse (2026-11-16). Always valid, so that pool always
+# fires something and 0002 is never skipped.
+########################################
+ate_fez_ceremony.0004 = {
+	type = character_event
+	hidden = yes
+
+	trigger = {
+		exists = scope:activity
+	}
+
+	immediate = {
+		trigger_event = ate_fez_ceremony.0002
 	}
 }
 
@@ -464,7 +498,7 @@ ate_fez_ceremony.1007 = {
 }
 
 ########################################
-# ate_fez_ceremony.1016 — #16 I Want to Be an Adult Too (Procession pool, any scale; user's idea)
+# ate_fez_ceremony.1016 — #16 I Want to Be an Adult Too (Presentation pool since 2026-11-16, any scale; user's idea)
 ########################################
 ate_fez_ceremony.1016 = {
 	type = activity_event
@@ -547,6 +581,7 @@ ate_fez_ceremony.1016 = {
 	# b: indulge him (toy fez)
 	option = {
 		name = ate_fez_ceremony.1016.b
+		custom_tooltip = ate_fez_ceremony.1016.b.tt
 		remove_short_term_gold = tiny_gold_value
 		scope:ate_fez_little_brother = {
 			add_opinion = {
@@ -560,6 +595,7 @@ ate_fez_ceremony.1016 = {
 	# c: ignore him
 	option = {
 		name = ate_fez_ceremony.1016.c
+		custom_tooltip = ate_fez_ceremony.1016.c.tt
 		scope:ate_fez_little_brother = {
 			add_opinion = {
 				target = root
@@ -572,6 +608,7 @@ ate_fez_ceremony.1016 = {
 	# d: whoop his ass
 	option = {
 		name = ate_fez_ceremony.1016.d
+		custom_tooltip = ate_fez_ceremony.1016.d.tt
 		scope:ate_fez_little_brother = {
 			add_opinion = {
 				target = root
@@ -588,6 +625,7 @@ ate_fez_ceremony.1016 = {
 	# e: let him take the fez for real, with the grown-ups (joins the honoree list)
 	option = {
 		name = ate_fez_ceremony.1016.e
+		custom_tooltip = ate_fez_ceremony.1016.e.tt
 		send_interface_toast = {
 			type = event_toast_effect_good
 			title = ate_fez_ceremony.1016.e.toast
@@ -601,11 +639,43 @@ ate_fez_ceremony.1016 = {
 				}
 			}
 		}
+		# 2026-11-16 (user): your favoritism shows. The other sons -5, the guests from outside the family -10.
+		scope:activity = {
+			every_attending_character = {
+				limit = {
+					is_child_of = root
+					is_male = yes
+					NOT = { this = scope:ate_fez_little_brother }
+				}
+				custom = ate_fez_every_other_son_tt
+				add_opinion = {
+					target = root
+					modifier = disappointed_opinion
+					opinion = -5
+				}
+			}
+			every_attending_character = {
+				limit = { ate_fez_outsider_guest_trigger = yes }
+				custom = ate_fez_every_outsider_guest_tt
+				add_opinion = {
+					target = root
+					modifier = disappointed_opinion
+					opinion = -10
+				}
+			}
+		}
+	}
+	# 2026-11-16: ceremony pool event (before the fez is given): the Presentation follows it
+	after = {
+		trigger_event = {
+			id = ate_fez_ceremony.0002
+			days = 1
+		}
 	}
 }
 
 ########################################
-# ate_fez_ceremony.1020 — #20 The Odd One Out (Procession pool, Modest or Grand; user's idea)
+# ate_fez_ceremony.1020 — #20 The Odd One Out (chained from 0002 after the fez since 2026-11-16, Modest or Grand; user's idea)
 ########################################
 ate_fez_ceremony.1020 = {
 	type = activity_event
@@ -675,6 +745,7 @@ ate_fez_ceremony.1020 = {
 			left_icon = scope:ate_fez_target_boy
 			ate_fez_remove_honoree_effect = { BOY = scope:ate_fez_target_boy }
 			scope:ate_fez_target_boy = {
+				remove_character_flag = ate_fez_received	# the fez comes off his head (portraits)
 				add_opinion = {
 					target = root
 					modifier = humiliated_opinion
@@ -826,6 +897,77 @@ ate_fez_ceremony.1013 = {
 				}
 			}
 			scope:ate_fez_daughter = {
+				add_character_flag = ate_fez_received # portraits: she wears the fez from now on
+				add_character_modifier = {
+					modifier = ate_fez_broke_lodge_law_modifier
+				}
+				add_opinion = {
+					target = root
+					modifier = pleased_opinion
+					opinion = 25
+				}
+			}
+		}
+	}
+
+	# e: give EVERY attending daughter aged 12-15 a fez (user idea 2026-11-16, the sheet's second "option d").
+	#    Same hosts as d, AND generous or just. Shows only if at least one more daughter aged 12-15 attends
+	#    (with only her, it would be option d with a harsher penalty). Friends with the asking daughter only.
+	#    Host: "Wiped Their Bum with the Lodge's Law" 5 years (instead of d's modifier); every girl: Broke the
+	#    Lodge's Law forever, like d.
+	option = {
+		name = ate_fez_ceremony.1013.e
+		trigger = {
+			OR = {
+				is_female = yes
+				has_trait = eccentric
+				has_trait = just
+				has_trait = excommunicated
+			}
+			OR = {
+				has_trait = generous
+				has_trait = just
+			}
+			scope:activity = {
+				any_attending_character = {
+					ate_fez_daughter_of_fez_age_trigger = yes
+					NOT = { this = scope:ate_fez_daughter }
+				}
+			}
+		}
+		send_interface_toast = {
+			type = event_toast_effect_neutral
+			title = ate_fez_ceremony.1013.e.toast
+			left_icon = scope:ate_fez_daughter
+			add_character_modifier = {
+				modifier = ate_fez_wiped_lodge_law_modifier
+				years = 5
+			}
+			if = {
+				limit = {
+					NOT = { has_relation_friend = scope:ate_fez_daughter }
+				}
+				set_relation_friend = {
+					target = scope:ate_fez_daughter
+					reason = ate_fez_friend_gave_her_fez
+				}
+			}
+			# the asking daughter (any age) + every other attending daughter aged 12-15
+			scope:ate_fez_daughter = { add_to_temporary_list = ate_fez_new_sisters }
+			scope:activity = {
+				every_attending_character = {
+					limit = {
+						ate_fez_daughter_of_fez_age_trigger = yes
+						NOT = { this = scope:ate_fez_daughter }
+					}
+					add_to_temporary_list = ate_fez_new_sisters
+				}
+			}
+			every_in_list = {
+				list = ate_fez_new_sisters
+				custom = ate_fez_every_new_sister_tt
+				save_temporary_scope_as = ate_fez_new_sister	# the effect switches to scope:activity, so `this` would be wrong
+				ate_fez_add_honoree_effect = { BOY = scope:ate_fez_new_sister }
 				add_character_flag = ate_fez_received # portraits: she wears the fez from now on
 				add_character_modifier = {
 					modifier = ate_fez_broke_lodge_law_modifier
@@ -1065,7 +1207,7 @@ ate_fez_ceremony.1003 = {
 }
 
 ########################################
-# ate_fez_ceremony.1004 — #4 A Knight of the Fez of Islam (Banquet pool, any scale)
+# ate_fez_ceremony.1004 — #4 A Knight of a Holy Order (Banquet pool, any scale; any holy order of the faith since 2026-11-16)
 ########################################
 ate_fez_ceremony.1004 = {
 	type = activity_event
@@ -1087,13 +1229,13 @@ ate_fez_ceremony.1004 = {
 	trigger = {
 		exists = scope:activity
 		scope:activity = { NOT = { has_variable = ate_fez_done_4 } }
-		ate_fez_has_fez_knight_trigger = yes
+		ate_fez_has_order_knight_trigger = yes
 		ate_fez_has_attending_honoree_trigger = yes
 	}
 
 	immediate = {
 		ate_fez_mark_pool_event_effect = { EVENT = 4 }
-		ate_fez_pick_fez_knight_effect = yes
+		ate_fez_pick_order_knight_effect = yes
 	}
 
 	# a: accept, the boy trains with the order
@@ -1104,6 +1246,7 @@ ate_fez_ceremony.1004 = {
 			title = ate_fez_ceremony.1004.a.toast
 			left_icon = scope:ate_fez_target_boy
 			right_icon = scope:ate_fez_knight
+			add_piety = minor_piety_gain	# 2026-11-16 (user): "+ piety" (for the host)
 			scope:ate_fez_target_boy = {
 				add_martial_skill = 2
 				add_opinion = {
@@ -1465,10 +1608,15 @@ ate_fez_ceremony.1009 = {
 		}
 	}
 
-	# b: move it indoors
+	# b: move it indoors (toast added 2026-11-16, user's sheet text)
 	option = {
 		name = ate_fez_ceremony.1009.b
-		add_prestige = -10
+		send_interface_toast = {
+			type = event_toast_effect_bad
+			title = ate_fez_ceremony.1009.b.toast
+			left_icon = root
+			add_prestige = -10
+		}
 	}
 
 	# c: pray for the storm to pass (learning duel, difficulty 10)
@@ -1735,9 +1883,10 @@ ate_fez_ceremony.1011 = {
 		}
 	}
 
-	# c: say nothing
+	# c: keep the fez his family sent for yourself (2026-11-16 user; was "say nothing")
 	option = {
 		name = ate_fez_ceremony.1011.c
+		add_gold = minor_gold_value
 		scope:ate_fez_ward = {
 			add_opinion = {
 				target = root
@@ -2193,12 +2342,19 @@ ate_fez_ceremony.1017 = {
 		}
 	}
 
-	# f: cannibal host only (user idea 2026-10-12): the joke option, the toast yells at the player.
-	#    Deviant deliberately NOT included: the boy is 12-15 (sexual content with a minor).
+	# f: cannibal or torturer host (user idea 2026-10-12; torturer added 2026-11-16): the joke option, the toast
+	#    yells at the player. Deviant deliberately NOT included (asked again 2026-11-16, declined again): the boy
+	#    is 12-15 and this line next to Deviant reads as sexual content with a minor.
 	option = {
 		name = ate_fez_ceremony.1017.f
 		trait = cannibal
-		trigger = { has_trait = cannibal }
+		trait = torturer
+		trigger = {
+			OR = {
+				has_trait = cannibal
+				has_trait = torturer
+			}
+		}
 		send_interface_toast = {
 			type = event_toast_effect_bad
 			title = ate_fez_ceremony.1017.f.toast
@@ -2345,7 +2501,7 @@ ate_fez_ceremony.1019 = {
 }
 
 ########################################
-# ate_fez_ceremony.1021 — #21 Your Loved Black Sheep (Procession pool, any scale; user's idea)
+# ate_fez_ceremony.1021 — #21 Your Loved Black Sheep (Presentation pool since 2026-11-16, any scale; user's idea)
 ########################################
 ate_fez_ceremony.1021 = {
 	type = activity_event
@@ -2507,6 +2663,13 @@ ate_fez_ceremony.1021 = {
 			sadistic = minor_stress_impact_loss
 			wrathful = minor_stress_impact_loss
 			compassionate = major_stress_impact_gain
+		}
+	}
+	# 2026-11-16: ceremony pool event (before the fez is given): the Presentation follows it
+	after = {
+		trigger_event = {
+			id = ate_fez_ceremony.0002
+			days = 1
 		}
 	}
 }
