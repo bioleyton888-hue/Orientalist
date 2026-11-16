@@ -103,6 +103,13 @@ ate_fez_broke_lodge_law_modifier = {
 	same_faith_opinion = -10
 }
 
+# Feast of the Fez #2 option c (2026-11-16) — the elder brother's jeweled tassel. 10 years.
+ate_fez_jeweled_tassel_modifier = {
+	icon = prestige_positive
+	diplomacy = 1
+	monthly_prestige = 0.1
+}
+
 # Feast of the Fez #13 option e (2026-11-16) — every daughter aged 12-15 was given the fez. Host only, 5 years.
 ate_fez_wiped_lodge_law_modifier = {
 	icon = piety_negative

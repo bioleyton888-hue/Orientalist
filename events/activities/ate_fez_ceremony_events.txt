@@ -186,7 +186,7 @@ ate_fez_ceremony.0002 = {
 	# 3 days; its pool (#16 / #20 / #21) runs BEFORE the fez, so #1 is chained from here; its own trigger still filters it.
 	after = {
 		random = {
-			chance = 100    # DEBUG: release value 30
+			chance = ate_fez_chained_event_chance	# 100 / max events per phase (user, 2026-11-16)
 			trigger_event = {
 				id = ate_fez_ceremony.1001
 				days = 1
@@ -195,7 +195,7 @@ ate_fez_ceremony.0002 = {
 		# 2026-11-16 (user's text): #20 "The Odd One Out" starts a brawl AFTER he got his fez, so it is chained
 		# from here too (was in the ceremony pool). Its own trigger still filters it (Modest/Grand, once per party).
 		random = {
-			chance = 100    # DEBUG: release value 30
+			chance = ate_fez_chained_event_chance	# 100 / max events per phase (user, 2026-11-16)
 			trigger_event = {
 				id = ate_fez_ceremony.1020
 				days = 2
@@ -301,6 +301,7 @@ ate_fez_ceremony.1001 = {
 	trigger = {
 		exists = scope:activity
 		scope:activity = { NOT = { has_variable = ate_fez_done_1 } }
+		ate_fez_phase_has_room_trigger = yes	# cap of 2 per phase (2026-11-16)
 		ate_fez_has_attending_honoree_trigger = yes
 	}
 
@@ -693,6 +694,7 @@ ate_fez_ceremony.1020 = {
 	trigger = {
 		exists = scope:activity
 		scope:activity = { NOT = { has_variable = ate_fez_done_20 } }
+		ate_fez_phase_has_room_trigger = yes	# cap of 2 per phase (2026-11-16)
 		OR = {
 			ate_fez_scale_trigger = { SCALE = modest }
 			ate_fez_scale_trigger = { SCALE = grand }
@@ -1085,6 +1087,11 @@ ate_fez_ceremony.1002 = {
 		name = ate_fez_ceremony.1002.c
 		remove_short_term_gold = tiny_gold_value
 		scope:ate_fez_elder_brother = {
+			# 2026-11-16 (design review, user): the tassel is something he keeps
+			add_character_modifier = {
+				modifier = ate_fez_jeweled_tassel_modifier
+				years = 10
+			}
 			add_opinion = {
 				target = root
 				modifier = pleased_opinion
@@ -2099,6 +2106,19 @@ ate_fez_ceremony.1015 = {
 					modifier = pleased_opinion
 					opinion = 15
 				}
+				# 2026-11-16 (design review, user): the applause goes to her head. 25% Gregarious, if she has room
+				# for it (no Shy, fewer than 3 personality traits: add_trait fails silently at the cap).
+				if = {
+					limit = {
+						NOT = { has_trait = gregarious }
+						NOT = { has_trait = shy }
+						number_of_personality_traits < 3
+					}
+					random = {
+						chance = 25
+						add_trait = gregarious
+					}
+				}
 			}
 			scope:activity = {
 				every_in_list = {
@@ -2641,6 +2661,57 @@ ate_fez_ceremony.1021 = {
 			type = event_toast_effect_bad
 			title = ate_fez_ceremony.1021.e.toast
 			left_icon = scope:ate_fez_target_boy
+			# 2026-11-16 (design review, user): murder at a children's rite has a price. The victims' close family
+			# -50 and their lieges -30 (set before the deaths, while the scopes are alive), and a small piety loss.
+			scope:ate_fez_mocker_1 ?= {
+				every_close_family_member = {
+					limit = {
+						is_alive = yes
+						NOT = { this = root }
+					}
+					custom = ate_fez_every_mocker_family_tt
+					add_opinion = {
+						target = root
+						modifier = angry_opinion
+						opinion = -50
+					}
+				}
+				liege ?= {
+					if = {
+						limit = { NOT = { this = root } }
+						add_opinion = {
+							target = root
+							modifier = angry_opinion
+							opinion = -30
+						}
+					}
+				}
+			}
+			scope:ate_fez_mocker_2 ?= {
+				every_close_family_member = {
+					limit = {
+						is_alive = yes
+						NOT = { this = root }
+					}
+					custom = ate_fez_every_mocker_family_tt
+					add_opinion = {
+						target = root
+						modifier = angry_opinion
+						opinion = -50
+					}
+				}
+				liege ?= {
+					if = {
+						limit = { NOT = { this = root } }
+						add_opinion = {
+							target = root
+							modifier = angry_opinion
+							opinion = -30
+						}
+					}
+				}
+			}
+			add_piety = minor_piety_loss
 			scope:ate_fez_mocker_1 = {
 				death = {
 					death_reason = death_murder

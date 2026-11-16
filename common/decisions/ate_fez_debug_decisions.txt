@@ -1,7 +1,6 @@
 ﻿# TESTING ONLY — spawns 15 of your children, all aged 13, each with a different personality pair, to test the
 # Feast of the Fez events (11 boys = honorees, 4 girls = daughter events).
-# !!! Always visible to player-controlled characters (user's choice): remove this file and
-# !!! common/scripted_effects/ate_fez_debug_effects.txt (or set is_shown = { always = no }) before any public release.
+# HIDDEN since 2026-11-16 (user: keep it, we will need it again). To use it: set is_shown back to `is_ai = no`.
 ate_fez_debug_spawn_test_kids = {
 	picture = {
 		reference = "gfx/interface/illustrations/decisions/decision_destiny_goal.dds"
@@ -14,7 +13,7 @@ ate_fez_debug_spawn_test_kids = {
 	selection_tooltip = ate_fez_debug_spawn_test_kids_tooltip
 
 	is_shown = {
-		is_ai = no
+		always = no	# hidden for release; was: is_ai = no
 	}
 
 	is_valid = {

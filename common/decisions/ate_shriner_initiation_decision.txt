@@ -11,6 +11,7 @@ ate_shriner_fez_initiation = {
 	selection_tooltip = ate_shriner_fez_initiation_tooltip
 
 	is_shown = {
+		always = no	# RETIRED 2026-11-16 (user): the Feast of the Fez replaces it. Delete this line to bring it back.
 		is_male = yes
 		is_adult = yes
 		faith = faith:shriner

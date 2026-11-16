@@ -47,6 +47,17 @@ ate_fez_attending_honoree_trigger = {
 	}
 }
 
+# Room for one more guest event in the current phase (cap = ate_fez_max_events_per_phase; the counter is reset
+# at each phase start and raised by ate_fez_mark_pool_event_effect). Needs scope:activity. (2026-11-16)
+ate_fez_phase_has_room_trigger = {
+	scope:activity = {
+		trigger_if = {
+			limit = { exists = var:ate_fez_phase_events }
+			var:ate_fez_phase_events < ate_fez_max_events_per_phase
+		}
+	}
+}
+
 # Is any honoree at the party? (#1, #20)
 ate_fez_has_attending_honoree_trigger = {
 	scope:activity = {
