@@ -1,0 +1,61 @@
+﻿# The Feast of the Fez — guest event pools (build step 4). Host only.
+# Every event filters itself through its own trigger (scale, who is attending, once per party).
+# `25 = 0` = "nothing happens this week" (vanilla feast pool pattern).
+# RELEASE MODE since 2026-11-16 (user): every line restored. At most ate_fez_max_events_per_phase (2) guest events
+# per phase, through ate_fez_phase_has_room_trigger: 2 in the Procession, 2 in the Presentation (this pool + #1 / #20
+# chained from 0002), 2 in the Banquet = up to 6 per party.
+# To test ONE event again: comment out every other line of its pool and the `= 0` line.
+
+# Between the boys walking in and the fez being given
+ate_fez_procession_pulse = {
+	trigger = {
+		NOT = { has_character_flag = ate_fez_busy_in_event }
+		ate_fez_phase_has_room_trigger = yes
+	}
+	random_events = {
+		25 = 0	# nothing happens this week
+		# #1 moved out of this pool 2026-10-25: now chained from ate_fez_ceremony.0002 (the Presentation)
+		100 = ate_fez_ceremony.1007	# #7  The Little Cars (Extravagant)   (tested OK 2026-10-12)
+		100 = ate_fez_ceremony.1008	# #8  Florida Man Arrives (Extravagant)   (tested OK 2026-10-12)
+		100 = ate_fez_ceremony.1009	# #9  The Storm (Extravagant)   (tested OK 2026-10-12)
+		100 = ate_fez_ceremony.1010	# #10 The Gator Attends (host owns the gator)   (SKIPPED 2026-10-12: user has no gator; untested)
+		# #17 moved to ate_fez_presentation_pulse 2026-11-16 (user: it is a ceremony event)
+		100 = ate_fez_ceremony.1018	# #18 When in al-Rome... (non-Shriner ward)   (tested OK 2026-10-12)
+		# #16, #20, #21 moved to ate_fez_presentation_pulse 2026-11-16 (user: they happen during the ceremony)
+	}
+}
+
+# During the ceremony, BEFORE the fez is given. Rolled ONCE (on_phase_active of the Presentation), not weekly:
+# the Presentation is a short phase. NO busy-flag trigger and NO `= 0` line on purpose: this pool must always
+# fire an event, because each event here fires ate_fez_ceremony.0002 (the fez itself) from its `after`.
+# ate_fez_ceremony.0004 is the hidden "nothing happens" entry; it is always valid, so the pool never comes up empty.
+ate_fez_presentation_pulse = {
+	random_events = {
+		100 = ate_fez_ceremony.1016	# #16 I Want to Be an Adult Too   (fires OK 2026-10-12; option e = BUG 2, fixed 2026-11-16, untested)
+		100 = ate_fez_ceremony.1017	# #17 Heavy Is the Fez   (tested OK 2026-10-12 in the Procession; moved here 2026-11-16)
+		# #20 moved out 2026-11-16: it happens AFTER the fez (user's text), chained from ate_fez_ceremony.0002
+		100 = ate_fez_ceremony.1021	# #21 Your Loved Black Sheep   (tested OK 2026-10-12)
+		25 = ate_fez_ceremony.0004	# nothing happens: straight to the Presentation (tune before release)
+	}
+}
+
+# After the fez is given, during the feast
+ate_fez_banquet_pulse = {
+	trigger = {
+		NOT = { has_character_flag = ate_fez_busy_in_event }
+		ate_fez_phase_has_room_trigger = yes
+	}
+	random_events = {
+		25 = 0	# nothing happens this week
+		100 = ate_fez_ceremony.1002	# #2  The Elder Brother (Grand/Extravagant)   (tested OK 2026-10-12)
+		100 = ate_fez_ceremony.1003	# #3  The Potentate's Envoy (Extravagant)   (tested OK 2026-10-12)
+		100 = ate_fez_ceremony.1004	# #4  A Knight of a Holy Order   (tested OK 2026-10-12)
+		100 = ate_fez_ceremony.1005	# #5  A Match Proposed   (tested OK 2026-10-12)
+		100 = ate_fez_ceremony.1011	# #11 Not My Father's Fez (ward)   (tested OK 2026-10-12)
+		100 = ate_fez_ceremony.1012	# #12 The Ward's Gift (ward)   (tested OK 2026-10-12)
+		100 = ate_fez_ceremony.1013	# #13 Why Not Me?   (tested OK 2026-10-12)
+		100 = ate_fez_ceremony.1014	# #14 A Suitor's Eye   (tested OK 2026-10-12)
+		100 = ate_fez_ceremony.1015	# #15 The Sister Who Stole the Show   (tested OK 2026-10-12)
+		100 = ate_fez_ceremony.1019	# #19 Like the First Time   (tested OK 2026-10-12)
+	}
+}

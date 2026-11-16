@@ -1,0 +1,671 @@
+﻿# The Feast of the Fez — effects used by activity_ate_fez_ceremony.
+
+# Stores every eligible son and ward of the host in the activity's ate_fez_honorees list.
+# Called from on_start. Scope: the activity. Needs scope:host and scope:activity.
+# The list is the record of who the party was thrown for; the payout only pays those who attended.
+ate_fez_collect_honorees_effect = {
+	scope:host = {
+		every_child = {
+			limit = { ate_fez_eligible_son_trigger = { HOST = scope:host } }
+			save_temporary_scope_as = ate_fez_boy
+			scope:activity = {
+				add_to_variable_list = { name = ate_fez_honorees target = scope:ate_fez_boy }
+			}
+		}
+		every_relation = {
+			type = ward
+			limit = {
+				NOT = { is_child_of = scope:host } # a son who is also a ward is already in the list
+				ate_fez_eligible_son_trigger = { HOST = scope:host }
+			}
+			save_temporary_scope_as = ate_fez_boy
+			scope:activity = {
+				add_to_variable_list = { name = ate_fez_honorees target = scope:ate_fez_boy }
+			}
+		}
+	}
+}
+
+# Host payout at the end of the party, shown in the conclusion screen.
+# Per scale (plan section 4.3):
+#   Modest       = old ate_shriner.0015.a: boys initiated; host +50 prestige, -10 stress
+#   Grand        = old ate_shriner.0015.b: + boys' opinion of the host; host +150 prestige, +50 piety
+#   Extravagant  = + boys get Presented at the Great Feast (20 y); host +350 prestige, dynasty prestige,
+#                  Talk of the Lodge (5 y)
+# Called from on_complete for the host. Needs scope:host and scope:activity.
+ate_fez_host_payout_effect = {
+	scope:activity = {
+		add_activity_log_entry = {
+			key = ate_fez_honorees_log
+			tags = { completed }
+			show_in_conclusion = yes
+			character = scope:host
+			score = 100
+
+			scope:activity = {
+				every_in_list = {
+					variable = ate_fez_honorees
+					limit = {
+						ate_fez_attending_honoree_trigger = yes	# BUG 2: includes the honorees added mid-party
+						NOT = { has_character_modifier = ate_shriner_initiated_modifier }
+					}
+					custom = ate_fez_every_honoree_tt
+					add_character_flag = ate_fez_received # portraits: the fez now shows on him
+					add_character_modifier = {
+						modifier = ate_shriner_initiated_modifier
+						years = 6
+					}
+					if = {
+						limit = { NOT = { ate_fez_scale_trigger = { SCALE = modest } } }
+						add_opinion = {
+							modifier = ate_fez_presented_by_father_opinion
+							target = scope:host
+						}
+					}
+					if = {
+						limit = { ate_fez_scale_trigger = { SCALE = extravagant } }
+						add_character_modifier = {
+							modifier = ate_fez_presented_great_feast_modifier
+							years = 20
+						}
+					}
+				}
+			}
+			scope:host = {
+				if = {
+					limit = { ate_fez_scale_trigger = { SCALE = extravagant } }
+					add_prestige = major_prestige_gain
+					dynasty ?= { add_dynasty_prestige = minor_dynasty_prestige_gain }
+					add_character_modifier = {
+						modifier = ate_fez_talk_of_the_lodge_modifier
+						years = 5
+					}
+				}
+				else_if = {
+					limit = { ate_fez_scale_trigger = { SCALE = grand } }
+					add_prestige = medium_prestige_gain
+					add_piety = minor_piety_gain
+				}
+				else = {
+					add_prestige = 50
+					add_stress = -10
+				}
+			}
+		}
+	}
+}
+
+# Pays the intent the character picked. Players see it in the conclusion screen; AI just gets it.
+# Called from on_complete for every participant. Needs scope:activity.
+ate_fez_intent_payout_effect = {
+	if = {
+		limit = { is_ai = no }
+		save_scope_as = ate_fez_intent_owner
+		scope:activity = {
+			add_activity_log_entry = {
+				key = ate_fez_intent_reward_log
+				tags = { completed }
+				show_in_conclusion = yes
+				character = scope:ate_fez_intent_owner
+				score = 50
+
+				scope:ate_fez_intent_owner = { ate_fez_intent_reward_effect = yes }
+			}
+		}
+	}
+	else = {
+		ate_fez_intent_reward_effect = yes
+	}
+}
+
+# The rewards themselves, growing with the scale: Modest = minor, Grand = medium, Extravagant = major.
+# Needs scope:activity.
+ate_fez_intent_reward_effect = {
+	if = {
+		limit = { has_activity_intent = ate_fez_party_intent }
+		if = {
+			limit = { ate_fez_scale_trigger = { SCALE = extravagant } }
+			add_stress = major_stress_loss
+		}
+		else_if = {
+			limit = { ate_fez_scale_trigger = { SCALE = grand } }
+			add_stress = medium_stress_loss
+		}
+		else = {
+			add_stress = minor_stress_loss
+		}
+	}
+	else_if = {
+		limit = { has_activity_intent = ate_fez_important_intent }
+		if = {
+			limit = { ate_fez_scale_trigger = { SCALE = extravagant } }
+			add_piety = major_piety_gain
+		}
+		else_if = {
+			limit = { ate_fez_scale_trigger = { SCALE = grand } }
+			add_piety = medium_piety_gain
+		}
+		else = {
+			add_piety = minor_piety_gain
+		}
+	}
+	else_if = {
+		limit = { has_activity_intent = ate_fez_look_intent }
+		if = {
+			limit = { ate_fez_scale_trigger = { SCALE = extravagant } }
+			add_prestige = major_prestige_gain
+		}
+		else_if = {
+			limit = { ate_fez_scale_trigger = { SCALE = grand } }
+			add_prestige = medium_prestige_gain
+		}
+		else = {
+			add_prestige = minor_prestige_gain
+		}
+	}
+}
+
+# Saves up to five ATTENDING boys as scope:ate_fez_boy_1..5 (for event portraits and names), and
+# scope:ate_fez_many_boys when more than five are present. Used by the phase events.
+# Needs scope:activity. Each pick is guarded so an unset previous scope is never compared.
+ate_fez_save_present_boys_effect = {
+	scope:activity = {
+		every_in_list = {
+			variable = ate_fez_honorees
+			limit = { ate_fez_attending_honoree_trigger = yes }
+			add_to_temporary_list = ate_fez_present_boys
+		}
+	}
+	random_in_list = {
+		list = ate_fez_present_boys
+		save_scope_as = ate_fez_boy_1
+	}
+	if = {
+		limit = { exists = scope:ate_fez_boy_1 }
+		random_in_list = {
+			list = ate_fez_present_boys
+			limit = { NOT = { this = scope:ate_fez_boy_1 } }
+			save_scope_as = ate_fez_boy_2
+		}
+	}
+	if = {
+		limit = { exists = scope:ate_fez_boy_2 }
+		random_in_list = {
+			list = ate_fez_present_boys
+			limit = {
+				NOR = {
+					this = scope:ate_fez_boy_1
+					this = scope:ate_fez_boy_2
+				}
+			}
+			save_scope_as = ate_fez_boy_3
+		}
+	}
+	if = {
+		limit = { exists = scope:ate_fez_boy_3 }
+		random_in_list = {
+			list = ate_fez_present_boys
+			limit = {
+				NOR = {
+					this = scope:ate_fez_boy_1
+					this = scope:ate_fez_boy_2
+					this = scope:ate_fez_boy_3
+				}
+			}
+			save_scope_as = ate_fez_boy_4
+		}
+	}
+	if = {
+		limit = { exists = scope:ate_fez_boy_4 }
+		random_in_list = {
+			list = ate_fez_present_boys
+			limit = {
+				NOR = {
+					this = scope:ate_fez_boy_1
+					this = scope:ate_fez_boy_2
+					this = scope:ate_fez_boy_3
+					this = scope:ate_fez_boy_4
+				}
+			}
+			save_scope_as = ate_fez_boy_5
+		}
+	}
+	if = {
+		limit = {
+			any_in_list = {
+				list = ate_fez_present_boys
+				count > 5
+			}
+		}
+		save_scope_value_as = { name = ate_fez_many_boys value = yes }
+	}
+}
+
+#############################################
+# Build step 4 — shared mechanics for the guest events. All need scope:activity.
+#############################################
+
+# Takes a boy OFF the fez: the conclusion skips him and he stays eligible for a later party. (#17, #20, #21)
+ate_fez_remove_honoree_effect = {
+	scope:activity = {
+		remove_list_variable = {
+			name = ate_fez_honorees
+			target = $BOY$
+		}
+	}
+}
+
+# Puts a boy ON the fez (any age/faith): the conclusion pays him like every honoree. (#16, #18)
+ate_fez_add_honoree_effect = {
+	scope:activity = {
+		add_to_variable_list = {
+			name = ate_fez_honorees
+			target = $BOY$
+		}
+	}
+	# BUG 2 fix (2026-11-16): keeps him counted as attending until the payout (see ate_fez_attending_honoree_trigger).
+	# 90 days outlasts the rest of any party (Presentation + Banquet are a few weeks).
+	$BOY$ = {
+		add_character_flag = {
+			flag = ate_fez_added_honoree
+			days = 90
+		}
+	}
+}
+
+# Marks a pool event as used for this party + blocks other pool events for a few days. $EVENT$ = list number.
+ate_fez_mark_pool_event_effect = {
+	scope:activity = {
+		set_variable = { name = ate_fez_done_$EVENT$ }
+		# 2026-11-16: count the guest events of this phase (cap: ate_fez_phase_has_room_trigger)
+		if = {
+			limit = { NOT = { exists = var:ate_fez_phase_events } }
+			set_variable = { name = ate_fez_phase_events value = 0 }
+		}
+		change_variable = { name = ate_fez_phase_events add = 1 }
+	}
+	add_character_flag = {
+		flag = ate_fez_busy_in_event
+		days = 3
+	}
+}
+
+# ----- target pickers (same conditions as the matching triggers) -----
+
+# -> scope:ate_fez_target_boy (an attending honoree)
+ate_fez_pick_attending_honoree_effect = {
+	scope:activity = {
+		random_in_list = {
+			variable = ate_fez_honorees
+			limit = { ate_fez_attending_honoree_trigger = yes }
+			save_scope_as = ate_fez_target_boy
+		}
+	}
+}
+
+# -> scope:ate_fez_target_boy, preferring a rowdy honoree (#20)
+ate_fez_pick_rowdy_honoree_effect = {
+	scope:activity = {
+		random_in_list = {
+			variable = ate_fez_honorees
+			limit = { ate_fez_attending_honoree_trigger = yes }
+			weight = {
+				base = 1
+				modifier = {
+					add = 9
+					has_trait = rowdy
+				}
+			}
+			save_scope_as = ate_fez_target_boy
+		}
+	}
+}
+
+# -> scope:ate_fez_cars_victim (#7)
+ate_fez_pick_cars_victim_effect = {
+	scope:activity = {
+		random_attending_character = {
+			limit = { ate_fez_cars_victim_candidate_trigger = yes }
+			save_scope_as = ate_fez_cars_victim
+		}
+	}
+}
+
+# -> scope:ate_fez_daughter (#13)
+ate_fez_pick_daughter_effect = {
+	scope:activity = {
+		random_attending_character = {
+			limit = { ate_fez_daughter_candidate_trigger = yes }
+			save_scope_as = ate_fez_daughter
+		}
+	}
+}
+
+# -> scope:ate_fez_little_brother (#16)
+ate_fez_pick_little_brother_effect = {
+	scope:activity = {
+		random_attending_character = {
+			limit = { ate_fez_little_brother_candidate_trigger = yes }
+			save_scope_as = ate_fez_little_brother
+		}
+	}
+}
+
+#############################################
+# Build step 4, second batch — target pickers (2026-10-12). Same conditions as the matching triggers.
+#############################################
+
+# -> scope:ate_fez_elder_brother (#2)
+ate_fez_pick_elder_brother_effect = {
+	scope:activity = {
+		random_attending_character = {
+			limit = { ate_fez_elder_brother_candidate_trigger = yes }
+			save_scope_as = ate_fez_elder_brother
+		}
+	}
+}
+
+# -> scope:ate_fez_potentate (#3)
+ate_fez_pick_potentate_effect = {
+	faith:shriner.religious_head = { save_scope_as = ate_fez_potentate }
+}
+
+# -> scope:ate_fez_knight (#4) + scope:ate_fez_target_boy
+# 2026-11-16 (user): the leader of a random holy order of the host's faith (the Fez of Islam or any other).
+ate_fez_pick_order_knight_effect = {
+	scope:host.faith = {
+		random_faith_holy_order = {
+			limit = { ate_fez_order_knight_candidate_trigger = yes }
+			leader = { save_scope_as = ate_fez_knight }
+		}
+	}
+	ate_fez_pick_attending_honoree_effect = yes
+}
+
+# -> scope:ate_fez_target_boy + scope:ate_fez_suitor_family + scope:ate_fez_match (#5)
+ate_fez_pick_boy_match_effect = {
+	scope:activity = {
+		random_in_list = {
+			variable = ate_fez_honorees
+			limit = {
+				ate_fez_match_boy_trigger = yes
+				save_temporary_scope_as = ate_fez_match_check
+				scope:activity = {
+					any_attending_character = { ate_fez_suitor_family_trigger = { PARTNER = scope:ate_fez_match_check } }
+				}
+			}
+			save_scope_as = ate_fez_target_boy
+		}
+	}
+	ate_fez_pick_suitor_family_effect = { PARTNER = scope:ate_fez_target_boy }
+}
+
+# -> scope:ate_fez_daughter + scope:ate_fez_suitor_family + scope:ate_fez_match (#14)
+ate_fez_pick_daughter_match_effect = {
+	scope:activity = {
+		random_attending_character = {
+			limit = {
+				ate_fez_daughter_candidate_trigger = yes
+				ate_fez_free_to_match_trigger = yes
+				save_temporary_scope_as = ate_fez_match_check
+				scope:activity = {
+					any_attending_character = { ate_fez_suitor_family_trigger = { PARTNER = scope:ate_fez_match_check } }
+				}
+			}
+			save_scope_as = ate_fez_daughter
+		}
+	}
+	ate_fez_pick_suitor_family_effect = { PARTNER = scope:ate_fez_daughter }
+}
+
+# Shared by #5 / #14: the guest of rank and his child for $PARTNER$.
+ate_fez_pick_suitor_family_effect = {
+	if = {
+		limit = { exists = $PARTNER$ }
+		scope:activity = {
+			random_attending_character = {
+				limit = { ate_fez_suitor_family_trigger = { PARTNER = $PARTNER$ } }
+				save_scope_as = ate_fez_suitor_family
+			}
+		}
+	}
+	if = {
+		limit = { exists = scope:ate_fez_suitor_family }
+		scope:ate_fez_suitor_family = {
+			random_child = {
+				limit = { ate_fez_match_candidate_trigger = { PARTNER = $PARTNER$ } }
+				save_scope_as = ate_fez_match
+			}
+		}
+	}
+}
+
+# The betrothal itself (#5 / #14). Skill rule: break any old betrothal first (none expected, the pickers want
+# free characters, but the event may wait in the queue).
+ate_fez_betroth_effect = {
+	$PARTNER$ = {
+		if = {
+			limit = { is_betrothed = yes }
+			break_betrothal = betrothed
+		}
+	}
+	scope:ate_fez_match = {
+		if = {
+			limit = { is_betrothed = yes }
+			break_betrothal = betrothed
+		}
+	}
+	$PARTNER$ = { create_betrothal = scope:ate_fez_match }
+}
+
+# -> scope:ate_fez_guest (#9 storm victim, #10 gator witness). Optional: an attending AI adult outside the host's family.
+ate_fez_pick_any_guest_effect = {
+	scope:activity = {
+		random_attending_character = {
+			limit = { ate_fez_outsider_guest_trigger = yes }
+			save_scope_as = ate_fez_guest
+		}
+	}
+}
+
+# -> scope:ate_fez_ward (#11)
+ate_fez_pick_ward_effect = {
+	scope:activity = {
+		random_in_list = {
+			variable = ate_fez_honorees
+			limit = { ate_fez_ward_honoree_trigger = yes }
+			save_scope_as = ate_fez_ward
+		}
+	}
+	scope:ate_fez_ward.father ?= {
+		if = {
+			limit = {
+				is_alive = yes
+				NOT = { this = scope:host }
+			}
+			save_scope_as = ate_fez_ward_father
+		}
+	}
+}
+
+# -> scope:ate_fez_ward + scope:ate_fez_ward_family (#12): his father, or his mother if the father is gone
+ate_fez_pick_ward_with_family_effect = {
+	scope:activity = {
+		random_in_list = {
+			variable = ate_fez_honorees
+			limit = { ate_fez_ward_with_family_trigger = yes }
+			save_scope_as = ate_fez_ward
+		}
+	}
+	scope:ate_fez_ward ?= {
+		if = {
+			limit = {
+				father ?= {
+					is_alive = yes
+					NOT = { this = scope:host }
+				}
+			}
+			father = { save_scope_as = ate_fez_ward_family }
+		}
+		else = {
+			mother ?= { save_scope_as = ate_fez_ward_family }
+		}
+	}
+}
+
+# -> scope:ate_fez_target_boy (#17)
+ate_fez_pick_reluctant_boy_effect = {
+	scope:activity = {
+		random_in_list = {
+			variable = ate_fez_honorees
+			limit = { ate_fez_reluctant_boy_trigger = yes }
+			save_scope_as = ate_fez_target_boy
+		}
+	}
+}
+
+# -> scope:ate_fez_foreign_ward (#18)
+ate_fez_pick_foreign_ward_effect = {
+	scope:activity = {
+		random_attending_character = {
+			limit = { ate_fez_foreign_ward_candidate_trigger = yes }
+			save_scope_as = ate_fez_foreign_ward
+		}
+	}
+}
+
+# -> scope:ate_fez_target_boy + scope:ate_fez_ancestor (#19)
+ate_fez_pick_reincarnated_boy_effect = {
+	scope:activity = {
+		random_in_list = {
+			variable = ate_fez_honorees
+			limit = { ate_fez_reincarnated_boy_trigger = yes }
+			save_scope_as = ate_fez_target_boy
+		}
+	}
+	scope:ate_fez_target_boy ?= {
+		random_ancestor = {
+			even_if_dead = yes
+			limit = {
+				is_alive = no
+				dynasty ?= scope:host.dynasty
+			}
+			save_scope_as = ate_fez_ancestor
+		}
+	}
+}
+
+# -> scope:ate_fez_target_boy (#21)
+ate_fez_pick_black_sheep_effect = {
+	scope:activity = {
+		random_in_list = {
+			variable = ate_fez_honorees
+			limit = { ate_fez_black_sheep_trigger = yes }
+			save_scope_as = ate_fez_target_boy
+		}
+	}
+}
+
+# -> scope:ate_fez_mocker_1 (+ scope:ate_fez_mocker_2 half the time) (#21 option e)
+ate_fez_pick_mockers_effect = {
+	scope:activity = {
+		random_attending_character = {
+			limit = { ate_fez_mocker_candidate_trigger = yes }
+			save_scope_as = ate_fez_mocker_1
+		}
+	}
+	if = {
+		limit = { exists = scope:ate_fez_mocker_1 }
+		random_list = {
+			50 = {}
+			50 = {
+				scope:activity = {
+					random_attending_character = {
+						limit = {
+							ate_fez_mocker_candidate_trigger = yes
+							NOT = { this = scope:ate_fez_mocker_1 }
+						}
+						save_scope_as = ate_fez_mocker_2
+					}
+				}
+			}
+		}
+	}
+}
+
+# #17 d: pick ONE of the host's vices -> scope:ate_fez_vice (a flag), and scope:ate_fez_vice_catchable = yes if
+# scope:ate_fez_target_boy can catch it. Scope: the host. Needs scope:ate_fez_target_boy.
+ate_fez_pick_host_vice_effect = {
+	if = {
+		limit = { ate_fez_host_has_vice_trigger = yes }
+		random_list = {
+			1 = {
+				trigger = { has_trait = drunkard }
+				save_scope_value_as = { name = ate_fez_vice value = flag:drunkard }
+			}
+			1 = {
+				trigger = { has_trait = hashishiyah }
+				save_scope_value_as = { name = ate_fez_vice value = flag:hashishiyah }
+			}
+			1 = {
+				trigger = { has_trait = comfort_eater }
+				save_scope_value_as = { name = ate_fez_vice value = flag:comfort_eater }
+			}
+			1 = {
+				trigger = { has_trait = gluttonous }
+				save_scope_value_as = { name = ate_fez_vice value = flag:gluttonous }
+			}
+			1 = {
+				trigger = { has_trait = profligate }
+				save_scope_value_as = { name = ate_fez_vice value = flag:profligate }
+			}
+			1 = {
+				trigger = { has_trait = greedy }
+				save_scope_value_as = { name = ate_fez_vice value = flag:greedy }
+			}
+			1 = {
+				trigger = { has_trait = lifestyle_reveler }
+				save_scope_value_as = { name = ate_fez_vice value = flag:lifestyle_reveler }
+			}
+		}
+		if = {
+			limit = {
+				exists = scope:ate_fez_target_boy
+				scope:ate_fez_target_boy = { ate_fez_boy_can_catch_vice_trigger = yes }
+			}
+			save_scope_value_as = { name = ate_fez_vice_catchable value = yes }
+		}
+	}
+}
+
+# #17 d: the boy catches scope:ate_fez_vice (Gluttonous -> Comfort Eater). Scope: the boy.
+ate_fez_catch_vice_effect = {
+	if = {
+		limit = { scope:ate_fez_vice = flag:drunkard }
+		add_trait = drunkard
+	}
+	else_if = {
+		limit = { scope:ate_fez_vice = flag:hashishiyah }
+		add_trait = hashishiyah
+	}
+	else_if = {
+		limit = { scope:ate_fez_vice = flag:comfort_eater }
+		add_trait = comfort_eater
+	}
+	else_if = {
+		limit = { scope:ate_fez_vice = flag:gluttonous }
+		add_trait = comfort_eater
+	}
+	else_if = {
+		limit = { scope:ate_fez_vice = flag:profligate }
+		add_trait = profligate
+	}
+	else_if = {
+		limit = { scope:ate_fez_vice = flag:greedy }
+		add_trait = greedy
+	}
+	else_if = {
+		limit = { scope:ate_fez_vice = flag:lifestyle_reveler }
+		add_trait = lifestyle_reveler
+	}
+}

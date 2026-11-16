@@ -1,0 +1,401 @@
+﻿# The Feast of the Fez — a Shriner parent presents the fez to ALL their eligible sons and wards at once.
+# Replaced the one-son-at-a-time ate_shriner_fez_initiation decision + ate_shriner.0015 (both deleted 2026-11-16).
+# Plan: scripts/plans/08-10-2026/fez_presentation_party.md
+# Build steps: 1 skeleton + payout, 2 Modest/Grand/Extravagant scales, 3 three phases + Procession/Presentation events.
+# Player only: the AI never hosts it (is_ai = no in is_shown, ai_will_do = 0).
+# Art: vanilla feast art copied under this activity's keys (gfx/interface/icons/activities/, etc.).
+
+activity_ate_fez_ceremony = {
+	is_shown = {
+		is_ai = no
+		faith = faith:shriner
+		# No gender rule (2026-10-12): a Shriner mother/guardian can host too.
+		is_adult = yes
+		is_landed = yes
+		OR = {
+			any_child = { ate_fez_eligible_son_trigger = { HOST = root } }
+			any_relation = {
+				type = ward
+				ate_fez_eligible_son_trigger = { HOST = root }
+			}
+		}
+	}
+
+	can_start_showing_failures_only = {
+		NOT = { is_activity_type_on_cooldown = activity_ate_fez_ceremony }
+		is_available_adult = yes
+	}
+
+	is_valid = {
+		NOT = { has_variable = activity_invalidated }
+		scope:host = {
+			is_landed = yes
+			is_incapable = no
+		}
+		# If no one shows up
+		trigger_if = {
+			limit = { is_current_phase_active = yes }
+			has_attending_activity_guests = yes
+		}
+	}
+
+	on_invalidated = {
+		scope:activity = {
+			activity_type = { save_scope_as = activity_type }
+		}
+		if = { # Host became unlanded
+			limit = {
+				scope:host = { is_landed = no }
+			}
+			every_attending_character = {
+				trigger_event = activity_system.0320
+			}
+		}
+		else_if = { # Host became incapable
+			limit = {
+				scope:host = { is_incapable = yes }
+			}
+			scope:host = {
+				trigger_event = activity_system.0330
+			}
+			every_attending_character = {
+				limit = { NOT = { this = scope:host } }
+				trigger_event = activity_system.0331
+			}
+		}
+		else_if = { # No one showed up
+			limit = {
+				has_attending_activity_guests = no
+			}
+			scope:activity = {
+				activity_location = { save_scope_as = location }
+			}
+			scope:host = { trigger_event = activity_system.0100 }
+		}
+	}
+
+	on_host_death = {
+		scope:activity = {
+			set_variable = { name = activity_invalidated }
+		}
+	}
+
+	# Held at the host's court/lodge.
+	province_filter = capital
+	ai_province_filter = capital
+	max_province_icons = 1
+
+	###################
+	# OPTIONS
+	###################
+
+	options = {
+		# The scale of the party. Read back with ate_fez_scale_trigger = { SCALE = modest/grand/extravagant }.
+		# Rewards per scale live in ate_fez_effects.txt.
+		ate_fez_party_scale = {
+			# Private lodge ceremony = the old ate_shriner.0015.a
+			ate_fez_scale_modest = {
+				default = yes
+				cost = {
+					gold = { value = activity_minor_gold_value }
+					piety = { value = 25 }
+				}
+				ai_will_do = { value = 0 }
+			}
+			# The whole court = the old ate_shriner.0015.b
+			ate_fez_scale_grand = {
+				cost = {
+					gold = { value = activity_medium_gold_value }
+					piety = { value = 25 }
+				}
+				ai_will_do = { value = 0 }
+			}
+			# A parade through the city; the gold grows with every boy honored
+			ate_fez_scale_extravagant = {
+				cost = {
+					gold = {
+						add = {
+							value = major_gold_value
+							desc = ate_fez_scale_extravagant
+						}
+						add = {
+							value = minor_gold_value
+							multiply = ate_fez_honoree_count_value
+							desc = ate_fez_cost_per_boy
+						}
+					}
+					piety = { value = 25 }
+				}
+				ai_will_do = { value = 0 }
+			}
+		}
+	}
+
+	###################
+	# PHASES
+	###################
+
+	# Plan section 4.4. Pacing copied from the vanilla feast toast phase: on_enter_phase = 1 day to go active,
+	# on_phase_active = the host's event + how long the phase lasts. Only the host gets events (player-only party).
+	phases = {
+		# 1. The boys walk into the Lodge hall (Extravagant: a street parade). ~2 weeks, weekly guest-event pool.
+		ate_fez_phase_procession = {
+			order = 1
+			is_predefined = yes
+
+			is_shown = { always = yes }
+
+			on_enter_phase = {
+				if = {
+					limit = { this = scope:host }
+					scope:activity = { progress_activity_phase_after = { days = 1 } }
+				}
+			}
+
+			on_phase_active = {
+				if = {
+					limit = { this = scope:host }
+					scope:activity = { set_variable = { name = ate_fez_phase_events value = 0 } }	# new phase: guest-event counter back to 0
+					trigger_event = ate_fez_ceremony.0001
+					scope:activity = { progress_activity_phase_after = { weeks = 2 } }
+				}
+			}
+
+			# Step 4: guest events between the procession and the presentation
+			on_weekly_pulse = {
+				if = {
+					limit = { this = scope:host }
+					trigger_event = { on_action = ate_fez_procession_pulse }
+				}
+			}
+		}
+
+		# 2. One event, every boy: the fez is placed on each head.
+		# 2026-11-16 (user): the ceremony gets its own guest-event pool (#16, #20, #21), rolled ONCE when the phase
+		# goes active, BEFORE the fez is given (those events add or remove boys from the honoree list). The pool
+		# event's `after` (or the "nothing happens" event 0004) then fires 0002, and 0002 schedules the phase end,
+		# so the Banquet can never start before the fez is given.
+		ate_fez_phase_presentation = {
+			order = 2
+			is_predefined = yes
+
+			is_shown = { always = yes }
+
+			on_enter_phase = {
+				if = {
+					limit = { this = scope:host }
+					scope:activity = { progress_activity_phase_after = { days = 1 } }
+				}
+			}
+
+			on_phase_active = {
+				if = {
+					limit = { this = scope:host }
+					scope:activity = { set_variable = { name = ate_fez_phase_events value = 0 } }	# new phase: guest-event counter back to 0
+					trigger_event = { on_action = ate_fez_presentation_pulse }
+				}
+			}
+		}
+
+		# 3. The feast itself: a closing toast + ~2 weeks of weekly guest-event pool.
+		ate_fez_phase_banquet = {
+			order = 3
+			is_predefined = yes
+
+			is_shown = { always = yes }
+
+			on_enter_phase = {
+				if = {
+					limit = { this = scope:host }
+					scope:activity = { progress_activity_phase_after = { days = 1 } }
+				}
+			}
+
+			on_phase_active = {
+				if = {
+					limit = { this = scope:host }
+					scope:activity = { set_variable = { name = ate_fez_phase_events value = 0 } }	# new phase: guest-event counter back to 0
+					trigger_event = ate_fez_ceremony.0003
+					scope:activity = { progress_activity_phase_after = { weeks = 2 } }
+				}
+			}
+
+			# Step 4: guest events during the feast
+			on_weekly_pulse = {
+				if = {
+					limit = { this = scope:host }
+					trigger_event = { on_action = ate_fez_banquet_pulse }
+				}
+			}
+		}
+	}
+
+	# How long the party waits for far-away guests (e.g. a landed son in his own realm). Vanilla feast/funeral/
+	# coronation/playdate all use 5 months; 25 days (copied from ATE's day_of_the_dead) left landed sons behind.
+	max_guest_arrival_delay_time = { months = 5 }
+
+	# The cost lives on the scale option (ate_fez_scale_modest).
+	ui_predicted_cost = {
+		gold = { value = activity_minor_gold_value }
+		piety = { value = 25 }
+	}
+
+	cooldown = { years = 2 }
+
+	ai_will_do = {
+		value = 0
+	}
+
+	ai_check_interval = 120
+
+	ai_will_select_province = {
+		value = 10
+	}
+
+	###################
+	# GUEST HANDLING
+	###################
+
+	# The boys count toward the limit. Flags may be unset while planning, hence ?=.
+	max_guests = {
+		value = 12
+		if = {
+			limit = { scope:ate_fez_party_scale ?= flag:ate_fez_scale_grand }
+			value = 25
+		}
+		else_if = {
+			limit = { scope:ate_fez_party_scale ?= flag:ate_fez_scale_extravagant }
+			value = 40
+		}
+	}
+
+	guest_invite_rules = {
+		rules = {
+			3 = activity_invite_rule_extended_family
+			3 = activity_invite_rule_friends
+			# Vassals (vanilla rule, optional; the vanilla feast has it on by default). Added 2026-10-12 for #5 / #14.
+			4 = activity_invite_rule_vassals
+		}
+		defaults = {
+			1 = activity_invite_rule_ate_fez_honorees
+			1 = activity_invite_rule_close_family
+			1 = activity_invite_spouses
+		}
+	}
+
+	# Funeral precedent: teens (12+) are real guests, so the 12-15 honorees can attend.
+	# Younger children only if they are the host's own (the daughters), via the playdate's child trigger.
+	can_be_activity_guest = {
+		is_healthy = yes
+		in_diplomatic_range = scope:host
+		OR = {
+			age >= 12
+			AND = {
+				is_child_of = scope:host
+				is_available_for_child_activity_trigger = yes
+			}
+		}
+	}
+
+	host_intents = {
+		intents = { ate_fez_party_intent ate_fez_important_intent ate_fez_look_intent }
+		default = ate_fez_party_intent
+	}
+
+	guest_intents = {
+		intents = { ate_fez_party_intent ate_fez_important_intent ate_fez_look_intent }
+		default = ate_fez_party_intent
+	}
+
+	guest_join_chance = {
+		base = 10
+		base_activity_modifier = yes
+
+		# Scripted Modifiers
+		activity_guest_shared_ai_accept_modifier = yes
+
+		# A boy does not skip his own fez.
+		modifier = {
+			ate_fez_eligible_son_trigger = { HOST = scope:host }
+			add = 100
+		}
+		# Nor does a non-Shriner ward skip his guardian's feast (#18).
+		modifier = {
+			ate_fez_foreign_ward_trigger = { HOST = scope:host }
+			add = 100
+		}
+	}
+
+	on_start = {
+		ate_fez_collect_honorees_effect = yes
+	}
+
+	on_complete = {
+		if = {
+			limit = { this = scope:host }
+			ate_fez_host_payout_effect = yes
+		}
+		ate_fez_intent_payout_effect = yes
+	}
+
+	###################
+	# GRAPHICS
+	###################
+
+	# Shriner lodge = the vanilla MENA feast hall.
+	background = {
+		texture = "gfx/interface/illustrations/event_scenes/ep2_feast_mena.dds"
+		environment = "environment_mena_feast"
+		ambience = "event:/SFX/Events/Backgrounds/feasthall"
+	}
+
+	window_characters = {
+		guest = {
+			camera = camera_body
+
+			effect = {
+				every_attending_character = {
+					limit = {
+						scope:host.location = scope:activity.activity_location
+						NOT = { this = scope:host }
+					}
+					add_to_list = characters
+				}
+			}
+
+			scripted_animation = {
+				animation = happiness
+			}
+		}
+
+		host = {
+			camera = camera_body
+
+			effect = {
+				scope:host = { add_to_list = characters }
+			}
+
+			scripted_animation = {
+				animation = personality_honorable
+			}
+		}
+
+		guest = {
+			camera = camera_body
+
+			effect = {
+				every_attending_character = {
+					limit = {
+						scope:host.location = scope:activity.activity_location
+						NOT = { this = scope:host }
+					}
+					add_to_list = characters
+				}
+			}
+
+			scripted_animation = {
+				animation = personality_zealous
+			}
+		}
+	}
+}

@@ -1,0 +1,95 @@
+﻿# The Feast of the Fez — intents. Rewards are paid in ate_fez_intent_reward_effect at the end of the party.
+# Intent triggers only get root (the picker); there is no host scope here.
+
+# An Excuse to Party — stress loss. The default intent: the engine forbids ANY is_shown/is_valid on a
+# default ("can not be a default intent, it contains triggers"), like vanilla reduce_stress_intent.
+ate_fez_party_intent = {
+	icon = ate_fez_party_intent
+
+	auto_complete = yes
+
+	ai_will_do = {
+		value = stress
+		if = {
+			limit = {
+				OR = {
+					has_trait = gregarious
+					has_trait = gluttonous
+					has_trait = drunkard
+				}
+			}
+			add = 30
+		}
+	}
+
+	scripted_animation = {
+		animation = happiness
+	}
+}
+
+# This Is Important — piety. Shriners only: other faiths gain nothing from a Shriner rite.
+ate_fez_important_intent = {
+	icon = ate_fez_important_intent
+
+	auto_complete = yes
+
+	is_shown = {
+		faith = faith:shriner
+	}
+
+	is_valid = {
+		is_alive = yes
+	}
+
+	ai_will_do = {
+		value = 20
+		if = {
+			limit = { has_trait = zealous }
+			add = 40
+		}
+		if = {
+			limit = { has_trait = cynical }
+			add = -20
+		}
+	}
+
+	scripted_animation = {
+		animation = personality_zealous
+	}
+}
+
+# Everybody Look — prestige.
+ate_fez_look_intent = {
+	icon = ate_fez_look_intent
+
+	auto_complete = yes
+
+	is_shown = {
+		is_alive = yes
+	}
+
+	is_valid = {
+		is_alive = yes
+	}
+
+	ai_will_do = {
+		value = 20
+		if = {
+			limit = {
+				OR = {
+					has_trait = arrogant
+					has_trait = ambitious
+				}
+			}
+			add = 40
+		}
+		if = {
+			limit = { has_trait = humble }
+			add = -20
+		}
+	}
+
+	scripted_animation = {
+		animation = personality_bold
+	}
+}

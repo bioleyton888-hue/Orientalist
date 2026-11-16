@@ -1,0 +1,28 @@
+﻿# The Feast of the Fez — script values.
+
+# Release tuning (user, 2026-11-16): at most this many guest events per phase. 3 phases = up to 6 per party.
+ate_fez_max_events_per_phase = 2
+
+# Chance (in %) of each event chained after the fez (#1, #20): 100 / the per-phase maximum (user's formula).
+ate_fez_chained_event_chance = {
+	value = 100
+	divide = ate_fez_max_events_per_phase
+}
+
+# How many boys the party would honor: eligible sons + eligible wards who aren't also sons.
+# root = the host (used in the Extravagant option's per-boy cost, where root = character planning).
+ate_fez_honoree_count_value = {
+	value = 0
+	every_child = {
+		limit = { ate_fez_eligible_son_trigger = { HOST = root } }
+		add = 1
+	}
+	every_relation = {
+		type = ward
+		limit = {
+			NOT = { is_child_of = root }
+			ate_fez_eligible_son_trigger = { HOST = root }
+		}
+		add = 1
+	}
+}
