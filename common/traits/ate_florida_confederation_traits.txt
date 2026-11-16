@@ -1,6 +1,6 @@
 ﻿ate_defender_of_florida = {
 	index = 1015
-	icon = unyielding_defender.dds
+	icon = ate_defender_of_florida.dds	# 2026-11-16: own icon (vanilla knight_of_the_lion.dds, knocked out: X eyes, tongue out)
 	category = fame
 
 	shown_in_ruler_designer = no
