@@ -1,6 +1,6 @@
 ﻿mawlid_al_fez = {
 	index = 1013
-	icon = born_in_the_purple.dds
+	icon = mawlid_al_fez.dds	# 2026-11-16: own icon (ATE's born_in_the_purple recolored: yellow circle, red blanket)
 	category = fame
 
 	shown_in_ruler_designer = no
@@ -26,7 +26,7 @@
 
 ya_shamal = {
 	index = 1011
-	icon = holy_place_custodian.dds
+	icon = ya_shamal.dds	# 2026-11-16: own icon (a brass lamp with a sun behind it, drawn in Pillow; script in scripts/tools)
 	category = fame
 
 	shown_in_ruler_designer = no
@@ -55,7 +55,7 @@ ya_shamal = {
 
 ya_shamal_descendant = {
 	index = 1012
-	icon = el_hijo_favorito_descendant.dds
+	icon = ya_shamal_descendant.dds	# 2026-11-16: own icon (vanilla sayyid.dds: red circle, a small lamp instead of the calligraphy)
 	category = fame
 
 	shown_in_ruler_designer = no

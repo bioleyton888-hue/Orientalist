@@ -1,6 +1,6 @@
 ﻿shriner_zair = {
 	index = 1014
-	icon = hajjaj.dds
+	icon = shriner_zair.dds	# 2026-11-16: own icon (vanilla hajjaj.dds with an Arabian-Nights palace instead of the Kaaba)
 
 	category = fame
 
