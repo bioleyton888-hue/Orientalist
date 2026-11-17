@@ -67,9 +67,9 @@
 
  # Events — ate_fez_ceremony.0002 The Presentation
  ate_fez_ceremony.0002.t:0 "The Presentation"
- ate_fez_ceremony.0002.desc.none:0 "The fezzes wait on their cushions, crimson felt and black tassels, one for each boy. But the boys are not here. The hall waits, and the brothers of the Lodge look at one another, and then at you."
- ate_fez_ceremony.0002.desc.one:0 "The hall falls quiet when you call [ate_fez_boy_1.GetFirstNameNoTooltip] forward. He stands straight; he has been practicing. You place the fez in his hands. You ask him to take the Lodge oath; he accepts it, and he puts the fez on. It is slightly too large, but he does not take it off."
- ate_fez_ceremony.0002.desc.several:0 "After the Lodge finishes its sermons, you call them forward one by one: [ate_fez_boy_1.GetFirstNameNoTooltip], [ate_fez_boy_2.GetFirstNameNoTooltip], and the others after them. Each one stands as straight as he can. Each one receives the fez, crimson felt and black tassel, the same as every one of us, and hears the words of the Lodge spoken over him.\n\nEvery fez is slightly too large for them, but not one of them takes it off."
+ ate_fez_ceremony.0002.desc.none:0 "The fezzes wait on their cushions, crimson felt and black tassels, one for each boy. But the boys are not here. The hall waits, and the brothers of the Lodge look at one another, and then at me."
+ ate_fez_ceremony.0002.desc.one:0 "The hall falls quiet when I call [ate_fez_boy_1.GetFirstNameNoTooltip] forward. He stands straight; he has been practicing. I place the fez in his hands. I ask him to take the Lodge oath; he accepts it, and he puts the fez on. It is slightly too large, but he does not take it off."
+ ate_fez_ceremony.0002.desc.several:0 "After the Lodge finishes its sermons, I call them forward one by one: [ate_fez_boy_1.GetFirstNameNoTooltip], [ate_fez_boy_2.GetFirstNameNoTooltip], and the others after them. Each one stands as straight as he can. Each one receives the fez, crimson felt and black tassel, the same as every one of us, and hears the words of the Lodge spoken over him.\n\nEvery fez is slightly too large for them, but not one of them takes it off."
  ate_fez_ceremony.0002.desc.many:0 "I've certainly been busy these past years. There are so many of them that the brothers of the Lodge have to bring a second table for the fezzes. [ate_fez_boy_1.GetFirstNameNoTooltip] first, then [ate_fez_boy_2.GetFirstNameNoTooltip], then the rest of the line, all the way to the back of the hall. The oath of the Lodge is spoken so many times that the guests start saying it along.\n\nSome of the fezzes are a little too large for my boys' heads, but they don't take them off."
  ate_fez_ceremony.0002.a:0 "Being a Shriner is more than just wearing the fez. Remember to live by the Lodge oath."
  ate_fez_ceremony.0002.b:0 "Look at them. The finest boys in the land."
@@ -217,7 +217,8 @@
  ate_fez_ceremony.1009.a.success.tt:0 "Rain, snow or thunder."
  ate_fez_ceremony.1009.a.success.toast:0 "You go through it unbothered"
  ate_fez_ceremony.1009.a.ill.tt:0 "No reckless decision goes unpunished."
- ate_fez_ceremony.1009.a.ill.toast:0 "All of you catch a cold"
+ ate_fez_ceremony.1009.a.ill.toast:0 "[ate_fez_guest.GetFirstNameNoTooltip] catches a cold"
+ ate_fez_ceremony.1009.a.ill.toast.no_guest:0 "Everyone comes home soaked to the bone"
  ate_fez_ceremony.1009.b:0 "Quick! LET'S FIND SHELTER!"
  ate_fez_ceremony.1009.b.toast:0 "The rain passed quickly, but the lack of organization was noted"
  ate_fez_ceremony.1009.c:0 "Oh, Allah'din, it is your people trying to guide our flock. Let us through!"
@@ -303,6 +304,7 @@
  ate_fez_ceremony.1017.f.toast:0 "THE FUCK IS WRONG WITH YOU"
 
  ate_fez_ceremony.1018.t:0 "When in al-Rome..."
+ ate_fez_ceremony.1018.desc.hall:0 "We are all walking in the procession to the Lodge hall, drums beating and music blaring from left to right. Suddenly I see [ate_fez_foreign_ward.GetFirstNameNoTooltip], as happy as everyone else, dancing and singing with my sons, and dancing with the girls as well.\n\nThen he comes to me and asks, \"What are we celebrating?\" This poor soul, cursed not to have been born in Shriner arms, his soul doomed forever to rot in Duat for his blasphemous beliefs... Maybe something can be done after all. Everybody knows Allah'din works in mysterious ways; nothing is left to chance. And he is of the age to become a man... maybe something can be done."
  ate_fez_ceremony.1018.desc:0 "We are all marching in the parade, cars going around us and carnival music blaring from left to right. Suddenly I see [ate_fez_foreign_ward.GetFirstNameNoTooltip], as happy as everyone else, dancing and singing with my sons, and dancing with the girls as well.\n\nThen he comes to me and asks, \"What are we celebrating?\" This poor soul, cursed not to have been born in Shriner arms, his soul doomed forever to rot in Duat for his blasphemous beliefs... Maybe something can be done after all. Everybody knows Allah'din works in mysterious ways; nothing is left to chance. And he is of the age to become a man... maybe something can be done."
  ate_fez_ceremony.1018.a:0 "[ate_fez_foreign_ward.GetFirstNameNoTooltip], from now on you will become a man, as my sons and I have. Embrace the truth."
  ate_fez_ceremony.1018.a.toast:0 "He happily becomes a Shriner"

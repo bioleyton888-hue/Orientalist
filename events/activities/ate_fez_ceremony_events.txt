@@ -1338,7 +1338,10 @@ ate_fez_ceremony.1005 = {
 
 	trigger = {
 		exists = scope:activity
-		scope:activity = { NOT = { has_variable = ate_fez_done_5 } }
+		scope:activity = {
+			NOT = { has_variable = ate_fez_done_5 }
+			NOT = { has_variable = ate_fez_done_14 }	# twin of #14 (matchmaking)
+		}
 		ate_fez_has_boy_match_trigger = yes
 	}
 
@@ -1603,14 +1606,23 @@ ate_fez_ceremony.1009 = {
 			}
 			40 = {
 				desc = ate_fez_ceremony.1009.a.ill.tt
-				send_interface_toast = {
-					type = event_toast_effect_bad
-					title = ate_fez_ceremony.1009.a.ill.toast
-					left_icon = root
-					add_prestige = -10
-					if = {
-						limit = { exists = scope:ate_fez_guest }
+				if = {
+					limit = { exists = scope:ate_fez_guest }
+					send_interface_toast = {
+						type = event_toast_effect_bad
+						title = ate_fez_ceremony.1009.a.ill.toast
+						left_icon = root
+						right_icon = scope:ate_fez_guest
+						add_prestige = -10
 						scope:ate_fez_guest = { add_trait = ill }
+					}
+				}
+				else = {
+					send_interface_toast = {
+						type = event_toast_effect_bad
+						title = ate_fez_ceremony.1009.a.ill.toast.no_guest
+						left_icon = root
+						add_prestige = -10
 					}
 				}
 			}
@@ -1842,6 +1854,7 @@ ate_fez_ceremony.1011 = {
 		exists = scope:activity
 		scope:activity = {
 			NOT = { has_variable = ate_fez_done_11 }
+			NOT = { has_variable = ate_fez_done_12 }	# twin of #12 (ward's family gift)
 			any_in_list = {
 				variable = ate_fez_honorees
 				ate_fez_ward_honoree_trigger = yes
@@ -1930,6 +1943,7 @@ ate_fez_ceremony.1012 = {
 		exists = scope:activity
 		scope:activity = {
 			NOT = { has_variable = ate_fez_done_12 }
+			NOT = { has_variable = ate_fez_done_11 }	# twin of #11 (ward's family gift)
 			any_in_list = {
 				variable = ate_fez_honorees
 				ate_fez_ward_with_family_trigger = yes
@@ -2013,7 +2027,10 @@ ate_fez_ceremony.1014 = {
 
 	trigger = {
 		exists = scope:activity
-		scope:activity = { NOT = { has_variable = ate_fez_done_14 } }
+		scope:activity = {
+			NOT = { has_variable = ate_fez_done_14 }
+			NOT = { has_variable = ate_fez_done_5 }	# twin of #5 (matchmaking)
+		}
 		ate_fez_has_daughter_match_trigger = yes
 	}
 
@@ -2405,7 +2422,15 @@ ate_fez_ceremony.1017 = {
 ate_fez_ceremony.1018 = {
 	type = activity_event
 	title = ate_fez_ceremony.1018.t
-	desc = ate_fez_ceremony.1018.desc
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { ate_fez_scale_trigger = { SCALE = extravagant } }
+				desc = ate_fez_ceremony.1018.desc
+			}
+			desc = ate_fez_ceremony.1018.desc.hall
+		}
+	}
 	theme = feast_activity
 	override_background = { reference = ate_fez_lodge_hall }
 
